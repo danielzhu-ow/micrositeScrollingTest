@@ -3,32 +3,35 @@ import PropTypes from "prop-types"
 export { TelescopingContent, ScrollingGif }
 
 //Telescoping Content
-function TelescopingContent({ child, position, dimensions, scrollInfo, scrollProgress, scrollForward }) {
+function TelescopingContent({ child, positions, scrollInfo, scrollProgress }) {
     //Destruct Info
-    const scrollStart = scrollInfo[0]
-    const scrollDuration = scrollInfo[1]
+    let scrollStart = scrollInfo[0]
+    let scrollDuration = scrollInfo[1]
 
-    const scrollTiming = (100 * scrollProgress - 100 * scrollStart) / 100 * scrollDuration
+    //Finding Positions
+    let index = 0
+    let calcTime = scrollInfo[0]
+    for (let i = 0; i < scrollInfo.length - 1; i++) {
+        if (calcTime <= scrollProgress) { scrollStart = calcTime; scrollDuration = scrollInfo[i + 1]; index = i }
+        calcTime += scrollInfo[i + 1]
+    }
+
+    //Timing
+    const scrollTiming = (scrollProgress - scrollStart) / (scrollDuration - scrollStart)
     let inScope = true
     if (scrollTiming < 0 || scrollTiming > 1) { inScope = false }
 
-    let sCalc = 1 + scrollTiming
-    if (scrollForward) { sCalc = 1 - scrollTiming }
-    console.log(sCalc)
-
-    const width = dimensions[0] * sCalc
-    const height = dimensions[1] * sCalc
-    const x = position[0] * sCalc
-    const y = position[1] * sCalc
+    let startPosition = positions[index]
+    let endPosition = positions[index + 1]
+    const x = startPosition[0] + scrollTiming * (endPosition[0] - startPosition[0])
+    const y = startPosition[1] + scrollTiming * (endPosition[1] - startPosition[1])
 
     if (inScope) {
         return (
             <div style={{
                 position: "fixed",
-                top: window.innerHeight / 2 - height / 2 + y,
-                left: window.innerWidth / 2 - width / 2 + x,
-                //width: width,
-                //height: height,
+                top: y,
+                left: x,
             }}>
                 {child}
             </div>
@@ -38,16 +41,10 @@ function TelescopingContent({ child, position, dimensions, scrollInfo, scrollPro
     }
 }
 
-TelescopingContent.defaultTypes = {
-    position: [window.innerWidth / 2, window.innerHeight / 2],
-    scrollDirection: true
-}
-
 TelescopingContent.propTypes = {
     child: PropTypes.any.isRequired,
-    position: PropTypes.array.isRequired, // [ x, y ]
-    dimensions: PropTypes.array.isRequired, // [ wdith, height ]
-    scrollInfo: PropTypes.array.isRequired, // [ scrollStart, scrollDuration ]
+    positions: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired, // [[x,y],[x.y]...]
+    scrollInfo: PropTypes.arrayOf(PropTypes.number).isRequired, // [scrollStart, scrollDuration, scrollDuration, scrollDuration]
     scrollProgress: PropTypes.number.isRequired,
     scrollForward: PropTypes.bool
 }

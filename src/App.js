@@ -21,10 +21,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div style={{ position: "relative" }}>
-          {/* <TelescopingContent child={cloudImg} position={[0, 0]} dimensions={[1042, 825]} scrollInfo={[0, 0.5]} scrollProgress={scrollProgress} scrollForward={false} />
-          <TelescopingContent child={cloudStairImg} position={[window.innerWidth - 1100, window.innerHeight - 775]} dimensions={[1100, 775]} scrollInfo={[0, 0.5]} scrollProgress={scrollProgress} scrollForward={false} /> */}
-          <TelescopingContent child={rectImg} position={[0, 0]} dimensions={[100, 100]} scrollInfo={[0, 1]} scrollProgress={scrollProgress} />
-          <TelescopingContent child={rectImg} position={[window.innerWidth - 100, window.innerHeight - 100]} dimensions={[100, 100]} scrollInfo={[0, 1]} scrollProgress={scrollProgress} />
+          <TelescopingContent child={cloudImg} positions={[[0,0],[100, 100],[-1043, -826]]} scrollInfo={[0, 0.5, 1]} scrollProgress={scrollProgress} />
+          <TelescopingContent child={cloudStairImg} positions={[[window.innerWidth - 1106, window.innerHeight - 779], [window.innerWidth, window.innerHeight]]} scrollInfo={[0, 1]} scrollProgress={scrollProgress} />
           <Article />
           <Article />
         </div>
