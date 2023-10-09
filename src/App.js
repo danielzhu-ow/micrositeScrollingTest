@@ -1,25 +1,31 @@
 import logo from './logo.svg';
-import spriteSheet from './gifSpriteSheet.png'
-import fallingSheet from './fallingSheet.png'
 import { useState } from 'react'
 import { scroll } from "framer-motion/dom"
 import './App.css';
 
-import ScrollingImage from './ScrollingImage';
+import cloudstair from './couldStair.png'
+import cloud from './cloud.png'
+import rect from './rect.png'
+
+import { TelescopingContent, ScrollingGif } from './ScrollingInteractions';
 
 function App() {
   const [scrollProgress, setScrollProgress] = useState(0)
-  scroll((progress) => {
-    setScrollProgress(progress)
-  })
+  scroll((progress) => { setScrollProgress(progress) })
+
+  const cloudStairImg = <img src={cloudstair} alt="testImage" style={{ width: "100%", height: "auto" }} />
+  const cloudImg = <img src={cloud} alt="testImage" style={{ width: "100%", height: "auto" }} />
+  const rectImg = <img src={rect} alt = "testImage" style={{ width: "100%", height: "100%" }} />
 
   return (
     <div className="App">
       <header className="App-header">
         <div style={{ position: "relative" }}>
-          <img src={logo} className="App-logo" alt="logo" />
-          <ScrollingImage pos={[0, 0]} spriteSrc={spriteSheet} imgWidth={480} imgHeight={360} frames={27} scrollProgress={scrollProgress} scrollStart={0} scrollDuration={2} displayWidth={1000} />
-          <ScrollingImage pos={[1000, 0]} spriteSrc={fallingSheet} imgWidth={390} imgHeight={480} frames={27} scrollProgress={scrollProgress} scrollStart={0} scrollDuration={1} />
+          {/* <TelescopingContent child={cloudImg} position={[0, 0]} dimensions={[1042, 825]} scrollInfo={[0, 0.5]} scrollProgress={scrollProgress} scrollForward={false} />
+          <TelescopingContent child={cloudStairImg} position={[window.innerWidth - 1100, window.innerHeight - 775]} dimensions={[1100, 775]} scrollInfo={[0, 0.5]} scrollProgress={scrollProgress} scrollForward={false} /> */}
+          <TelescopingContent child={rectImg} position={[0, 0]} dimensions={[100, 100]} scrollInfo={[0, 1]} scrollProgress={scrollProgress} />
+          <TelescopingContent child={rectImg} position={[window.innerWidth - 100, window.innerHeight - 100]} dimensions={[100, 100]} scrollInfo={[0, 1]} scrollProgress={scrollProgress} />
+          <Article />
           <Article />
         </div>
       </header>
