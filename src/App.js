@@ -1,12 +1,11 @@
-import logo from './logo.svg';
 import { useState } from 'react'
 import { scroll, useScroll } from "framer-motion"
 import './App.css';
 
-import cloudstair from './couldStair.png'
-import cloud from './cloud.png'
-import rect from './rect.png'
-import gradient_default from './Gradient_Default.png'
+import cloudstair from './images/couldStair.png'
+import cloud from './images/cloud.png'
+import rect from './images/rect.png'
+import gradient_default from './images/Gradient_Default.png'
 
 import { TelescopingContent, ScrollingGif, Background } from './ScrollingInteractions';
 
