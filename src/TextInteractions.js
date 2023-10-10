@@ -4,18 +4,20 @@ export { HighlightText }
 
 function HighlightText({paragraphs}) {
     const [focusedIndex, setFocusedIndex] = useState(0); //focused index starts at 0
-    useEffect(() => {
+
+    useEffect(() => { // change when focusedIndex changes 
       const handleScroll = () => {
         const scrollPosition = window.scrollY;
         console.log(scrollPosition)
         const windowHeight = window.innerHeight;
         const paragraphHeight = windowHeight / paragraphs.length;
+        // const newIndex = Math.floor(scrollPosition / paragraphHeight);
         const newIndex = Math.floor(scrollPosition / paragraphHeight);
+
         // Update the focused index only if it has changed
         if (newIndex !== focusedIndex) {
           setFocusedIndex(newIndex);
         }
-        // console.log("index: " + newIndex + ", scrollP: " + scrollPosition)
       };
       window.addEventListener('scroll', handleScroll);
       // Clean up the event listener when the component is unmounted
@@ -24,7 +26,7 @@ function HighlightText({paragraphs}) {
       };
     }, [focusedIndex, paragraphs.length]);
     return (
-      <div style={{paddingLeft: '20%',  paddingRight: '20%'}}>
+      <div style={{marginTop: '50%', paddingLeft: '20%',  paddingRight: '20%'}}>
         {paragraphs.map((paragraph, index) => (
           <p
             key={index}
