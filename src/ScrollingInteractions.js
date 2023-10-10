@@ -1,9 +1,17 @@
 //Telescoping Text
 import PropTypes from "prop-types"
-export { TelescopingContent, ScrollingGif }
+import { Children } from "react"
+import { motion, useScroll, useMotionValueEvent } from "framer-motion"
+export { TelescopingContent, ScrollingGif, Background }
 
 //Telescoping Content
-function TelescopingContent({ child, positions, scrollInfo, scrollProgress }) {
+function TelescopingContent({ child, positions, scrollInfo }) {
+    const { scrollY } = useScroll()
+
+    useMotionValueEvent(scrollY, "change", (latest) => {
+        console.log("Page scroll: ", latest)
+    })
+
     //Destruct Info
     let scrollStart = scrollInfo[0]
     let scrollDuration = scrollInfo[1]
@@ -12,12 +20,12 @@ function TelescopingContent({ child, positions, scrollInfo, scrollProgress }) {
     let index = 0
     let calcTime = scrollInfo[0]
     for (let i = 0; i < scrollInfo.length - 1; i++) {
-        if (calcTime <= scrollProgress) { scrollStart = calcTime; scrollDuration = scrollInfo[i + 1]; index = i }
+        if (calcTime <= scrollY) { scrollStart = calcTime; scrollDuration = scrollInfo[i + 1]; index = i }
         calcTime += scrollInfo[i + 1]
     }
 
     //Timing
-    const scrollTiming = (scrollProgress - scrollStart) / (scrollDuration - scrollStart)
+    const scrollTiming = (scrollY - scrollStart) / scrollDuration
     let inScope = true
     if (scrollTiming < 0 || scrollTiming > 1) { inScope = false }
 
@@ -28,16 +36,14 @@ function TelescopingContent({ child, positions, scrollInfo, scrollProgress }) {
 
     if (inScope) {
         return (
-            <div style={{
+            <motion.div style={{
                 position: "fixed",
                 top: y,
                 left: x,
             }}>
                 {child}
-            </div>
+            </motion.div>
         )
-    } else {
-        return (<></>)
     }
 }
 
@@ -45,12 +51,11 @@ TelescopingContent.propTypes = {
     child: PropTypes.any.isRequired,
     positions: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired, // [[x,y],[x.y]...]
     scrollInfo: PropTypes.arrayOf(PropTypes.number).isRequired, // [scrollStart, scrollDuration, scrollDuration, scrollDuration]
-    scrollProgress: PropTypes.number.isRequired,
     scrollForward: PropTypes.bool
 }
 
 //Scrolling GIF
-export default function ScrollingGif({ position, spriteSrc, imgDimension, frames, imgPerRow, displayWidth, scrollInfo, scrollProgress }) {
+function ScrollingGif({ position, spriteSrc, imgDimension, frames, imgPerRow, displayWidth, scrollInfo, scrollProgress }) {
     //Adjusting Image Size
     let imgWidth = imgDimension[0]
     let imgHeight = imgDimension[1]
@@ -105,8 +110,70 @@ ScrollingGif.propTypes = {
     spriteSrc: PropTypes.string.isRequired,
     imgDimension: PropTypes.array.isRequired, // [ x, y ]
     frames: PropTypes.number.isRequired,
-    scrollProgress: PropTypes.number.isRequired,
     scrollInfo: PropTypes.array.isRequired, //  [ scrollStart, scrollDuration ]
     displayWidth: PropTypes.number,
     imgPerRow: PropTypes.number
+}
+
+function Background({ children, backgrounds, softTransitions, scrollInfo, scrollProgress }) {
+    //Create List
+    let bgList = []
+    let fromTop = 0
+    let opacityDiff = 0
+    for (let i = 0; i < scrollInfo.length; i++) {
+
+        if (backgrounds[i][0] === "#") {
+            bgList.push(
+                <div style={{
+                    key: backgrounds[i],
+                    backgroundColor: backgrounds[i],
+                    height: scrollInfo[i] * 100 + "%",
+                    width: "100%",
+                    zIndex: 1,
+                }}></div>
+            )
+        } else {
+            bgList.push(
+                <div style={{
+                    key: backgrounds[i],
+                    backgroundImage: "url(" + backgrounds[i] + ")",
+                    backgroundSize: "100% 100%",
+                    backgroundAttachment: "fixed",
+                    height: scrollInfo[i] * 100 + "%",
+                    width: "100%",
+                    zIndex: 1,
+                }}></div>
+            )
+        }
+
+        if (softTransitions[i] > 0) {
+            const diff = Math.max(Math.min(1 - (fromTop - scrollProgress) / softTransitions[i], 1.0), 0.0)
+            if (diff !== 0 && diff !== 1) {
+                opacityDiff = -0.5 * Math.cos(diff * Math.PI) + 0.5
+            }
+        }
+
+        fromTop += scrollInfo[i]
+    }
+
+    // let opacity = opacityDiff
+    return (
+        <>
+            {bgList}
+            <div style={{
+                key: "transition",
+                backgroundColor: "#202020",
+                height: "100%",
+                width: "100%",
+                opacity: 0, //opacity,
+                position: "fixed",
+                zIndex: 3,
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0
+            }} />
+            {children}
+        </>
+    )
 }

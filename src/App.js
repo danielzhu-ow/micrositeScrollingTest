@@ -1,30 +1,30 @@
 import logo from './logo.svg';
 import { useState } from 'react'
-import { scroll } from "framer-motion/dom"
+import { scroll, useScroll } from "framer-motion"
 import './App.css';
 
 import cloudstair from './couldStair.png'
 import cloud from './cloud.png'
 import rect from './rect.png'
+import gradient_default from './Gradient_Default.png'
 
-import { TelescopingContent, ScrollingGif } from './ScrollingInteractions';
+import { TelescopingContent, ScrollingGif, Background } from './ScrollingInteractions';
 
 function App() {
-  const [scrollProgress, setScrollProgress] = useState(0)
-  scroll((progress) => { setScrollProgress(progress) })
-
   const cloudStairImg = <img src={cloudstair} alt="testImage" style={{ width: "100%", height: "auto" }} />
   const cloudImg = <img src={cloud} alt="testImage" style={{ width: "100%", height: "auto" }} />
-  const rectImg = <img src={rect} alt = "testImage" style={{ width: "100%", height: "100%" }} />
+  const rectImg = <img src={rect} alt="testImage" style={{ width: "100%", height: "auto" }} />
 
   return (
     <div className="App">
       <header className="App-header">
-        <div style={{ position: "relative" }}>
-          <TelescopingContent child={cloudImg} positions={[[0,0],[100, 100],[-1043, -826]]} scrollInfo={[0, 0.5, 1]} scrollProgress={scrollProgress} />
-          <TelescopingContent child={cloudStairImg} positions={[[window.innerWidth - 1106, window.innerHeight - 779], [window.innerWidth, window.innerHeight]]} scrollInfo={[0, 1]} scrollProgress={scrollProgress} />
-          <Article />
-          <Article />
+        <div style={{ height: "1000vh", width: "100%" }}>
+          <Background backgrounds={[gradient_default, "#202020"]} softTransitions={[0, 0.1]} scrollInfo={[0.75, 0.25]} >
+            <TelescopingContent child={cloudImg} positions={[[0, 0], [-1043, -826]]} scrollInfo={[0, 0.5]} />
+            <TelescopingContent child={cloudStairImg} positions={[[window.innerWidth - 1106, window.innerHeight - 779], [window.innerWidth, window.innerHeight]]} scrollInfo={[0, 0.5]} />
+            {/* <Article />
+            <Article /> */}
+          </Background>
         </div>
       </header>
     </div>
@@ -35,7 +35,7 @@ export default App;
 
 function Article() {
   return (
-    <article>
+    <article style={{ opacity: 0, padding: 100 }}>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac
         rhoncus quam.
