@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 export { HighlightText }
 
-function HighlightText({paragraphs}) {
+function HighlightText({paragraphs, padTop}) {
     const [focusedIndex, setFocusedIndex] = useState(0); //focused index starts at 0
 
     useEffect(() => { // change when focusedIndex changes 
@@ -33,6 +33,7 @@ function HighlightText({paragraphs}) {
             style={{
               color: index === focusedIndex ? '#FFFFFF' : '#424242', //white : grey
               textAlign: 'left',
+              paddingTop: padTop
             }}
           >
             {paragraph}
