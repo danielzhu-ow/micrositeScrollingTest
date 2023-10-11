@@ -9,7 +9,7 @@ function TelescopingContent({ child, positions, scrollInfo }) {
     const { scrollY } = useScroll()
 
     useMotionValueEvent(scrollY, "change", (latest) => {
-        console.log("Page scroll: ", latest)
+        // console.log("Page scroll: ", latest)
     })
 
     //Destruct Info
@@ -42,6 +42,7 @@ function TelescopingContent({ child, positions, scrollInfo }) {
                 left: x,
             }}>
                 {child}
+                {/* <img src={child} alt="testImage" style={{ width: "100%", height: "auto" }} /> */}
             </motion.div>
         )
     }

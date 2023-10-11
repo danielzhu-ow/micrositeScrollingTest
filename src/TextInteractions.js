@@ -26,7 +26,7 @@ function HighlightText({paragraphs}) {
       };
     }, [focusedIndex, paragraphs.length]);
     return (
-      <div style={{marginTop: '50%', paddingLeft: '20%',  paddingRight: '20%'}}>
+      <div style={{ paddingLeft: '20%',  paddingRight: '20%'}}>
         {paragraphs.map((paragraph, index) => (
           <p
             key={index}
