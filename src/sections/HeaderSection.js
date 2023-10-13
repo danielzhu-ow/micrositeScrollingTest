@@ -15,8 +15,8 @@ function NamingHeader({contentImages}) {
 return (
     <div style={{ height: "100vh", width: "100%"}}>
        {/* <Background backgrounds={[gradientDefault, "#202020"]} softTransitions={[0, 0.1]} scrollInfo={[0.75, 0.25]}> */}
-            <TelescopingContent child={cloudImg} positions={[[0, 0], [-1043, -826]]} scrollInfo={[0, 0.5]} />
-            <TelescopingContent child={cloudStairImg} positions={[[window.innerWidth - 1106, window.innerHeight - 779], [window.innerWidth, window.innerHeight]]} scrollInfo={[0, 0.5]} />
+            {/* <TelescopingContent child={cloudImg} positions={[[0, 0], [-1043, -826]]} scrollInfo={[0, 0.5]} />
+            <TelescopingContent child={cloudStairImg} positions={[[window.innerWidth - 1106, window.innerHeight - 779], [window.innerWidth, window.innerHeight]]} scrollInfo={[0, 0.5]} /> */}
         {/* </Background> */}
     </div> 
   );

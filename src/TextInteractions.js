@@ -1,44 +1,60 @@
-import { useState, useEffect } from 'react'
+import React, { useEffect, useRef } from "react";
+import { useAnimation, motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-export { HighlightText }
+import './sections/dummystyles.css';
 
-function HighlightText({paragraphs, padTop}) {
-    const [focusedIndex, setFocusedIndex] = useState(0); //focused index starts at 0
+export {HighlightText}
 
-    useEffect(() => { // change when focusedIndex changes 
-      const handleScroll = () => {
-        const scrollPosition = window.scrollY;
-        console.log(scrollPosition)
-        const windowHeight = window.innerHeight;
-        const paragraphHeight = windowHeight / paragraphs.length;
-        // const newIndex = Math.floor(scrollPosition / paragraphHeight);
-        const newIndex = Math.floor(scrollPosition / paragraphHeight);
+const variants = {
+  active: { opacity: 1 },
+  inactive: { opacity: 0.3 }
+};
 
-        // Update the focused index only if it has changed
-        if (newIndex !== focusedIndex) {
-          setFocusedIndex(newIndex);
-        }
-      };
-      window.addEventListener('scroll', handleScroll);
-      // Clean up the event listener when the component is unmounted
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }, [focusedIndex, paragraphs.length]);
-    return (
-      <div style={{ paddingLeft: '20%',  paddingRight: '20%'}}>
+const useParagraphHooks = (rCont) => {
+  const controls = useAnimation();
+  // const ref = useRef(null);
+  // const [inView] = useInView({ root: rCont });
+  const [ref, inView] = useInView({ root: rCont.current });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start("active");
+    } else {
+      controls.start("inactive");
+    }
+  }, [controls, inView]);
+
+  return { controls, ref };
+};
+
+const Paragraph = ({ paragraph, refCont }) => {
+  const { controls, ref } = useParagraphHooks(refCont);
+
+  return (
+    <motion.div
+      ref={ref}
+      animate={controls}
+      initial="inactive"
+      variants={variants}
+      className="square"
+    >
+      <p>{paragraph}</p>
+    </motion.div>
+  );
+};
+
+function HighlightText({ paragraphs }) {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll();
+
+  return (
+      <div ref={container} className="windCont">
+        <div className="test">   
         {paragraphs.map((paragraph, index) => (
-          <p
-            key={index}
-            style={{
-              color: index === focusedIndex ? '#FFFFFF' : '#424242', //white : grey
-              textAlign: 'left',
-              paddingTop: padTop
-            }}
-          >
-            {paragraph}
-          </p>
+          <Paragraph key={index} paragraph={paragraph} refCont={container} />
         ))}
+        </div>   
       </div>
-    );
+  );
 }

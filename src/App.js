@@ -9,7 +9,7 @@ import { NamingHeader } from './sections/HeaderSection'
 import { NamingIntro } from './sections/IntroSection'
 import { NamingFirmi } from './sections/FirmiSection'
 import { NamingRobot } from './sections/RobotSection'
-import { Item } from './sections/DummySection';
+import { Item } from './sections/Section';
 
 //import content constants
 import NamingSTRINGS from './constants/textContent'; //usage: NamingSTRINGS.N_Intro.paragraphs
@@ -22,12 +22,13 @@ function App() {
     <div className="App">
       <div className='App-header'>
         {/* <NamingHeader contentImages={NamingIMAGES}/> */}
+        <NamingIntro contentImages={NamingIMAGES} contentText={NamingSTRINGS.N_Intro}/>
         {/* <NamingIntro contentImages={NamingIMAGES} contentText={NamingSTRINGS.N_Intro}/> */}
         {/* <NamingFirmi />
         <NamingRobot /> */}
+        {/* <Item></Item>
         <Item></Item>
-        <Item></Item>
-        <Item></Item>
+        <Item></Item> */}
       </div>
     </div>
   );

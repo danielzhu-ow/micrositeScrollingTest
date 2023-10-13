@@ -1,8 +1,9 @@
 import "./dummystyles.css"
 import { useRef, useState, createContext } from "react"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
-import { TelescopingContent } from "../ScrollingInteractions"
+// import { TelescopingContent } from "../ScrollingInteractions"
 import { TransformingContent } from "../TransformingContent"
+import { HighlightText } from "../TextInteractions"
 
 export { Item }
 

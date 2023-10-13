@@ -111,10 +111,11 @@ body {
     height: 80px;
     margin: 0;
     padding: 0;
+    z-index: 1;
   }
   
   .progress svg {
-    transform: translateX(-100px) rotate(-90deg);
+    transform: translateX(-45px) rotate(-90deg);
   }
   
   circle {
@@ -156,9 +157,38 @@ body {
   }
   
   section div {
-    width: 200px;
+    width: 90%;
     height: 300px;
     border: 2px dotted var(--accent);
     position: relative;
   }
   
+  .motion-paragraph {
+    text-align: left;
+  }
+
+  .square p {
+    /* margin-top: 10%; */
+    text-align: left;
+    line-height: 1.6;
+    position: relative;
+    z-index: 0;
+  }
+
+  .windCont {
+    border: 1px solid red;
+    --border-width: 40px;
+    margin: var(--border-width) auto;
+    /* position: sticky; */
+    top: var(--border-width);
+    width: 400px;
+    height: 225px;
+    max-width: 500px;
+  line-height: 1.6;
+  margin: auto;
+  /* overflow-y: scroll; */
+}
+
+.test{
+    margin-top: -220px;;
+}
