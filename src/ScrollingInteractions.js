@@ -1,59 +1,8 @@
 //Telescoping Text
 import PropTypes from "prop-types"
-import { Children } from "react"
-import { motion, useScroll, useMotionValueEvent } from "framer-motion"
-export { TelescopingContent, ScrollingGif, Background }
-
-//Telescoping Content
-function TelescopingContent({ child, positions, scrollInfo }) {
-    const { scrollY } = useScroll()
-
-    useMotionValueEvent(scrollY, "change", (latest) => {
-        // console.log("Page scroll: ", latest)
-    })
-
-    //Destruct Info
-    let scrollStart = scrollInfo[0]
-    let scrollDuration = scrollInfo[1]
-
-    //Finding Positions
-    let index = 0
-    let calcTime = scrollInfo[0]
-    for (let i = 0; i < scrollInfo.length - 1; i++) {
-        if (calcTime <= scrollY) { scrollStart = calcTime; scrollDuration = scrollInfo[i + 1]; index = i }
-        calcTime += scrollInfo[i + 1]
-    }
-
-    //Timing
-    const scrollTiming = (scrollY - scrollStart) / scrollDuration
-    let inScope = true
-    if (scrollTiming < 0 || scrollTiming > 1) { inScope = false }
-
-    let startPosition = positions[index]
-    let endPosition = positions[index + 1]
-    const x = startPosition[0] + scrollTiming * (endPosition[0] - startPosition[0])
-    const y = startPosition[1] + scrollTiming * (endPosition[1] - startPosition[1])
-
-    if (inScope) {
-        return (
-            <motion.div style={{
-                position: "fixed",
-                top: y,
-                left: x,
-            }}>
-                {child}
-                {/* <img src={child} alt="testImage" style={{ width: "100%", height: "auto" }} /> */}
-            </motion.div>
-        )
-    }
-}
-
-TelescopingContent.propTypes = {
-    child: PropTypes.any.isRequired,
-    positions: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired, // [[x,y],[x.y]...]
-    scrollInfo: PropTypes.arrayOf(PropTypes.number).isRequired, // [scrollStart, scrollDuration, scrollDuration, scrollDuration]
-    scrollForward: PropTypes.bool
-}
+import { forwardRef, useState } from "react"
+import { motion, useScroll, useMotionValueEvent, useTransform } from "framer-motion"
+export { ScrollingGif, Background, useMotionValueEvent }
 
 //Scrolling GIF
 function ScrollingGif({ position, spriteSrc, imgDimension, frames, imgPerRow, displayWidth, scrollInfo, scrollProgress }) {
