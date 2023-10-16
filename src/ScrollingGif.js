@@ -1,55 +1,60 @@
 import PropTypes from "prop-types"
-import { motion, useScroll, useMotionValueEvent, useTransform } from "framer-motion"
-
+import { motion, useScroll, useMotionValueEvent, useMotionValue, useTransform, useMotionTemplate } from "framer-motion"
 export { ScrollingGif }
 
-function ScrollingGif({ position, spriteSrc, imgDimension, frames, imgPerRow, displayWidth, scrollInfo, scrollProgress }) {
+function ScrollingGif({ position, spriteSrc, imgDimension, frames, imgPerRow, displayWidth, scrollInfo }) {
+
+    const sf = useMotionValue(displayWidth / imgDimension[0])
+
+    //Image Navigation Settings
+    let frameInfo = []; let xInfo = []; let yInfo = []
+    for (let i = 0; i < frames; i++) {
+        xInfo.push(i % imgPerRow * imgDimension[0] * sf.current);
+        yInfo.push(Math.floor(i / imgPerRow) * imgDimension[1] * sf.current);
+        frameInfo.push(i)
+    }
+
+    //ScrollProgress => Frame
     const { scrollYProgress } = useScroll();
     const frame = useTransform(scrollYProgress, scrollInfo, [0, frames - 1])
-    const x = useTransform(frame, [0, frames - 1], )
 
-    //Adjusting Image Size
-    let imgWidth = imgDimension[0]
-    let imgHeight = imgDimension[1]
+    //Frame => Raw X/Y Values
+    const x = useTransform(frame, frameInfo, xInfo)
+    const y = useTransform(frame, frameInfo, yInfo)
 
-    const scrollStart = scrollInfo[0]
-    const scrollDuration = scrollInfo[1]
+    //Raw X/Y Values => X/Y px
+    const tX = useMotionTemplate`-${Math.floor(x.current / (imgDimension[0] * sf.current)) * imgDimension[0] * sf.current}px`
+    const tY = useMotionTemplate`-${Math.floor(y.current / (imgDimension[1] * sf.current)) * imgDimension[1] * sf.current}px`
 
-    if (displayWidth === undefined) { displayWidth = imgWidth }
-    else {
-        const scaleFactor = displayWidth / imgWidth
-        imgWidth = Math.floor(displayWidth)
-        imgHeight = Math.floor(imgHeight * scaleFactor)
-    }
+    //Update Values
+    useMotionValueEvent(x, "change", latest => { tX.set(`-${Math.floor(x.current / (imgDimension[0] * sf.current)) * imgDimension[0] * sf.current}px`) })
+    useMotionValueEvent(y, "change", latest => { tY.set(`-${Math.floor(y.current / (imgDimension[1] * sf.current)) * imgDimension[1] * sf.current}px`) })
 
-    //Frame Calculation and Position
-    // let frame = Math.floor((scrollProgress - scrollStart) / scrollDuration * frames)
-    // let x = frame % imgPerRow * imgWidth
-    // let y = Math.floor(frame / imgPerRow) * imgHeight
-
-    //Whether or not to display
-    let inFrame = false;
-    if (frame >= 0 && frame < frames) { inFrame = true }
-
-    if (inFrame) {
-        return (
-            <div
-                style={{
-                    position: "fixed",
-                    top: position[1],
-                    left: position[0],
-                    width: imgWidth,
-                    height: imgHeight,
-                    backgroundRepeat: "no-repeat",
-                    backgroundImage: "url(" + spriteSrc + ")",
-                    backgroundPosition: '-' + x + 'px -' + y + 'px',
-                    backgroundSize: displayWidth * imgPerRow + "px auto"
-                }}
-            />
-        )
-    } else {
-        return <></>
-    }
+    return (
+        <motion.div style={{
+            position: "fixed",
+            top: position[1],
+            left: position[0],
+            width: imgDimension[0] * sf.current,
+            height: imgDimension[1] * sf.current,
+            overflow: "hidden"
+        }}>
+            <div style={{ width: "100%", height: "100%", position: "relative" }}>
+                <motion.div
+                    style={{
+                        position: "absolute",
+                        width: imgDimension[0] * xInfo.length * sf.current,
+                        height: imgDimension[1] * yInfo.length * sf.current,
+                        backgroundRepeat: "no-repeat",
+                        backgroundImage: "url(" + spriteSrc + ")",
+                        backgroundSize: imgDimension[0] * imgPerRow * sf.current + "px auto",
+                        top: tY,
+                        left: tX,
+                    }}
+                />
+            </div>
+        </motion.div>
+    )
 }
 
 ScrollingGif.defaultProps = {
