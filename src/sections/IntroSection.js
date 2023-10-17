@@ -19,6 +19,7 @@ function NamingIntro({contentImages, contentText}) {
          <section>
             <HighlightText content={contentText.paragraphs} />
         </section>
+        <section />
         </>
       );
 }
