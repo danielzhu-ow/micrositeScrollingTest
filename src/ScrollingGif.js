@@ -15,7 +15,7 @@ function ScrollingGif({ position, spriteSrc, imgDimension, frames, imgPerRow, di
     }
 
     //ScrollProgress => Frame
-    const { scrollYProgress } = useScroll();
+    const { scrollYProgress } = useScroll()
     const frame = useTransform(scrollYProgress, scrollInfo, [0, frames - 1])
 
     //Frame => Raw X/Y Values
