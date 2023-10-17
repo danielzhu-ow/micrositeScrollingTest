@@ -21,14 +21,7 @@ function App() {
   return (
     <div className="App">
       <div className='App-header'>
-        {/* <NamingHeader contentImages={NamingIMAGES}/> */}
         <NamingIntro contentImages={NamingIMAGES} contentText={NamingSTRINGS.N_Intro}/>
-        {/* <NamingIntro contentImages={NamingIMAGES} contentText={NamingSTRINGS.N_Intro}/> */}
-        {/* <NamingFirmi />
-        <NamingRobot /> */}
-        {/* <Item></Item>
-        <Item></Item>
-        <Item></Item> */}
       </div>
     </div>
   );
