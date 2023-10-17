@@ -21,7 +21,9 @@ function App() {
   return (
     <div className="App">
       <div className='App-header'>
+        <section />
         <NamingIntro contentImages={NamingIMAGES} contentText={NamingSTRINGS.N_Intro}/>
+        <section />
       </div>
     </div>
   );
