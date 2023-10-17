@@ -23,7 +23,7 @@ section {
 }
 
 .outer {
-  position: fixed;
+  /* position: fixed; */
 }
 .inner p {
   display: inline;
@@ -48,7 +48,6 @@ section {
   color: white;
   content: attr(data-text);
   display: inline-block;
-  /* opacity: 0.8; */
 }
 
 .highlighted-text {
@@ -58,8 +57,6 @@ section {
   position: absolute;
   left: 0;
   z-index: 0;
-  /* transition: clip-path 0.1s ease; */
-  transition: 0.001s;
-  /* text-shadow: 0 0 0 #111; */
+  transition: 0.001s ease;
 }
 
