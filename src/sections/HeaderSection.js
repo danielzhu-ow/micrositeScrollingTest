@@ -1,4 +1,4 @@
-import { TelescopingContent, ScrollingGif, Background } from '../ScrollingInteractions';
+import { ScrollingGif, Background } from '../ScrollingInteractions';
 
 export {NamingHeader}
 
@@ -6,11 +6,6 @@ export {NamingHeader}
 function NamingHeader({contentImages}) {
     const cloudStairImg = <img src={contentImages.cloudstair} alt="testImage" style={{ width: "100%", height: "auto" }} />
     const cloudImg = <img src={contentImages.cloud} alt="testImage" style={{ width: "100%", height: "auto" }} />
-  
-
-
-
-
 
 return (
     <div style={{ height: "100vh", width: "100%"}}>
