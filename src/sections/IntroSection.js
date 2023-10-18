@@ -1,7 +1,7 @@
 import { useRef, useState, createContext } from "react"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 
-import {HighlightText} from '../TextInteractions';
+import {HighlightText} from '../interactions/TextInteractions';
 
 export {NamingIntro}
 
@@ -19,7 +19,7 @@ function NamingIntro({contentImages, contentText}) {
          <section>
             <HighlightText content={contentText.paragraphs} />
         </section>
-        <section />
+        {/* <section /> */}
         </>
       );
 }

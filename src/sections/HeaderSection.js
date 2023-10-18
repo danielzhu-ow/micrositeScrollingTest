@@ -1,18 +1,29 @@
-import { ScrollingGif, Background } from '../ScrollingInteractions';
+// import interactions
+import { ScrollingGif } from "../interactions/ScrollingGif";
+import { Background } from '../interactions/Background'
+import { TransformingContent } from '../interactions/TransformingContent'
+import { ScrollingMovie } from '../interactions/ScrollingMovie'
+
+//import assets
+import blur from '../images/add-blur-from-nav.mp4' //video: TODO - create obj for videos
+import gradientDefault from '../images/gradientDefault.png'
+
+import { Item } from "./Section";
 
 export {NamingHeader}
 
 // NamingIMAGES.N_Header.cloudstair
 function NamingHeader({contentImages}) {
-    const cloudStairImg = <img src={contentImages.cloudstair} alt="testImage" style={{ width: "100%", height: "auto" }} />
-    const cloudImg = <img src={contentImages.cloud} alt="testImage" style={{ width: "100%", height: "auto" }} />
+
 
 return (
-    <div style={{ height: "100vh", width: "100%"}}>
-       {/* <Background backgrounds={[gradientDefault, "#202020"]} softTransitions={[0, 0.1]} scrollInfo={[0.75, 0.25]}> */}
-            {/* <TelescopingContent child={cloudImg} positions={[[0, 0], [-1043, -826]]} scrollInfo={[0, 0.5]} />
-            <TelescopingContent child={cloudStairImg} positions={[[window.innerWidth - 1106, window.innerHeight - 779], [window.innerWidth, window.innerHeight]]} scrollInfo={[0, 0.5]} /> */}
-        {/* </Background> */}
-    </div> 
+    <div style={{height: "100vh"}}>
+        <Background currBackground={gradientDefault} scrollInfo={[0.5,0.5]} softTransitions={[0, 0.1]} >
+            <TransformingContent child={<p>LOL</p>} positions={[[0, 500], [0, 500]]} scrollInfo={[0.5, 1]} />
+            <ScrollingMovie position={[600, 100]} movieSrc={blur} displayWidth={600} scrollInfo={[0.25, 0.5]} />
+            {/* <ScrollingGif position={[400, 400]} spriteSrc={contentImages.gifSpriteSheet} frames={22} imgDimension={[480, 360]} displayWidth={200} scrollInfo={[0.5, 1]} imgPerRow={5} /> */}
+        </Background>
+        <Background currBackground={"#202020"} scrollInfo={[0.5,0.5]} softTransitions={[0, 0.1]} ></Background>
+    </div>
   );
 }

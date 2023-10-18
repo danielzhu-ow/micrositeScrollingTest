@@ -13,10 +13,10 @@ import { NamingFirmi } from './sections/FirmiSection'
 import { NamingRobot } from './sections/RobotSection'
 
 import { Item } from './sections/Section'
-import { TransformingContent } from './TransformingContent'
-import { ScrollingGif } from './ScrollingGif'
-import { ScrollingMovie } from './ScrollingMovie'
-import { Background } from './Background'
+import { TransformingContent } from './interactions/TransformingContent'
+import { ScrollingGif } from './interactions/ScrollingGif'
+import { ScrollingMovie } from './interactions/ScrollingMovie'
+import { Background } from './interactions/Background'
 
 //import content constants
 import NamingSTRINGS from './constants/textContent'; //usage: NamingSTRINGS.N_Intro.paragraphs
@@ -28,13 +28,8 @@ function App() {
   return (
     <div className="App">
       <div className='App-header'>
-        {/* <NamingHeader contentImages={NamingIMAGES}/> */}
-        {/* <NamingIntro contentImages={NamingIMAGES} contentText={NamingSTRINGS.N_Intro}/> */}
-        {/* <NamingFirmi />
-        <NamingRobot /> */}
-        <Item></Item>
-        <Item></Item>
-        <Item></Item>
+        <NamingHeader contentImages={NamingIMAGES}></NamingHeader>
+        <NamingIntro contentText={NamingSTRINGS.N_Intro}></NamingIntro>
       </div>
     </div>
   );

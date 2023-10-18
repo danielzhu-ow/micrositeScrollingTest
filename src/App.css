@@ -13,7 +13,8 @@
 }
 
 section {
-  background-color: #202020;
+  /* 202020 */
+  background-color: red; 
   width: 100vw;
   height: 100vh;
   display: flex;

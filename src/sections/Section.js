@@ -1,14 +1,11 @@
-import "./dummystyles.css"
 import { useRef } from "react"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
-<<<<<<< HEAD:src/sections/Section.js
+
 // import { TelescopingContent } from "../ScrollingInteractions"
-import { TransformingContent } from "../TransformingContent"
-import { HighlightText } from "../TextInteractions"
-=======
-import { TransformingContent } from "../TransformingContent"
-import { ScrollingGif } from "../ScrollingGif"
->>>>>>> scrollingModules:src/sections/DummySection.js
+// import { TransformingContent } from "../interactions/TransformingContent"
+// import { HighlightText } from "../interactions/TextInteractions"
+
+// import { ScrollingGif } from "../ScrollingGif"
 
 export { Item }
 

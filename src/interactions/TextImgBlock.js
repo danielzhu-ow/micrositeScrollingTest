@@ -1,10 +1,10 @@
 import React, {useRef} from 'react';
 import { styled } from 'styled-components';
 import { motion, useScroll, useTransform, cubicBezier } from 'framer-motion';
-import NamingSTRINGS from './constants/textContent.js';
+import NamingSTRINGS from '../constants/textContent.js';
 import TypeIt from "typeit-react";
 import useOnScreen from '../useOnScreenHook';
-import { sizes } from './constants/devices';
+import { sizes } from '../constants/devices.js';
 
 
 const TextImageBlockContainer = styled.section`
