@@ -5,9 +5,11 @@ import { ContentHeader, ContentSubheader1, ContentSubheader2 } from "../ArticleH
 export { FadingHeader }
 
 function FadingHeader({ type, scrollInfo }) {
+    const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length-1], 1]
     const { scrollYProgress } = useScroll();
-    const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1])
-    // const visible = useTransform(scrollYProgress, )
+    const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1, 1])
+    const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'])
+    // useMotionValueEvent(visible, 'change', latest => console.log(latest))
 
     let content = <></>
     if (type === 'manifesto') {
@@ -29,7 +31,8 @@ function FadingHeader({ type, scrollInfo }) {
             top: " 50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            opacity: opacity
+            opacity: opacity,
+            display: visible
         }}>
             { content }
         </motion.div>

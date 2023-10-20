@@ -4,10 +4,12 @@ import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, use
 export { TransformingContent, ImgBox }
 
 function TransformingContent({ child, positions, scrollInfo, alignment }) {
+    const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length-1], 1]
     const { scrollYProgress } = useScroll();
 
     const x = useTransform(scrollYProgress, scrollInfo, positions[0])
     const y = useTransform(scrollYProgress, scrollInfo, positions[1])
+    const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'] )
 
     const tX = useMotionTemplate`${x}vw`
     const tY = useMotionTemplate`${y}vh`
@@ -18,6 +20,7 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
                 position: "fixed",
                 top: tY,
                 left: tX,
+                display: visible
             }}>
                 {child}
             </motion.div>
@@ -28,6 +31,7 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
                 position: "fixed",
                 bottom: tY,
                 left: tX,
+                display: visible
             }}>
                 {child}
             </motion.div>
@@ -38,6 +42,7 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
                 position: "fixed",
                 top: tY,
                 right: tX,
+                display: visible
             }}>
                 {child}
             </motion.div>
@@ -48,6 +53,7 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
                 position: "fixed",
                 bottom: tY,
                 right: tX,
+                display: visible
             }}>
                 {child}
             </motion.div>

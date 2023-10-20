@@ -20,8 +20,8 @@ function ManifestoSection({ images }) {
     const sectionHeights = [200, 500, 500]
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
 
-    //Timings
-    const sectionTimings = [[[0, 1], [0, 0.6], [0, 0.6]], [[]], [[]]]
+    //Timings              Timings are adjusted to start - end of section
+    const sectionTimings = [[[0, 0.6, 1], [0, 0.6], [0, 0.6]], [[0.5, 0.6, 0.7], [0.5, 0.6, 0.7], [0.5, 0.6, 0.7], [0.5, 0.6, 0.7]], [[]]]
     let adjustedTimings = []
 
     for (let i = 0; i < sectionHeights.length; i++) {
@@ -46,6 +46,11 @@ function ManifestoSection({ images }) {
 
             {/* SECTION 1 */}
             <Background background={"#202020"} height={sectionHeights[1]} />
+            <TransformingContent child={<ImgBox url={images.avocado_toast} displayDimensions={[80, 80]} rotate={0} />} positions={[[0, -50, 20], [-10, -60, 20]]} scrollInfo={adjustedTimings[1][0]} alignment={['left', 'top']} />
+            <TransformingContent child={<ImgBox url={images.avocado_1} displayDimensions={[80, 80]} rotate={0} />} positions={[[0, -50, 20], [-10, -60, 20]]} scrollInfo={adjustedTimings[1][1]} alignment={['left', 'top']} />
+            <TransformingContent child={<ImgBox url={images.avocado_2} displayDimensions={[80, 80]} rotate={0} />} positions={[[0, -50, 20], [-10, -60, 20]]} scrollInfo={adjustedTimings[1][2]} alignment={['left', 'top']} />
+            <TransformingContent child={<ImgBox url={images.avocado_3} displayDimensions={[80, 80]} rotate={0} />} positions={[[0, -50, 20], [-10, -60, 20]]} scrollInfo={adjustedTimings[1][3]} alignment={['left', 'top']} />
+            <TransformingContent child={<ImgBox url={images.avocado_4} displayDimensions={[80, 80]} rotate={0} />} positions={[[0, -50, 20], [-10, -60, 20]]} scrollInfo={adjustedTimings[1][3]} alignment={['left', 'top']} />
 
             <Background background={images.manifesto_gradient} height={sectionHeights[2]} />
         </div>

@@ -4,6 +4,7 @@ export { ScrollingGif }
 
 function ScrollingGif({ position, spriteSrc, imgDimension, frames, imgPerRow, displayWidth, scrollInfo }) {
 
+    const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length-1], 1]
     const sf = useMotionValue(displayWidth / imgDimension[0])
 
     //Image Navigation Settings
@@ -17,6 +18,7 @@ function ScrollingGif({ position, spriteSrc, imgDimension, frames, imgPerRow, di
     //ScrollProgress => Frame
     const { scrollYProgress } = useScroll()
     const frame = useTransform(scrollYProgress, scrollInfo, [0, frames - 1])
+    const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'] )
 
     //Frame => Raw X/Y Values
     const x = useTransform(frame, frameInfo, xInfo)
@@ -37,7 +39,8 @@ function ScrollingGif({ position, spriteSrc, imgDimension, frames, imgPerRow, di
             left: position[0],
             width: imgDimension[0] * sf.current,
             height: imgDimension[1] * sf.current,
-            overflow: "hidden"
+            overflow: "hidden",
+            display: visible,
         }}>
             <div style={{ width: "100%", height: "100%", position: "relative" }}>
                 <motion.div

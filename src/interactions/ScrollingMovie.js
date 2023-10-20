@@ -7,6 +7,8 @@ function ScrollingMovie({ position, movieSrc, displayWidth, scrollInfo }) {
 
     const ref = useRef(null)
     const { scrollYProgress } = useScroll()
+    const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length-1], 1]
+    const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'] )
 
     const cTime = useTransform(scrollYProgress, scrollInfo, [0, 1])
     useMotionValueEvent(cTime, "change", latest => {
@@ -25,6 +27,7 @@ function ScrollingMovie({ position, movieSrc, displayWidth, scrollInfo }) {
                 left: position[1],
                 width: displayWidth,
                 height: "auto",
+                display: visible,
             }} />
     )
 }
