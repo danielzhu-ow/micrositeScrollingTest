@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, useMotionValueEvent } from "framer-motion"
 
-export { TransformingContent, ImgBox }
+export { TransformingContent, ImgBox, BackgroundImgBox }
 
 function TransformingContent({ child, positions, scrollInfo, alignment }) {
     const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length-1], 1]
@@ -98,4 +98,30 @@ ImgBox.propTypes = {
     url: PropTypes.string,
     displayDimensions: PropTypes.arrayOf(PropTypes.number).isRequired,
     rotate: PropTypes.number
+}
+
+function BackgroundImgBox({ url, displayDimensions, rotate }) {
+    const wider = useMotionValue(window.innerWidth / window.innerHeight > 1)
+
+    return (
+        <>
+            {wider ?
+                <img src={url} alt={url}
+                    style={{
+                        transform: "rotate(" + rotate + "deg)",
+                        width: displayDimensions[0] + "vw",
+                        height: "auto",
+                        opacity: "0.3",
+                        zIndex: "1",
+                    }} /> :
+                <img src={url} alt={url}
+                    style={{
+                        transform: "rotate(" + rotate + "deg)",
+                        height: displayDimensions[1] + "vh",
+                        width: "auto",
+                        opacity: "0.3",
+                        zIndex: "1",
+                    }} />}
+        </>
+    )
 }
