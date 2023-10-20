@@ -11,6 +11,7 @@ import { NamingHeader } from './sections/HeaderSection'
 import { NamingIntro } from './sections/IntroSection'
 import { NamingFirmi } from './sections/FirmiSection'
 import { NamingRobot } from './sections/RobotSection'
+import { ManifestoSection } from './sections/ManifestoSection'
 
 import { Item } from './sections/Section'
 import { TransformingContent } from './interactions/TransformingContent'
@@ -20,16 +21,16 @@ import { Background } from './interactions/Background'
 
 //import content constants
 import NamingSTRINGS from './constants/textContent'; //usage: NamingSTRINGS.N_Intro.paragraphs
-import { useImageLoader } from './constants/imgContent'; //usage: NamingIMAGES.cloud
+// import { useImageLoader } from './constants/imgContent'; //usage: NamingIMAGES.cloud
+import { useImageLoader } from './constants/manifestoImgContent'; //usage: NamingIMAGES.cloud
 
 function App() {
-  const NamingIMAGES = useImageLoader();
+  const MANIFESTO_IMAGES = useImageLoader();
 
   return (
     <div className="App">
       <div className='App-header'>
-        <NamingHeader contentImages={NamingIMAGES}></NamingHeader>
-        <NamingIntro contentText={NamingSTRINGS.N_Intro}></NamingIntro>
+        <ManifestoSection images={MANIFESTO_IMAGES} />
       </div>
     </div>
   );
