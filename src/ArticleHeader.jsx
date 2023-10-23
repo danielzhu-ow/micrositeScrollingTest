@@ -131,4 +131,4 @@ const ArticleHeader = ({ headerBackground }) => {
     );
 };
 
-export { ArticleHeader, ContentHeader, ContentSubheader1, ContentSubheader2 };
+export { ArticleHeader, ContentWrapper, ContentHeader, ContentSubheader1, ContentSubheader2 };

@@ -7,6 +7,8 @@ import {
   useMotionValueEvent
 } from "framer-motion";
 
+import { ContentWrapper } from "../ArticleHeader";
+
 export {HighlightText}
 
 const ContentLine = ({ content }) => {
@@ -17,9 +19,9 @@ const ContentLine = ({ content }) => {
     offset: ["end center", "start start"]
   });
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("Page scroll: ", latest)
-  })
+  // useMotionValueEvent(scrollYProgress, "change", (latest) => {
+  //   console.log("Page scroll: ", latest)
+  // })
 
   // const scrollValue = useTransform(scrollYProgress,  [0.15, 0],["0%", "100%"]);
   const scrollValue = useTransform(
@@ -47,7 +49,7 @@ const ContentLine = ({ content }) => {
 
 
 const HighlightText = ({ content }) => {
-  return (
+  let mainBlock = (
     <div className="outer">
       <div className="inner">
         <p>
@@ -58,4 +60,22 @@ const HighlightText = ({ content }) => {
       </div>
     </div>
   );
+  return (
+    <ContentWrapper>
+      {mainBlock}
+    </ContentWrapper>
+  )
 };
+
+const FocusTest = ({startingPos, paragraphs}) => {
+  return(
+    <>
+     <TransformingContent positions={[[50, 50, 50, 50], startingPos]} scrollInfo={adjustedTimings[1][5]} alignment={['left', 'top']} child={
+                <OpacityContent scrollInfo={adjustedTimings[1][5]} child={<ArticleBodyBlock contentString={text.Intro.paragraphs[0]} />} />
+    } />
+            <TransformingContent positions={[[50, 50, 50, 50], [-33, 20, 20, 117]]} scrollInfo={adjustedTimings[1][5]} alignment={['left', 'top']} child={
+                <OpacityContent scrollInfo={adjustedTimings[1][5]} child={<ArticleBodyBlock contentString={text.Intro.paragraphs[1]} />} />
+              } />
+  </>
+  )
+}

@@ -1,27 +1,30 @@
 import { useState, useEffect } from 'react';
 
-export const useImageLoader = () => {
-  const [NamingIMAGES, setNamingIMAGES] = useState({});
+export const useNamingImageLoader = () => {
+  const [NAMING_IMAGES, setNAMING_IMAGES] = useState({});
 
   useEffect(() => {
     const importImages = async () => {
       try {
-        const cloudstair = (await import('../images/couldStair.png')).default;
-        const cloud = (await import('../images/cloud.png')).default;
-        const rect = (await import('../images/rect.png')).default;
-        const gradientDefault = (await import('../images/gradientDefault.png')).default;
-        const gifSpriteSheet = (await import('../images/gifSpriteSheet.png')).default;
-        // const blur = (await import('../images/add-blur-from-nav.mp4')).default;
+        const naming_gradient = (await import('../images/naming/namingGradient.png')).default;
+        const naming_01 = (await import('../images/naming/naming_01.png')).default;
+        const naming_02 = (await import('../images/naming/naming_02.png')).default;
+        const verizon = (await import('../images/naming/verizon.png')).default;
+        const sprite = (await import('../images/naming/sprite.png')).default;
+        const dino_day = (await import('../images/naming/dino_day.png')).default;
+        const dino_night = (await import('../images/naming/dino_night.png')).default;
 
         const imageObject = {
-          cloudstair,
-          cloud,
-          rect,
-          gradientDefault, 
-          gifSpriteSheet
+          naming_gradient,
+          naming_01,
+          naming_02,
+          verizon,
+          sprite,
+          dino_day,
+          dino_night
         };
 
-        setNamingIMAGES(imageObject);
+        setNAMING_IMAGES(imageObject);
       } catch (error) {
         console.error('Error importing images:', error);
       }
@@ -30,5 +33,5 @@ export const useImageLoader = () => {
     importImages();
   }, []); 
 
-  return NamingIMAGES;
+  return NAMING_IMAGES;
 };
