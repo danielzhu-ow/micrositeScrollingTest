@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { styled } from 'styled-components';
 // import STRINGS from './constants/strings';
 import { motion, useScroll, useTransform, cubicBezier } from 'framer-motion';
@@ -22,12 +23,41 @@ const ArticleHeader = styled.p`
 `;
 
 const ArticleBody = styled.p`
-    position: fixed;
     font-family: 'Noto Sans';
     font-weight: 400;
     font-size: 2rem;
     text-align: left;
     color: white;
+
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    @media only screen and (max-width: ${sizes.tablet}) {
+        font-size: 1.6rem;
+    }
+`;
+
+const ArticleBodyWhite = styled.p`
+    font-family: 'Noto Sans';
+    font-weight: 400;
+    font-size: 2rem;
+    text-align: left;
+    color: white;
+
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+    @media only screen and (max-width: ${sizes.tablet}) {
+        font-size: 1.6rem;
+    }
+`;
+
+const ArticleBodyBlack = styled.p`
+    font-family: 'Noto Sans';
+    font-weight: 400;
+    font-size: 2rem;
+    text-align: left;
+    color: black;
 
     left: 50%;
     transform: translate(-50%, 0%);
@@ -48,9 +78,18 @@ const ArticleHeaderBlock = ({ contentString }) => {
 const ArticleBodyBlock = ({ contentString }) => {
     return (
         <ArticleBody>
-            {contentString}
+            { contentString }
         </ArticleBody>
     )
 }
 
-export { ArticleHeaderBlock, ArticleBodyBlock };
+const ArticleBodyParagraghsBlock = ({ contentStrings, scrollTimings }) => {
+    return (
+        contentStrings.map(strings =>
+            <ArticleBodyBlock contentStrings={strings} scrollInfo={scrollTimings[0]}/>
+            // <ArticleBodyBlock contentStrings={strings} />
+        )
+    )
+}
+
+export { ArticleHeaderBlock, ArticleBodyBlock, ArticleBodyParagraghsBlock, ArticleBody, ArticleBodyWhite, ArticleBodyBlack };

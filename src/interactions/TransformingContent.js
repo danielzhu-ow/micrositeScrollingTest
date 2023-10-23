@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, use
 export { TransformingContent, ImgBox, BackgroundImgBox }
 
 function TransformingContent({ child, positions, scrollInfo, alignment }) {
+
     const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length-1], 1]
     const { scrollYProgress } = useScroll();
 
@@ -63,17 +64,17 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
 
 TransformingContent.propTypes = {
     child: PropTypes.any,
-    positions: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)),
-    scrollInfo: PropTypes.arrayOf(PropTypes.number),
-    alignment: PropTypes.arrayOf(PropTypes.string) // Top-Left = tl,
+    positions: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
+    scrollInfo: PropTypes.arrayOf(PropTypes.number).isRequired,
+    alignment: PropTypes.arrayOf(PropTypes.string).isRequired, // Top-Left = tl,
 }
 
-function ImgBox({ url, displayDimensions, rotate }) {
+function ImgBox({ url, displayDimensions, rotate, prioritizeHeight }) {
     const wider = useMotionValue(window.innerWidth / window.innerHeight > 1)
 
     return (
         <>
-            {wider ?
+            {wider || prioritizeHeight ?
                 <img src={url} alt={url}
                     style={{
                         transform: "rotate(" + rotate + "deg)",
@@ -91,13 +92,15 @@ function ImgBox({ url, displayDimensions, rotate }) {
 }
 
 ImgBox.defaultProps = {
-    rotate: 0
+    rotate: 0,
+    prioritizeHeight: false
 }
 
 ImgBox.propTypes = {
     url: PropTypes.string,
     displayDimensions: PropTypes.arrayOf(PropTypes.number).isRequired,
-    rotate: PropTypes.number
+    rotate: PropTypes.number,
+    prioritizeHeight: PropTypes.bool
 }
 
 function BackgroundImgBox({ url, displayDimensions, rotate }) {

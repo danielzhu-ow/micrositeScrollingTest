@@ -14,6 +14,7 @@ export const useImageLoader = () => {
         const avocado_2 = (await import('../images/manifesto/avocado-2.png')).default;
         const avocado_3 = (await import('../images/manifesto/avocado-3.png')).default;
         const avocado_4 = (await import('../images/manifesto/avocado-4.png')).default;
+        const galileo = ((await import('../images/manifesto/galileo.png'))).default;
 
         const imageObject = {
           manifesto_gradient,
@@ -23,7 +24,8 @@ export const useImageLoader = () => {
           avocado_1,
           avocado_2,
           avocado_3,
-          avocado_4
+          avocado_4,
+          galileo
         };
 
         setManifestoImages(imageObject);
