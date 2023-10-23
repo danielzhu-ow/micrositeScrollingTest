@@ -6,9 +6,9 @@ export { TransformingContent, ImgBox, BackgroundImgBox }
 function TransformingContent({ child, positions, scrollInfo, alignment }) {
     const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length-1], 1]
     const { scrollYProgress } = useScroll();
-
-    const x = useTransform(scrollYProgress, scrollInfo, positions[0])
-    const y = useTransform(scrollYProgress, scrollInfo, positions[1])
+                                            // 0.2
+    const x = useTransform(scrollYProgress, scrollInfo, positions[0]) //[x1, x2, x3, x4]
+    const y = useTransform(scrollYProgress, scrollInfo, positions[1]) //[-34, 29, 29, 126]
     const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'] )
 
     const tX = useMotionTemplate`${x}vw`
