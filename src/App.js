@@ -2,16 +2,10 @@ import { useState } from 'react'
 import { scroll, useScroll } from "framer-motion"
 import './App.css';
 
-import gifSpriteSheet from "./images/gifSpriteSheet.png"
-import blur from './images/add-blur-from-nav.mp4'
-import gradientDefault from './images/gradientDefault.png'
-
-// import sections
-import { NamingHeader } from './sections/HeaderSection'
-import { NamingIntro } from './sections/IntroSection'
-import { NamingFirmi } from './sections/FirmiSection'
-import { NamingRobot } from './sections/RobotSection'
+// import pages
+import { NamingSection } from './sections/NamingSection';
 import { ManifestoSection } from './sections/ManifestoSection'
+import { HotDogSection} from './sections/HotDogSection';
 
 import { Item } from './sections/Section'
 import { TransformingContent } from './interactions/TransformingContent'
@@ -20,17 +14,20 @@ import { ScrollingMovie } from './interactions/ScrollingMovie'
 import { Background } from './interactions/Background'
 
 //import content constants
-import NamingSTRINGS from './constants/textContent'; //usage: NamingSTRINGS.N_Intro.paragraphs
-// import { useImageLoader } from './constants/imgContent'; //usage: NamingIMAGES.cloud
+import NAMING_STRINGS from './constants/textContent';
 import { useImageLoader } from './constants/manifestoImgContent'; //usage: NamingIMAGES.cloud
+import { useNamingImageLoader } from './constants/imgContent';
 
 function App() {
   const MANIFESTO_IMAGES = useImageLoader();
+  const NAMING_IMAGES = useNamingImageLoader();
 
   return (
     <div className="App">
       <div className='App-header'>
-        <ManifestoSection images={MANIFESTO_IMAGES} />
+        {/* <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS}></NamingSection> */}
+        {/* <ManifestoSection images={MANIFESTO_IMAGES} /> */}
+        <HotDogSection images={NAMING_IMAGES}></HotDogSection>
       </div>
     </div>
   );

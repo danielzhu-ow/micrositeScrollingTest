@@ -4,26 +4,23 @@ import { ContentHeader, ContentSubheader1, ContentSubheader2 } from "../ArticleH
 
 export { FadingHeader }
 
-function FadingHeader({ type, scrollInfo }) {
+function FadingHeader({ text, scrollInfo }) {
     const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length-1], 1]
     const { scrollYProgress } = useScroll();
     const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1, 1])
     const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'])
     // useMotionValueEvent(visible, 'change', latest => console.log(latest))
-
-    let content = <></>
-    if (type === 'manifesto') {
-        content =
+    let content  =
             <div>
                 <ContentSubheader1>
-                    &nbsp;NAMING&nbsp;&nbsp;+&nbsp;&nbsp;AI&nbsp;&nbsp;&gt;&nbsp;&nbsp;SERIES INTRO&nbsp;
+                    {text.subtitleTop_section} &nbsp;&nbsp;&gt;&nbsp;&nbsp; {text.subtitleTop_subsection}
                 </ContentSubheader1>
-                <ContentHeader>We need<br />to talk about AI</ContentHeader>
+                <ContentHeader>{text.title}</ContentHeader>
                 <ContentSubheader2>
-                    By Tom Ajello | [Month] 2023
+                   {text.subtitleBottom}
                 </ContentSubheader2>
             </div>
-    }
+    
 
     return (
         <motion.div style={{

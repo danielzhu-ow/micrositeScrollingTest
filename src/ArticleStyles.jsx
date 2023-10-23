@@ -28,6 +28,8 @@ const ArticleBody = styled.p`
     font-size: 2rem;
     text-align: left;
     color: white;
+    padding-left: 5%;
+    padding-right: 5%;
 
     left: 50%;
     transform: translate(-50%, 0%);
