@@ -15,6 +15,10 @@ export const useImageLoader = () => {
         const avocado_3 = (await import('../images/manifesto/avocado-3.png')).default;
         const avocado_4 = (await import('../images/manifesto/avocado-4.png')).default;
         const galileo = ((await import('../images/manifesto/galileo.png'))).default;
+        const robot_beach = ((await import('../images/manifesto/robot_beach.png'))).default;
+        const cute_robot1 = ((await import('../images/manifesto/cute_robot1.png'))).default;
+        const tin_robot3 = ((await import('../images/manifesto/tin_robot3.png'))).default;
+        const orange_robot1 = ((await import('../images/manifesto/orange_robot1.png'))).default;
 
         const imageObject = {
           manifesto_gradient,
@@ -25,7 +29,11 @@ export const useImageLoader = () => {
           avocado_2,
           avocado_3,
           avocado_4,
-          galileo
+          galileo,
+          robot_beach,
+          cute_robot1,
+          tin_robot3,
+          orange_robot1
         };
 
         setManifestoImages(imageObject);

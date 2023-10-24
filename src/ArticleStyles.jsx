@@ -27,7 +27,7 @@ const ArticleBody = styled.p`
     font-weight: 400;
     font-size: 2rem;
     text-align: left;
-    color: white;
+
     padding-left: 5%;
     padding-right: 5%;
 
@@ -39,35 +39,22 @@ const ArticleBody = styled.p`
     }
 `;
 
-const ArticleBodyWhite = styled.p`
+const ArticleSubHeading = styled.h2`
     font-family: 'Noto Sans';
-    font-weight: 400;
-    font-size: 2rem;
+    font-weight: 500;
+    font-size: 3.2rem;
     text-align: left;
-    color: white;
+    
+    padding-left: 5%;
+    padding-right: 5%;
 
     left: 50%;
     transform: translate(-50%, 0%);
 
     @media only screen and (max-width: ${sizes.tablet}) {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
-`;
-
-const ArticleBodyBlack = styled.p`
-    font-family: 'Noto Sans';
-    font-weight: 400;
-    font-size: 2rem;
-    text-align: left;
-    color: black;
-
-    left: 50%;
-    transform: translate(-50%, 0%);
-
-    @media only screen and (max-width: ${sizes.tablet}) {
-        font-size: 1.6rem;
-    }
-`;
+`
 
 const ArticleHeaderBlock = ({ contentString }) => {
     return (
@@ -80,7 +67,7 @@ const ArticleHeaderBlock = ({ contentString }) => {
 const ArticleBodyBlock = ({ contentString }) => {
     return (
         <ArticleBody>
-            { contentString }
+            {contentString}
         </ArticleBody>
     )
 }
@@ -88,10 +75,10 @@ const ArticleBodyBlock = ({ contentString }) => {
 const ArticleBodyParagraghsBlock = ({ contentStrings, scrollTimings }) => {
     return (
         contentStrings.map(strings =>
-            <ArticleBodyBlock contentStrings={strings} scrollInfo={scrollTimings[0]}/>
+            <ArticleBodyBlock contentStrings={strings} scrollInfo={scrollTimings[0]} />
             // <ArticleBodyBlock contentStrings={strings} />
         )
     )
 }
 
-export { ArticleHeaderBlock, ArticleBodyBlock, ArticleBodyParagraghsBlock, ArticleBody, ArticleBodyWhite, ArticleBodyBlack };
+export { ArticleHeaderBlock, ArticleBodyBlock, ArticleBodyParagraghsBlock, ArticleBody, ArticleSubHeading };
