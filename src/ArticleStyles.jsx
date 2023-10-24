@@ -7,7 +7,7 @@ import { sizes } from './constants/devices.js';
 
 const ArticleHeader = styled.p`
     position: fixed;
-    font-family: 'Noe Display';
+    font-family: 'Noe Display Medium';
     font-weight: 500;
     font-size: 5rem;
     text-align: center;
@@ -23,7 +23,7 @@ const ArticleHeader = styled.p`
 `;
 
 const ArticleBody = styled.p`
-    font-family: 'Noto Sans';
+    font-family: 'Noto Sans', sans-serif;
     font-weight: 400;
     font-size: 2rem;
     text-align: left;
@@ -40,7 +40,7 @@ const ArticleBody = styled.p`
 `;
 
 const ArticleSubHeading = styled.h2`
-    font-family: 'Noto Sans';
+    font-family: 'Noe Display Medium';
     font-weight: 500;
     font-size: 3.2rem;
     text-align: left;
