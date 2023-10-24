@@ -10,8 +10,8 @@ import { ArticleHeaderBlock } from '../ArticleStyles';
 // import interactions
 import { ScrollingGif } from "../interactions/ScrollingGif"
 import { Background, TransitionBackground } from '../interactions/Background'
-import { TransformingContent, ImgBox, BackgroundImgBox } from '../interactions/TransformingContent'
-import { OpacityContent, OpacityParagraph, OpacitySubheading } from '../interactions/OpacityContent';
+import { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox } from '../interactions/TransformingContent'
+import { OpacityContent, OpacityHeading, OpacityParagraph, OpacitySubheading } from '../interactions/OpacityContent';
 import { ScrollingMovie } from '../interactions/ScrollingMovie'
 import { FadingHeader } from "../interactions/FadingHeader"
 
@@ -20,14 +20,14 @@ export { ManifestoSection }
 function ManifestoSection({ images }) {
 
     //Heights
-    const sectionHeights = [300, 500, 500]
+    const sectionHeights = [300, 500, 600]
 
     //Timings | Timings are adjusted to start - end of section
     const sectionTimings = [
         //Fading Header  Img1     Img2
-        [[0, 0.4, 0.7], [0, 0.6], [0, 0.6], [0.6, 0.8, 1.5]],
+        [[0, 0.4, 0.7], [0, 0.6], [0, 0.6], [0.8, 0.9, 1]],
         // 0 Avocado_toast        1 Avocado_1             2 Avocado_2            3 Avocado_3             4 Avocado_4             5 Header Paragraph    6 Paragraph 1           7 Paragraph 2          8 Paragraph 3         9 Galileo            10 1-2 Trans Timings    11 Para 4
-        [[0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [0, 0.08, 0.12, 0.2], [0.2, 0.25, 0.4, 0.6], [0.2, 0.4, 0.6, 0.65], [0.55, 0.6, 0.8, 1], [0.7, 0.75, 0.85, 0.9], [0.15, 0.2, 0.55, 0.6], [0.6, 0.8, 0.95, 1], [0.55, 0.6, 0.95, 1]],
+        [[0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [-0.05, 0.08, 0.12, 0.2], [0.2, 0.25, 0.4, 0.6], [0.2, 0.4, 0.6, 0.65], [0.55, 0.6, 0.8, 1], [0.7, 0.75, 0.85, 0.9], [0.2, 0.25, 0.55, 0.6], [0.6, 0.8, 0.95, 1], [0.55, 0.6, 0.95, 1]],
         //s,   tIn  - tOut tIn - tOut   e        2                           3                       4                            5                               6                  7
         [[0, 0.125, 0.25], [0, 0.18, 0.22, 0.25], [0.25, 0.335, 0.415, 0.5], [0.5, 0.615, 0.95, 1.5], [0.4, 0.5, 0.75, 0.95, 1.5], [0.4, 0.5, 0.7, 0.8, 0.95, 1], [0.1, 0.2, 0.25], [0.2, 0.25, 0.5]]]
     let adjustedTimings = []
@@ -56,10 +56,14 @@ function ManifestoSection({ images }) {
 
             {/* SECTION 1 */}
             <Background background={"#202020"} height={sectionHeights[1]} />
+            
+            <TransformingTextBox positions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[1][5]} alignment={'center'} child={
+                <OpacityHeading scrollInfo={adjustedTimings[1][5]} simpleFade={true} baseOpacity={0} text={
+                    ["To say the least, Artificial Intelligence has become one of the most transformative things to ever happen to modern society—rivaling everything that's come before it."]
+                } />
+            } />
 
-            <OpacityContent scrollInfo={adjustedTimings[1][5]} child={<ArticleHeaderBlock contentString={"To say the least, Artificial Intelligence has become one of the most transformative things to ever happen to modern society—rivaling everything that's come before it."} />} />
-
-            <TransformingContent positions={[[50, 50, 50, 50], [127, 27, 3, -77]]} scrollInfo={adjustedTimings[1][10]} alignment={['left', 'top']} child={
+            <TransformingTextBox positions={[127, 27, 3, -77]} scrollInfo={adjustedTimings[1][10]} alignment={'top'} child={
                 <>
                     <OpacityParagraph scrollInfo={adjustedTimings[1][6]} text={
                         [["And for good reason. It has the potential to disrupt, well, everything."], ["Early adopters and businesses have flocked in, and familiar patterns have set in, powered by both the fantasy—and fear—of the unknown. With phrases like “this will take our jobs” getting tossed around Twitter like avocado toast recipes and morning news programs running full segments dedicated to the sky falling, you'd be excused for being confused or even anxious yourself. But while caution is necessary, maybe we should choose to be cautiously optimistic."]]
@@ -70,7 +74,7 @@ function ManifestoSection({ images }) {
                 </>
             } />
 
-            <TransformingContent positions={[[50, 50, 50, 50], [127, 27, 3, -77]]} scrollInfo={adjustedTimings[1][12]} alignment={['left', 'top']} child={
+            <TransformingTextBox positions={[127, 27, 3, -77]} scrollInfo={adjustedTimings[1][12]} alignment={'top'} child={
                 <>
                     <OpacitySubheading scrollInfo={adjustedTimings[1][8]} text={
                         ["Creativity creates progress"]
@@ -94,10 +98,10 @@ function ManifestoSection({ images }) {
             {/* SECTION 3 */}
             <Background background={images.manifesto_gradient} height={sectionHeights[2]} />
 
-            <TransformingContent child={<ImgBox url={images.cute_robot1} displayDimensions={[50, 100]} rotate={195} />} positions={[[-30, -20, -30], [-50, -30, -50]]} scrollInfo={adjustedTimings[2][6]} alignment={['right', 'top']} />
-            <TransformingContent child={<ImgBox url={images.tin_robot3} displayDimensions={[80, 100]} rotate={30} />} positions={[[-50, -30, -50], [-10, -10, -10]]} scrollInfo={adjustedTimings[2][6]} alignment={['left', 'bottom']} />
-            <TransformingContent child={<ImgBox url={images.orange_robot1} displayDimensions={[45, 100]} rotate={-30} />} positions={[[100, 70, 100], [-10, -10, -10]]} scrollInfo={adjustedTimings[2][6]} alignment={['left', 'bottom']} />
-            <TransformingContent positions={[[50, 50, 50], [127, 27, 27]]} scrollInfo={adjustedTimings[2][0]} alignment={['left', 'top']} child={
+            <TransformingContent child={<ImgBox url={images.cute_robot1} displayDimensions={[50, 100]} rotate={195} />} positions={[[-30, -20, -20, -30], [-50, -30, -30, -50]]} scrollInfo={adjustedTimings[2][1]} alignment={['right', 'top']} />
+            <TransformingContent child={<ImgBox url={images.tin_robot3} displayDimensions={[80, 100]} rotate={30} />} positions={[[-50, -30, -30, -50], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[2][1]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<ImgBox url={images.orange_robot1} displayDimensions={[45, 100]} rotate={-30} />} positions={[[100, 70, 70, 100], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[2][1]} alignment={['left', 'bottom']} />
+            <TransformingTextBox positions={[127, 27, 27]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
                 <>
                     <OpacitySubheading scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
                         ["We choose play"]
@@ -109,7 +113,7 @@ function ManifestoSection({ images }) {
             } />
 
             <TransformingContent child={<ImgBox url={images.robot_beach} displayDimensions={[174, 100]} rotate={0} />} positions={[[-175, -75, -75, -40, -40, 100], [-40, -40, -40, -40, -40, -40]]} scrollInfo={adjustedTimings[2][5]} alignment={['left', 'bottom']} />
-            <TransformingContent positions={[[50, 50, 50], [27, 27, 27]]} scrollInfo={adjustedTimings[2][7]} alignment={['left', 'top']} child={
+            <TransformingTextBox positions={[27, 27, 27]} scrollInfo={adjustedTimings[2][7]} alignment={'top'} child={
                 <>
                     <OpacitySubheading scrollInfo={adjustedTimings[2][2]} dark={false} simpleFade={true} baseOpacity={0} text={
                         ["Where we'll play"]
@@ -120,7 +124,7 @@ function ManifestoSection({ images }) {
                 </>
             } />
 
-            <TransformingContent positions={[[50, 50, 50, 50, 50], [27, 27, 27, 18, 18]]} scrollInfo={adjustedTimings[2][4]} alignment={['left', 'top']} child={
+            <TransformingTextBox positions={[27, 27, 27, 18, 18]} scrollInfo={adjustedTimings[2][4]} alignment={'top'} child={
                 <>
                     <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} simpleFade={true} baseOpacity={0} text={
                         ["How we'll play"]

@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, useMotionValueEvent } from "framer-motion"
 
-export { TransformingContent, ImgBox, BackgroundImgBox }
+export { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox }
 
 function TransformingContent({ child, positions, scrollInfo, alignment }) {
 
@@ -37,7 +37,7 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
                 {child}
             </motion.div>
         )
-     }else if (alignment[0] === 'sticky' && alignment[1] === 'sticky') {
+    } else if (alignment[0] === 'sticky' && alignment[1] === 'sticky') {
         return (
             <motion.div style={{
                 position: "sticky",
@@ -47,8 +47,8 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
             }}>
                 {child}
             </motion.div>
-        ) 
-        }else if (alignment[0] === 'right' && alignment[1] === 'top') {
+        )
+    } else if (alignment[0] === 'right' && alignment[1] === 'top') {
         return (
             <motion.div style={{
                 position: "fixed",
@@ -78,6 +78,49 @@ TransformingContent.propTypes = {
     positions: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
     scrollInfo: PropTypes.arrayOf(PropTypes.number).isRequired,
     alignment: PropTypes.arrayOf(PropTypes.string).isRequired, // Top-Left = tl,
+}
+
+function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
+    const { scrollYProgress } = useScroll();
+
+    const y = useTransform(scrollYProgress, scrollInfo, positions) //[-34, 29, 29, 126]
+    const tY = useMotionTemplate`${y}vh`
+
+    useMotionValueEvent(tY, 'change', latest => { console.log(latest) })
+
+    if (alignment === 'top') {
+        return (
+            <motion.div style={{
+                position: "fixed",
+                top: tY,
+                width: "100%",
+            }}>
+                {child}
+            </motion.div>
+        )
+    } else if (alignment === 'bottom') {
+        return (
+            <motion.div style={{
+                position: "fixed",
+                width: "100%",
+                bottom: tY,
+            }}>
+                {child}
+            </motion.div>
+        )
+    } else if (alignment === 'center') {
+        return (
+            <motion.div style={{
+                position: "fixed",
+                top: 0,
+                left: 0,
+                width: "100%",
+                hieght: "100%",
+            }}>
+                {child}
+            </motion.div>
+        )
+    }
 }
 
 function ImgBox({ url, displayDimensions, rotate, prioritizeHeight }) {
@@ -125,7 +168,7 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
                         transform: "rotate(" + rotate + "deg)",
                         width: displayDimensions[0] + "vw",
                         height: "auto",
-                        opacity: "0.3",
+                        opacity: "0.2",
                         zIndex: "1",
                     }} /> :
                 <img src={url} alt={url}
@@ -133,7 +176,7 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
                         transform: "rotate(" + rotate + "deg)",
                         height: displayDimensions[1] + "vh",
                         width: "auto",
-                        opacity: "0.3",
+                        opacity: "0.2",
                         zIndex: "1",
                     }} />}
         </>

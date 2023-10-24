@@ -13,12 +13,22 @@ const ArticleHeader = styled.p`
     text-align: center;
     color: white;
 
+    padding-left: 32rem;
+    padding-right: 32rem;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translateY(-50%);
+    z-index: 4;
 
-    @media only screen and (max-width: ${sizes.tablet}) {
+    @media only screen and (max-width: ${sizes.laptop}) {
         font-size: 3.2rem;
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+
+    @media only screen and (max-width: ${sizes.mobileL}) {
+        font-size: 3.2em;
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
     }
 `;
 
@@ -28,31 +38,41 @@ const ArticleBody = styled.p`
     font-size: 2rem;
     text-align: left;
 
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 34rem;
+    padding-right: 34rem;
 
-    left: 50%;
-    transform: translate(-50%, 0%);
-
-    @media only screen and (max-width: ${sizes.tablet}) {
+    @media only screen and (max-width: ${sizes.laptop}) {
         font-size: 1.6rem;
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
+
+    @media only screen and (max-width: ${sizes.mobileL}) {
+        font-size: 1.6rem;
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
     }
 `;
 
 const ArticleSubHeading = styled.h2`
     font-family: 'Noe Display Medium';
     font-weight: 500;
-    font-size: 3.2rem;
+    font-size: 5rem;
     text-align: left;
     
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 34rem;
+    padding-right: 34rem;
 
-    left: 50%;
-    transform: translate(-50%, 0%);
+    @media only screen and (max-width: ${sizes.laptop}) {
+        font-size: 3.2rem;
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
 
-    @media only screen and (max-width: ${sizes.tablet}) {
-        font-size: 2rem;
+    @media only screen and (max-width: ${sizes.mobileL}) {
+        font-size: 3.2rem;
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
     }
 `
 
@@ -81,4 +101,4 @@ const ArticleBodyParagraghsBlock = ({ contentStrings, scrollTimings }) => {
     )
 }
 
-export { ArticleHeaderBlock, ArticleBodyBlock, ArticleBodyParagraghsBlock, ArticleBody, ArticleSubHeading };
+export { ArticleHeaderBlock, ArticleBodyBlock, ArticleBodyParagraghsBlock, ArticleBody, ArticleSubHeading, ArticleHeader };
