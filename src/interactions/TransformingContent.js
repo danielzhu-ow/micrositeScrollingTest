@@ -37,7 +37,18 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
                 {child}
             </motion.div>
         )
-    } else if (alignment[0] === 'right' && alignment[1] === 'top') {
+     }else if (alignment[0] === 'sticky' && alignment[1] === 'sticky') {
+        return (
+            <motion.div style={{
+                position: "sticky",
+                bottom: tY,
+                left: tX,
+                display: visible
+            }}>
+                {child}
+            </motion.div>
+        ) 
+        }else if (alignment[0] === 'right' && alignment[1] === 'top') {
         return (
             <motion.div style={{
                 position: "fixed",
