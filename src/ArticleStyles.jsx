@@ -11,14 +11,21 @@ const ArticleHeader = styled.p`
     text-align: center;
     color: white;
 
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
+    padding-left: 32rem;
+    padding-right: 32rem;
     top: 50%;
     transform: translateY(-50%);
     z-index: 4;
 
+    @media only screen and (max-width: ${sizes.laptop}) {
+        font-size: 5rem;
+        padding-left: 3.2rem;
+        padding-right: 3.2rem;
+    }
+
+
     @media only screen and (max-width: ${sizes.mobileL}) {
-        font-size: 3.2em;
+        font-size: 3.2rem;
         padding-left: 3.2rem;
         padding-right: 3.2rem;
     }
