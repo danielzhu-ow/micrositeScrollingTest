@@ -11,8 +11,8 @@ const ArticleHeader = styled.p`
     text-align: center;
     color: white;
 
-    padding-left: 32rem;
-    padding-right: 32rem;
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
     top: 50%;
     transform: translateY(-50%);
     z-index: 4;
