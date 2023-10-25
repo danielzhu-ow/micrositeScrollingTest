@@ -2,9 +2,7 @@ import { useRef } from "react";
 import {
   motion,
   useScroll,
-  useTransform,
-  useMotionTemplate,
-  useMotionValueEvent
+  useTransform
 } from "framer-motion";
 
 import { ContentWrapper } from "../ArticleHeader";

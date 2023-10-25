@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import { sizes } from "../constants/devices"
 import MediaQuery from "react-responsive"
-import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, cubicBezier } from "framer-motion"
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion"
 
 export { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox }
 

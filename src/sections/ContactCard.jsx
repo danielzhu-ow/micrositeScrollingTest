@@ -107,7 +107,7 @@ function ContactCard({ portrait, text, scrollInfo }) {
                 <ContactColumn>
                     <ContactHeader>{text.header}</ContactHeader>
                     <ContactBody>{text.body}</ContactBody>
-                    <ContactButton>LET'S TALK</ContactButton>
+                    <ContactButton onClick={() => window.location.href = "mailto:tom.ajello@lippincott.com"} >LET'S TALK</ContactButton>
                 </ContactColumn>
             </CardBox>
         </motion.div>
