@@ -20,6 +20,7 @@ export const useImageLoader = () => {
         const tin_robot3 = ((await import('../images/manifesto/tin_robot3.png'))).default;
         const orange_robot1 = ((await import('../images/manifesto/orange_robot1.png'))).default;
         const tom_gif = ((await import('../images/manifesto/tom_gif.gif'))).default;
+        const avocado_mobile = ((await import('../images/manifesto/avocado_mobile.png'))).default;
 
         const imageObject = {
           manifesto_gradient,
@@ -35,7 +36,8 @@ export const useImageLoader = () => {
           cute_robot1,
           tin_robot3,
           orange_robot1,
-          tom_gif
+          tom_gif,
+          avocado_mobile
         };
 
         setManifestoImages(imageObject);

@@ -5,9 +5,9 @@ import { ArticleBody, ArticleSubHeading, ArticleHeader } from "../ArticleStyles"
 export { OpacityContent, OpacityHeading, OpacityParagraph, OpacitySubheading }
 
 function OpacityContent({ child, scrollInfo, baseOpacity }) {
-
+    console.log(scrollInfo)
     let opacityTransform = [baseOpacity, 1, 1, baseOpacity]
-    if (scrollInfo.length == 6) { opacityTransform = [baseOpacity, baseOpacity, 1, 1, baseOpacity, baseOpacity] }
+    if (scrollInfo.length === 6) { opacityTransform = [baseOpacity, baseOpacity, 1, 1, baseOpacity, baseOpacity] }
     const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length - 1], 1]
 
     const { scrollYProgress } = useScroll();

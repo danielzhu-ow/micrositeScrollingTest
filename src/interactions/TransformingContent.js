@@ -1,5 +1,7 @@
 import PropTypes from "prop-types"
-import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, useMotionValueEvent } from "framer-motion"
+import { sizes } from "../constants/devices"
+import MediaQuery from "react-responsive"
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, cubicBezier } from "framer-motion"
 
 export { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox }
 
@@ -105,7 +107,7 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
                 width: "100%",
                 bottom: tY,
             }}>
-                <div style={{ position: "relative", textAlign: "center"}}>
+                <div style={{ position: "relative", textAlign: "center" }}>
                     {child}
                 </div>
             </motion.div>
@@ -119,7 +121,7 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
                 width: "100%",
                 hieght: "100%",
             }}>
-                <div style={{ position: "relative", textAlign: "center"}}>
+                <div style={{ position: "relative", textAlign: "center" }}>
                     {child}
                 </div>
             </motion.div>
@@ -127,38 +129,62 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
     }
 }
 
-function ImgBox({ url, displayDimensions, rotate, prioritizeHeight }) {
-    const wider = useMotionValue(window.innerWidth / window.innerHeight > 1)
+function ImgBox({ url, displayDimensions, rotate, fixWidth, fixHeight }) {
 
-    return (
-        <>
-            {wider || prioritizeHeight ?
-                <img src={url} alt={url}
-                    style={{
-                        transform: "rotate(" + rotate + "deg)",
-                        width: displayDimensions[0] + "vw",
-                        height: "auto",
-                    }} /> :
-                <img src={url} alt={url}
-                    style={{
-                        transform: "rotate(" + rotate + "deg)",
-                        height: displayDimensions[1] + "vh",
-                        width: "auto",
-                    }} />}
-        </>
-    )
+    if (fixWidth) {
+        return (
+            <img src={url} alt={url}
+                style={{
+                    transform: "rotate(" + rotate + "deg)",
+                    width: displayDimensions[0] + "vw",
+                    height: "auto",
+                }} />
+        )
+    } else if (fixHeight) {
+        return (
+            <img src={url} alt={url}
+                style={{
+                    transform: "rotate(" + rotate + "deg)",
+                    height: displayDimensions[1] + "vh",
+                    width: "auto",
+                }} />
+        )
+    } else {
+        return (
+            <>
+                <MediaQuery minWidth={sizes.tablet}>
+                    <img src={url} alt={url}
+                        style={{
+                            transform: "rotate(" + rotate + "deg)",
+                            width: displayDimensions[0] + "vw",
+                            height: "auto",
+                        }} />
+                </MediaQuery>
+                <MediaQuery maxWidth={sizes.mobileL}>
+                    <img src={url} alt={url}
+                        style={{
+                            transform: "rotate(" + rotate + "deg)",
+                            height: displayDimensions[1] + "vh",
+                            width: "auto",
+                        }} />
+                </MediaQuery>
+            </>
+        )
+    }
 }
 
 ImgBox.defaultProps = {
     rotate: 0,
-    prioritizeHeight: false
+    fixWidth: false,
+    fixHeight: false,
 }
 
 ImgBox.propTypes = {
     url: PropTypes.string,
     displayDimensions: PropTypes.arrayOf(PropTypes.number).isRequired,
     rotate: PropTypes.number,
-    prioritizeHeight: PropTypes.bool
+    fixWidth: PropTypes.bool,
+    fixHeight: PropTypes.bool,
 }
 
 function BackgroundImgBox({ url, displayDimensions, rotate }) {

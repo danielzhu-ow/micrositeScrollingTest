@@ -38,6 +38,8 @@ const ArticleBody = styled.p`
     font-size: 2rem;
     text-align: left;
 
+    max-width: 750px;
+    margin: 2rem auto 2rem auto;
     padding-left: 34rem;
     padding-right: 34rem;
 
@@ -59,7 +61,9 @@ const ArticleSubHeading = styled.h2`
     font-weight: 500;
     font-size: 5rem;
     text-align: left;
-    
+
+    max-width: 750px;
+    margin: 0 auto 2rem auto;
     padding-left: 34rem;
     padding-right: 34rem;
 

@@ -9,17 +9,17 @@ const CardBox = styled.div`
     border: 1px black solid;
     border-radius: 1rem;
     margin: 12rem auto 12rem auto;
-
-    width: 66rem;
-    height: 28rem;
+    
+    width: fit-content;
+    height: fit-content;
 
     padding: 6rem;
     column-count: 2;
     column-gap: 3.2rem;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
-        width: 29rem;
-        height: 45.6rem;
+        // width: 29rem;
+        // height: 45.6rem;
         margin: 4rem 0 4rem 0;
 
         padding: 1.6rem;
