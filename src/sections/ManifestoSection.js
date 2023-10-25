@@ -4,16 +4,12 @@ import { styled } from 'styled-components';
 import { useScroll, useMotionValueEvent, useTransform } from "framer-motion"
 import { sizes } from '../constants/devices.js';
 
-// import Styles
-import { ArticleHeaderBlock } from '../ArticleStyles';
-
 // import interactions
-import { ScrollingGif } from "../interactions/ScrollingGif"
 import { Background, TransitionBackground } from '../interactions/Background'
 import { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox } from '../interactions/TransformingContent'
 import { OpacityContent, OpacityHeading, OpacityParagraph, OpacitySubheading } from '../interactions/OpacityContent';
-import { ScrollingMovie } from '../interactions/ScrollingMovie'
 import { FadingHeader } from "../interactions/FadingHeader"
+import { ContactCard } from './ContactCard';
 
 export { ManifestoSection }
 
@@ -27,12 +23,13 @@ function ManifestoSection({ images }) {
         //Fading Header  Img1     Img2
         [[0, 0.4, 0.7], [0, 0.6], [0, 0.6], [0.8, 0.9, 1]],
         // 0 Avocado_toast        1 Avocado_1             2 Avocado_2            3 Avocado_3             4 Avocado_4             5 Header Paragraph    6 Paragraph 1           7 Paragraph 2          8 Paragraph 3         9 Galileo            10 1-2 Trans Timings    11 Para 4
-        [[0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [0.25, 0.3, 0.35, 0.4], [-0.05, 0.08, 0.12, 0.2], [0.2, 0.25, 0.4, 0.6], [0.2, 0.4, 0.6, 0.65], [0.55, 0.6, 0.8, 1], [0.7, 0.75, 0.85, 0.9], [0.2, 0.25, 0.55, 0.6], [0.6, 0.8, 0.95, 1], [0.55, 0.6, 0.95, 1]],
-        //s,   tIn  - tOut tIn - tOut   e        2                           3                       4                            5                               6                  7
-        [[0, 0.125, 0.25], [0, 0.18, 0.22, 0.25], [0.25, 0.335, 0.415, 0.5], [0.5, 0.615, 0.95, 1.5], [0.4, 0.5, 0.75, 0.95, 1.5], [0.4, 0.5, 0.7, 0.8, 0.95, 1], [0.1, 0.2, 0.25], [0.2, 0.25, 0.5]]]
+        [[0.25, 0.3, 0.35, 0.4], [0.2, 0.3, 0.35, 0.45], [0.2, 0.3, 0.35, 0.45], [0.2, 0.3, 0.35, 0.45], [0.25, 0.3, 0.35, 0.4], [-0.05, 0.08, 0.12, 0.2], [0.2, 0.25, 0.4, 0.6], [0.2, 0.4, 0.6, 0.65], [0.55, 0.6, 0.8, 1], [0.7, 0.75, 0.85, 0.9], [0.2, 0.25, 0.55, 0.6], [0.6, 0.8, 0.95, 1], [0.55, 0.6, 0.9, 1]],
+        //0 Para 1 Trans    1 robots Trans         2 Para 2 Opacity           3 Para 3-1 Opacity       4 Para 3 Trans             5 Beach Robot Trans                    6 Para 3-3 Opacity    7 Para 2 Trans           8 Card Move  9 Para 3-2              10 
+        [[0, 0.125, 0.25], [0, 0.18, 0.22, 0.25], [0.25, 0.375, 0.385, 0.5], [0.4, 0.5, 0.75, 1.5], [0.45, 0.5, 0.75, 0.8, 1.5], [0.25, 0.335, 0.415, 0.5, 0.6, 0.75], [0.4, 0.75, 1.2, 1.25], [0.2, 0.25, 0.45, 0.5], [0.75, 1], [0.4, 0.615, 0.75, 1.25], [0, 0.2, 0.21, 0.25]]]
     let adjustedTimings = []
 
     const header = { subtitleTop_section: "LIPPINCOTT + AI", subtitleTop_subsection: "PERSPECTIVE", title: "We need to talk about AI", subtitleBottom: "By Tom Ajello | [Month] 2023" }
+    const contactCard = { header: "Reach out to us to talk about AI", body: "For inquiries and specific AI opportunities in branding and experience" }
 
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
     for (let i = 0; i < sectionHeights.length; i++) {
@@ -56,7 +53,7 @@ function ManifestoSection({ images }) {
 
             {/* SECTION 1 */}
             <Background background={"#202020"} height={sectionHeights[1]} />
-            
+
             <TransformingTextBox positions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[1][5]} alignment={'center'} child={
                 <OpacityHeading scrollInfo={adjustedTimings[1][5]} simpleFade={true} baseOpacity={0} text={
                     ["To say the least, Artificial Intelligence has become one of the most transformative things to ever happen to modern society—rivaling everything that's come before it."]
@@ -88,18 +85,18 @@ function ManifestoSection({ images }) {
                 </>
             } />
 
-            <TransformingContent child={<BackgroundImgBox url={images.avocado_toast} displayDimensions={[57, 60]} rotate={0} />} positions={[[24, 24, 24, 24], [-100, 6, 6, 100]]} scrollInfo={adjustedTimings[1][0]} alignment={['left', 'top']} />
-            <TransformingContent child={<BackgroundImgBox url={images.avocado_4} displayDimensions={[23, 40]} rotate={0} />} positions={[[5, 5, 5, 5], [-50, 3, 3, 100]]} scrollInfo={adjustedTimings[1][3]} alignment={['right', 'top']} />
-            <TransformingContent child={<ImgBox url={images.avocado_1} displayDimensions={[15, 20]} rotate={25} />} positions={[[2, 2, 2, 2], [-50, 5, 5, 100]]} scrollInfo={adjustedTimings[1][1]} alignment={['right', 'bottom']} />
-            <TransformingContent child={<ImgBox url={images.avocado_2} displayDimensions={[45, 16]} rotate={0} />} positions={[[-5, -5, -5, -5], [-50, 1, 1, 100]]} scrollInfo={adjustedTimings[1][2]} alignment={['left', 'bottom']} />
-            <TransformingContent child={<ImgBox url={images.avocado_3} displayDimensions={[20, 28]} rotate={0} />} positions={[[2, 2, 2, 2], [-50, 52, 52, 152]]} scrollInfo={adjustedTimings[1][3]} alignment={['left', 'bottom']} />
-            <TransformingContent child={<ImgBox url={images.galileo} displayDimensions={[78, 80]} rotate={0} />} positions={[[-100, 11, 11, 100], [30, 30, 30, 30]]} scrollInfo={adjustedTimings[1][9]} alignment={['left', 'top']} prioritizeHeight={true} />
+            <TransformingContent child={<BackgroundImgBox url={images.avocado_toast} displayDimensions={[57, 60]} rotate={0} />} positions={[[24, 24, 24, 24], [-100, 5, 7, 100]]} scrollInfo={adjustedTimings[1][0]} alignment={['left', 'top']} />
+            <TransformingContent child={<BackgroundImgBox url={images.avocado_4} displayDimensions={[23, 40]} rotate={0} />} positions={[[5, 5, 5, 5], [-50, 2, 4, 100]]} scrollInfo={adjustedTimings[1][3]} alignment={['right', 'top']} />
+            <TransformingContent child={<ImgBox url={images.avocado_1} displayDimensions={[15, 20]} rotate={25} />} positions={[[2, 2, 2, 2], [-50, 2, 8, 100]]} scrollInfo={adjustedTimings[1][1]} alignment={['right', 'bottom']} />
+            <TransformingContent child={<ImgBox url={images.avocado_2} displayDimensions={[45, 16]} rotate={0} />} positions={[[-5, -5, -5, -5], [-50, -2, 4, 100]]} scrollInfo={adjustedTimings[1][2]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<ImgBox url={images.avocado_3} displayDimensions={[20, 28]} rotate={0} />} positions={[[2, 2, 2, 2], [-50, 48, 55, 152]]} scrollInfo={adjustedTimings[1][3]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<ImgBox url={images.galileo} displayDimensions={[78, 80]} rotate={0} />} positions={[[-100, 8, 14, 100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][9]} alignment={['left', 'bottom']} prioritizeHeight={true} />
 
             {/* SECTION 3 */}
             <Background background={images.manifesto_gradient} height={sectionHeights[2]} />
 
             <TransformingContent child={<ImgBox url={images.cute_robot1} displayDimensions={[50, 100]} rotate={195} />} positions={[[-30, -20, -20, -30], [-50, -30, -30, -50]]} scrollInfo={adjustedTimings[2][1]} alignment={['right', 'top']} />
-            <TransformingContent child={<ImgBox url={images.tin_robot3} displayDimensions={[80, 100]} rotate={30} />} positions={[[-50, -30, -30, -50], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[2][1]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<ImgBox url={images.tin_robot3} displayDimensions={[80, 100]} rotate={30} />} positions={[[-50, -35, -35, -50], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[2][1]} alignment={['left', 'bottom']} />
             <TransformingContent child={<ImgBox url={images.orange_robot1} displayDimensions={[45, 100]} rotate={-30} />} positions={[[100, 70, 70, 100], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[2][1]} alignment={['left', 'bottom']} />
             <TransformingTextBox positions={[127, 27, 27]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
                 <>
@@ -112,8 +109,8 @@ function ManifestoSection({ images }) {
                 </>
             } />
 
-            <TransformingContent child={<ImgBox url={images.robot_beach} displayDimensions={[174, 100]} rotate={0} />} positions={[[-175, -75, -75, -40, -40, 100], [-40, -40, -40, -40, -40, -40]]} scrollInfo={adjustedTimings[2][5]} alignment={['left', 'bottom']} />
-            <TransformingTextBox positions={[27, 27, 27]} scrollInfo={adjustedTimings[2][7]} alignment={'top'} child={
+            <TransformingContent child={<ImgBox url={images.robot_beach} displayDimensions={[174, 100]} rotate={0} />} positions={[[-175, -75, -75, -40, -35, 100], [0, 0, 0, 0, 0, 0]]} scrollInfo={adjustedTimings[2][5]} alignment={['left', 'bottom']} />
+            <TransformingTextBox positions={[27, 27, 27, -50]} scrollInfo={adjustedTimings[2][7]} alignment={'top'} child={
                 <>
                     <OpacitySubheading scrollInfo={adjustedTimings[2][2]} dark={false} simpleFade={true} baseOpacity={0} text={
                         ["Where we'll play"]
@@ -124,17 +121,18 @@ function ManifestoSection({ images }) {
                 </>
             } />
 
-            <TransformingTextBox positions={[27, 27, 27, 18, 18]} scrollInfo={adjustedTimings[2][4]} alignment={'top'} child={
+            <TransformingTextBox positions={[-100, -10, -10, 0, 0]} scrollInfo={adjustedTimings[2][4]} alignment={'bottom'} child={
                 <>
-                    <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} text={
                         ["How we'll play"]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[2][3]} dark={false} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[2][9]} dark={false} text={
                         ["A cross-functional group of Lippincotters (spanning strategy, engineering, design and more) is getting our hands in the dirt to show how we can harness the power of AI in the field of creative consulting. We’ll touch different facets of our work, from brand name generation to customer research to brand expression design and beyond."]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[2][3]} dark={false} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[2][6]} dark={false} text={
                         ["We choose creativity-led progress. We choose to believe humans and machines can be powerful together. And we choose not to talk about it from afar—but to test it out, get our hands in the sandbox, and really see what all this means."]
                     } />
+                    <ContactCard scrollInfo={adjustedTimings[2][8]} portrait={images.tom_gif} text={contactCard} />
                 </>
             } />
 

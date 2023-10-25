@@ -86,8 +86,6 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
     const y = useTransform(scrollYProgress, scrollInfo, positions) //[-34, 29, 29, 126]
     const tY = useMotionTemplate`${y}vh`
 
-    useMotionValueEvent(tY, 'change', latest => { console.log(latest) })
-
     if (alignment === 'top') {
         return (
             <motion.div style={{
@@ -95,7 +93,9 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
                 top: tY,
                 width: "100%",
             }}>
-                {child}
+                <div style={{ position: "relative", textAlign: "center" }}>
+                    {child}
+                </div>
             </motion.div>
         )
     } else if (alignment === 'bottom') {
@@ -105,7 +105,9 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
                 width: "100%",
                 bottom: tY,
             }}>
-                {child}
+                <div style={{ position: "relative", textAlign: "center"}}>
+                    {child}
+                </div>
             </motion.div>
         )
     } else if (alignment === 'center') {
@@ -117,7 +119,9 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
                 width: "100%",
                 hieght: "100%",
             }}>
-                {child}
+                <div style={{ position: "relative", textAlign: "center"}}>
+                    {child}
+                </div>
             </motion.div>
         )
     }
