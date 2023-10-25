@@ -1,17 +1,15 @@
 // import universal
-import { useRef } from 'react'
-import { styled } from 'styled-components';
-import { useScroll, useMotionValueEvent } from "framer-motion"
+// import { useRef } from 'react'
+// import { styled } from 'styled-components';
+// import { useScroll, useMotionValueEvent } from "framer-motion"
 
 // import Styles
-import { ArticleHeaderBlock, ArticleBodyBlock } from '../ArticleStyles';
+// import { ArticleHeaderBlock, ArticleBodyBlock } from '../ArticleStyles';
 
 // import interactions
-import { ScrollingGif } from "../interactions/ScrollingGif"
 import { Background } from '../interactions/Background'
-import { TransformingContent, ImgBox, BackgroundImgBox } from '../interactions/TransformingContent'
-import { OpacityContent, OpacityParagraph } from '../interactions/OpacityContent';
-import { ScrollingMovie } from '../interactions/ScrollingMovie'
+import { TransformingContent, ImgBox } from '../interactions/TransformingContent'
+import { OpacityParagraph } from '../interactions/OpacityContent';
 import { FadingHeader } from "../interactions/FadingHeader"
 
 export { NamingSection }

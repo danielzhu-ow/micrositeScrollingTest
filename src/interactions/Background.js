@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { useScroll, useTransform, useMotionValueEvent, useMotionTemplate, motion } from "framer-motion"
+import { useScroll, useTransform, motion } from "framer-motion"
 import { useRef } from 'react'
 export { Background, TransitionBackground }
 

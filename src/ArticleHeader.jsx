@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import { styled } from 'styled-components';
 import { sizes } from './constants/devices';
-import { motion, useScroll, scrollYProgress, cubicBezier, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, cubicBezier, useMotionValueEvent } from 'framer-motion';
 
 // const HeaderContainer = styled.div`
 //     display: flex;

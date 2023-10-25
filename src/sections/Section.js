@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { motion, useScroll, useMotionValueEvent } from "framer-motion"
+import { motion, useScroll } from "framer-motion"
 
 // import { TelescopingContent } from "../ScrollingInteractions"
 // import { TransformingContent } from "../interactions/TransformingContent"
