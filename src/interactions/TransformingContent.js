@@ -198,7 +198,7 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
                         transform: "rotate(" + rotate + "deg)",
                         width: displayDimensions[0] + "vw",
                         height: "auto",
-                        opacity: "0.2",
+                        opacity: "0.15",
                         zIndex: "1",
                     }} /> :
                 <img src={url} alt={url}
@@ -206,7 +206,7 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
                         transform: "rotate(" + rotate + "deg)",
                         height: displayDimensions[1] + "vh",
                         width: "auto",
-                        opacity: "0.2",
+                        opacity: "0.15",
                         zIndex: "1",
                     }} />}
         </>
