@@ -220,7 +220,7 @@ function VideoBox({ url, displayWidth }) {
       <>
         <video controls autoPlay muted 
             style={{
-              width: `${displayWidth[0]}vw`,
+              width: `${displayWidth}vw`,
               height: 'auto',
               border: "2px solid black",
               borderRadius: "4rem"
