@@ -1,10 +1,10 @@
 // import universal
-import { useRef } from 'react'
-import { styled } from 'styled-components';
-import { useScroll, useMotionValueEvent } from "framer-motion"
+// import { useRef } from 'react'
+// import { styled } from 'styled-components';
+// import { useScroll, useMotionValueEvent } from "framer-motion"
 
 // import Styles
-import { ArticleHeaderBlock, ArticleBodyBlock } from '../ArticleStyles';
+// import { ArticleHeaderBlock, ArticleBodyBlock } from '../ArticleStyles';
 
 //import video assets
 import namezap1 from '../images/naming/NameZap1.mp4'
