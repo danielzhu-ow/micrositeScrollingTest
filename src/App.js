@@ -1,17 +1,9 @@
-import { useState } from 'react'
-import { scroll, useScroll } from "framer-motion"
 import './App.css';
 
 // import pages
 import { NamingSection } from './sections/NamingSection';
 import { ManifestoSection } from './sections/ManifestoSection'
-import { HotDogSection} from './sections/HotDogSection';
-
-import { Item } from './sections/Section'
-import { TransformingContent } from './interactions/TransformingContent'
-import { ScrollingGif } from './interactions/ScrollingGif'
-import { ScrollingMovie } from './interactions/ScrollingMovie'
-import { Background } from './interactions/Background'
+// import { HotDogSection} from './sections/HotDogSection';
 
 //import content constants
 import NAMING_STRINGS from './constants/textContent';
@@ -25,8 +17,8 @@ function App() {
   return (
     <div className="App">
       <div className='App-header'>
-        {/* <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS}></NamingSection> */}
-        <ManifestoSection images={MANIFESTO_IMAGES} />
+        <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS}></NamingSection>
+        {/* <ManifestoSection images={MANIFESTO_IMAGES} /> */}
         {/* <HotDogSection images={NAMING_IMAGES}></HotDogSection> */}
       </div>
     </div>

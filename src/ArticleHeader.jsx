@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import { styled } from 'styled-components';
 import { sizes } from './constants/devices';
-import { motion, useScroll, scrollYProgress, cubicBezier, useMotionValueEvent } from 'framer-motion';
+import { motion, useScroll, cubicBezier, useMotionValueEvent } from 'framer-motion';
 
 // const HeaderContainer = styled.div`
 //     display: flex;
@@ -66,22 +66,28 @@ const ContentHeader = styled.h1`
     font-weight: 500;
     font-size: 10rem;
     text-align: center;
-    // max-width: 55%;
     margin: 0;
     color: black;
 
-    @media only screen and (max-width: ${sizes.tablet}) {
-        font-size: 3.2rem;
+    @media only screen and (max-width: ${sizes.mobileL}) {
+        font-size: 5rem;
+        width: 35rem;
     }
 `;
 
 const ContentSubheader1 = styled.p`
 font-family: 'Noto Sans';
     font-size: 2rem;
+    @media only screen and (max-width: ${sizes.mobileL}) {
+        font-size: 1.2rem;
+    }
 `;
 
 const ContentSubheader2 = styled.p`
     font-size: 2rem;
+    @media only screen and (max-width: ${sizes.mobileL}) {
+        font-size: 1.4rem;
+    }
 `;
 
 

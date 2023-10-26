@@ -10,18 +10,15 @@ const CardBox = styled.div`
     border-radius: 1rem;
     margin: 12rem auto 12rem auto;
 
-    width: 66rem;
-    height: 28rem;
+    width: fit-content;
+    height: fit-content;
 
     padding: 6rem;
     column-count: 2;
     column-gap: 3.2rem;
 
-    @media only screen and (max-width: ${sizes.mobileL}) {
-        width: 29rem;
-        height: 45.6rem;
-        margin: 4rem 0 4rem 0;
-
+    @media only screen and (max-width: ${sizes.tablet}) {
+        margin: 8rem 0 8rem 0;
         padding: 1.6rem;
         column-count: 1;
         text-align: center;
@@ -33,7 +30,7 @@ const ContactColumn = styled.div`
     width: 34.5rem;
     text-align: left;
 
-    @media only screen and (max-width: ${sizes.mobileL}) {
+    @media only screen and (max-width: ${sizes.tablet}) {
         width: 26.2rem;
         text-align: center;
     }
@@ -43,7 +40,7 @@ const CardPortrait = styled.img`
     width: 28rem;
     height: auto;
 
-    @media only screen and (max-width: ${sizes.mobileL}) {
+    @media only screen and (max-width: ${sizes.tablet}) {
         margin: 0 0 1.6rem 0;
         width: 19rem;
     }
@@ -62,7 +59,7 @@ const ContactButton = styled.button`
     font-weight: 500;
     font-size: 2rem;
 
-    @media only screen and (max-width: ${sizes.mobileL}) {
+    @media only screen and (max-width: ${sizes.tablet}) {
         width: 13rem;
         height: 5rem;
         font-size: 1.4rem;
@@ -76,7 +73,7 @@ const ContactHeader = styled.h2`
     font-weight: 500;
     font-size: 5rem;
 
-    @media only screen and (max-width: ${sizes.mobileL}) {
+    @media only screen and (max-width: ${sizes.tablet}) {
         margin: 0 0 1.6rem 0;
         font-size: 3.2rem;
     }
@@ -88,7 +85,7 @@ const ContactBody = styled.p`
     font-weight: 400;
     font-size: 2rem;
 
-    @media only screen and (max-width: ${sizes.mobileL}) {
+    @media only screen and (max-width: ${sizes.tablet}) {
         margin: 0 0 1.6rem 0;
         font-size: 1.6rem;
     }
@@ -110,7 +107,7 @@ function ContactCard({ portrait, text, scrollInfo }) {
                 <ContactColumn>
                     <ContactHeader>{text.header}</ContactHeader>
                     <ContactBody>{text.body}</ContactBody>
-                    <ContactButton>LET'S TALK</ContactButton>
+                    <ContactButton onClick={() => window.location.href = "mailto:tom.ajello@lippincott.com"} >LET'S TALK</ContactButton>
                 </ContactColumn>
             </CardBox>
         </motion.div>

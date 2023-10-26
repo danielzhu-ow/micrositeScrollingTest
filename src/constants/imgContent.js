@@ -13,6 +13,9 @@ export const useNamingImageLoader = () => {
         const sprite = (await import('../images/naming/sprite.png')).default;
         const dino_day = (await import('../images/naming/dino_day.png')).default;
         const dino_night = (await import('../images/naming/dino_night.png')).default;
+        const firmi = (await import ('../images/naming/firmi.png')).default;
+        const cute_robot_idle = (await import ('../images/naming/cute_robot2.png')).default;
+        const cute_robot_think = (await import ('../images/naming/cute_robot3.png')).default;
 
         const imageObject = {
           naming_gradient,
@@ -21,7 +24,10 @@ export const useNamingImageLoader = () => {
           verizon,
           sprite,
           dino_day,
-          dino_night
+          dino_night,
+          firmi, 
+          cute_robot_idle,
+          cute_robot_think
         };
 
         setNAMING_IMAGES(imageObject);

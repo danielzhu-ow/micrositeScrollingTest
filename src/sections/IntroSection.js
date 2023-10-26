@@ -1,5 +1,5 @@
-import { useRef, useState, createContext } from "react"
-import { motion, useScroll, useMotionValueEvent } from "framer-motion"
+// import { useRef, useState, createContext } from "react"
+// import { motion, useScroll, useMotionValueEvent } from "framer-motion"
 
 import {HighlightText} from '../interactions/TextInteractions';
 

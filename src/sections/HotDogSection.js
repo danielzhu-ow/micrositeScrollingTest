@@ -1,20 +1,6 @@
 // import universal
-import { useRef } from 'react'
-import { styled } from 'styled-components';
 import { useState } from 'react';
-import { useScroll, useTransform, useMotionValueEvent, useMotionTemplate, motion } from "framer-motion"
-import { userRef } from 'react'
-
-// import Styles
-import { ArticleHeaderBlock, ArticleBodyBlock } from '../ArticleStyles';
-
-// import interactions
-import { ScrollingGif } from "../interactions/ScrollingGif"
-import { Background } from '../interactions/Background'
-import { TransformingContent, ImgBox, BackgroundImgBox } from '../interactions/TransformingContent'
-import { OpacityContent } from '../interactions/OpacityContent';
-import { ScrollingMovie } from '../interactions/ScrollingMovie'
-import { FadingHeader } from "../interactions/FadingHeader"
+import { motion } from "framer-motion"
 
 export { HotDogSection }
 

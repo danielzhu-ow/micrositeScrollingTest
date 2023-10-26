@@ -1,5 +1,5 @@
 import PropTypes from "prop-types"
-import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, useMotionValueEvent } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { ContentHeader, ContentSubheader1, ContentSubheader2 } from "../ArticleHeader";
 
 export { FadingHeader }
@@ -25,6 +25,8 @@ function FadingHeader({ text, scrollInfo }) {
     return (
         <motion.div style={{
             position: "fixed",
+            width: "fit-content",
+            height: "fit-content",
             top: " 50%",
             left: "50%",
             transform: "translate(-50%, -50%)",
@@ -34,4 +36,9 @@ function FadingHeader({ text, scrollInfo }) {
             { content }
         </motion.div>
     )
+}
+
+FadingHeader.propTypes = {
+    text: PropTypes.object.isRequired,
+    scrollInfo: PropTypes.arrayOf(PropTypes.number).isRequired,
 }

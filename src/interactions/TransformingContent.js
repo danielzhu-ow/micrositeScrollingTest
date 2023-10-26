@@ -1,7 +1,9 @@
 import PropTypes from "prop-types"
-import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, useMotionValueEvent } from "framer-motion"
+import { sizes } from "../constants/devices"
+import MediaQuery from "react-responsive"
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion"
 
-export { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox }
+export { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox, VideoBox }
 
 function TransformingContent({ child, positions, scrollInfo, alignment }) {
 
@@ -37,12 +39,14 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
                 {child}
             </motion.div>
         )
-    } else if (alignment[0] === 'sticky' && alignment[1] === 'sticky') {
+    } else if (alignment[0] === 'center' && alignment[1] === 'center') {
         return (
             <motion.div style={{
-                position: "sticky",
+                position: "fixed",
+                width: "100vw",
                 bottom: tY,
                 left: tX,
+                margin: "auto",
                 display: visible
             }}>
                 {child}
@@ -105,7 +109,7 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
                 width: "100%",
                 bottom: tY,
             }}>
-                <div style={{ position: "relative", textAlign: "center"}}>
+                <div style={{ position: "relative", textAlign: "center" }}>
                     {child}
                 </div>
             </motion.div>
@@ -119,7 +123,7 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
                 width: "100%",
                 hieght: "100%",
             }}>
-                <div style={{ position: "relative", textAlign: "center"}}>
+                <div style={{ position: "relative", textAlign: "center" }}>
                     {child}
                 </div>
             </motion.div>
@@ -127,38 +131,62 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
     }
 }
 
-function ImgBox({ url, displayDimensions, rotate, prioritizeHeight }) {
-    const wider = useMotionValue(window.innerWidth / window.innerHeight > 1)
+function ImgBox({ url, displayDimensions, rotate, fixWidth, fixHeight }) {
 
-    return (
-        <>
-            {wider || prioritizeHeight ?
-                <img src={url} alt={url}
-                    style={{
-                        transform: "rotate(" + rotate + "deg)",
-                        width: displayDimensions[0] + "vw",
-                        height: "auto",
-                    }} /> :
-                <img src={url} alt={url}
-                    style={{
-                        transform: "rotate(" + rotate + "deg)",
-                        height: displayDimensions[1] + "vh",
-                        width: "auto",
-                    }} />}
-        </>
-    )
+    if (fixWidth) {
+        return (
+            <img src={url} alt={url}
+                style={{
+                    transform: "rotate(" + rotate + "deg)",
+                    width: displayDimensions[0] + "vw",
+                    height: "auto",
+                }} />
+        )
+    } else if (fixHeight) {
+        return (
+            <img src={url} alt={url}
+                style={{
+                    transform: "rotate(" + rotate + "deg)",
+                    height: displayDimensions[1] + "vh",
+                    width: "auto",
+                }} />
+        )
+    } else {
+        return (
+            <>
+                <MediaQuery minWidth={sizes.tablet}>
+                    <img src={url} alt={url}
+                        style={{
+                            transform: "rotate(" + rotate + "deg)",
+                            width: displayDimensions[0] + "vw",
+                            height: "auto",
+                        }} />
+                </MediaQuery>
+                <MediaQuery maxWidth={sizes.mobileL}>
+                    <img src={url} alt={url}
+                        style={{
+                            transform: "rotate(" + rotate + "deg)",
+                            height: displayDimensions[1] + "vh",
+                            width: "auto",
+                        }} />
+                </MediaQuery>
+            </>
+        )
+    }
 }
 
 ImgBox.defaultProps = {
     rotate: 0,
-    prioritizeHeight: false
+    fixWidth: false,
+    fixHeight: false,
 }
 
 ImgBox.propTypes = {
     url: PropTypes.string,
     displayDimensions: PropTypes.arrayOf(PropTypes.number).isRequired,
     rotate: PropTypes.number,
-    prioritizeHeight: PropTypes.bool
+    fixWidth: PropTypes.bool,
+    fixHeight: PropTypes.bool,
 }
 
 function BackgroundImgBox({ url, displayDimensions, rotate }) {
@@ -172,7 +200,7 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
                         transform: "rotate(" + rotate + "deg)",
                         width: displayDimensions[0] + "vw",
                         height: "auto",
-                        opacity: "0.2",
+                        opacity: "0.15",
                         zIndex: "1",
                     }} /> :
                 <img src={url} alt={url}
@@ -180,9 +208,33 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
                         transform: "rotate(" + rotate + "deg)",
                         height: displayDimensions[1] + "vh",
                         width: "auto",
-                        opacity: "0.2",
+                        opacity: "0.15",
                         zIndex: "1",
                     }} />}
         </>
     )
 }
+function VideoBox({ url, displayWidth }) {
+  
+    return (
+      <>
+        <video controls autoPlay muted 
+            style={{
+              width: `${displayWidth[0]}vw`,
+              height: 'auto',
+              border: "2px solid black",
+              borderRadius: "4rem"
+            }}
+          >
+            <source src={url} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+      </>
+    );
+  }
+  
+  VideoBox.propTypes = {
+    url: PropTypes.string,
+    displayWidth: (PropTypes.number).isRequired,
+    prioritizeHeight: PropTypes.bool,
+  };

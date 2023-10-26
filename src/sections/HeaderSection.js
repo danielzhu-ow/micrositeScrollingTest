@@ -1,5 +1,5 @@
 // import interactions
-import { ScrollingGif } from "../interactions/ScrollingGif";
+// import { ScrollingGif } from "../interactions/ScrollingGif";
 import { Background } from '../interactions/Background'
 import { TransformingContent } from '../interactions/TransformingContent'
 import { ScrollingMovie } from '../interactions/ScrollingMovie'
