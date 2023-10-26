@@ -15,7 +15,7 @@ export const useNamingImageLoader = () => {
         const dino_night = (await import('../images/naming/dino_night.png')).default;
         const firmi = (await import ('../images/naming/firmi.png')).default;
         const cute_robot_idle = (await import ('../images/naming/cute_robot2.png')).default;
-        const cute_robot_think = (await import ('../images/naming/cute_robot3.png')).default;
+        const cute_robot_think = (await import ('../images/naming/cute_robot.gif')).default;
 
         const imageObject = {
           naming_gradient,
