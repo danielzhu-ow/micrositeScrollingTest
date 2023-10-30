@@ -10,13 +10,14 @@ import { Background, TransitionBackground } from '../interactions/Background'
 import { TransformingContent, TransformingTextBox, ImgBox, VideoBox, ScalingImgBox, RotatingImgBox } from '../interactions/TransformingContent'
 import {OpacityHeading, OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
 import { FadingHeader } from "../interactions/FadingHeader"
+import { HotDogSection } from './HotDogSection.js';
 
 export { NamingSection }
 
 function NamingSection({ images, text }) {
 
-    //Heights                0    1    2    3    4    5    6
-    const sectionHeights = [300, 500, 200, 300, 300, 100, 500 ]
+    //Heights                0    1    2    3    4    5    6    7
+    const sectionHeights = [300, 500, 200, 300, 350, 100, 400, 500 ]
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
 
     //Timings 
@@ -62,7 +63,12 @@ function NamingSection({ images, text }) {
         [0.5, 0.65, 0.75, 1.0],                      // [1] post video paragraph
         ],
 
-        // [6] Section 6
+        // [6] Section 6 - hotdog
+        [
+        [0.3, 0.4, 0.55, 0.75, 0.8]
+        ],
+
+        // [7] Section 7
         [[0.1, 0.2, 0.55, 0.75, 1.1],                   // [0] Sub header timings
         [0.15, 0.2,1.0, 1.1],                           // [1] sub header "time to play"
         [0.45, 0.6, 0.7, 0.75],                         // [2] paragraph 1
@@ -189,23 +195,23 @@ function NamingSection({ images, text }) {
 
     const desktopVideo = (
         <>
-        <TransformingContent child={<VideoBox url={namezap1} displayWidth={75} />}
+        <TransformingContent child={<VideoBox url={namezap1} displayWidth={70} />}
             positions={[[0, 0, 0, 0], [3, 3, 3, 3]]} scrollInfo={adjustedTimings[4][0]} alignment={['center', 'center']} />
         </>
     );
 
     const mobileRobotSection = (
         <>
-        <TransformingContent positions={[[10,10,10,10,10],[80, 80, 80, 80, 80]]} scrollInfo={adjustedTimings[6][0]} alignment={['top', 'left']} child={<OpacitySubheading scrollInfo={adjustedTimings[6][1]} dark={false} simpleFade={true} baseOpacity={0} text={["So, it’s time to play."]} />}></TransformingContent>
+        <TransformingContent positions={[[10,10,10,10,10],[80, 80, 80, 80, 80]]} scrollInfo={adjustedTimings[7][0]} alignment={['top', 'left']} child={<OpacitySubheading scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={["So, it’s time to play."]} />}></TransformingContent>
 
-        <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[190, 210]} rotateDimensions={[40, 40, 0, 0]} scrollInfo={adjustedTimings[6][4]} />} positions={[[-150, -45, -45, -45], [-10, -10, -10, 100]]} scrollInfo={adjustedTimings[6][4]} alignment={['left', 'bottom']} />
+        <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[190, 210]} rotateDimensions={[40, 40, 0, 0]} scrollInfo={adjustedTimings[7][4]} />} positions={[[-150, -45, -45, -45], [-10, -10, -10, 100]]} scrollInfo={adjustedTimings[7][4]} alignment={['left', 'bottom']} />
       
         {/* <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[6][6]} />} positions={[[-15, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[6][6]} alignment={['left', 'bottom']} /> */}
  
-        <TransformingContent child={<ImgBox url={images.cute_robot_think} displayDimensions={[23.2, 33.2]}/>} positions={[[32, 32, 32, 32], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[6][6]} alignment={['left', 'bottom']} />
+        <TransformingContent child={<ImgBox url={images.cute_robot_think} displayDimensions={[23.2, 33.2]}/>} positions={[[32, 32, 32, 32], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[7][6]} alignment={['left', 'bottom']} />
 
-        <TransformingContent positions={[[0,0,0,0],[35, 35, 35, 35]]} scrollInfo={adjustedTimings[6][7]} alignment={['bottom', 'right']} child={
-             <OpacityParagraph scrollInfo={adjustedTimings[6][8]} dark={false} simpleFade={true} baseOpacity={0} text={["Let’s go →"]} />
+        <TransformingContent positions={[[0,0,0,0],[35, 35, 35, 35]]} scrollInfo={adjustedTimings[7][7]} alignment={['bottom', 'right']} child={
+             <OpacityParagraph scrollInfo={adjustedTimings[7][8]} dark={false} simpleFade={true} baseOpacity={0} text={["Let’s go →"]} />
              }></TransformingContent>
         
         </>
@@ -213,17 +219,17 @@ function NamingSection({ images, text }) {
 
     const desktopRobotSection = (
         <>
-        <TransformingContent positions={[[20,20,46,46,46],[80, 80, 80, 80, 80]]} scrollInfo={adjustedTimings[6][0]} alignment={['top', 'right']} child={<OpacitySubheading scrollInfo={adjustedTimings[6][1]} dark={false} simpleFade={true} baseOpacity={0} text={["So, it’s time to play."]} />}></TransformingContent>
+        <TransformingContent positions={[[20,20,46,46,46],[80, 80, 80, 80, 80]]} scrollInfo={adjustedTimings[7][0]} alignment={['top', 'right']} child={<OpacitySubheading scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={["So, it’s time to play."]} />}></TransformingContent>
 
-        <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[40, 40, 0, 0]} scrollInfo={adjustedTimings[6][4]} />} positions={[[-50, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[6][4]} alignment={['left', 'bottom']} />
+        <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[40, 40, 0, 0]} scrollInfo={adjustedTimings[7][4]} />} positions={[[-50, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[7][4]} alignment={['left', 'bottom']} />
              
-        <TransformingContent child={<ImgBox url={images.cute_robot_think} displayDimensions={[23.2, 33.2]}/>} positions={[[3.5, 3.5, 3.5, 3.5], [9.5, 9.5, 9.5, 9.5]]} scrollInfo={adjustedTimings[6][5]} alignment={['left', 'bottom']} />
+        <TransformingContent child={<ImgBox url={images.cute_robot_think} displayDimensions={[23.2, 33.2]}/>} positions={[[3.5, 3.5, 3.5, 3.5], [9.5, 9.5, 9.5, 9.5]]} scrollInfo={adjustedTimings[7][5]} alignment={['left', 'bottom']} />
              
-        <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[6][6]} />} positions={[[-15, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[6][6]} alignment={['left', 'bottom']} />
+        <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[7][6]} />} positions={[[-15, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[7][6]} alignment={['left', 'bottom']} />
  
      
-        <TransformingContent positions={[[27,27,27,27],[50, 50, 50, 50]]} scrollInfo={adjustedTimings[6][7]} alignment={['bottom', 'right']} child={
-             <OpacityParagraph scrollInfo={adjustedTimings[6][8]} dark={false} simpleFade={true} baseOpacity={0} text={["Let’s go →"]} />
+        <TransformingContent positions={[[27,27,27,27],[50, 50, 50, 50]]} scrollInfo={adjustedTimings[7][7]} alignment={['bottom', 'right']} child={
+             <OpacityParagraph scrollInfo={adjustedTimings[7][8]} dark={false} simpleFade={true} baseOpacity={0} text={["Let’s go →"]} />
              }></TransformingContent>
         
         </>
@@ -290,14 +296,18 @@ function NamingSection({ images, text }) {
                 </>
             } />
             
-
-            {/* Section 6 */}
-            <Background background={images.naming_gradient} height={sectionHeights[6]} />
+            {/* Section 6 - HotDog */}
+            {/* <Background background={images.naming_gradient} height={sectionHeights[6]}/> */}
             
+            <HotDogSection images={images} sectionHeights={sectionHeights} adjustedTimings={adjustedTimings}></HotDogSection>
+
+            {/* Section 7 */}
+            <Background background={images.naming_gradient} height={sectionHeights[7]} />     
+            {/* <Background background={"#202020"} height={sectionHeights[7]} />   */}
              
-             <TransformingTextBox positions={[20, 20, 20, 20, 20]} scrollInfo={adjustedTimings[6][0]} alignment={'top'} child={
+             <TransformingTextBox positions={[20, 20, 20, 20, 20]} scrollInfo={adjustedTimings[7][0]} alignment={'top'} child={
                  <>
-                     <OpacityParagraph scrollInfo={adjustedTimings[6][2]} dark={false} simpleFade={true} baseOpacity={0} text={
+                     <OpacityParagraph scrollInfo={adjustedTimings[7][2]} dark={false} simpleFade={true} baseOpacity={0} text={
                          ["Our team is investing in a series of open, iterative trials to explore the potential new utility of AI to push the bounds of our naming capability, considering…",
  
                          "•  Can we coach AI to deliver more creative ideas than it can at first blush?",
@@ -310,7 +320,7 @@ function NamingSection({ images, text }) {
                          
                          "•  How do we build the Firmi 2.0 to take advantage of the opportunity?"]
                      } />
-                     <OpacityParagraph scrollInfo={adjustedTimings[6][3]} dark={false} simpleFade={true} baseOpacity={0} text={
+                     <OpacityParagraph scrollInfo={adjustedTimings[7][3]} dark={false} simpleFade={true} baseOpacity={0} text={
                          ["We’ll document our learning in real time to the advantage of our clients and the work we deliver. Ultimately, we’ll test the hypothesis that this ChatGPT era can supercharge our expertise and creative processes to arrive at stronger names than ever before.",
                          " ",
                          "First up in our list of experiments – name generation."]
@@ -318,7 +328,6 @@ function NamingSection({ images, text }) {
                  </>
              } /> 
  
-             
             {isMobile? mobileRobotSection : desktopRobotSection}
             
 
@@ -326,5 +335,5 @@ function NamingSection({ images, text }) {
     )
 }
 
-//
+
 
