@@ -7,7 +7,7 @@ import { Background, TransitionBackground } from '../interactions/Background'
 import { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox } from '../interactions/TransformingContent'
 import { OpacityHeading, OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
 import { FadingHeader } from "../interactions/FadingHeader"
-import { ContactCard } from './ContactCard';
+// import { ContactCard } from './ContactCard';
 
 export { ManifestoSection }
 
@@ -27,7 +27,7 @@ function ManifestoSection({ images }) {
     let adjustedTimings = []
 
     const header = { subtitleTop_section: "LIPPINCOTT + AI", subtitleTop_subsection: "PERSPECTIVE", title: "We need to talk about AI", subtitleBottom: "By Tom Ajello | [Month] 2023" }
-    const contactCard = { header: "Reach out to us to talk about AI", body: "For inquiries and specific AI opportunities in branding and experience" }
+    // const contactCard = { header: "Reach out to us to talk about AI", body: "For inquiries and specific AI opportunities in branding and experience" }
 
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
     for (let i = 0; i < sectionHeights.length; i++) {

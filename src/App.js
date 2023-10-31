@@ -23,11 +23,12 @@ function App() {
         
         {article === 'naming' && <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS} />}
         {article === 'manifesto' && <ManifestoSection images={MANIFESTO_IMAGES} />}
-        {/* <HotDogSection></HotDogSection> */}
+        {article === 'hotdog' && <HotDogSection />}
 
         <div style={{position: 'fixed', top: 0, color: 'white'}}>
           <button onClick={() => {setArticle('manifesto'); console.log('manifesto')}}>Manifesto</button>
           <button onClick={() => {setArticle('naming'); console.log('naming')}}>Naming</button>
+          <button onClick={() => {setArticle('hotdo'); console.log('hotdog')}}>Naming</button>
         </div>
       </div>
     </div>

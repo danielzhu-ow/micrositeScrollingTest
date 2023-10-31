@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import { motion } from "framer-motion"
 
-import { Background, TransitionBackground } from '../interactions/Background'
-import { TransformingContent, TransformingTextBox, ImgBox, VideoBox, ScalingImgBox, RotatingImgBox } from '../interactions/TransformingContent'
-import { OpacityHeading, OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
-import { FadingHeader } from "../interactions/FadingHeader"
-
+import { Background } from '../interactions/Background'
+import { TransformingTextBox } from '../interactions/TransformingContent'
 import { useHotDogImageLoader } from '../constants/hotDogImg';
 
 export { HotDogSection }
