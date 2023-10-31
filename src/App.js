@@ -28,7 +28,7 @@ function App() {
         <div style={{position: 'fixed', top: 0, color: 'white'}}>
           <button onClick={() => {setArticle('manifesto'); console.log('manifesto')}}>Manifesto</button>
           <button onClick={() => {setArticle('naming'); console.log('naming')}}>Naming</button>
-          <button onClick={() => {setArticle('hotdo'); console.log('hotdog')}}>Naming</button>
+          <button onClick={() => {setArticle('hotdog'); console.log('hotdog')}}>Hotdog</button>
         </div>
       </div>
     </div>
