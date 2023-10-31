@@ -48,6 +48,7 @@ function TransitionBackground({ background, height, startHeight, startTransition
                 <div ref={ref} style={{
                     // position: "absolute",
                     backgroundColor: background,
+                    pointerEvents: "none",
                     height: height + "vh",
                     width: "100%",
                     zIndex: 0,
@@ -55,6 +56,7 @@ function TransitionBackground({ background, height, startHeight, startTransition
                 <div ref={ref} style={{
                     // position: "absolute",
                     backgroundImage: "url(" + background + ")",
+                    pointerEvents: "none",
                     backgroundSize: "100% 100%",
                     backgroundAttachment: "fixed",
                     height: height + "vh",
@@ -64,6 +66,7 @@ function TransitionBackground({ background, height, startHeight, startTransition
             }
             <motion.div style={{
                 backgroundColor: "#202020",
+                pointerEvents: "none",
                 height: height + "vh",
                 width: "100%",
                 opacity: opacity,

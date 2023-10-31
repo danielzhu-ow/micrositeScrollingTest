@@ -1,9 +1,10 @@
 import './App.css';
+import { useState } from 'react';
 
 // import pages
 import { NamingSection } from './sections/NamingSection';
 import { ManifestoSection } from './sections/ManifestoSection'
-import { HotDogSection} from './sections/HotDogSection';
+import { HotDogSection } from './sections/HotDogSection';
 
 //import content constants
 import NAMING_STRINGS from './constants/textContent';
@@ -11,18 +12,23 @@ import { useImageLoader } from './constants/manifestoImgContent'; //usage: Namin
 import { useNamingImageLoader } from './constants/imgContent';
 
 function App() {
+  const [article, setArticle] = useState('manifesto')
+
   const MANIFESTO_IMAGES = useImageLoader();
   const NAMING_IMAGES = useNamingImageLoader();
 
   return (
     <div className="App">
       <div className='App-header'>
-        {/* <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS}></NamingSection> */}
-        <ManifestoSection images={MANIFESTO_IMAGES} />
-        {/* <HotDogSection images={NAMING_IMAGES}></HotDogSection> */}
-        <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS}></NamingSection>
-        {/* <ManifestoSection images={MANIFESTO_IMAGES} /> */}
+        
+        {article === 'naming' && <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS} />}
+        {article === 'manifesto' && <ManifestoSection images={MANIFESTO_IMAGES} />}
         {/* <HotDogSection></HotDogSection> */}
+
+        <div style={{position: 'fixed', top: 0, color: 'white'}}>
+          <button onClick={() => {setArticle('manifesto'); console.log('manifesto')}}>Manifesto</button>
+          <button onClick={() => {setArticle('naming'); console.log('naming')}}>Naming</button>
+        </div>
       </div>
     </div>
   );
