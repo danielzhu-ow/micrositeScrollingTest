@@ -22,9 +22,7 @@ const NAMING_STRINGS = {
     } 
 }
 
-const MANIFESTO_STRINGS={
-    
-}
+// const MANIFESTO_STRINGS={}
 
 export default NAMING_STRINGS;
 // NamingSTRINGS.Header.title

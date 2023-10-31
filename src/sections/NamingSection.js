@@ -8,7 +8,7 @@ import namezap1 from '../images/naming/NameZap1.mp4'
 // import interactions
 import { Background, TransitionBackground } from '../interactions/Background'
 import { TransformingContent, TransformingTextBox, ImgBox, VideoBox, ScalingImgBox, RotatingImgBox } from '../interactions/TransformingContent'
-import {OpacityHeading, OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
+import { OpacityParagraph, OpacitySubheading } from '../interactions/OpacityContent';
 import { FadingHeader } from "../interactions/FadingHeader"
 import { HotDogSection } from './HotDogSection.js';
 
@@ -93,8 +93,7 @@ function NamingSection({ images, text }) {
         }
         adjustedTimings.push(adjusted)
     }
-
-    const isLaptop = useMediaQuery({query: devices.laptop});
+    
     const isMobile = useMediaQuery({query: devices.mobileL});
 
     const mobileSection1 = (
