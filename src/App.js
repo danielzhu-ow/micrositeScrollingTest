@@ -3,7 +3,7 @@ import './App.css';
 // import pages
 import { NamingSection } from './sections/NamingSection';
 import { ManifestoSection } from './sections/ManifestoSection'
-// import { HotDogSection} from './sections/HotDogSection';
+import { HotDogSection} from './sections/HotDogSection';
 
 //import content constants
 import NAMING_STRINGS from './constants/textContent';
@@ -20,6 +20,9 @@ function App() {
         {/* <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS}></NamingSection> */}
         <ManifestoSection images={MANIFESTO_IMAGES} />
         {/* <HotDogSection images={NAMING_IMAGES}></HotDogSection> */}
+        <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS}></NamingSection>
+        {/* <ManifestoSection images={MANIFESTO_IMAGES} /> */}
+        {/* <HotDogSection></HotDogSection> */}
       </div>
     </div>
   );

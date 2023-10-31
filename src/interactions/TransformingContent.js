@@ -3,7 +3,7 @@ import { sizes } from "../constants/devices"
 import MediaQuery from "react-responsive"
 import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion"
 
-export { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox, VideoBox }
+export { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox, VideoBox, ScalingImgBox, RotatingImgBox }
 
 function TransformingContent({ child, positions, scrollInfo, alignment }) {
 
@@ -123,14 +123,14 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
                 top: 0,
                 left: 0,
                 width: "100%",
-                hieght: "100%",
+                height: "100%",
             }}>
                 <div style={{ position: "relative", textAlign: "center" }}>
                     {child}
                 </div>
             </motion.div>
         )
-    }
+    } 
 }
 
 function ImgBox({ url, displayDimensions, rotate, fixWidth, fixHeight }) {
@@ -282,4 +282,49 @@ VideoBox.propTypes = {
     url: PropTypes.string,
     displayWidth: (PropTypes.number).isRequired,
     prioritizeHeight: PropTypes.bool,
-};
+  };
+
+
+  function ScalingImgBox({ url, displayDimensions, scrollInfo }) {
+    const { scrollYProgress } = useScroll();
+ 
+    const scale = useTransform(scrollYProgress, scrollInfo, displayDimensions); //[x1, x2, x3, x4]
+    const tScale = useMotionTemplate`${scale}rem`;
+
+    return (
+        <>
+            {/* <MediaQuery minWidth={sizes.tablet}> */}
+                <motion.img src={url} alt={url}
+                    style={{
+                        width: tScale,
+                        height: "auto",
+                       
+                    }} />
+            {/* </MediaQuery> */}
+        </>
+    )
+    
+}
+
+function RotatingImgBox({ url, displayDimensions, rotateDimensions, scrollInfo }) {
+    const { scrollYProgress } = useScroll();
+ 
+    const rotate = useTransform(scrollYProgress, scrollInfo, rotateDimensions); //[x1, x2, x3, x4]
+    const tRotate = useMotionTemplate`rotate(${rotate}deg)`;
+    // transform: "rotate(" + rotate + "deg)",
+
+    return (
+        <>
+            {/* <MediaQuery minWidth={sizes.tablet}> */}
+                <motion.img src={url} alt={url}
+                    style={{
+                        transform: tRotate,
+                        width: displayDimensions[0] + "vw",
+                        height: "auto",
+                       
+                    }} />
+            {/* </MediaQuery> */}
+        </>
+    )
+    
+}
