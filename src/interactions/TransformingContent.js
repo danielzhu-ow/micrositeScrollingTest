@@ -58,6 +58,7 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
                 position: "fixed",
                 top: tY,
                 right: tX,
+                left: 'auto',
                 display: visible
             }}>
                 {child}
@@ -69,6 +70,7 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
                 position: "fixed",
                 bottom: tY,
                 right: tX,
+                left: 'auto',
                 display: visible
             }}>
                 {child}
@@ -137,15 +139,30 @@ function ImgBox({ url, displayDimensions, rotate, fixWidth, fixHeight }) {
         return (
             <img src={url} alt={url}
                 style={{
+                    userDrag: "none",
+                    WebkitUserDrag: "none",
+                    userSelect: "none",
+                    MozUserSelect: "none",
+                    WebkitUserSelect: "none",
+                    msUserSelect: "none",
+
                     transform: "rotate(" + rotate + "deg)",
                     width: displayDimensions[0] + "vw",
                     height: "auto",
-                }} />
+                }
+                } />
         )
     } else if (fixHeight) {
         return (
             <img src={url} alt={url}
                 style={{
+                    userDrag: "none",
+                    WebkitUserDrag: "none",
+                    userSelect: "none",
+                    MozUserSelect: "none",
+                    WebkitUserSelect: "none",
+                    msUserSelect: "none",
+
                     transform: "rotate(" + rotate + "deg)",
                     height: displayDimensions[1] + "vh",
                     width: "auto",
@@ -157,6 +174,13 @@ function ImgBox({ url, displayDimensions, rotate, fixWidth, fixHeight }) {
                 <MediaQuery minWidth={sizes.tablet}>
                     <img src={url} alt={url}
                         style={{
+                            userDrag: "none",
+                            WebkitUserDrag: "none",
+                            userSelect: "none",
+                            MozUserSelect: "none",
+                            WebkitUserSelect: "none",
+                            msUserSelect: "none",
+
                             transform: "rotate(" + rotate + "deg)",
                             width: displayDimensions[0] + "vw",
                             height: "auto",
@@ -165,6 +189,13 @@ function ImgBox({ url, displayDimensions, rotate, fixWidth, fixHeight }) {
                 <MediaQuery maxWidth={sizes.mobileL}>
                     <img src={url} alt={url}
                         style={{
+                            userDrag: "none",
+                            WebkitUserDrag: "none",
+                            userSelect: "none",
+                            MozUserSelect: "none",
+                            WebkitUserSelect: "none",
+                            msUserSelect: "none",
+
                             transform: "rotate(" + rotate + "deg)",
                             height: displayDimensions[1] + "vh",
                             width: "auto",
@@ -197,6 +228,13 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
             {wider ?
                 <img src={url} alt={url}
                     style={{
+                        userDrag: "none",
+                        WebkitUserDrag: "none",
+                        userSelect: "none",
+                        MozUserSelect: "none",
+                        WebkitUserSelect: "none",
+                        msUserSelect: "none",
+
                         transform: "rotate(" + rotate + "deg)",
                         width: displayDimensions[0] + "vw",
                         height: "auto",
@@ -205,6 +243,13 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
                     }} /> :
                 <img src={url} alt={url}
                     style={{
+                        userDrag: "none",
+                        WebkitUserDrag: "none",
+                        userSelect: "none",
+                        MozUserSelect: "none",
+                        WebkitUserSelect: "none",
+                        msUserSelect: "none",
+
                         transform: "rotate(" + rotate + "deg)",
                         height: displayDimensions[1] + "vh",
                         width: "auto",
@@ -215,26 +260,26 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
     )
 }
 function VideoBox({ url, displayWidth }) {
-  
+
     return (
-      <>
-        <video controls autoPlay muted 
-            style={{
-              width: `${displayWidth[0]}vw`,
-              height: 'auto',
-              border: "2px solid black",
-              borderRadius: "4rem"
-            }}
-          >
-            <source src={url} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-      </>
+        <>
+            <video controls autoPlay muted
+                style={{
+                    width: `${displayWidth[0]}vw`,
+                    height: 'auto',
+                    border: "2px solid black",
+                    borderRadius: "4rem"
+                }}
+            >
+                <source src={url} type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </>
     );
-  }
-  
-  VideoBox.propTypes = {
+}
+
+VideoBox.propTypes = {
     url: PropTypes.string,
     displayWidth: (PropTypes.number).isRequired,
     prioritizeHeight: PropTypes.bool,
-  };
+};

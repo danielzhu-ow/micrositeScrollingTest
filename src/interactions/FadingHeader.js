@@ -7,7 +7,7 @@ export { FadingHeader }
 function FadingHeader({ text, scrollInfo }) {
     const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length-1], 1]
     const { scrollYProgress } = useScroll();
-    const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1, 1])
+    const opacity = useTransform(scrollYProgress, scrollInfo, [0.1, 1, 1])
     const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'])
     // useMotionValueEvent(visible, 'change', latest => console.log(latest))
     let content  =

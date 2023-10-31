@@ -17,8 +17,8 @@ function App() {
   return (
     <div className="App">
       <div className='App-header'>
-        <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS}></NamingSection>
-        {/* <ManifestoSection images={MANIFESTO_IMAGES} /> */}
+        {/* <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS}></NamingSection> */}
+        <ManifestoSection images={MANIFESTO_IMAGES} />
         {/* <HotDogSection images={NAMING_IMAGES}></HotDogSection> */}
       </div>
     </div>

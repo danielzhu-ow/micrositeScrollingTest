@@ -13,16 +13,14 @@ const ArticleHeader = styled.p`
 
     padding-left: 32rem;
     padding-right: 32rem;
-    top: 50%;
     transform: translateY(-50%);
-    z-index: 4;
+    top: 50%;
 
     @media only screen and (max-width: ${sizes.laptop}) {
         font-size: 5rem;
         padding-left: 3.2rem;
         padding-right: 3.2rem;
     }
-
 
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 3.2rem;
@@ -76,7 +74,7 @@ const ArticleSubHeading = styled.h2`
     padding-right: 3.2rem;
 
     max-width: 750px;
-    margin: 0 auto 2rem auto;
+    margin: 10rem auto 2rem auto;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 3.2rem;
