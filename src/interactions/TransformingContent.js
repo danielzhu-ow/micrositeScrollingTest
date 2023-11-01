@@ -9,7 +9,7 @@ function TransformingContent({ child, positions, scrollInfo, alignment }) {
 
     const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length - 1], 1]
     const { scrollYProgress } = useScroll();
-    // 0.2
+
     const x = useTransform(scrollYProgress, scrollInfo, positions[0]) //[x1, x2, x3, x4]
     const y = useTransform(scrollYProgress, scrollInfo, positions[1]) //[-34, 29, 29, 126]
     const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'])
@@ -130,7 +130,7 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
                 </div>
             </motion.div>
         )
-    } 
+    }
 }
 
 function ImgBox({ url, displayDimensions, rotate, fixWidth, fixHeight }) {
@@ -262,53 +262,66 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
 function VideoBox({ url, displayWidth }) {
 
     return (
+        <video controls autoPlay muted
+            style={{
+                width: `${displayWidth}vw`,
+                height: 'auto',
+                border: "2px solid black",
+                borderRadius: "4rem"
+            }}
+        >
+            <source src={url} type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    );
+}
+
+function VideoTextBox({ displayWidth }) {
+    return (
         <>
-            <video controls autoPlay muted
+            <div
                 style={{
-                    width: `${displayWidth[0]}vw`,
+                    width: `${displayWidth}vw`,
                     height: 'auto',
                     border: "2px solid black",
                     borderRadius: "4rem"
                 }}
-            >
-                <source src={url} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+            />
         </>
     );
 }
 
-VideoBox.propTypes = {
+VideoTextBox.propTypes = {
     url: PropTypes.string,
     displayWidth: (PropTypes.number).isRequired,
     prioritizeHeight: PropTypes.bool,
-  };
+};
 
 
-  function ScalingImgBox({ url, displayDimensions, scrollInfo }) {
+function ScalingImgBox({ url, displayDimensions, scrollInfo }) {
     const { scrollYProgress } = useScroll();
- 
+
     const scale = useTransform(scrollYProgress, scrollInfo, displayDimensions); //[x1, x2, x3, x4]
     const tScale = useMotionTemplate`${scale}rem`;
 
     return (
         <>
             {/* <MediaQuery minWidth={sizes.tablet}> */}
-                <motion.img src={url} alt={url}
-                    style={{
-                        width: tScale,
-                        height: "auto",
-                       
-                    }} />
+            <motion.img src={url} alt={url}
+                style={{
+                    width: tScale,
+                    height: "auto",
+
+                }} />
             {/* </MediaQuery> */}
         </>
     )
-    
+
 }
 
 function RotatingImgBox({ url, displayDimensions, rotateDimensions, scrollInfo }) {
     const { scrollYProgress } = useScroll();
- 
+
     const rotate = useTransform(scrollYProgress, scrollInfo, rotateDimensions); //[x1, x2, x3, x4]
     const tRotate = useMotionTemplate`rotate(${rotate}deg)`;
     // transform: "rotate(" + rotate + "deg)",
@@ -316,15 +329,15 @@ function RotatingImgBox({ url, displayDimensions, rotateDimensions, scrollInfo }
     return (
         <>
             {/* <MediaQuery minWidth={sizes.tablet}> */}
-                <motion.img src={url} alt={url}
-                    style={{
-                        transform: tRotate,
-                        width: displayDimensions[0] + "vw",
-                        height: "auto",
-                       
-                    }} />
+            <motion.img src={url} alt={url}
+                style={{
+                    transform: tRotate,
+                    width: displayDimensions[0] + "vw",
+                    height: "auto",
+
+                }} />
             {/* </MediaQuery> */}
         </>
     )
-    
+
 }

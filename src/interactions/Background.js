@@ -33,14 +33,14 @@ Background.propTypes = {
     height: PropTypes.number.isRequired,
 }
 
-function TransitionBackground({ background, height, startHeight, startTransition }) {
+function TransitionBackground({ background, height, startHeight, startTransition, endOpacity}) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end end"]
     })
 
-    const opacity = useTransform(scrollYProgress, [startTransition, 1], [0, 1])
+    const opacity = useTransform(scrollYProgress, [startTransition, 1], [0, endOpacity])
 
     return (
         <>
@@ -79,12 +79,14 @@ function TransitionBackground({ background, height, startHeight, startTransition
 }
 
 TransitionBackground.defaultProps = {
-    startTransition: 0.5
+    startTransition: 0.5,
+    endOpacity: 1
 }
 
 TransitionBackground.propTypes = {
     background: PropTypes.any,
     height: PropTypes.number.isRequired,
     startTransition: PropTypes.number,
-    startHeight: PropTypes.number.isRequired
+    startHeight: PropTypes.number.isRequired,
+    endOpacity: PropTypes.number
 }

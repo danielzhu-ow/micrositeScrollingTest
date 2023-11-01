@@ -16,6 +16,11 @@ export const useNamingImageLoader = () => {
         const firmi = (await import ('../images/naming/firmi.png')).default;
         const cute_robot_idle = (await import ('../images/naming/cute_robot2.png')).default;
         const cute_robot_think = (await import ('../images/naming/cute_robot.gif')).default;
+        const duracell = (await import ('../images/experiments/duracell.png')).default;
+        const off = (await import ('../images/experiments/off.png')).default;
+        const experiment_01 = (await import ('../images/experiments/experiment_01.png')).default;
+        const experiment_02 = (await import ('../images/experiments/experiment_02.png')).default;
+        const experiment_03 = (await import ('../images/experiments/experiment_03.png')).default;
 
         const imageObject = {
           naming_gradient,
@@ -27,7 +32,12 @@ export const useNamingImageLoader = () => {
           dino_night,
           firmi, 
           cute_robot_idle,
-          cute_robot_think
+          cute_robot_think,
+          duracell,
+          off,
+          experiment_01,
+          experiment_02,
+          experiment_03,
         };
 
         setNAMING_IMAGES(imageObject);
