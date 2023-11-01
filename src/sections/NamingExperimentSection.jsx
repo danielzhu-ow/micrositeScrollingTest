@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 // import interactions
 import { Background, TransitionBackground } from '../interactions/Background'
 import { TransformingContent, TransformingTextBox, ImgBox, VideoBox } from '../interactions/TransformingContent'
-import { OpacityHeading, OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
+import { OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
 import { FadingHeader } from "../interactions/FadingHeader"
 import { FadingSectionHeader } from '../interactions/FadingSectionHeader';
 
@@ -64,7 +64,7 @@ function NamingExperimentSection({ images }) {
     }
 
     //RESPONSIVE SECTIONS
-    const isLaptop = useMediaQuery({ query: devices.laptop });
+    // const isLaptop = useMediaQuery({ query: devices.laptop });
     const isMobile = useMediaQuery({ query: devices.mobileL });
 
     //SECTION 2
