@@ -1,4 +1,3 @@
-import styled from "styled-components"
 import { useScroll, useTransform, motion, useMotionValueEvent } from "framer-motion"
 
 export { VideoTextBox, VideoTextScroller }

@@ -5,7 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 // import interactions
 import { Background, TransitionBackground } from '../interactions/Background'
 import { TransformingContent, TransformingTextBox, ImgBox, VideoBox } from '../interactions/TransformingContent'
-import { OpacityParagraph, OpacityList, OpacitySubheading, OpacityContent } from '../interactions/OpacityContent';
+import { OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
 import { FadingHeader } from "../interactions/FadingHeader"
 import { FadingSectionHeader } from '../interactions/FadingSectionHeader';
 import { ColumnImage } from '../interactions/ColumnImage.js';
