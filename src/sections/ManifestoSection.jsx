@@ -20,10 +20,10 @@ function ManifestoSection({ images }) {
     const sectionTimings = [
         //Fading Header  Img1     Img2
         [[0, 0.4, 0.7], [0, 0.6], [0, 0.6], [0.8, 0.9, 1]],
-        // 0 Avocado_toast        1 Avocado_1            2 Avocado_2            3 Avocado_3          4 Avocado_4             5 Header Paragraph        6 Paragraph 1           7 Paragraph 2          8 Paragraph 3         9 Galileo        10 1-2 Trans Timings           11 Para 4            12                              13 Mobile Avocado Op    14 Mobile Para 1       15 Mobile Para 2
-        [[0.25, 0.3, 0.85, 0.9], [0.2, 0.3, 0.85, 0.9], [0.2, 0.3, 0.85, 0.9], [0.2, 0.3, 0.85, 0.9], [0.25, 0.3, 0.85, 0.9], [-0.1, 0.08, 0.12, 0.2], [0.2, 0.25, 0.4, 1], [0.2, 0.4, 0.6, 1], [0.2, 0.6, 0.8, 1], [0.7, 0.75, 0.85, 0.9], [0.2, 0.25, 0.55, 0.6, 0.9, 1], [0.2, 0.8, 0.95, 1], [0.2, 0.25, 0.4, 0.6, 0.9, 1], [0.25, 0.25, 0.4, 0.6], [0.2, 0.3, 0.5, 1], [0.2, 0.5, 0.6, 1]],
-        //0 Para 1 Trans    1 robots Trans         2 Para 2 Opacity           3 Para 3-1 Opacity       4 Para 3 Trans       5 Beach Robot        6 Para 3-3 Opacity    7 Para 2 Trans           8 Card Move  9 Para 3-2              10 
-        [[0, 0.125, 0.25], [0, 0.18, 0.22, 0.25], [0.25, 0.375, 0.385, 0.5], [0.4, 0.5, 0.75, 1.5], [0.45, 0.5, 0.75, 1.5], [0.45, 0.5, 1.5], [0.4, 0.75, 1.2, 1.25], [0.2, 0.25, 0.45, 0.5], [0.75, 1], [0.4, 0.615, 0.75, 1.25], [0, 0.2, 0.385, 0.5]]]
+        // 0 Avocado_toast        1 Avocado_1            2 Avocado_2            3 Avocado_3          4 Avocado_4             5 Header Paragraph        6 Paragraph 1           7 Paragraph 2          8 Paragraph 3         9 Galileo        10 1-2 Trans Timings 11 Para 4            12                              13 Mobile Avocado Op    14 Mobile Para 1       15 Mobile Para 2
+        [[0.25, 0.3, 0.85, 0.9], [0.2, 0.3, 0.85, 0.9], [0.2, 0.3, 0.85, 0.9], [0.2, 0.3, 0.85, 0.9], [0.25, 0.3, 0.85, 0.9], [-0.1, 0.08, 0.12, 0.2], [0.2, 0.25, 0.4, 1], [0.2, 0.4, 0.6, 1], [0.2, 0.6, 0.8, 1], [0.7, 0.75, 0.85, 0.9], [0.2, 0.25, 0.9, 1], [0.2, 0.8, 0.95, 1], [0.2, 0.25, 0.9, 1], [0.25, 0.25, 0.4, 0.6], [0.2, 0.3, 0.5, 1], [0.2, 0.5, 0.6, 1]],
+        //0 Para 1 Trans    1 robots              2 Para 2 Opacity          3 Para 3-1 Opacity       4 Para 3 Trans    5 Beach Robot       6 Para 3-3 Opacity       7 Para 2 Trans        8 Card Move 9 Para 3-2               10 
+        [[0, 0.125, 0.33], [0, 0.18, 0.28, 0.33], [0.33, 0.46, 0.52, 0.66], [0.61, 0.66, 0.82, 1.5], [0.61, 0.66, 1.5], [0.61, 0.95, 1.5], [0.61, 0.82, 1.2, 1.5], [0, 0.05, 0.61, 0.66], [0.75, 1], [0.61, 0.66, 0.82, 1.25], [0, 0.2, 0.385, 0.5]]]
     let adjustedTimings = []
 
     const header = { subtitleTop_section: "LIPPINCOTT + AI", subtitleTop_subsection: "PERSPECTIVE", title: "We need to talk about AI", subtitleBottom: "By Tom Ajello | [Month] 2023" }
@@ -44,9 +44,9 @@ function ManifestoSection({ images }) {
     const isMobile = useMediaQuery({ query: devices.mobileL });
 
     const mobileHowPlay = (
-        <TransformingTextBox positions={[127, 10, 10, -40]} scrollInfo={adjustedTimings[2][4]} alignment={'top'} child={
+        <TransformingTextBox positions={[127, 10, -40]} scrollInfo={adjustedTimings[2][4]} alignment={'top'} child={
             <>
-                <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} text={
+                <OpacitySubheading scrollInfo={adjustedTimings[2][9]} dark={false} text={
                     ["How we'll play"]
                 } />
                 <OpacityParagraph scrollInfo={adjustedTimings[2][9]} dark={false} text={
@@ -55,15 +55,14 @@ function ManifestoSection({ images }) {
                 <OpacityParagraph scrollInfo={adjustedTimings[2][6]} dark={false} text={
                     ["We choose creativity-led progress. We choose to believe humans and machines can be powerful together. And we choose not to talk about it from afar—but to test it out, get our hands in the sandbox, and really see what all this means."]
                 } />
-                {/* <ContactCard scrollInfo={adjustedTimings[2][8]} portrait={images.tom_gif} text={contactCard} /> */}
             </>
         } />
     );
 
     const desktopHowPlay = (
-        <TransformingTextBox positions={[127, 10, 10, -40]} scrollInfo={adjustedTimings[2][4]} alignment={'top'} child={
+        <TransformingTextBox positions={[127, 20, -40]} scrollInfo={adjustedTimings[2][4]} alignment={'top'} child={
             <>
-                <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} text={
+                <OpacitySubheading scrollInfo={adjustedTimings[2][9]} dark={false} text={
                     ["How we'll play"]
                 } />
                 <OpacityParagraph scrollInfo={adjustedTimings[2][9]} dark={false} text={
@@ -72,13 +71,12 @@ function ManifestoSection({ images }) {
                 <OpacityParagraph scrollInfo={adjustedTimings[2][6]} dark={false} text={
                     ["We choose creativity-led progress. We choose to believe humans and machines can be powerful together. And we choose not to talk about it from afar—but to test it out, get our hands in the sandbox, and really see what all this means."]
                 } />
-                {/* <ContactCard scrollInfo={adjustedTimings[2][8]} portrait={images.tom_gif} text={contactCard} /> */}
             </>
         } />
     );
 
     const mobilePara1 = (
-        <TransformingTextBox positions={[127, 27, -20, -100, -180, -240]} scrollInfo={adjustedTimings[1][12]} alignment={'top'} child={
+        <TransformingTextBox positions={[127, 27, -150, -200]} scrollInfo={adjustedTimings[1][12]} alignment={'top'} child={
             <>
                 <ImgBox url={images.avocado_toast} displayDimensions={[80, 100]} rotate={0} fixWidth={true} />
 
@@ -102,7 +100,7 @@ function ManifestoSection({ images }) {
     );
 
     const desktopPara1 = (
-        <TransformingTextBox positions={[127, 27, 3, -21, -42, -100]} scrollInfo={adjustedTimings[1][10]} alignment={'top'} child={
+        <TransformingTextBox positions={[127, 27, -42, -100]} scrollInfo={adjustedTimings[1][10]} alignment={'top'} child={
             <>
                 <OpacityParagraph scrollInfo={adjustedTimings[1][6]} text={
                     [["And for good reason. It has the potential to disrupt, well, everything."], ["Early adopters and businesses have flocked in, and familiar patterns have set in, powered by both the fantasy—and fear—of the unknown. With phrases like “this will take our jobs” getting tossed around Twitter like avocado toast recipes and morning news programs running full segments dedicated to the sky falling, you'd be excused for being confused or even anxious yourself. But while caution is necessary, maybe we should choose to be cautiously optimistic."]]
@@ -124,7 +122,7 @@ function ManifestoSection({ images }) {
     )
 
     const mobileAvocados = (
-        <TransformingContent child={<ImgBox url={images.galileo} displayDimensions={[78, 40]} rotate={0} fixHeight={true} />} positions={[[-100, 8, 14, 100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][9]} alignment={['left', 'bottom']} />
+        <></>
     );
 
     const desktopAvocados = (
@@ -161,6 +159,58 @@ function ManifestoSection({ images }) {
         <TransformingContent child={<ImgBox url={images.robot_beach} displayDimensions={[174, 50]} rotate={0} />} positions={[[-300, -200, -200], [0, 0, 0]]} scrollInfo={adjustedTimings[2][5]} alignment={['left', 'bottom']} />
     )
 
+    const mobileWeChoose = (
+        <TransformingTextBox positions={[127, 10, 10]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
+            <>
+                <OpacitySubheading scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    ["We choose play"]
+                } />
+                <OpacityParagraph scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    ["These next few months, we're going deep on a grand experiment. We are still in the early stages of understanding AI and its full potential and limitations. By experimenting with AI, we aim to gain a deeper understanding of its capabilities and limitations and make informed decisions about how best to use it. And you get to follow along."]
+                } />
+            </>
+        } />
+    )
+
+    const desktopWeChoose = (
+        <TransformingTextBox positions={[127, 27, 27]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
+            <>
+                <OpacitySubheading scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    ["We choose play"]
+                } />
+                <OpacityParagraph scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    ["These next few months, we're going deep on a grand experiment. We are still in the early stages of understanding AI and its full potential and limitations. By experimenting with AI, we aim to gain a deeper understanding of its capabilities and limitations and make informed decisions about how best to use it. And you get to follow along."]
+                } />
+            </>
+        } />
+    )
+
+    const mobileHowWell = (
+        <TransformingTextBox positions={[10, 10, 10, -50]} scrollInfo={adjustedTimings[2][7]} alignment={'top'} child={
+            <>
+                <OpacitySubheading scrollInfo={adjustedTimings[2][2]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    ["Where we'll play"]
+                } />
+                <OpacityList scrollInfo={adjustedTimings[2][2]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    ["Customer & User Research", "Messaging, Writing & Naming", "Value Propositions & Concept Testing", "Art Direction & Design", "Asset Production", "Risk & Governance", "HR & Recruitment"]
+                } />
+            </>
+        } />
+    )
+
+    const desktopHowWell = (
+        <TransformingTextBox positions={[27, 27, 27, -50]} scrollInfo={adjustedTimings[2][7]} alignment={'top'} child={
+            <>
+                <OpacitySubheading scrollInfo={adjustedTimings[2][2]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    ["Where we'll play"]
+                } />
+                <OpacityList scrollInfo={adjustedTimings[2][2]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    ["Customer & User Research", "Messaging, Writing & Naming", "Value Propositions & Concept Testing", "Art Direction & Design", "Asset Production", "Risk & Governance", "HR & Recruitment"]
+                } />
+            </>
+        } />
+    )
+
     return (
         <div style={{ position: "relative", height: "100%", width: "100%" }}>
 
@@ -179,39 +229,18 @@ function ManifestoSection({ images }) {
                 } />
             } />
 
+            {/* SECTION 2 */}
             {isMobile ? mobilePara1 : desktopPara1}
             {isMobile ? mobileAvocados : desktopAvocados}
 
             {/* SECTION 3 */}
             <Background background={images.manifesto_gradient} height={sectionHeights[2]} />
-
             {isMobile ? mobileRobots : desktopRobots}
-
-            <TransformingTextBox positions={[127, 27, 27]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
-                <>
-                    <OpacitySubheading scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                        ["We choose play"]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                        ["These next few months, we're going deep on a grand experiment. We are still in the early stages of understanding AI and its full potential and limitations. By experimenting with AI, we aim to gain a deeper understanding of its capabilities and limitations and make informed decisions about how best to use it. And you get to follow along."]
-                    } />
-                </>
-            } />
-
+            {isMobile ? mobileWeChoose : desktopWeChoose}
             {isMobile ? mobileBeach : desktopBeach}
-            {/* <TransformingContent child={<ImgBox url={images.robot_beach} displayDimensions={[174, 50]} rotate={0} />} positions={[[-175, -40, -40, -175], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[2][5]} alignment={['left', 'bottom']} /> */}
-            <TransformingTextBox positions={[27, 27, 27, -50]} scrollInfo={adjustedTimings[2][7]} alignment={'top'} child={
-                <>
-                    <OpacitySubheading scrollInfo={adjustedTimings[2][2]} dark={false} simpleFade={true} baseOpacity={0} text={
-                        ["Where we'll play"]
-                    } />
-                    <OpacityList scrollInfo={adjustedTimings[2][2]} dark={false} simpleFade={true} baseOpacity={0} text={
-                        ["Customer & User Research", "Messaging, Writing & Naming", "Value Propositions & Concept Testing", "Art Direction & Design", "Asset Production", "Risk & Governance", "HR & Recruitment"]
-                    } />
-                </>
-            } />
-
+            {isMobile ? mobileHowWell : desktopHowWell}
             {isLaptop ? mobileHowPlay : desktopHowPlay}
+            
         </div>
     )
 }

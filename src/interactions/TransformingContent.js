@@ -259,10 +259,11 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
         </>
     )
 }
+
 function VideoBox({ url, displayWidth }) {
 
     return (
-        <video controls autoPlay muted
+        <video controls autoPlay={false} muted
             style={{
                 width: `${displayWidth}vw`,
                 height: 'auto',
@@ -276,22 +277,7 @@ function VideoBox({ url, displayWidth }) {
     );
 }
 
-function VideoTextBox({ displayWidth }) {
-    return (
-        <>
-            <div
-                style={{
-                    width: `${displayWidth}vw`,
-                    height: 'auto',
-                    border: "2px solid black",
-                    borderRadius: "4rem"
-                }}
-            />
-        </>
-    );
-}
-
-VideoTextBox.propTypes = {
+VideoBox.propTypes = {
     url: PropTypes.string,
     displayWidth: (PropTypes.number).isRequired,
     prioritizeHeight: PropTypes.bool,

@@ -21,6 +21,10 @@ export const useNamingImageLoader = () => {
         const experiment_01 = (await import ('../images/experiments/experiment_01.png')).default;
         const experiment_02 = (await import ('../images/experiments/experiment_02.png')).default;
         const experiment_03 = (await import ('../images/experiments/experiment_03.png')).default;
+        const orange_robot1 = (await import ('../images/experiments/orange_robot1.png')).default;
+        const tin_robot3 = (await import ('../images/experiments/tin_robot3.png')).default;
+        const cute_robot = (await import ('../images/experiments/cute_robot.png')).default;
+        const mobile_duracell_off = (await import ('../images/experiments/mobile_duracell_off.png')).default;
 
         const imageObject = {
           naming_gradient,
@@ -38,6 +42,10 @@ export const useNamingImageLoader = () => {
           experiment_01,
           experiment_02,
           experiment_03,
+          cute_robot,
+          orange_robot1,
+          tin_robot3,
+          mobile_duracell_off,
         };
 
         setNAMING_IMAGES(imageObject);
