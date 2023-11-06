@@ -1,4 +1,4 @@
-import { useScroll, useTransform, motion, useMotionValueEvent } from "framer-motion"
+import { useScroll, useTransform, motion } from "framer-motion"
 
 export { VideoTextBox, VideoTextScroller }
 
@@ -28,7 +28,6 @@ function VideoTextBox({ child, scrollInfo, displayWidth, heightRatio }) {
 function VideoTextScroller({ scrollInfo, scrollToFrom, children }) {
     const { scrollYProgress } = useScroll();
     const scrolling = useTransform(scrollYProgress, scrollInfo, scrollToFrom)
-    useMotionValueEvent(scrolling, 'change', latest => {console.log(latest)})
 
     return (
         <motion.div style={{

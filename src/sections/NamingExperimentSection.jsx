@@ -19,6 +19,7 @@ import coined_fullscreen_02C from '../images/naming/coined_fullscreen_02C.mp4'
 import abstract_fullscreen_03A from '../images/naming/abstract_fullscreen_03A.mp4'
 import abstract_fullscreen_03B from '../images/naming/abstract_fullscreen_03B.mp4'
 import abstract_fullscreen_03C from '../images/naming/abstract_fullscreen_03C.mp4'
+import { TryThis } from './TryThis.jsx';
 
 export { NamingExperimentSection }
 
@@ -32,15 +33,15 @@ function NamingExperimentSection({ images }) {
         //0 Fading Header
         [[0, 0.4, 0.7]],
         //1 Para 1                   Para 2                 Para 3                 Text Motion
-        [[-0.1, 0.05, 0.28, 1], [-0.1, 0.38, 0.61, 1], [-0.1, 0.71, 0.95, 1], [-0.1, 0.05, 0.8, 1]],
+        [[-0.1, 0.05, 0.28, 1], [-0.1, 0.38, 0.61, 1], [-0.1, 0.71, 0.95, 1], [0, 0.2, 0.8, 1]],
         //2 Fading Section Header
-        [[0.1, 0.3, 1]],
+        [[0.1, 0.3, 0.7]],
         //3 Video
         [[-0.1, 0.25, 1.2]],
         //4 Para 1                 Para 2                    Para 3                Text Motion
-        [[-0.2, 0.16, 0.17, 0.33], [0.33, 0.49, 0.5, 0.66], [0.66, 0.82, 0.83, 1], [-0.05, 0, 0.33, 0.66, 1]],
+        [[-0.2, 0.16, 0.17, 0.33], [0.33, 0.49, 0.5, 0.66], [0.66, 0.74, 0.75, 0.9], [-0.05, 0, 0.33, 0.66, 1]],
         //5 Fading Section Header
-        [[0.1, 0.3, 1]],
+        [[0.1, 0.3, 0.7]],
         //6 Video
         [[0, 0.4, 1]],
         //7 Video Text
@@ -48,17 +49,17 @@ function NamingExperimentSection({ images }) {
         //8, Video
         [[0, 0.4, 1]],
         //9 Video Text
-        [[0, 1], [0, 0, 0.33, 1], [0, 0.33, 0.66, 1], [0, 0.66, 0.99, 1]],
+        [[0, 1], [0, 0, 0.22, 1], [0, 0.22, 0.44, 1], [0, 0.44, 0.99, 1]],
         //10, Video
         [[0, 0.4, 1]],
         //11 Para 1
-        [[-0.2, 0.05, 0.45, 0.5]],
+        [[-0.2, 0.05, 0.45, 0.5], [0.5, 0.5, 0.8, 0.8]],
         //12 Fading Section Header
-        [[0.1, 0.3, 1]],
+        [[0.1, 0.3, 0.7]],
         //13 Video
         [[0, 0.5, 1]],
         //14 Video Text
-        [[0, 1], [0, 0, 0.5, 1], [0, 0.5, 0.99, 1]],
+        [[0, 1], [0, 0, 0.2, 1], [0, 0.2, 0.99, 1]],
         //15 Video
         [[0, 0.5, 1]],
         //16 Video Text
@@ -75,6 +76,7 @@ function NamingExperimentSection({ images }) {
     const sectionHeader01 = { title_label: "Experiment 01", title: "Establishing the baseline", body: ["Starting with ChatGPT, we are setting out to understand the way the tool generates names without any help. How valuable are its “innate” instincts when looking to ideate new options for a brand name?", "So, let's create a realistic prompt, but limit our guidance or framing to see how it does."] }
     const sectionHeader02 = { title_label: "Experiment 02", title: "Is the word “name” a problem?", body: ["One early observation as we’ve played with GPT’s naming capabilities: its go-to understanding of the word “name.”", "We first asked GPT to generate 10 “words” that abstractly evoke intelligence, and some of the results were interesting and could conceivably be used as, or modified into viable brand names."] }
     const sectionHeader03 = { title_label: "Experiment 03", title: "GPT is literally, so literal. Can we teach it abstraction?", body: ["If you’ve ever asked GPT to create names, you know it tends to over-index on expected category terms. For example, ask it to generate names for a tech brand that suggest intelligence, you’ll get results like the following:"] }
+    const tryText = { header: "Try this experiment out yourself!", body: "This link will bring you to ChatGPT with the experiment set up for your use." }
 
     //CALCULATING TIMINGS
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
@@ -190,7 +192,7 @@ function NamingExperimentSection({ images }) {
     )
 
     const desktopTheOpportunity = (
-        <TransformingTextBox positions={[27, 27, 27, -60]} scrollInfo={adjustedTimings[4][2]} alignment={'top'} child={
+        <TransformingTextBox positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[4][2]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[4][2]} child={<ImgBox url={images.tin_robot3} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
@@ -198,7 +200,7 @@ function NamingExperimentSection({ images }) {
                         ["The opportunity:"]
                     } />
                     <OpacityParagraph scrollInfo={adjustedTimings[4][2]} dark={false} simpleFade={true} baseOpacity={0} text={
-                        ["It’s clear that GPT at baseline doesn’t give us what we need, but we have a number of options through creative prompting and context-setting that can help drive toward more interesting results. Can we teach GPT different types of names? Can we train it to think more abstractly or creatively? Can we diversify the naming approaches or themes it explores? Can feeding it past examples or IC on our best practices help coach it to think more like we do about naming?"]
+                        ["It's clear that GPT at baseline doesn't give us what we need, but we have a number of options through creative prompting and context-setting that can help drive toward more interesting results. Can we teach GPT different types of names? Can we train it to think more abstractly or creatively? Can we diversify the naming approaches or themes it explores? Can feeding it past examples or IC on our best practices help coach it to think more like we do about naming?"]
                     } />
                 </div>
             </DoubleColumn>
@@ -325,6 +327,15 @@ function NamingExperimentSection({ images }) {
         } />
     )
 
+    const desktopTryThis01 = (
+        <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[11][1]} alignment={'top'} child={
+            <DoubleColumn>
+                <ColumnImage scrollInfo={adjustedTimings[11][1]} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <TryThis text={tryText} scrollInfo={adjustedTimings[11][1]} />
+            </DoubleColumn>
+        } />
+    )
+
     //SECTION 13
     const mobileVideoAbstract01 = (
         <TransformingContent positions={[[0, 0, 0], [-100, 5, 5]]} scrollInfo={adjustedTimings[13][0]} alignment={['center', 'center']}
@@ -440,7 +451,7 @@ function NamingExperimentSection({ images }) {
 
     //SECTION 18
     const desktopWeFound = (
-        <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[18][0]} alignment={'top'} child={
+        <TransformingTextBox positions={[127, 10, 10, 10]} scrollInfo={adjustedTimings[18][0]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[18][0]} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
@@ -456,7 +467,7 @@ function NamingExperimentSection({ images }) {
     )
 
     const desktopButChallenges = (
-        <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[18][1]} alignment={'top'} child={
+        <TransformingTextBox positions={[127, 10, 10, 10]} scrollInfo={adjustedTimings[18][1]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[18][1]} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
@@ -471,13 +482,11 @@ function NamingExperimentSection({ images }) {
         } />
     )
 
-    const desktopTryThis = (
-        <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[18][2]} alignment={'top'} child={
+    const desktopTryThis02 = (
+        <TransformingTextBox positions={[127, 10, 10, 10]} scrollInfo={adjustedTimings[18][2]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[18][2]} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
-                <div>
-                    
-                </div>
+                <TryThis text={tryText} scrollInfo={adjustedTimings[18][2]} />
             </DoubleColumn>
         } />
     )
@@ -535,6 +544,7 @@ function NamingExperimentSection({ images }) {
             {/* SECTION 11*/}
             <Background background={images.naming_gradient} height={sectionHeights[11]} />
             {desktopWhileThese}
+            {desktopTryThis01}
 
             {/* SECTION 12 */}
             <FadingSectionHeader text={sectionHeader03} scrollInfo={adjustedTimings[12][0]} />
@@ -564,7 +574,7 @@ function NamingExperimentSection({ images }) {
             <Background background={images.naming_gradient} height={sectionHeights[18]} />
             {desktopWeFound}
             {desktopButChallenges}
-            {desktopTryThis}
+            {desktopTryThis02}
 
         </div>
     )
