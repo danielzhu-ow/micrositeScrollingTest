@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import { sizes } from '../constants/devices';
 import { motion, useTransform, useScroll } from 'framer-motion';
 
-export { TryThis, ContactButton }
+export { TryThis }
 
 const CardBox = styled.div`
     background-color: rgba(255, 255, 255, 0.5);
