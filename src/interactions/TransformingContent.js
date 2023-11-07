@@ -89,13 +89,16 @@ TransformingContent.propTypes = {
 function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
     const { scrollYProgress } = useScroll();
 
+    const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length - 1], 1]
     const y = useTransform(scrollYProgress, scrollInfo, positions) //[-34, 29, 29, 126]
+    const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'block', 'none'])
     const tY = useMotionTemplate`${y}vh`
 
     if (alignment === 'top') {
         return (
             <motion.div style={{
                 position: "fixed",
+                display: visible,
                 top: tY,
                 width: "100%",
             }}>
@@ -108,6 +111,7 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
         return (
             <motion.div style={{
                 position: "fixed",
+                display: visible,
                 width: "100%",
                 bottom: tY,
             }}>
@@ -120,6 +124,7 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment }) {
         return (
             <motion.div style={{
                 position: "fixed",
+                display: visible,
                 top: 0,
                 left: 0,
                 width: "100%",

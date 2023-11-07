@@ -25,6 +25,9 @@ export const useNamingImageLoader = () => {
         const tin_robot3 = (await import ('../images/experiments/tin_robot3.png')).default;
         const cute_robot = (await import ('../images/experiments/cute_robot.png')).default;
         const mobile_duracell_off = (await import ('../images/experiments/mobile_duracell_off.png')).default;
+        const mobile_sprite_verizon = (await import ('../images/naming/mobileSpriteVerizon.png')).default;
+        const toy_pile = (await import ('../images/naming/toyPile.png')).default;
+        const hotdog = (await import ('../images/naming/hotdog.png')).default;
 
         const imageObject = {
           naming_gradient,
@@ -46,6 +49,9 @@ export const useNamingImageLoader = () => {
           orange_robot1,
           tin_robot3,
           mobile_duracell_off,
+          mobile_sprite_verizon,
+          toy_pile,
+          hotdog,
         };
 
         setNAMING_IMAGES(imageObject);

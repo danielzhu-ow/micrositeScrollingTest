@@ -10,8 +10,8 @@ const Container = styled.div`
     margin: auto;
     text-align: center;
 
-    @media only screen and (max-width: ${sizes.mobileL}) {
-        grid-template-columns: auto;
+    @media only screen and (max-width: ${sizes.tablet}) {
+        grid-template-columns: 100%;
     }
 `
 

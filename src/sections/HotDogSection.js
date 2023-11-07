@@ -2,14 +2,104 @@ import { useState } from 'react';
 import { motion } from "framer-motion"
 
 import { Background } from '../interactions/Background'
-import { TransformingTextBox } from '../interactions/TransformingContent'
+import { TransformingContent, TransformingTextBox, ImgBox } from '../interactions/TransformingContent'
 import { useHotDogImageLoader } from '../constants/hotDogImg';
+import { OpacityContent, OpacitySubheading } from '../interactions/OpacityContent';
+import { sizes, devices } from '../constants/devices';
+import { useMediaQuery } from 'react-responsive';
+import styled from 'styled-components';
 
 export { HotDogSection }
 
-function HotDogSection({ images, sectionHeights, adjustedTimings}) {
-  const HOTDOG_IMAGES = useHotDogImageLoader();
+const ContactButton = styled.button`
+    margin: 0;
+    width: 20rem;
+    height: 5.9rem;
 
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 0.5rem;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+
+    @media only screen and (max-width: ${sizes.mobileL}) {
+        width: 13rem;
+        height: 5rem;
+        font-size: 1.4rem;
+    }
+`;
+
+const ArticleSubHeading = styled.h2`
+    font-family: 'Noe Display Medium';
+    font-weight: 500;
+    font-size: 5rem;
+    text-align: left;
+
+    max-width: 750px;
+    margin: 10rem auto 2rem auto;
+
+    @media only screen and (max-width: ${sizes.mobileL}) {
+        font-size: 3.2rem;
+    }
+`;
+
+const RestaurantContainer = styled.div`
+  background-color: white;
+  border: 1px black solid;
+  border-radius: 0.5rem;
+  width: 75rem;
+  padding: 3.2rem;
+`;
+
+const RightColumn = styled.div`
+  height: fit-contents;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+`
+
+const RestaurantName = styled.h3`
+  font-family: 'Noe Display Medium';
+  font-weight: 500;
+  font-size: 3.2rem;
+  margin: 0;
+`;
+
+const RestaurantDesc = styled.p`
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+  margin: 1.6rem 0 3.2rem 0;
+`;
+
+const DoubleColumn = styled.div`
+    display: grid;
+    grid-template-columns: 40% 52%;
+    column-gap: 0%;
+    max-width: 110rem;
+    margin: auto;
+    text-align: center;
+
+    @media only screen and (max-width: ${sizes.tablet}) {
+        max-width: 36rem;
+        grid-template-columns: 100%;
+    }
+`
+
+const InsideColumn = styled.div`
+  width: fit-content;
+  column-count: 2;
+  column-gap: 3.2rem';
+
+  @media only screen and (max-width: ${sizes.tablet}) {
+    column-count: 1;
+}
+`
+
+function HotDogSection({ images, sectionHeights, adjustedTimings }) {
+  const HOTDOG_IMAGES = useHotDogImageLoader();
   const [namingStarted, setNamingStarted] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -21,6 +111,7 @@ function HotDogSection({ images, sectionHeights, adjustedTimings}) {
     "Gourmaust": generateRandomHotdogImage(HOTDOG_IMAGES),
     "DoggieDaze": generateRandomHotdogImage(HOTDOG_IMAGES),
   };
+
   const optionDescriptions = {
     "Crafty Weenies": "Unleash your taste buds with artisanal hot dogs at Crafty Weenies. Experience a world of flavors, from classic comfort dogs to inventive, gourmet creations that'll satisfy your cravings like never before.",
     "Doggbite": "Sink your teeth into the ultimate hot dog experience at Doggbite. These gourmet dogs are designed to delight with their mouthwatering combinations and bold flavors that will leave you craving more.",
@@ -39,50 +130,74 @@ function HotDogSection({ images, sectionHeights, adjustedTimings}) {
     setSelectedOption(null);
   };
 
+  const isMobile = useMediaQuery({ query: devices.mobileL });
+
+  const mobileToys = (
+    <>
+      <OpacityContent scrollInfo={adjustedTimings[6][1]} baseOpacity={0} child={
+        <TransformingContent positions={[[0, 0, 0, -100], [-1, -1, -1, -1]]} scrollInfo={adjustedTimings[6][1]} alignment={['right', 'bottom']} child={
+          <ImgBox url={images.toy_pile} displayDimensions={[50, 50]} rotate={0} />
+        } />
+      } />
+    </>
+  );
+
+  const desktopToys = (
+    <>
+      <OpacityContent scrollInfo={adjustedTimings[6][3]} baseOpacity={0} child={
+        <TransformingContent positions={[[-100, 10, 10, 60, 60, 60], [9, 9, 9, 9, 9, 100]]} scrollInfo={adjustedTimings[6][2]} alignment={['right', 'bottom']} child={
+          <ImgBox url={images.hotdog} displayDimensions={[33, 33]} rotate={0} />
+        } />
+      } />
+      <OpacityContent scrollInfo={adjustedTimings[6][1]} baseOpacity={0} child={
+        <TransformingContent positions={[[0, 0, 0, -100], [-1, -1, -1, -1]]} scrollInfo={adjustedTimings[6][1]} alignment={['right', 'bottom']} child={
+          <ImgBox url={images.toy_pile} displayDimensions={[50, 50]} rotate={0} />
+        } />
+      } />
+    </>
+  );
+
+  const clickableModule = (
+    <RestaurantContainer>
+      <RestaurantName>{selectedOption}</RestaurantName>
+      <RestaurantDesc>{optionDescriptions[selectedOption]}</RestaurantDesc>
+      <img
+        src={optionImages[selectedOption]}
+        alt={selectedOption}
+        style={{ width: "100%", marginBottom: '3.2rem' }}
+      />
+      <div style={{ width: '100%', textAlign: 'center' }}>
+        <motion.div whileTap={{ scale: 0.95 }} onClick={handleStartOver}>
+          <ContactButton>Start Over</ContactButton>
+        </motion.div>
+      </div>
+    </RestaurantContainer>
+  );
+
   return (
     <>
-    <Background background={images.naming_gradient} height={sectionHeights[6]}/>
-    <TransformingTextBox positions={[100, 30, 30, 30, -20]} scrollInfo={adjustedTimings[6][0]} alignment={'top'} child={
-    <motion.div className='hotDogMainCont'> 
-      <h1>
-        {namingStarted
-          ? selectedOption
-            ? "Let me show you what my dreams are made of"
-            : "How did I do? Pick your favorite"
-          : "Let’s name that gourmet hot dog restaurant you’ve always wanted to make"}
-      </h1>
-      {namingStarted ? (
-        selectedOption ? (
-          <div>
-            <h2>{selectedOption}</h2>
-            <h3>{optionDescriptions[selectedOption]}</h3>
-            <img
-              src={optionImages[selectedOption]}
-              alt={selectedOption}
-              style={{ width: "30%" }}
-            />
-          </div>
-        ) : (
-          <NamingButtons onOptionClick={handleOptionClick} />
-        )
-      ) : (
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setNamingStarted(true)}
-          disabled={namingStarted}
-        >
-          {namingStarted ? "Naming Started" : "Start Naming"}
-        </motion.button>
-      )}
-      {selectedOption && (
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          onClick={handleStartOver}
-        >
-          Start Over
-        </motion.button>
-      )}
-    </motion.div>} />
+      <Background background={images.naming_gradient} height={sectionHeights[6]} />
+      {/* ANIMATION IN */}
+      <TransformingContent positions={[[15, 15, 15, 15], [15, 15, 15, 15]]} scrollInfo={adjustedTimings[6][1]} alignment={['left', 'top']} child={
+        <OpacitySubheading scrollInfo={adjustedTimings[6][1]} dark={false} simpleFade={true} text={[["So, it's time to play."]]} />
+      } />
+
+      {isMobile ? mobileToys : desktopToys}
+
+      <TransformingTextBox positions={[100, 0, 0, -120]} scrollInfo={adjustedTimings[6][0]} alignment={'top'} child={
+        <DoubleColumn>
+          <div></div>
+          <motion.div className='hotDogMainCont' style={{ maxWidth: '68.2rem', textAlign: 'left', height: '100vh', position: 'relative' }}>
+            <RightColumn>
+              <ArticleSubHeading>{namingStarted ? selectedOption ? "Let me show you what my dreams are made of" : "How did I do? Pick your favorite" : "Let's name that gourmet hot dog restaurant you've always wanted to make"}</ArticleSubHeading>
+              {namingStarted ? (selectedOption ? ( clickableModule ) : (<NamingButtons onOptionClick={handleOptionClick} />)) : (
+                <motion.div whileTap={{ scale: 0.95 }} onClick={() => setNamingStarted(true)} disabled={namingStarted}>
+                  <ContactButton> {namingStarted ? "NAMING STARTED" : "START NAMING"} </ContactButton>
+                </motion.div>
+              )}
+            </RightColumn>
+          </motion.div>
+        </DoubleColumn >} />
     </>
   );
 }
@@ -94,19 +209,23 @@ const generateRandomHotdogImage = (images) => {
 };
 
 const NamingButtons = ({ onOptionClick }) => {
-  const options = ["Crafty Weenies", "Doggbite", "Dog Days Delight", "Savvy Franks", "Gourmaust", "DoggieDaze"];
+  const option1 = ["Crafty Weenies", "Doggbite", "Dog Days Delight"];
+  const option2 = ["Savvy Franks", "Gourmaust", "DoggieDaze"];
+
   return (
-    <div>
-      {options.map((option, index) => (
-        <motion.button
-          key={index}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => onOptionClick(option)}
-        >
-          {option}
-        </motion.button>
-      ))}
-    </div>
+    <InsideColumn>
+      <div>
+        {option1.map((option, index) => (
+          <motion.div key={index} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => onOptionClick(option)} style={{ marginBottom: '3.2rem' }}>
+            <ContactButton style={{ maxWidth: '32.6rem' }}> {option} </ContactButton>
+          </motion.div>))}
+      </div>
+      <div>
+        {option2.map((option, index) => (
+          <motion.div key={index} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => onOptionClick(option)} style={{ marginBottom: '3.2rem' }}>
+            <ContactButton style={{ maxWidth: '32.6rem' }}> {option} </ContactButton>
+          </motion.div>))}
+      </div>
+    </InsideColumn>
   );
 }
