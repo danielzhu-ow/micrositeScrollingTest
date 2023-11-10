@@ -10,7 +10,7 @@ import { FadingHeader } from "../interactions/FadingHeader"
 import { FadingSectionHeader } from '../interactions/FadingSectionHeader';
 import { ColumnImage } from '../interactions/ColumnImage.js';
 import { DoubleColumn } from '../interactions/DoubleColumn.js';
-import { VideoTextBox, VideoTextScroller } from '../interactions/VideoTextBox.js';
+import { VideoTextBox } from '../interactions/VideoTextBox.js';
 
 import baseline_fullscreen_01 from '../images/naming/baseline_fullscreen_01.mp4'
 import words_fullscreen_02A from '../images/naming/words_fullscreen_02A.mp4'
@@ -26,44 +26,44 @@ export { NamingExperimentSection }
 function NamingExperimentSection({ images }) {
 
     //Heights               0    1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18
-    const sectionHeights = [300, 400, 400, 200, 300, 400, 200, 200, 200, 600, 200, 200, 400, 200, 400, 200, 600, 200, 1200]
+    const sectionHeights = [300, 400, 400, 200, 600, 400, 200, 200, 200, 200, 200, 200, 400, 200, 400, 200, 600, 200, 1200]
 
     //Timings | Timings are adjusted to start - end of section
     const sectionTimings = [
         //0 Fading Header
-        [[0, 0.4, 0.7]],
-        //1 Para 1                   Para 2                 Para 3                 Text Motion
-        [[-0.1, 0.05, 0.28, 1], [-0.1, 0.38, 0.61, 1], [-0.1, 0.71, 0.95, 1], [0, 0.2, 0.8, 1]],
+        [[0, 0.2, 0.4, 1], [0, 1.5, 2]],
+        //1 Para 1               Para 2                 Para 3                 Text Motion       Off
+        [[-0.1, 0.05, 0.28, 1], [-0.1, 0.38, 0.61, 1], [-0.1, 0.71, 0.95, 1], [0, 0.2, 0.8, 1], [-0.1, 0.1, 0.5, 0.8]],
         //2 Fading Section Header
-        [[0.1, 0.3, 0.7]],
+        [[0.1, 0.5, 0.7, 0.9], [0, 0.6, 1.5]],
         //3 Video
         [[-0.1, 0.25, 1.2]],
         //4 Para 1                 Para 2                    Para 3                Text Motion
         [[-0.2, 0.16, 0.17, 0.33], [0.33, 0.49, 0.5, 0.66], [0.66, 0.74, 0.75, 0.9], [-0.05, 0, 0.33, 0.66, 1]],
         //5 Fading Section Header
-        [[0.1, 0.3, 0.7]],
+        [[0.1, 0.5, 0.7, 0.9], [0, 0.4, 1.5]],
         //6 Video
         [[0, 0.4, 1]],
         //7 Video Text
-        [[0, 1], [0, 0.45, 0.55, 1]],
+        [[0, 1], [0, 0.45, 0.55, 1], [-0.1, 0, 1, 1.1]],
         //8, Video
         [[0, 0.4, 1]],
         //9 Video Text
-        [[0, 1], [0, 0, 0.22, 1], [0, 0.22, 0.44, 1], [0, 0.44, 0.99, 1]],
+        [[0, 1], [0, 0.45, 0.55, 1], [-0.1, 0, 1, 1.1]],
         //10, Video
         [[0, 0.4, 1]],
         //11 Para 1
         [[-0.2, 0.05, 0.45, 0.5], [0.5, 0.5, 0.8, 0.8]],
         //12 Fading Section Header
-        [[0.1, 0.3, 0.7]],
+        [[0.1, 0.5, 0.7, 0.9], [0, 0.4, 1.5]],
         //13 Video
         [[0, 0.5, 1]],
         //14 Video Text
-        [[0, 1], [0, 0, 0.2, 1], [0, 0.2, 0.99, 1]],
+        [[0, 1], [0, 0.45, 0.55, 1], [-0.1, 0, 1, 1.1]],
         //15 Video
         [[0, 0.5, 1]],
         //16 Video Text
-        [[0, 1], [0, 0, 0.33, 1], [0, 0.33, 0.66, 1], [0, 0.66, 0.99, 1]],
+        [[0, 1], [0, 0.22, 0.25, 0.5], [0.5, 0.725, 0.75, 1], [-0.1, 0, 1, 1.1]],
         //17 Video
         [[0, 0.5, 1]],
         //18 Section 1 TF        Section 2 TF              Section 3 TF
@@ -136,13 +136,9 @@ function NamingExperimentSection({ images }) {
 
     const desktopOff = (
         <>
-            <TransformingContent child={<ImgBox url={images.duracell} displayDimensions={[26, 26]} rotate={-48} />} positions={[[1, 1, 1, 1], [-100, 5, 5, -100]]} scrollInfo={adjustedTimings[1][0]} alignment={['left', 'bottom']} />
-            <TransformingContent child={<ImgBox url={images.off} displayDimensions={[20, 87]} rotate={10} />} positions={[[1, 1, 1, 1], [-100, 5, 5, -100]]} scrollInfo={adjustedTimings[1][0]} alignment={['right', 'bottom']} />
+            <TransformingContent child={<ImgBox url={images.duracell} displayDimensions={[26, 26]} rotate={-48} />} positions={[[1, 1, 1, 1], [-100, 5, 5, -100]]} scrollInfo={adjustedTimings[1][4]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<ImgBox url={images.off} displayDimensions={[20, 87]} rotate={10} />} positions={[[1, 1, 1, 1], [-100, 5, 5, -100]]} scrollInfo={adjustedTimings[1][4]} alignment={['right', 'bottom']} />
         </>
-    )
-
-    const mobileOff = (
-        <></>
     )
 
     //SECTION 3
@@ -162,7 +158,7 @@ function NamingExperimentSection({ images }) {
     const desktopTheGood = (
         <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[4][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][0]} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[4][0]} backY={12} child={<ImgBox url={images.cute_robot} displayDimensions={[20, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["The good:"]
@@ -178,7 +174,7 @@ function NamingExperimentSection({ images }) {
     const desktopTheBad = (
         <TransformingTextBox positions={[27, 27, 27, 27]} scrollInfo={adjustedTimings[4][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][1]} child={<ImgBox url={images.orange_robot1} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[4][1]} backY={5} child={<ImgBox url={images.orange_robot1} displayDimensions={[25, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][1]} dark={false} simpleFade={true} baseOpacity={0} text={
                         ["The bad:"]
@@ -194,7 +190,7 @@ function NamingExperimentSection({ images }) {
     const desktopTheOpportunity = (
         <TransformingTextBox positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[4][2]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][2]} child={<ImgBox url={images.tin_robot3} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[4][2]} backY={25} child={<ImgBox url={images.tin_robot3} displayDimensions={[25, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][2]} dark={false} simpleFade={true} baseOpacity={0} text={
                         ["The opportunity:"]
@@ -224,25 +220,21 @@ function NamingExperimentSection({ images }) {
 
     //SECTION 7
     const mobileVideoText01 = (
-        <TransformingContent positions={[[0, 0], [5, 5]]} scrollInfo={adjustedTimings[7][0]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[7][0]} displayWidth={85} heightRatio={0.625} child={
-                <VideoTextScroller scrollInfo={adjustedTimings[7][0]} scrollToFrom={[100, -100]}>
-                    <OpacityParagraph scrollInfo={adjustedTimings[7][1]} simpleFade={true} baseOpacity={0} text={
-                        ["It’s clear that GPT at baseline doesn’t give us what we need, but we have a number of options through creative prompting and context-setting that can help drive toward more interesting results. Can we teach GPT different types of names? Can we train it to think more abstractly or creatively? Can we diversify the naming approaches or themes it explores? Can feeding it past examples or IC on our best practices help coach it to think more like we do about naming?"]
-                    } />
-                </VideoTextScroller>
+        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[7][2]} alignment={['center', 'center']}
+            child={<VideoTextBox scrollInfo={adjustedTimings[7][2]} displayWidth={85} heightRatio={0.626} child={
+                <OpacityParagraph scrollInfo={adjustedTimings[7][1]} simpleFade={true} baseOpacity={0} text={
+                    ["It’s clear that GPT at baseline doesn’t give us what we need, but we have a number of options through creative prompting and context-setting that can help drive toward more interesting results. Can we teach GPT different types of names? Can we train it to think more abstractly or creatively? Can we diversify the naming approaches or themes it explores? Can feeding it past examples or IC on our best practices help coach it to think more like we do about naming?"]
+                } />
             } />}
         />
     )
 
     const desktopVideoText01 = (
-        <TransformingContent positions={[[0, 0], [5, 5]]} scrollInfo={adjustedTimings[7][0]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[7][0]} displayWidth={85} heightRatio={0.625} child={
-                <VideoTextScroller scrollInfo={adjustedTimings[7][0]} scrollToFrom={[500, -500]}>
-                    <OpacityParagraph scrollInfo={adjustedTimings[7][1]} simpleFade={true} baseOpacity={0} text={
-                        ["It’s clear that GPT at baseline doesn’t give us what we need, but we have a number of options through creative prompting and context-setting that can help drive toward more interesting results. Can we teach GPT different types of names? Can we train it to think more abstractly or creatively? Can we diversify the naming approaches or themes it explores? Can feeding it past examples or IC on our best practices help coach it to think more like we do about naming?"]
-                    } />
-                </VideoTextScroller>
+        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[7][2]} alignment={['center', 'center']}
+            child={<VideoTextBox scrollInfo={adjustedTimings[7][2]} displayWidth={85} heightRatio={0.626} child={
+                <OpacityParagraph scrollInfo={adjustedTimings[7][1]} simpleFade={true} baseOpacity={0} text={
+                    ["It’s clear that GPT at baseline doesn’t give us what we need, but we have a number of options through creative prompting and context-setting that can help drive toward more interesting results. Can we teach GPT different types of names? Can we train it to think more abstractly or creatively? Can we diversify the naming approaches or themes it explores? Can feeding it past examples or IC on our best practices help coach it to think more like we do about naming?"]
+                } />
             } />}
         />
     )
@@ -262,37 +254,37 @@ function NamingExperimentSection({ images }) {
 
     //SECTION 9
     const mobileVideoText0202 = (
-        <TransformingContent positions={[[0, 0], [5, 5]]} scrollInfo={adjustedTimings[9][0]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[9][0]} displayWidth={85} heightRatio={0.625} child={
-                <VideoTextScroller scrollInfo={adjustedTimings[9][0]} scrollToFrom={[100, -100]}>
+        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[9][2]} alignment={['center', 'center']}
+            child={<VideoTextBox scrollInfo={adjustedTimings[9][2]} displayWidth={85} heightRatio={0.626} child={
+                <div>
                     <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} baseOpacity={0} text={
                         ["It is safe to say this convention is exceedingly common among brand names across categories, PayPal, YouTube, Salesforce, Facebook… but many of the most famous, aspirational brand names use coined/invented words (Google, Hulu, Zappos, Xerox) or real, abstract dictionary words (Amazon, Apple, Peloton, Uber) – none of which would be delivered if we left GPT to its own naming devices."]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][2]} simpleFade={true} baseOpacity={0} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} baseOpacity={0} text={
                         ["The lesson learned? We may be better off asking GPT for “words” or “ideas” than “names” when trying to name a brand, helping it garner results more aligned to the range of possibilities. Or better yet, we can teach it to understand the different types of names through more detailed prompts, in order to be more targeted in our exploration."]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][3]} simpleFade={true} baseOpacity={0} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} baseOpacity={0} text={
                         ["Part of our name criteria process includes pinpointing the most relevant name type for a given brand based on conventions and white space in the category, the intended tone and level of clarity, or even the idea that a certain type of name conveys. Here's an oversimplified example…"]
                     } />
-                </VideoTextScroller>
+                </div>
             } />}
         />
     )
 
     const desktopVideoText0202 = (
-        <TransformingContent positions={[[0, 0], [5, 5]]} scrollInfo={adjustedTimings[9][0]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[9][0]} displayWidth={85} heightRatio={0.625} child={
-                <VideoTextScroller scrollInfo={adjustedTimings[9][0]} scrollToFrom={[500, -500]}>
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} text={
+        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[9][2]} alignment={['center', 'center']}
+            child={<VideoTextBox scrollInfo={adjustedTimings[9][2]} displayWidth={85} heightRatio={0.626} child={
+                <div>
+                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} text={
                         ["It is safe to say this convention is exceedingly common among brand names across categories, PayPal, YouTube, Salesforce, Facebook… but many of the most famous, aspirational brand names use coined/invented words (Google, Hulu, Zappos, Xerox) or real, abstract dictionary words (Amazon, Apple, Peloton, Uber) – none of which would be delivered if we left GPT to its own naming devices."]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][2]} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} text={
                         ["The lesson learned? We may be better off asking GPT for “words” or “ideas” than “names” when trying to name a brand, helping it garner results more aligned to the range of possibilities. Or better yet, we can teach it to understand the different types of names through more detailed prompts, in order to be more targeted in our exploration."]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][3]} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} text={
                         ["Part of our name criteria process includes pinpointing the most relevant name type for a given brand based on conventions and white space in the category, the intended tone and level of clarity, or even the idea that a certain type of name conveys. Here's an oversimplified example…"]
                     } />
-                </VideoTextScroller>
+                </div>
             } />}
         />
     )
@@ -314,7 +306,7 @@ function NamingExperimentSection({ images }) {
     const desktopWhileThese = (
         <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[11][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[11][0]} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[11][0]} backY={12} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacityParagraph scrollInfo={adjustedTimings[11][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["While these results may not reflect the most viable names, we’ve quickly demonstrated that through simple priming around a certain type of name, and the intention behind it, GPT is able to apply this guidance to deliver a set of options with a more focused approach."]
@@ -330,7 +322,7 @@ function NamingExperimentSection({ images }) {
     const desktopTryThis01 = (
         <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[11][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[11][1]} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[11][1]} backY={12} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
                 <TryThis text={tryText} scrollInfo={adjustedTimings[11][1]} />
             </DoubleColumn>
         } />
@@ -351,31 +343,31 @@ function NamingExperimentSection({ images }) {
 
     //SECTION 14
     const mobileVideoText0301 = (
-        <TransformingContent positions={[[0, 0], [5, 5]]} scrollInfo={adjustedTimings[14][0]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[14][0]} displayWidth={85} heightRatio={0.625} child={
-                <VideoTextScroller scrollInfo={adjustedTimings[14][0]} scrollToFrom={[100, -100]}>
-                    <OpacityParagraph scrollInfo={adjustedTimings[14][1]} text={
+        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[14][2]} alignment={['center', 'center']}
+            child={<VideoTextBox scrollInfo={adjustedTimings[14][2]} displayWidth={85} heightRatio={0.626} child={
+                <div>
+                    <OpacityParagraph scrollInfo={adjustedTimings[14][1]} simpleFade={true} text={
                         ["Unsurprisingly GPT interprets the suggestion of intelligence through words that literally, and unimaginatively communicate the idea. Intelligent, wise, brain, insight, savvy are all closely associated or synonyms, and GPT has not yet outperformed the thesaurus in this creative exercise."]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[14][2]} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[14][1]} simpleFade={true} text={
                         ["We came upon the idea to dissect the creative process and literally spell it out for GPT. "]
                     } />
-                </VideoTextScroller>
+                </div>
             } />}
         />
     )
 
     const desktopVideoText0301 = (
-        <TransformingContent positions={[[0, 0], [5, 5]]} scrollInfo={adjustedTimings[14][0]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[14][0]} displayWidth={85} heightRatio={0.625} child={
-                <VideoTextScroller scrollInfo={adjustedTimings[14][0]} scrollToFrom={[500, -500]}>
-                    <OpacityParagraph scrollInfo={adjustedTimings[14][1]} text={
+        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[14][2]} alignment={['center', 'center']}
+            child={<VideoTextBox scrollInfo={adjustedTimings[14][2]} displayWidth={85} heightRatio={0.626} child={
+                <div>
+                    <OpacityParagraph scrollInfo={adjustedTimings[14][1]} simpleFade={true} text={
                         ["Unsurprisingly GPT interprets the suggestion of intelligence through words that literally, and unimaginatively communicate the idea. Intelligent, wise, brain, insight, savvy are all closely associated or synonyms, and GPT has not yet outperformed the thesaurus in this creative exercise."]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[14][2]} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[14][1]} simpleFade={true} text={
                         ["We came upon the idea to dissect the creative process and literally spell it out for GPT. "]
                     } />
-                </VideoTextScroller>
+                </div>
             } />}
         />
     )
@@ -395,43 +387,43 @@ function NamingExperimentSection({ images }) {
 
     //SECTION 16
     const mobileVideoText0302 = (
-        <TransformingContent positions={[[0, 0], [5, 5]]} scrollInfo={adjustedTimings[16][0]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[16][0]} displayWidth={85} heightRatio={0.625} child={
-                <VideoTextScroller scrollInfo={adjustedTimings[16][0]} scrollToFrom={[500, -500]}>
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][1]} text={
+        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[16][3]} alignment={['center', 'center']}
+            child={<VideoTextBox scrollInfo={adjustedTimings[16][3]} displayWidth={85} heightRatio={0.626} child={
+                <div>
+                    <OpacityParagraph scrollInfo={adjustedTimings[16][1]} simpleFade={true} text={
                         ["Again unsurprisingly, GPT interprets the notion of “abstract” literally. Rather than using abstract ideas, metaphors, or creative leaps of the imagination, the tool finds words that mean “abstract” – like enigma, ethereal, mirage – to force-fit abstraction into its name options."]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][2]} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[16][1]} simpleFade={true} text={
                         ["We tested a wide range of prompts trying to explain metaphor, abstraction, the use of associated ideas to communicate a theme, and the results were consistently limited in their imagination. Asking GPT to “imagine” words yields words like dream, reverie, and…imagine."]
                     } />
-                    <OpacitySubheading scrollInfo={adjustedTimings[16][3]} text={
+                    <OpacitySubheading scrollInfo={adjustedTimings[16][2]} simpleFade={true} text={
                         ["A breakthrough: “creative chaining”"]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][3]} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[16][2]} simpleFade={true} text={
                         ["We came upon the idea to dissect the creative process and literally spell it out for GPT. Why does Oracle suggest intelligence? Because oracles are associated with predicting the future. An action that requires omniscience, and therefore conveys to us a notion of impressive intellect. Making that mental leap requires a chaining of associations, and that seemed like something we could teach GPT to do."]
                     } />
-                </VideoTextScroller>
+                </div>
             } />}
         />
     )
 
     const desktopVideoText0302 = (
-        <TransformingContent positions={[[0, 0], [5, 5]]} scrollInfo={adjustedTimings[16][0]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[16][0]} displayWidth={85} heightRatio={0.625} child={
-                <VideoTextScroller scrollInfo={adjustedTimings[16][0]} scrollToFrom={[500, -500]}>
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][1]} text={
+        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[16][3]} alignment={['center', 'center']}
+            child={<VideoTextBox scrollInfo={adjustedTimings[16][3]} displayWidth={85} heightRatio={0.626} child={
+                <div>
+                    <OpacityParagraph scrollInfo={adjustedTimings[16][1]} simpleFade={true} text={
                         ["Again unsurprisingly, GPT interprets the notion of “abstract” literally. Rather than using abstract ideas, metaphors, or creative leaps of the imagination, the tool finds words that mean “abstract” – like enigma, ethereal, mirage – to force-fit abstraction into its name options."]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][2]} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[16][1]} simpleFade={true} text={
                         ["We tested a wide range of prompts trying to explain metaphor, abstraction, the use of associated ideas to communicate a theme, and the results were consistently limited in their imagination. Asking GPT to “imagine” words yields words like dream, reverie, and…imagine."]
                     } />
-                    <OpacitySubheading scrollInfo={adjustedTimings[16][3]} text={
+                    <OpacitySubheading scrollInfo={adjustedTimings[16][2]} simpleFade={true} text={
                         ["A breakthrough: “creative chaining”"]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][3]} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[16][2]} simpleFade={true} text={
                         ["We came upon the idea to dissect the creative process and literally spell it out for GPT. Why does Oracle suggest intelligence? Because oracles are associated with predicting the future. An action that requires omniscience, and therefore conveys to us a notion of impressive intellect. Making that mental leap requires a chaining of associations, and that seemed like something we could teach GPT to do."]
                     } />
-                </VideoTextScroller>
+                </div>
             } />}
         />
     )
@@ -496,16 +488,16 @@ function NamingExperimentSection({ images }) {
 
             {/* HEADER */}
             <TransitionBackground background={images.naming_gradient} height={sectionHeights[0]} startHeight={0} hasTransition={true} />
-            <FadingHeader text={header} scrollInfo={adjustedTimings[0][0]} />
+            <FadingHeader text={header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
 
             {/* SECTION 1 */}
             <Background background={"#202020"} height={sectionHeights[1]} />
             {isMobile ? mobileInCase : desktopInCase}
-            {isMobile ? mobileOff : desktopOff}
+            {isMobile ? <></> : desktopOff}
 
             {/* SECTION 2 | HEADER */}
-            <FadingSectionHeader text={sectionHeader01} scrollInfo={adjustedTimings[2][0]} />
             <TransitionBackground background={images.experiment_01} height={sectionHeights[2]} startHeight={sectionHeights[0] + sectionHeights[1]} endOpacity={0.8} hasTransition={true} />
+            <FadingSectionHeader text={sectionHeader01} scrollInfo={adjustedTimings[2][0]} />
 
             {/* SECTION 3 | VIDEO 1*/}
             <Background background={images.naming_gradient} height={sectionHeights[3]} />
@@ -518,28 +510,30 @@ function NamingExperimentSection({ images }) {
             {desktopTheOpportunity}
 
             {/* SECTION 5 | HEADER */}
-            <FadingSectionHeader text={sectionHeader02} scrollInfo={adjustedTimings[5][0]} />
             <TransitionBackground background={images.experiment_02} height={sectionHeights[5]} startHeight={sectionHeights.slice(0, 5).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} />
+            <FadingSectionHeader text={sectionHeader02} scrollInfo={adjustedTimings[5][0]} />
 
+            {/* VIDEO */}
             {/* SECTION 6 | VIDEO 2*/}
             <Background background={images.naming_gradient} height={sectionHeights[6]} />
             {isMobile ? mobileVideoBaseline02 : desktopVideoBaseline02}
-
-            {/* SECTION 7 | VIDEO 2 TEXT*/}
-            <Background background={images.naming_gradient} height={sectionHeights[7]} />
-            {isMobile ? mobileVideoText01 : desktopVideoText01}
 
             {/* SECTION 8 | VIDEO */}
             <Background background={images.naming_gradient} height={sectionHeights[8]} />
             {isMobile ? mobileVideoNames02 : desktopVideoNames02}
 
-            {/* SECTION 9 | VIDEO 2 TEXT*/}
-            <Background background={images.naming_gradient} height={sectionHeights[9]} />
-            {isMobile ? mobileVideoText0202 : desktopVideoText0202}
-
             {/* SECTION 10 | VIDEO */}
             <Background background={images.naming_gradient} height={sectionHeights[10]} />
             {isMobile ? mobileVideoCoined0203 : desktopVideoCoined0203}
+
+            {/* TEXT */}
+            {/* SECTION 7 | VIDEO 2 TEXT*/}
+            <Background background={images.naming_gradient} height={sectionHeights[7]} />
+            {isMobile ? mobileVideoText01 : desktopVideoText01}
+
+            {/* SECTION 9 | VIDEO 2 TEXT*/}
+            <Background background={images.naming_gradient} height={sectionHeights[9]} />
+            {isMobile ? mobileVideoText0202 : desktopVideoText0202}
 
             {/* SECTION 11*/}
             <Background background={images.naming_gradient} height={sectionHeights[11]} />
@@ -547,28 +541,31 @@ function NamingExperimentSection({ images }) {
             {desktopTryThis01}
 
             {/* SECTION 12 */}
+            <TransitionBackground background={images.experiment_03} height={sectionHeights[12]} startHeight={sectionHeights.slice(0, 12).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} />
             <FadingSectionHeader text={sectionHeader03} scrollInfo={adjustedTimings[12][0]} />
-            <TransitionBackground background={images.experiment_03} height={sectionHeights[12]} startHeight={sectionHeights.slice(0, 8).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} />
 
+            {/* VIDEOS */}
             {/* SECTION 13 */}
             <Background background={images.naming_gradient} height={sectionHeights[13]} />
             {isMobile ? mobileVideoAbstract01 : desktopVideoAbstract01}
-
-            {/* SECTION 14 */}
-            <Background background={images.naming_gradient} height={sectionHeights[14]} />
-            {isMobile ? mobileVideoText0301 : desktopVideoText0301}
 
             {/* SECTION 15 */}
             <Background background={images.naming_gradient} height={sectionHeights[15]} />
             {isMobile ? mobileVideoAbstract02 : desktopVideoAbstract02}
 
+            {/* SECTION 17 */}
+            <Background background={images.naming_gradient} height={sectionHeights[17]} />
+            {isMobile ? mobileVideoAbstract03 : desktopVideoAbstract03}
+
+            {/* TEXT */}
+            {/* SECTION 14 */}
+            <Background background={images.naming_gradient} height={sectionHeights[14]} />
+            {isMobile ? mobileVideoText0301 : desktopVideoText0301}
+
             {/* SECTION 16 */}
             <Background background={images.naming_gradient} height={sectionHeights[16]} />
             {isMobile ? mobileVideoText0302 : desktopVideoText0302}
 
-            {/* SECTION 17 */}
-            <Background background={images.naming_gradient} height={sectionHeights[17]} />
-            {isMobile ? mobileVideoAbstract03 : desktopVideoAbstract03}
 
             {/* SECTION 18 */}
             <Background background={images.naming_gradient} height={sectionHeights[18]} />

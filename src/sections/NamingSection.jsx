@@ -24,7 +24,7 @@ function NamingSection({ images, text }) {
     //Timings 
     const sectionTimings = [
         // [0] Header
-        [[0, 0.4, 0.7],                               // [0] Fading Header [s, h, e]
+        [[0, 0.4, 0.7, 1],                               // [0] Fading Header [s, h, e]
         [0, 0.6],                                     // [1] Img 1
         [0, 0.6]],                                    // [2] Img 2
 
@@ -55,16 +55,17 @@ function NamingSection({ images, text }) {
         [[0, 0.4, 1]],                        // [0] Name Zap Video
 
         // [5] Section 5
-        [[0, 1],
+        [[0, 1],                  //VideoT             
         [0, 0, 1, 1],                  // [0] Paragraph timings
         [0, 0.3, 0.7, 1],                      // [1] post video paragraph
-        [0, 0.8, 1]],
+        [-0.1, 0.8, 1.1],
+        [-0.1, 0, 1, 1.1]],
 
         // [6] Section 6 - hotdog
-        [[0.5, 0.55, 0.75, 1],
-        [0, 0.25, 0.3, 0.5],
+        [[0.5, 0.55, 0.75, 1],                          //TEXT
+        [0, 0.25, 0.3, 0.5],                            //TOYPILE
         [0.2, 0.22, 0.25, 0.5, 0.8, 1],
-        [0.2, 0.25, 0.99, 1]],
+        [0.2, 0.25, 0.75, 1]],                          //HOTDOG
 
         // [7] Section 7
         [[0.1, 0.2, 0.55, 0.75, 1.1],                   // [0] Sub header timings
@@ -101,14 +102,14 @@ function NamingSection({ images, text }) {
     );
     const desktopSection1 = (
         <>
-            <TransformingContent child={<ImgBox url={images.verizon} displayDimensions={[35, 35]} rotate={0} />}
-                positions={[[-2, -2, -2, -2], [100, 20, 20, 100]]} scrollInfo={adjustedTimings[1][0]} alignment={['left', 'top']} />
+            {/* <TransformingContent child={<ImgBox url={images.verizon} displayDimensions={[35, 35]} rotate={0} />}
+                positions={[[-2, -2, -2, -2], [100, 20, 20, -100]]} scrollInfo={adjustedTimings[1][0]} alignment={['left', 'top']} />
             <TransformingContent child={<ImgBox url={images.sprite} displayDimensions={[13, 13]} rotate={22.22} />}
-                positions={[[8, 8, 8, 8], [100, 36, 36, 100]]} scrollInfo={adjustedTimings[1][1]} alignment={['right', 'top']} />
+                positions={[[8, 8, 8, 8], [100, 36, 36, -100]]} scrollInfo={adjustedTimings[1][1]} alignment={['right', 'top']} /> */}
             <TransformingContent child={<ImgBox url={images.dino_night} displayDimensions={[70, 70]} rotate={0} />}
-                positions={[[100, 35, 10, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
+                positions={[[100, 35, 35, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
             <TransformingContent child={<ImgBox url={images.dino_day} displayDimensions={[70, 70]} rotate={0} />}
-                positions={[[100, 40, 15, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
+                positions={[[100, 40, 40, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
         </>
     );
 
@@ -230,7 +231,7 @@ function NamingSection({ images, text }) {
         <>
             <Background background={images.naming_gradient} height={sectionHeights[5]} />
             <TransformingContent positions={[[0, 0, 0], [5, 5, 100]]} scrollInfo={adjustedTimings[5][3]} alignment={['center', 'center']}
-                child={<VideoTextBox scrollInfo={adjustedTimings[5][0]} displayWidth={80} heightRatio={0.656} child={
+                child={<VideoTextBox scrollInfo={adjustedTimings[5][4]} displayWidth={80} heightRatio={0.657} child={
                     <VideoTextScroller scrollInfo={adjustedTimings[5][0]} scrollToFrom={[500, -500]}>
                         <OpacityParagraph scrollInfo={adjustedTimings[5][1]} text={
                             ["The recent explosion of new generative AI represents an opportunity to experiment with ways to supercharge Firmi amping the natural language and machine learning capacity it lacked in early instances to become a more dynamic resource and relevant extension to our teams. We are on a mission to find ways to effectively harness the immense data sources, processing power, and intuitive interface now available, without sacrificing quality, data integrity, security, and ownership rights plaguing many OpenAi tools today."]
@@ -272,8 +273,8 @@ function NamingSection({ images, text }) {
     return (
         <div style={{ position: "relative", height: "100%", width: "100%" }}>
             {/* HEADER: Section 0 */}
-            <TransitionBackground background={images.naming_gradient} height={sectionHeights[0]} startHeight={0} hasTransition={true} />
-            <FadingHeader text={text.Header} scrollInfo={adjustedTimings[0][0]} />
+            <TransitionBackground background={images.naming_gradient} height={sectionHeights[0]} startHeight={0} hasTransition={true} scrollInfo={adjustedTimings[0][0]}/>
+            <FadingHeader text={text.Header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
             <TransformingContent child={<ImgBox url={images.naming_01} displayDimensions={[60, 60]} rotate={0} />} positions={[[0, -50], [-10, -60]]} scrollInfo={adjustedTimings[0][1]} alignment={['left', 'top']} />
             <TransformingContent child={<ImgBox url={images.naming_02} displayDimensions={[55, 55]} rotate={0} />} positions={[[0, -50], [-10, -65]]} scrollInfo={adjustedTimings[0][2]} alignment={['right', 'bottom']} />
 
@@ -284,7 +285,7 @@ function NamingSection({ images, text }) {
 
             {/* SECTION 2 */}
             {/* <Background background={images.naming_gradient} height={sectionHeights[2]} /> */}
-            <TransitionBackground background={images.naming_gradient} height={sectionHeights[2]} startHeight={700} hasTransition={true} />
+            <TransitionBackground background={images.naming_gradient} height={sectionHeights[2]} startHeight={700} hasTransition={true} scrollInfo={adjustedTimings[2][3]}/>
             {isMobile ? mobileFinding : desktopFinding}
 
             {/* SECTION 3 */}

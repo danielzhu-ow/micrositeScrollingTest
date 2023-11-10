@@ -104,7 +104,7 @@ function OpacityList({ text, scrollInfo, baseOpacity, dark, simpleFade }) {
     if (dark) { color = 'white' }
 
     return (
-        <motion.ul style={{ opacity: opacity, display: visible, color: color, listStylePosition: "inside" }}>
+        <motion.ul style={{ opacity: opacity, display: visible, color: color }}>
             {text.map(string =>
                 <ArticleList key={string}>
                     {string}

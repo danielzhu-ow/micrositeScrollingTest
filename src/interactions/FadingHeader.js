@@ -4,24 +4,26 @@ import { ContentHeader, ContentSubheader1, ContentSubheader2 } from "../ArticleH
 
 export { FadingHeader }
 
-function FadingHeader({ text, scrollInfo }) {
-    const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length-1], 1]
+function FadingHeader({ text, scrollInfo, startOn }) {
+    let opacityInfo = [0.1, 1, 0.1]
+    if (startOn) { opacityInfo = [1, 1, 1, 0.1] }
+    const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length - 1], 1]
     const { scrollYProgress } = useScroll();
-    const opacity = useTransform(scrollYProgress, scrollInfo, [0.1, 1, 1])
+    const opacity = useTransform(scrollYProgress, scrollInfo, opacityInfo)
     const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'])
     // useMotionValueEvent(visible, 'change', latest => console.log(latest))
-    
-    let content  =
-            <div>
-                <ContentSubheader1>
-                    {text.subtitleTop_section} &nbsp;&nbsp;&gt;&nbsp;&nbsp; {text.subtitleTop_subsection}
-                </ContentSubheader1>
-                <ContentHeader>{text.title}</ContentHeader>
-                <ContentSubheader2>
-                   {text.subtitleBottom}
-                </ContentSubheader2>
-            </div>
-    
+
+    let content =
+        <div>
+            <ContentSubheader1>
+                {text.subtitleTop_section} &nbsp;&nbsp;&gt;&nbsp;&nbsp; {text.subtitleTop_subsection}
+            </ContentSubheader1>
+            <ContentHeader>{text.title}</ContentHeader>
+            <ContentSubheader2>
+                {text.subtitleBottom}
+            </ContentSubheader2>
+        </div>
+
 
     return (
         <motion.div style={{
@@ -34,12 +36,17 @@ function FadingHeader({ text, scrollInfo }) {
             opacity: opacity,
             display: visible
         }}>
-            { content }
+            {content}
         </motion.div>
     )
 }
 
+FadingHeader.defaultProps = {
+    startOn: false
+}
+
 FadingHeader.propTypes = {
+    startOn: PropTypes.bool,
     text: PropTypes.object.isRequired,
     scrollInfo: PropTypes.arrayOf(PropTypes.number).isRequired,
 }

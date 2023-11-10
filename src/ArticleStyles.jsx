@@ -49,6 +49,7 @@ const ArticleBody = styled.p`
 
 const ArticleList = styled.li`
     font-family: 'Noto Sans', sans-serif;
+    list-style-position: 'inside';
     font-weight: 400;
     font-size: 2rem;
     text-align: left;
@@ -74,7 +75,7 @@ const ArticleSubHeading = styled.h2`
     padding-right: 3.2rem;
 
     max-width: 750px;
-    margin: 10rem auto 2rem auto;
+    margin: 0 auto 2rem auto;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 3.2rem;

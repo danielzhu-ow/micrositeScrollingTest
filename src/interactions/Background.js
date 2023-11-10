@@ -33,35 +33,31 @@ Background.propTypes = {
     height: PropTypes.number.isRequired,
 }
 
-function TransitionBackground({ background, height, startHeight, startTransition, endOpacity}) {
+function TransitionBackground({ background, height, startHeight, endOpacity }) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end end"]
     })
 
-    const opacity = useTransform(scrollYProgress, [startTransition, 1], [0, endOpacity])
+    const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, endOpacity, endOpacity])
 
     return (
         <>
             {typeof background === 'string' && background.charAt(0) === '#' ?
                 <div ref={ref} style={{
-                    // position: "absolute",
                     backgroundColor: background,
                     pointerEvents: "none",
                     height: height + "vh",
                     width: "100%",
-                    zIndex: 0,
                 }}></div> :
                 <div ref={ref} style={{
-                    // position: "absolute",
                     backgroundImage: "url(" + background + ")",
                     pointerEvents: "none",
                     backgroundSize: "100% 100%",
                     backgroundAttachment: "fixed",
                     height: height + "vh",
                     width: "100%",
-                    zIndex: 0,
                 }}></div>
             }
             <motion.div style={{
@@ -71,7 +67,6 @@ function TransitionBackground({ background, height, startHeight, startTransition
                 width: "100%",
                 opacity: opacity,
                 position: "absolute",
-                zIndex: 1,
                 top: startHeight + "vh",
             }} />
         </>
@@ -88,5 +83,6 @@ TransitionBackground.propTypes = {
     height: PropTypes.number.isRequired,
     startTransition: PropTypes.number,
     startHeight: PropTypes.number.isRequired,
-    endOpacity: PropTypes.number
+    endOpacity: PropTypes.number,
+    scrollInfo: PropTypes.arrayOf(PropTypes.number)
 }
