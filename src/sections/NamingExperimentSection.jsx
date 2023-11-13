@@ -11,6 +11,7 @@ import { FadingSectionHeader } from '../interactions/FadingSectionHeader';
 import { ColumnImage } from '../interactions/ColumnImage.js';
 import { DoubleColumn } from '../interactions/DoubleColumn.js';
 import { VideoTextBox } from '../interactions/VideoTextBox.js';
+import { ExperimentNav } from '../interactions/ExperimentNav.jsx';
 
 import baseline_fullscreen_01 from '../images/naming/baseline_fullscreen_01.mp4'
 import words_fullscreen_02A from '../images/naming/words_fullscreen_02A.mp4'
@@ -26,7 +27,7 @@ export { NamingExperimentSection }
 function NamingExperimentSection({ images }) {
 
     //Heights               0    1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18
-    const sectionHeights = [300, 400, 400, 200, 600, 400, 200, 200, 200, 200, 200, 200, 400, 200, 400, 200, 600, 200, 1200]
+    const sectionHeights = [300, 400, 400, 200, 600, 400, 200, 200, 200, 200, 200, 400, 400, 200, 400, 200, 600, 200, 1200]
 
     //Timings | Timings are adjusted to start - end of section
     const sectionTimings = [
@@ -53,7 +54,7 @@ function NamingExperimentSection({ images }) {
         //10, Video
         [[0, 0.4, 1]],
         //11 Para 1
-        [[-0.2, 0.05, 0.45, 0.5], [0.5, 0.5, 0.8, 0.8]],
+        [[-0.2, 0.05, 0.45, 0.5], [0.5, 0.5, 0.8, 1]],
         //12 Fading Section Header
         [[0.1, 0.5, 0.7, 0.9], [0, 0.4, 1.5]],
         //13 Video
@@ -320,7 +321,7 @@ function NamingExperimentSection({ images }) {
     )
 
     const desktopTryThis01 = (
-        <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[11][1]} alignment={'top'} child={
+        <TransformingTextBox positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[11][1]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[11][1]} backY={12} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
                 <TryThis text={tryText} scrollInfo={adjustedTimings[11][1]} />
@@ -566,13 +567,13 @@ function NamingExperimentSection({ images }) {
             <Background background={images.naming_gradient} height={sectionHeights[16]} />
             {isMobile ? mobileVideoText0302 : desktopVideoText0302}
 
-
             {/* SECTION 18 */}
             <Background background={images.naming_gradient} height={sectionHeights[18]} />
             {desktopWeFound}
             {desktopButChallenges}
             {desktopTryThis02}
 
+            <ExperimentNav heightsInfo={[[3, 5], [6, 12], [13, 19]]} sectionHeights={sectionHeights} />
         </div>
     )
 }
