@@ -272,7 +272,7 @@ function VideoBox({ url, displayWidth }) {
             style={{
                 width: `${displayWidth}vw`,
                 height: 'auto',
-                border: "2px solid black",
+                boxShadow: '0px 0px 0px 2px black inset',
                 borderRadius: "4rem"
             }}
         >

@@ -33,13 +33,32 @@ const ContactButton = styled.button`
     }
 `;
 
+const ExpandingContactButton = styled.button`
+    margin: 0;
+    width: 100%;
+    height: 5.9rem;
+
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 0.5rem;
+
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 500;
+    font-size: 2rem;
+
+    @media only screen and (max-width: ${sizes.mobileL}) {
+        height: 5rem;
+        font-size: 1.4rem;
+    }
+`;
+
 const ArticleSubHeading = styled.h2`
     font-family: 'Noe Display Medium';
     font-weight: 500;
     font-size: 5rem;
     text-align: left;
 
-    max-width: 750px;
+    max-width: 75rem;
     margin: 10rem auto 2rem auto;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
@@ -51,7 +70,7 @@ const RestaurantContainer = styled.div`
   background-color: white;
   border: 1px black solid;
   border-radius: 0.5rem;
-  width: 75rem;
+  max-width: 75rem;
   padding: 3.2rem;
 `;
 
@@ -82,6 +101,7 @@ const DoubleColumn = styled.div`
     column-gap: 0%;
     max-width: 110rem;
     margin: auto;
+    padding: 3.2rem;
     text-align: center;
 
     @media only screen and (max-width: ${sizes.tablet}) {
@@ -91,7 +111,7 @@ const DoubleColumn = styled.div`
 `
 
 const InsideColumn = styled.div`
-  width: fit-content;
+  width: 100%;
   column-count: 2;
   column-gap: 3.2rem';
 
@@ -132,7 +152,8 @@ function HotDogSection({ sectionHeights, adjustedTimings }) {
     setSelectedOption(null);
   };
 
-  const isMobile = useMediaQuery({ query: devices.mobileL });
+  // const isMobile = useMediaQuery({ query: devices.mobileL });
+  const isTablet = useMediaQuery({ query: devices.tablet });
 
   const mobileToys = (
     <>
@@ -184,7 +205,7 @@ function HotDogSection({ sectionHeights, adjustedTimings }) {
         <OpacitySubheading scrollInfo={adjustedTimings[6][1]} dark={false} simpleFade={true} text={[["So, it's time to play."]]} />
       } />
 
-      {isMobile ? mobileToys : desktopToys}
+      {isTablet ? mobileToys : desktopToys}
 
       <TransformingTextBox positions={[100, 0, 0, -120]} scrollInfo={adjustedTimings[6][0]} alignment={'top'} child={
         <DoubleColumn>
@@ -219,13 +240,13 @@ const NamingButtons = ({ onOptionClick }) => {
       <div>
         {option1.map((option, index) => (
           <motion.div key={index} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => onOptionClick(option)} style={{ marginBottom: '3.2rem' }}>
-            <ContactButton style={{ maxWidth: '32.6rem' }}> {option} </ContactButton>
+            <ExpandingContactButton style={{ maxWidth: '32.6rem' }}> {option} </ExpandingContactButton>
           </motion.div>))}
       </div>
       <div>
         {option2.map((option, index) => (
           <motion.div key={index} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => onOptionClick(option)} style={{ marginBottom: '3.2rem' }}>
-            <ContactButton style={{ maxWidth: '32.6rem' }}> {option} </ContactButton>
+            <ExpandingContactButton style={{ maxWidth: '32.6rem' }}> {option} </ExpandingContactButton>
           </motion.div>))}
       </div>
     </InsideColumn>

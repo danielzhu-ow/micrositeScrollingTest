@@ -22,13 +22,13 @@ function NamingSection({ text }) {
     // const images = useNamingImageLoader();
 
     //Heights                0    1    2    3    4    5    6    7
-    const sectionHeights = [300, 400, 300, 300, 200, 200, 400, 500]
+    const sectionHeights = [300, 600, 300, 300, 200, 200, 400, 500]
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
 
     //Timings 
     const sectionTimings = [
         // [0] Header
-        [[0, 0.4, 0.7],                               // [0] Fading Header [s, h, e]
+        [[0, 0.4, 0.7, 1],                               // [0] Fading Header [s, h, e]
         [0, 0.6],                                     // [1] Img 1
         [0, 0.6]],                                    // [2] Img 2
 
@@ -59,16 +59,17 @@ function NamingSection({ text }) {
         [[0, 0.4, 1]],                        // [0] Name Zap Video
 
         // [5] Section 5
-        [[0, 1],
+        [[0, 1],                  //VideoT             
         [0, 0, 1, 1],                  // [0] Paragraph timings
         [0, 0.3, 0.7, 1],                      // [1] post video paragraph
-        [0, 0.8, 1]],
+        [-0.1, 0.8, 1.1],
+        [-0.1, 0, 1, 1.1]],
 
         // [6] Section 6 - hotdog
-        [[0.5, 0.55, 0.75, 1],
-        [0, 0.25, 0.3, 0.5],
+        [[0.5, 0.55, 0.75, 1],                          //TEXT
+        [0, 0.25, 0.3, 0.5],                            //TOYPILE
         [0.2, 0.22, 0.25, 0.5, 0.8, 1],
-        [0.2, 0.25, 0.99, 1]],
+        [0.2, 0.25, 0.75, 1]],                          //HOTDOG
 
         // [7] Section 7
         [[0.1, 0.2, 0.55, 0.75, 1.1],                   // [0] Sub header timings
@@ -105,14 +106,10 @@ function NamingSection({ text }) {
     );
     const desktopSection1 = (
         <>
-            <TransformingContent child={<ImgBox url={getImageByKey("verizon")} displayDimensions={[35, 35]} rotate={0} />}
-                positions={[[-2, -2, -2, -2], [100, 20, 20, 100]]} scrollInfo={adjustedTimings[1][0]} alignment={['left', 'top']} />
-            <TransformingContent child={<ImgBox url={getImageByKey("sprite")} displayDimensions={[13, 13]} rotate={22.22} />}
-                positions={[[8, 8, 8, 8], [100, 36, 36, 100]]} scrollInfo={adjustedTimings[1][1]} alignment={['right', 'top']} />
-            <TransformingContent child={<ImgBox url={getImageByKey("dino_night")} displayDimensions={[70, 70]} rotate={0} />}
-                positions={[[100, 35, 10, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
-            <TransformingContent child={<ImgBox url={getImageByKey("dino_day")} displayDimensions={[70, 70]} rotate={0} />}
-                positions={[[100, 40, 15, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
+            <TransformingContent child={<ImgBox url={images.dino_night} displayDimensions={[70, 70]} rotate={0} />}
+                positions={[[100, 35, 35, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
+            <TransformingContent child={<ImgBox url={images.dino_day} displayDimensions={[70, 70]} rotate={0} />}
+                positions={[[100, 40, 40, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
         </>
     );
 
@@ -153,7 +150,7 @@ function NamingSection({ text }) {
         <TransformingTextBox positions={[80, 27, 27, 27, 27]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
             <>
                 <OpacityParagraph scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                    ["Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. And the question for us is: which of these steps can we successfully AI-ify to enhance the strategic and creative rigor behind what it takes to develop iconic names?"]
+                    [<p>Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. <b>And the question for us is: which of these steps can we successfully AI-ify</b> to enhance the strategic and creative rigor behind what it takes to develop iconic names?</p>]
                 } />
                 <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} simpleFade={true} baseOpacity={0} text={
                     ["...Meet Firmi 1.0"]
@@ -166,7 +163,7 @@ function NamingSection({ text }) {
         <TransformingTextBox positions={[80, 27, 27, 27, 27]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
             <>
                 <OpacityParagraph scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                    ["Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. And the question for us is: which of these steps can we successfully AI-ify to enhance the strategic and creative rigor behind what it takes to develop iconic names?"]
+                    [<p>Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. <b>And the question for us is: which of these steps can we successfully AI-ify</b> to enhance the strategic and creative rigor behind what it takes to develop iconic names?</p>]
                 } />
                 <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} simpleFade={true} baseOpacity={0} text={
                     ["...Meet Firmi 1.0"]
@@ -234,7 +231,7 @@ function NamingSection({ text }) {
         <>
             <Background background={getImageByKey("naming_gradient")} height={sectionHeights[5]} />
             <TransformingContent positions={[[0, 0, 0], [5, 5, 100]]} scrollInfo={adjustedTimings[5][3]} alignment={['center', 'center']}
-                child={<VideoTextBox scrollInfo={adjustedTimings[5][0]} displayWidth={80} heightRatio={0.656} child={
+                child={<VideoTextBox scrollInfo={adjustedTimings[5][4]} displayWidth={80} heightRatio={0.657} child={
                     <VideoTextScroller scrollInfo={adjustedTimings[5][0]} scrollToFrom={[500, -500]}>
                         <OpacityParagraph scrollInfo={adjustedTimings[5][1]} text={
                             ["The recent explosion of new generative AI represents an opportunity to experiment with ways to supercharge Firmi amping the natural language and machine learning capacity it lacked in early instances to become a more dynamic resource and relevant extension to our teams. We are on a mission to find ways to effectively harness the immense data sources, processing power, and intuitive interface now available, without sacrificing quality, data integrity, security, and ownership rights plaguing many OpenAi tools today."]
@@ -276,10 +273,10 @@ function NamingSection({ text }) {
     return (
         <div style={{ position: "relative", height: "100%", width: "100%" }}>
             {/* HEADER: Section 0 */}
-            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} />
-            <FadingHeader text={text.Header} scrollInfo={adjustedTimings[0][0]} />
-            <TransformingContent child={<ImgBox url={getImageByKey("naming_01")} displayDimensions={[60, 60]} rotate={0} />} positions={[[0, -50], [-10, -60]]} scrollInfo={adjustedTimings[0][1]} alignment={['left', 'top']} />
-            <TransformingContent child={<ImgBox url={getImageByKey("naming_02")} displayDimensions={[55, 55]} rotate={0} />} positions={[[0, -50], [-10, -65]]} scrollInfo={adjustedTimings[0][2]} alignment={['right', 'bottom']} />
+            <TransitionBackground background={images.naming_gradient} height={sectionHeights[0]} startHeight={0} hasTransition={true} scrollInfo={adjustedTimings[0][0]}/>
+            <FadingHeader text={text.Header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
+            <TransformingContent child={<ImgBox url={images.naming_01} displayDimensions={[60, 60]} rotate={0} />} positions={[[0, -50], [-10, -60]]} scrollInfo={adjustedTimings[0][1]} alignment={['left', 'top']} />
+            <TransformingContent child={<ImgBox url={images.naming_02} displayDimensions={[55, 55]} rotate={0} />} positions={[[0, -50], [-10, -65]]} scrollInfo={adjustedTimings[0][2]} alignment={['right', 'bottom']} />
 
             {/* SECTION 1 */}
             <Background background={"#202020"} height={sectionHeights[1]} />
@@ -287,8 +284,8 @@ function NamingSection({ text }) {
             {isMobile ? mobileSection1 : desktopSection1}
 
             {/* SECTION 2 */}
-            {/* <Background background={getImageByKey(imagesNaming.naming_gradient)} height={sectionHeights[2]} /> */}
-            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[2]} startHeight={700} hasTransition={true} />
+            {/* <Background background={images.naming_gradient} height={sectionHeights[2]} /> */}
+            <TransitionBackground background={images.naming_gradient} height={sectionHeights[2]} startHeight={900} hasTransition={true} scrollInfo={adjustedTimings[2][3]}/>
             {isMobile ? mobileFinding : desktopFinding}
 
             {/* SECTION 3 */}

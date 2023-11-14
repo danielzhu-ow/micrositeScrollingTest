@@ -8,7 +8,7 @@ const CardBox = styled.div`
     background-color: rgba(255, 255, 255, 0.5);
     border: 1px black solid;
     border-radius: 1rem;
-    margin: 12rem auto 12rem auto;
+    margin: 0 auto 0 auto;
 
     width: fit-content;
     height: fit-content;
@@ -57,7 +57,7 @@ const ContactButton = styled.button`
 const ContactHeader = styled.h2`
     margin: 0 0 3.2rem 0;
     width: 45rem;
-    line-height: 95%;
+    line-height: 110%;
     font-family: 'Noe Display Medium';
     font-weight: 500;
     font-size: 5rem;
@@ -82,10 +82,11 @@ const ContactBody = styled.p`
 
 function TryThis({ text, scrollInfo }) {
     const { scrollYProgress } = useScroll();
-    const visible = useTransform(scrollYProgress, scrollInfo, [0, 0, 1, 0])
+    const visible = useTransform(scrollYProgress, [0, scrollInfo[0], scrollInfo[scrollInfo.length - 1], 1], ['none', 'none', 'block', 'none'])
+    const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1, 1, 0])
 
     return (
-        <motion.div style={{ opacity: visible }}>
+        <motion.div style={{ display: visible, opacity: opacity }}>
             <CardBox>
                 <ContactColumn>
                     <ContactHeader>{text.header}</ContactHeader>
