@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Background, TransitionBackground } from '../interactions/Background'
 import { TransformingContent, TransformingTextBox, ImgBox, VideoBox } from '../interactions/TransformingContent'
 import { OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
+import { ArticleLink } from '../ArticleStyles.jsx';
 import { FadingHeader } from "../interactions/FadingHeader"
 import { FadingSectionHeader } from '../interactions/FadingSectionHeader';
 import { ColumnImage } from '../interactions/ColumnImage.js';
@@ -32,13 +33,13 @@ function NamingExperimentSection({ images }) {
     //Timings | Timings are adjusted to start - end of section
     const sectionTimings = [
         //0 Fading Header
-        [[0, 0.2, 0.4, 1], [0, 1.5, 2]],
+        [[0, 0.2, 0.4, 1]],
         //1 Para 1               Para 2                 Para 3                 Text Motion       Off
         [[-0.1, 0.05, 0.28, 1], [-0.1, 0.38, 0.61, 1], [-0.1, 0.71, 0.95, 1], [0, 0.2, 0.8, 1], [-0.1, 0.1, 0.5, 0.8]],
         //2 Fading Section Header
         [[0.1, 0.5, 0.7, 0.9], [0, 0.6, 1.5]],
         //3 Video
-        [[-0.1, 0.25, 1.2]],
+        [[-0.1, 0.25, 1.3]],
         //4 Para 1                 Para 2                    Para 3                Text Motion
         [[-0.2, 0.16, 0.17, 0.33], [0.33, 0.49, 0.5, 0.66], [0.66, 0.74, 0.75, 0.9], [-0.05, 0, 0.33, 0.66, 1]],
         //5 Fading Section Header
@@ -52,9 +53,9 @@ function NamingExperimentSection({ images }) {
         //9 Video Text
         [[0, 1], [0, 0.45, 0.55, 1], [-0.1, 0, 1, 1.1]],
         //10, Video
-        [[0, 0.4, 1]],
+        [[0, 0.4, 1.3]],
         //11 Para 1
-        [[-0.2, 0.05, 0.45, 0.5], [0.5, 0.5, 0.8, 1]],
+        [[-0.2, 0.16, 0.27, 0.5], [0.5, 0.73, 0.77, 1]],
         //12 Fading Section Header
         [[0.1, 0.5, 0.7, 0.9], [0, 0.4, 1.5]],
         //13 Video
@@ -66,9 +67,9 @@ function NamingExperimentSection({ images }) {
         //16 Video Text
         [[0, 1], [0, 0.22, 0.25, 0.5], [0.5, 0.725, 0.75, 1], [-0.1, 0, 1, 1.1]],
         //17 Video
-        [[0, 0.5, 1]],
-        //18 Section 1 TF        Section 2 TF              Section 3 TF
-        [[0, 0.05, 0.33, 0.33], [0.33, 0.33, 0.66, 0.66], [0.66, 0.66, 1, 1]],
+        [[0, 0.5, 1.3]],
+        //18 Section 1 TF          Section 2 TF               Section 3 TF
+        [[0, 0.123, 0.127, 0.25], [0.25, 0.373, 0.378, 0.5], [0.5, 0.623, 0.627, 0.75], [0.75, 0.873, 0.877, 1]],
     ]
     let adjustedTimings = []
 
@@ -104,13 +105,13 @@ function NamingExperimentSection({ images }) {
                     ["In case you missed it..."]
                 } />
                 <OpacityParagraph scrollInfo={adjustedTimings[1][0]} text={
-                    ["Lippincott has been a leader in brand name development for 80 years, and creator of classic household brand names like Duracell, Sprite, and Off! and more recent market-changers like Kenvue, Refinitiv, and Marcus. But as the limitations of language, trademark, name real estate and other stakes get even higher, AI represents a powerful opportunity to supercharge our naming power as long as we can manage for quality. "]
+                    [<i>Lippincott has been a leader in brand name development for 80 years, and creator of classic household brand names like Duracell, Sprite, and Off! and more recent market-changers like Kenvue, Refinitiv, and Marcus. But as the limitations of language, trademark, name real estate and other stakes get even higher, AI represents a powerful opportunity to supercharge our naming power as long as we can manage for quality.</i>]
                 } />
                 <OpacityParagraph scrollInfo={adjustedTimings[1][1]} text={
-                    ["For perspective, Lippincott typically generates 2,000 names against a project brief before narrowing to the 20 we present. But when you consider that Ai could access 217 billion other possibilities for names with 8 letters or less, it’s clear we may be missing some gems. An equally sobering counterpoint is that efforts to date point to an AI that is good at generating quantity, but bad at producing or selecting quality."]
+                    [<i>For perspective, Lippincott typically generates 2,000 names against a project brief before narrowing to the 20 we present. But when you consider that Ai could access 217 billion other possibilities for names with 8 letters or less, it's clear we may be missing some gems. An equally sobering counterpoint is that efforts to date point to an AI that is good at generating quantity, but bad at producing or selecting quality.</i>]
                 } />
                 <OpacityParagraph scrollInfo={adjustedTimings[1][2]} text={
-                    ["So we’ve decided to play – to challenge this notion, by using more sophisticated prompts, deeper training, and test-and-learn methodology to see if we can get more viable results from AI."]
+                    [<i>So we've decided to play - to challenge this notion, by using more sophisticated prompts, deeper training, and test-and-learn methodology to see if we can get more viable results from AI.</i>]
                 } />
             </>
         } />
@@ -123,13 +124,13 @@ function NamingExperimentSection({ images }) {
                     ["In case you missed it..."]
                 } />
                 <OpacityParagraph scrollInfo={adjustedTimings[1][0]} text={
-                    ["Lippincott has been a leader in brand name development for 80 years, and creator of classic household brand names like Duracell, Sprite, and Off! and more recent market-changers like Kenvue, Refinitiv, and Marcus. But as the limitations of language, trademark, name real estate and other stakes get even higher, AI represents a powerful opportunity to supercharge our naming power as long as we can manage for quality. "]
+                    [<i>Lippincott has been a leader in brand name development for 80 years, and creator of classic household brand names like Duracell, Sprite, and Off! and more recent market-changers like Kenvue, Refinitiv, and Marcus. But as the limitations of language, trademark, name real estate and other stakes get even higher, AI represents a powerful opportunity to <ArticleLink href='http://google.com' >supercharge our naming power</ArticleLink> as long as we can manage for quality.</i>]
                 } />
                 <OpacityParagraph scrollInfo={adjustedTimings[1][1]} text={
-                    ["For perspective, Lippincott typically generates 2,000 names against a project brief before narrowing to the 20 we present. But when you consider that Ai could access 217 billion other possibilities for names with 8 letters or less, it’s clear we may be missing some gems. An equally sobering counterpoint is that efforts to date point to an AI that is good at generating quantity, but bad at producing or selecting quality."]
+                    [<i>For perspective, Lippincott typically generates 2,000 names against a project brief before narrowing to the 20 we present. But when you consider that Ai could access 217 billion other possibilities for names with 8 letters or less, it's clear we may be missing some gems. An equally sobering counterpoint is that efforts to date point to an AI that is good at generating quantity, but bad at producing or selecting quality.</i>]
                 } />
                 <OpacityParagraph scrollInfo={adjustedTimings[1][2]} text={
-                    ["So we’ve decided to play – to challenge this notion, by using more sophisticated prompts, deeper training, and test-and-learn methodology to see if we can get more viable results from AI."]
+                    [<i>So we've decided to play - to challenge this notion, by using more sophisticated prompts, deeper training, and test-and-learn methodology to see if we can get more viable results from AI.</i>]
                 } />
             </>
         } />
@@ -165,7 +166,7 @@ function NamingExperimentSection({ images }) {
                         ["The good:"]
                     } />
                     <OpacityList scrollInfo={adjustedTimings[4][0]} dark={false} simpleFade={true} baseOpacity={0} text={
-                        ["It’s fast: while experienced namers take several hours to generate a list of 100 names, GPT can produce that amount instantaneously", "It’s accurate: the names feel appropriate to the request, and tend to leverage familiar, and well-understood terms to ground names in the offering we’re defining. Even more, it demonstrates an understanding of a technical category, and the relevant words commonly used in the space."]
+                        [<p><b>It's fast:</b> while experienced namers take several hours to generate a list of 100 names, GPT can produce that amount instantaneously</p>, <p><b>It's accurate:</b> the names feel appropriate to the request, and tend to leverage familiar, and well-understood terms to ground names in the offering we're defining. Even more, it demonstrates an understanding of a technical category, and the relevant words commonly used in the space.</p>]
                     } />
                 </div>
             </DoubleColumn>
@@ -181,7 +182,7 @@ function NamingExperimentSection({ images }) {
                         ["The bad:"]
                     } />
                     <OpacityList scrollInfo={adjustedTimings[4][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                        ["Literal and limited: The concepts are highly literal and directly guided by words in the prompt, suggesting a lack of ability for abstraction or thinking more conceptually.", "Lack of craft: A bias toward compound “CamelCap” names that can feel dated, clunky, or less distinctive, the names don’t have the intangible feel of a good name that’s easy to say and remember.", "Non-viable: Generic terminology would be challenging to clear legal. We need to be able to stretch into less expected spaces to navigate the crowded trademark territories our clients occupy"]
+                        [<p><b>Literal and limited:</b> The concepts are highly literal and directly guided by words in the prompt, suggesting a lack of ability for abstraction or thinking more conceptually.</p>, <p><b>Lack of craft:</b> A bias toward compound “CamelCap” names that can feel dated, clunky, or less distinctive, the names don't have the intangible feel of a good name that's easy to say and remember.</p>, <p><b>Non-viable:</b> Generic terminology would be challenging to clear legal. We need to be able to stretch into less expected spaces to navigate the crowded trademark territories our clients occupy</p>]
                     } />
                 </div>
             </DoubleColumn>
@@ -307,7 +308,7 @@ function NamingExperimentSection({ images }) {
     const desktopWhileThese = (
         <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[11][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[11][0]} backY={12} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[11][0]} backY={12} fadeOut={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacityParagraph scrollInfo={adjustedTimings[11][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["While these results may not reflect the most viable names, we’ve quickly demonstrated that through simple priming around a certain type of name, and the intention behind it, GPT is able to apply this guidance to deliver a set of options with a more focused approach."]
@@ -323,7 +324,7 @@ function NamingExperimentSection({ images }) {
     const desktopTryThis01 = (
         <TransformingTextBox positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[11][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[11][1]} backY={12} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[11][1]} backY={12} fadeIn={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
                 <TryThis text={tryText} scrollInfo={adjustedTimings[11][1]} />
             </DoubleColumn>
         } />
@@ -446,7 +447,7 @@ function NamingExperimentSection({ images }) {
     const desktopWeFound = (
         <TransformingTextBox positions={[127, 10, 10, 10]} scrollInfo={adjustedTimings[18][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][0]} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[18][0]} fadeOut={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[18][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["We found the results exciting for a couple of reasons:"]
@@ -460,15 +461,34 @@ function NamingExperimentSection({ images }) {
     )
 
     const desktopButChallenges = (
-        <TransformingTextBox positions={[127, 10, 10, 10]} scrollInfo={adjustedTimings[18][1]} alignment={'top'} child={
+        <TransformingTextBox positions={[10, 10, 10, 10]} scrollInfo={adjustedTimings[18][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][1]} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[18][1]} fadeIn={false} fadeOut={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacityParagraph scrollInfo={adjustedTimings[18][1]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["BUT, challenges remain: we’ve achieved a route to abstraction, but these are still real words, unlikely to be available in many trademark categories. And the process broke down when we asked GPT to translate these real, dictionary words to more unique approaches like compound or coined names. Also, interestingly, after repeating a couple of times, we saw the results degrade – as though GPT was running out of ideas, or regressing to the notion where “abstract” becomes literally mysterious again…"]
                     } />
                     <OpacityParagraph scrollInfo={adjustedTimings[18][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                        ["Intelligence > Creativity > Innovation > Ingenuity > Inventor Intelligence > Perception > Awareness > Consciousness > Cognition Intelligence > Science > Experiment > Hypothesis > Theory Intelligence > Mystery > Enigma > Riddle > Puzzle"]
+                        [<i>Intelligence {'>'} Creativity {'>'} Innovation {'>'} Ingenuity {'>'} Inventor Intelligence {'>'} Perception {'>'} Awareness {'>'} Consciousness {'>'} Cognition Intelligence {'>'} Science {'>'} Experiment {'>'} Hypothesis {'>'} Theory Intelligence {'>'} Mystery {'>'} Enigma {'>'} Riddle {'>'} Puzzle</i>]
+                    } />
+                </div>
+            </DoubleColumn>
+        } />
+    )
+
+    const desktopToKeep = (
+        <TransformingTextBox positions={[10, 10, 10, 10]} scrollInfo={adjustedTimings[18][2]} alignment={'top'} child={
+            <DoubleColumn>
+                <ColumnImage scrollInfo={adjustedTimings[18][2]} fadeIn={false} fadeOut={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <div>
+                    <OpacityParagraph scrollInfo={adjustedTimings[18][2]} baseOpacity={0} dark={false} simpleFade={true} text={
+                        ["To keep GPT in a truly originative space, we need to reset our prompts frequently, and keep pushing toward more freedom of association."]
+                    } />
+                    <OpacityParagraph scrollInfo={adjustedTimings[18][2]} dark={false} simpleFade={true} baseOpacity={0} text={
+                        ["While these results may not reflect the most viable names, we’ve quickly demonstrated that through simple priming around a certain type of name, and the intention behind it, GPT is able to apply this guidance to deliver a set of options with a more focused approach."]
+                    } />
+                    <OpacityParagraph scrollInfo={adjustedTimings[18][2]} dark={false} simpleFade={true} baseOpacity={0} text={
+                        ["Let’s play on to see how this priming technique can be further expanded and refined to deliver even more interesting results."]
                     } />
                 </div>
             </DoubleColumn>
@@ -476,10 +496,10 @@ function NamingExperimentSection({ images }) {
     )
 
     const desktopTryThis02 = (
-        <TransformingTextBox positions={[127, 10, 10, 10]} scrollInfo={adjustedTimings[18][2]} alignment={'top'} child={
+        <TransformingTextBox positions={[10, 10, 10, -100]} scrollInfo={adjustedTimings[18][3]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][2]} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
-                <TryThis text={tryText} scrollInfo={adjustedTimings[18][2]} />
+                <ColumnImage scrollInfo={adjustedTimings[18][3]} fadeIn={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <TryThis text={tryText} scrollInfo={adjustedTimings[18][3]} />
             </DoubleColumn>
         } />
     )
@@ -497,7 +517,7 @@ function NamingExperimentSection({ images }) {
             {isMobile ? <></> : desktopOff}
 
             {/* SECTION 2 | HEADER */}
-            <TransitionBackground background={images.experiment_01} height={sectionHeights[2]} startHeight={sectionHeights[0] + sectionHeights[1]} endOpacity={0.8} hasTransition={true} />
+            <TransitionBackground background={images.experiment_01} height={sectionHeights[2]} startHeight={sectionHeights[0] + sectionHeights[1]} endOpacity={0.8} hasTransition={true} preserveRatio />
             <FadingSectionHeader text={sectionHeader01} scrollInfo={adjustedTimings[2][0]} />
 
             {/* SECTION 3 | VIDEO 1*/}
@@ -511,7 +531,7 @@ function NamingExperimentSection({ images }) {
             {desktopTheOpportunity}
 
             {/* SECTION 5 | HEADER */}
-            <TransitionBackground background={images.experiment_02} height={sectionHeights[5]} startHeight={sectionHeights.slice(0, 5).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} />
+            <TransitionBackground background={images.experiment_02} height={sectionHeights[5]} startHeight={sectionHeights.slice(0, 5).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} preserveRatio />
             <FadingSectionHeader text={sectionHeader02} scrollInfo={adjustedTimings[5][0]} />
 
             {/* VIDEO */}
@@ -542,7 +562,7 @@ function NamingExperimentSection({ images }) {
             {desktopTryThis01}
 
             {/* SECTION 12 */}
-            <TransitionBackground background={images.experiment_03} height={sectionHeights[12]} startHeight={sectionHeights.slice(0, 12).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} />
+            <TransitionBackground background={images.experiment_03} height={sectionHeights[12]} startHeight={sectionHeights.slice(0, 12).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} preserveRatio />
             <FadingSectionHeader text={sectionHeader03} scrollInfo={adjustedTimings[12][0]} />
 
             {/* VIDEOS */}
@@ -571,6 +591,7 @@ function NamingExperimentSection({ images }) {
             <Background background={images.naming_gradient} height={sectionHeights[18]} />
             {desktopWeFound}
             {desktopButChallenges}
+            {desktopToKeep}
             {desktopTryThis02}
 
             <ExperimentNav heightsInfo={[[3, 5], [6, 12], [13, 19]]} sectionHeights={sectionHeights} />

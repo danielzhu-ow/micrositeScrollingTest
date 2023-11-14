@@ -84,6 +84,11 @@ const ArticleSubHeading = styled.h2`
     }
 `
 
+const ArticleLink = styled.a`
+    text-decoration: underline;
+    color: white;
+`
+
 const ArticleHeaderBlock = ({ contentString }) => {
     return (
         <ArticleHeader>
@@ -109,4 +114,4 @@ const ArticleBodyParagraghsBlock = ({ contentStrings, scrollTimings }) => {
     )
 }
 
-export { ArticleHeaderBlock, ArticleBodyBlock, ArticleBodyParagraghsBlock, ArticleBody, ArticleSubHeading, ArticleHeader, ArticleList };
+export { ArticleHeaderBlock, ArticleBodyBlock, ArticleBodyParagraghsBlock, ArticleBody, ArticleSubHeading, ArticleHeader, ArticleList, ArticleLink };

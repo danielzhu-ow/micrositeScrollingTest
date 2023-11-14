@@ -33,7 +33,7 @@ Background.propTypes = {
     height: PropTypes.number.isRequired,
 }
 
-function TransitionBackground({ background, height, startHeight, endOpacity }) {
+function TransitionBackground({ background, height, startHeight, endOpacity, preserveRatio }) {
     const ref = useRef(null);
     const { scrollYProgress } = useScroll({
         target: ref,
@@ -50,15 +50,26 @@ function TransitionBackground({ background, height, startHeight, endOpacity }) {
                     pointerEvents: "none",
                     height: height + "vh",
                     width: "100%",
-                }}></div> :
-                <div ref={ref} style={{
-                    backgroundImage: "url(" + background + ")",
-                    pointerEvents: "none",
-                    backgroundSize: "100% 100%",
-                    backgroundAttachment: "fixed",
-                    height: height + "vh",
-                    width: "100%",
-                }}></div>
+                }} />
+                :
+                preserveRatio ?
+                    <div ref={ref} style={{
+                        backgroundImage: "url(" + background + ")",
+                        pointerEvents: "none",
+                        backgroundSize: 'cover',
+                        backgroundAttachment: "fixed",
+                        height: height + "vh",
+                        width: "100%",
+                    }}></div>
+                    :
+                    <div ref={ref} style={{
+                        backgroundImage: "url(" + background + ")",
+                        pointerEvents: "none",
+                        backgroundSize: "100% 100%",
+                        backgroundAttachment: "fixed",
+                        height: height + "vh",
+                        width: "100%",
+                    }}></div>
             }
             <motion.div style={{
                 backgroundColor: "#202020",
@@ -75,7 +86,8 @@ function TransitionBackground({ background, height, startHeight, endOpacity }) {
 
 TransitionBackground.defaultProps = {
     startTransition: 0.5,
-    endOpacity: 1
+    endOpacity: 1,
+    preserveRatio: false,
 }
 
 TransitionBackground.propTypes = {
@@ -84,5 +96,6 @@ TransitionBackground.propTypes = {
     startTransition: PropTypes.number,
     startHeight: PropTypes.number.isRequired,
     endOpacity: PropTypes.number,
-    scrollInfo: PropTypes.arrayOf(PropTypes.number)
+    scrollInfo: PropTypes.arrayOf(PropTypes.number),
+    preserveRatio: PropTypes.bool,
 }

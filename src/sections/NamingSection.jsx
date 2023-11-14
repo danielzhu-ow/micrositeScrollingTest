@@ -18,7 +18,7 @@ export { NamingSection }
 function NamingSection({ images, text }) {
 
     //Heights                0    1    2    3    4    5    6    7
-    const sectionHeights = [300, 400, 300, 300, 200, 200, 400, 500]
+    const sectionHeights = [300, 600, 300, 300, 200, 200, 400, 500]
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
 
     //Timings 
@@ -102,10 +102,6 @@ function NamingSection({ images, text }) {
     );
     const desktopSection1 = (
         <>
-            {/* <TransformingContent child={<ImgBox url={images.verizon} displayDimensions={[35, 35]} rotate={0} />}
-                positions={[[-2, -2, -2, -2], [100, 20, 20, -100]]} scrollInfo={adjustedTimings[1][0]} alignment={['left', 'top']} />
-            <TransformingContent child={<ImgBox url={images.sprite} displayDimensions={[13, 13]} rotate={22.22} />}
-                positions={[[8, 8, 8, 8], [100, 36, 36, -100]]} scrollInfo={adjustedTimings[1][1]} alignment={['right', 'top']} /> */}
             <TransformingContent child={<ImgBox url={images.dino_night} displayDimensions={[70, 70]} rotate={0} />}
                 positions={[[100, 35, 35, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
             <TransformingContent child={<ImgBox url={images.dino_day} displayDimensions={[70, 70]} rotate={0} />}
@@ -150,7 +146,7 @@ function NamingSection({ images, text }) {
         <TransformingTextBox positions={[80, 27, 27, 27, 27]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
             <>
                 <OpacityParagraph scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                    ["Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. And the question for us is: which of these steps can we successfully AI-ify to enhance the strategic and creative rigor behind what it takes to develop iconic names?"]
+                    [<p>Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. <b>And the question for us is: which of these steps can we successfully AI-ify</b> to enhance the strategic and creative rigor behind what it takes to develop iconic names?</p>]
                 } />
                 <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} simpleFade={true} baseOpacity={0} text={
                     ["...Meet Firmi 1.0"]
@@ -163,7 +159,7 @@ function NamingSection({ images, text }) {
         <TransformingTextBox positions={[80, 27, 27, 27, 27]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
             <>
                 <OpacityParagraph scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                    ["Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. And the question for us is: which of these steps can we successfully AI-ify to enhance the strategic and creative rigor behind what it takes to develop iconic names?"]
+                    [<p>Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. <b>And the question for us is: which of these steps can we successfully AI-ify</b> to enhance the strategic and creative rigor behind what it takes to develop iconic names?</p>]
                 } />
                 <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} simpleFade={true} baseOpacity={0} text={
                     ["...Meet Firmi 1.0"]
@@ -285,7 +281,7 @@ function NamingSection({ images, text }) {
 
             {/* SECTION 2 */}
             {/* <Background background={images.naming_gradient} height={sectionHeights[2]} /> */}
-            <TransitionBackground background={images.naming_gradient} height={sectionHeights[2]} startHeight={700} hasTransition={true} scrollInfo={adjustedTimings[2][3]}/>
+            <TransitionBackground background={images.naming_gradient} height={sectionHeights[2]} startHeight={900} hasTransition={true} scrollInfo={adjustedTimings[2][3]}/>
             {isMobile ? mobileFinding : desktopFinding}
 
             {/* SECTION 3 */}

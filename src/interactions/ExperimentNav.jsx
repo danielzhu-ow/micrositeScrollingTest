@@ -8,7 +8,7 @@ export { ExperimentNav }
 const NavContainer = styled.div`
     column-count: 3;
     column-gap: 1.6rem;
-    margin: 0.5rem 4rem 0.5rem 4rem;
+    margin: 3.2rem 4rem 0.5rem 4rem;
 `
 
 const Indicator = styled.div`

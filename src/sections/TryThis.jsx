@@ -82,10 +82,11 @@ const ContactBody = styled.p`
 
 function TryThis({ text, scrollInfo }) {
     const { scrollYProgress } = useScroll();
-    const visible = useTransform(scrollYProgress, scrollInfo, [0, 0, 1, 0])
+    const visible = useTransform(scrollYProgress, [0, scrollInfo[0], scrollInfo[scrollInfo.length - 1], 1], ['none', 'none', 'block', 'none'])
+    const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1, 1, 0])
 
     return (
-        <motion.div style={{ opacity: visible }}>
+        <motion.div style={{ display: visible, opacity: opacity }}>
             <CardBox>
                 <ContactColumn>
                     <ContactHeader>{text.header}</ContactHeader>
