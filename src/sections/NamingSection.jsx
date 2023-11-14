@@ -2,7 +2,8 @@
 import { devices } from '../constants/devices.js';
 import { useMediaQuery } from 'react-responsive';
 
-//import video assets
+//import assets
+import { getImageByKey } from '../constants/imgContent.js';
 import namezap1 from '../images/naming/NameZap1.mp4'
 
 // import interactions
@@ -15,7 +16,10 @@ import { HotDogSection } from './HotDogSection.js';
 
 export { NamingSection }
 
-function NamingSection({ images, text }) {
+function NamingSection({ text }) {
+
+    // load images
+    // const images = useNamingImageLoader();
 
     //Heights                0    1    2    3    4    5    6    7
     const sectionHeights = [300, 400, 300, 300, 200, 200, 400, 500]
@@ -93,21 +97,21 @@ function NamingSection({ images, text }) {
 
     const mobileSection1 = (
         <>
-            <TransformingContent child={<ImgBox url={images.dino_night} displayDimensions={[50, 50]} rotate={0} />}
+            <TransformingContent child={<ImgBox url={getImageByKey("dino_night")} displayDimensions={[50, 50]} rotate={0} />}
                 positions={[[100, -30, -40, -150], [-2, -2, -2, -2]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
-            <TransformingContent child={<ImgBox url={images.dino_day} displayDimensions={[50, 50]} rotate={0} />}
+            <TransformingContent child={<ImgBox url={getImageByKey("dino_day")} displayDimensions={[50, 50]} rotate={0} />}
                 positions={[[100, -30, -40, -200], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
         </>
     );
     const desktopSection1 = (
         <>
-            <TransformingContent child={<ImgBox url={images.verizon} displayDimensions={[35, 35]} rotate={0} />}
+            <TransformingContent child={<ImgBox url={getImageByKey("verizon")} displayDimensions={[35, 35]} rotate={0} />}
                 positions={[[-2, -2, -2, -2], [100, 20, 20, 100]]} scrollInfo={adjustedTimings[1][0]} alignment={['left', 'top']} />
-            <TransformingContent child={<ImgBox url={images.sprite} displayDimensions={[13, 13]} rotate={22.22} />}
+            <TransformingContent child={<ImgBox url={getImageByKey("sprite")} displayDimensions={[13, 13]} rotate={22.22} />}
                 positions={[[8, 8, 8, 8], [100, 36, 36, 100]]} scrollInfo={adjustedTimings[1][1]} alignment={['right', 'top']} />
-            <TransformingContent child={<ImgBox url={images.dino_night} displayDimensions={[70, 70]} rotate={0} />}
+            <TransformingContent child={<ImgBox url={getImageByKey("dino_night")} displayDimensions={[70, 70]} rotate={0} />}
                 positions={[[100, 35, 10, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
-            <TransformingContent child={<ImgBox url={images.dino_day} displayDimensions={[70, 70]} rotate={0} />}
+            <TransformingContent child={<ImgBox url={getImageByKey("dino_day")} displayDimensions={[70, 70]} rotate={0} />}
                 positions={[[100, 40, 15, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
         </>
     );
@@ -115,7 +119,7 @@ function NamingSection({ images, text }) {
     const mobileLippincottHas = (
         <TransformingTextBox positions={[127, 27, -60, -160]} scrollInfo={adjustedTimings[1][2]} alignment={'top'} child={
             <>
-                <ImgBox url={images.mobile_sprite_verizon} displayDimensions={[80, 26]} rotate={0} fixWidth={true} />
+                <ImgBox url={getImageByKey("mobile_sprite_verizon")} displayDimensions={[80, 26]} rotate={0} fixWidth={true} />
                 <OpacityParagraph scrollInfo={adjustedTimings[1][3]} text={
                     [["Lippincott has been creating standout brand names for 80 years. In those early days, a physical thesaurus was the most valuable naming tool. From those well-worn pages, household names such as Sprite and Wisk emerged, and words were paired together in novel ways to invent the likes of Duracell, Citgo, and Verizon."]]
                 } />
@@ -173,7 +177,7 @@ function NamingSection({ images, text }) {
 
     const mobileFirmiSection = (
         <>
-            <TransformingContent child={<OpacityContent scrollInfo={adjustedTimings[3][3]} baseOpacity={0} child={<ScalingImgBox url={images.firmi} displayDimensions={[30, 30, 15, 15, 15]} scrollInfo={adjustedTimings[3][0]} />} />} positions={[[10, 10, 30, 30, 30], [15, 15, 0, 0, -100]]} scrollInfo={adjustedTimings[3][0]} alignment={['left', 'top']} />
+            <TransformingContent child={<OpacityContent scrollInfo={adjustedTimings[3][3]} baseOpacity={0} child={<ScalingImgBox url={getImageByKey("firmi")} displayDimensions={[30, 30, 15, 15, 15]} scrollInfo={adjustedTimings[3][0]} />} />} positions={[[10, 10, 30, 30, 30], [15, 15, 0, 0, -100]]} scrollInfo={adjustedTimings[3][0]} alignment={['left', 'top']} />
             <TransformingTextBox positions={[20, 20, 20, 20, -80]} scrollInfo={adjustedTimings[3][1]} alignment={'top'} child={
                 <OpacityParagraph scrollInfo={adjustedTimings[3][2]} dark={true} simpleFade={true} baseOpacity={0} text={
                     ["The Lippincott naming team has been exploring the creative potential of AI since 2018. That’s when we first developed a proprietary AI-trained naming tool to augment our human-led name generation.",
@@ -186,7 +190,7 @@ function NamingSection({ images, text }) {
 
     const desktopFirmiSection = (
         <>
-            <TransformingContent child={<OpacityContent scrollInfo={adjustedTimings[3][3]} baseOpacity={0} child={<ScalingImgBox url={images.firmi} displayDimensions={[64, 64, 26, 26, 26]} scrollInfo={adjustedTimings[3][0]} />} />} positions={[[32, 32, 18, 18, 18], [15, 15, 3, 3, -100]]} scrollInfo={adjustedTimings[3][0]} alignment={['left', 'top']} />
+            <TransformingContent child={<OpacityContent scrollInfo={adjustedTimings[3][3]} baseOpacity={0} child={<ScalingImgBox url={getImageByKey("firmi")} displayDimensions={[64, 64, 26, 26, 26]} scrollInfo={adjustedTimings[3][0]} />} />} positions={[[32, 32, 18, 18, 18], [15, 15, 3, 3, -100]]} scrollInfo={adjustedTimings[3][0]} alignment={['left', 'top']} />
             <TransformingTextBox positions={[20, 20, 20, 20, -80]} scrollInfo={adjustedTimings[3][1]} alignment={'top'} child={
                 <OpacityParagraph scrollInfo={adjustedTimings[3][2]} dark={true} simpleFade={true} baseOpacity={0} text={
                     ["The Lippincott naming team has been exploring the creative potential of AI since 2018. That’s when we first developed a proprietary AI-trained naming tool to augment our human-led name generation.",
@@ -228,7 +232,7 @@ function NamingSection({ images, text }) {
 
     const desktopVideoText01 = (
         <>
-            <Background background={images.naming_gradient} height={sectionHeights[5]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[5]} />
             <TransformingContent positions={[[0, 0, 0], [5, 5, 100]]} scrollInfo={adjustedTimings[5][3]} alignment={['center', 'center']}
                 child={<VideoTextBox scrollInfo={adjustedTimings[5][0]} displayWidth={80} heightRatio={0.656} child={
                     <VideoTextScroller scrollInfo={adjustedTimings[5][0]} scrollToFrom={[500, -500]}>
@@ -244,9 +248,9 @@ function NamingSection({ images, text }) {
     const mobileRobotSection = (
         <>
             <TransformingContent positions={[[10, 10, 10, 10, 10], [80, 80, 80, 80, 80]]} scrollInfo={adjustedTimings[7][0]} alignment={['top', 'left']} child={<OpacitySubheading scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={["So, it’s time to play."]} />}></TransformingContent>
-            <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[190, 210]} rotateDimensions={[40, 40, 0, 0]} scrollInfo={adjustedTimings[7][4]} />} positions={[[-150, -45, -45, -45], [-10, -10, -10, 100]]} scrollInfo={adjustedTimings[7][4]} alignment={['left', 'bottom']} />
-            {/* <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[6][6]} />} positions={[[-15, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[6][6]} alignment={['left', 'bottom']} /> */}
-            <TransformingContent child={<ImgBox url={images.cute_robot_think} displayDimensions={[23.2, 33.2]} />} positions={[[32, 32, 32, 32], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[7][6]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<RotatingImgBox url={getImageByKey("cute_robot_idle")} displayDimensions={[190, 210]} rotateDimensions={[40, 40, 0, 0]} scrollInfo={adjustedTimings[7][4]} />} positions={[[-150, -45, -45, -45], [-10, -10, -10, 100]]} scrollInfo={adjustedTimings[7][4]} alignment={['left', 'bottom']} />
+            {/* <TransformingContent child={<RotatingImgBox url={getImageByKey(cute_robot_idle)} displayDimensions={[60, 70]} rotateDimensions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[6][6]} />} positions={[[-15, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[6][6]} alignment={['left', 'bottom']} /> */}
+            <TransformingContent child={<ImgBox url={getImageByKey("cute_robot_think")} displayDimensions={[23.2, 33.2]} />} positions={[[32, 32, 32, 32], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[7][6]} alignment={['left', 'bottom']} />
 
             <TransformingContent positions={[[0, 0, 0, 0], [35, 35, 35, 35]]} scrollInfo={adjustedTimings[7][7]} alignment={['bottom', 'right']} child={
                 <OpacityParagraph scrollInfo={adjustedTimings[7][8]} dark={false} simpleFade={true} baseOpacity={0} text={["Let’s go →"]} />
@@ -258,9 +262,9 @@ function NamingSection({ images, text }) {
     const desktopRobotSection = (
         <>
             <TransformingContent positions={[[20, 20, 46, 46, 46], [80, 80, 80, 80, 80]]} scrollInfo={adjustedTimings[7][0]} alignment={['top', 'right']} child={<OpacitySubheading scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={["So, it’s time to play."]} />}></TransformingContent>
-            <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[40, 40, 0, 0]} scrollInfo={adjustedTimings[7][4]} />} positions={[[-50, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[7][4]} alignment={['left', 'bottom']} />
-            <TransformingContent child={<ImgBox url={images.cute_robot_think} displayDimensions={[23.2, 33.2]} />} positions={[[3.5, 3.5, 3.5, 3.5], [9.5, 9.5, 9.5, 9.5]]} scrollInfo={adjustedTimings[7][5]} alignment={['left', 'bottom']} />
-            <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[7][6]} />} positions={[[-15, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[7][6]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<RotatingImgBox url={getImageByKey("cute_robot_idle")} displayDimensions={[60, 70]} rotateDimensions={[40, 40, 0, 0]} scrollInfo={adjustedTimings[7][4]} />} positions={[[-50, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[7][4]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<ImgBox url={getImageByKey("cute_robot_think")} displayDimensions={[23.2, 33.2]} />} positions={[[3.5, 3.5, 3.5, 3.5], [9.5, 9.5, 9.5, 9.5]]} scrollInfo={adjustedTimings[7][5]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<RotatingImgBox url={getImageByKey("cute_robot_idle")} displayDimensions={[60, 70]} rotateDimensions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[7][6]} />} positions={[[-15, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[7][6]} alignment={['left', 'bottom']} />
 
             <TransformingContent positions={[[27, 27, 27, 27], [50, 50, 50, 50]]} scrollInfo={adjustedTimings[7][7]} alignment={['bottom', 'right']} child={
                 <OpacityParagraph scrollInfo={adjustedTimings[7][8]} dark={false} simpleFade={true} baseOpacity={0} text={["Let’s go →"]} />
@@ -272,10 +276,10 @@ function NamingSection({ images, text }) {
     return (
         <div style={{ position: "relative", height: "100%", width: "100%" }}>
             {/* HEADER: Section 0 */}
-            <TransitionBackground background={images.naming_gradient} height={sectionHeights[0]} startHeight={0} hasTransition={true} />
+            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} />
             <FadingHeader text={text.Header} scrollInfo={adjustedTimings[0][0]} />
-            <TransformingContent child={<ImgBox url={images.naming_01} displayDimensions={[60, 60]} rotate={0} />} positions={[[0, -50], [-10, -60]]} scrollInfo={adjustedTimings[0][1]} alignment={['left', 'top']} />
-            <TransformingContent child={<ImgBox url={images.naming_02} displayDimensions={[55, 55]} rotate={0} />} positions={[[0, -50], [-10, -65]]} scrollInfo={adjustedTimings[0][2]} alignment={['right', 'bottom']} />
+            <TransformingContent child={<ImgBox url={getImageByKey("naming_01")} displayDimensions={[60, 60]} rotate={0} />} positions={[[0, -50], [-10, -60]]} scrollInfo={adjustedTimings[0][1]} alignment={['left', 'top']} />
+            <TransformingContent child={<ImgBox url={getImageByKey("naming_02")} displayDimensions={[55, 55]} rotate={0} />} positions={[[0, -50], [-10, -65]]} scrollInfo={adjustedTimings[0][2]} alignment={['right', 'bottom']} />
 
             {/* SECTION 1 */}
             <Background background={"#202020"} height={sectionHeights[1]} />
@@ -283,8 +287,8 @@ function NamingSection({ images, text }) {
             {isMobile ? mobileSection1 : desktopSection1}
 
             {/* SECTION 2 */}
-            {/* <Background background={images.naming_gradient} height={sectionHeights[2]} /> */}
-            <TransitionBackground background={images.naming_gradient} height={sectionHeights[2]} startHeight={700} hasTransition={true} />
+            {/* <Background background={getImageByKey(imagesNaming.naming_gradient)} height={sectionHeights[2]} /> */}
+            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[2]} startHeight={700} hasTransition={true} />
             {isMobile ? mobileFinding : desktopFinding}
 
             {/* SECTION 3 */}
@@ -292,17 +296,17 @@ function NamingSection({ images, text }) {
             {isMobile ? mobileFirmiSection : desktopFirmiSection}
 
             {/* Section 4 */}
-            <Background background={images.naming_gradient} height={sectionHeights[4]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[4]} />
             {isMobile ? mobileVideo : desktopVideo}
 
             {/* Section 5  */}
             {isMobile ? mobileVideoText01 : desktopVideoText01}
 
             {/* Section 6 - HotDog */}
-            <HotDogSection images={images} sectionHeights={sectionHeights} adjustedTimings={adjustedTimings}></HotDogSection>
+            <HotDogSection  sectionHeights={sectionHeights} adjustedTimings={adjustedTimings}></HotDogSection>
 
             {/* Section 7 */}
-            <Background background={images.naming_gradient} height={sectionHeights[7]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[7]} />
             <TransformingTextBox positions={[20, 20, 20, 20, 20]} scrollInfo={adjustedTimings[7][0]} alignment={'top'} child={
                 <>
                     <OpacityParagraph scrollInfo={adjustedTimings[7][2]} dark={false} simpleFade={true} baseOpacity={0} text={

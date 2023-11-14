@@ -10,21 +10,21 @@ import { HotDogSection } from './sections/HotDogSection';
 //import content constants
 import NAMING_STRINGS from './constants/textContent';
 import { useImageLoader } from './constants/manifestoImgContent'; //usage: NamingIMAGES.cloud
-import { useNamingImageLoader } from './constants/imgContent';
+
 
 function App() {
   const [article, setArticle] = useState('naming experiment')
 
   const MANIFESTO_IMAGES = useImageLoader();
-  const NAMING_IMAGES = useNamingImageLoader();
+  
 
   return (
     <div className="App">
       <div className='App-header'>
         
-        {article === 'naming' && <NamingSection images={NAMING_IMAGES} text={NAMING_STRINGS} />}
+        {article === 'naming' && <NamingSection text={NAMING_STRINGS} />}
         {article === 'manifesto' && <ManifestoSection images={MANIFESTO_IMAGES} />}
-        {article === 'naming experiment' && <NamingExperimentSection images={NAMING_IMAGES}/>}
+        {article === 'naming experiment' && <NamingExperimentSection/>}
         {article === 'hotdog' && <HotDogSection />}
 
         <div style={{position: 'fixed', top: 0, color: 'white'}}>
