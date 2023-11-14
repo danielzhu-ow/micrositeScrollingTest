@@ -7,7 +7,7 @@ export const useHotDogImageLoader = () => {
     const importImages = async () => {
       try {
         const imageObject = {};
-        for (let n = 1; n <= 37; n++) {
+        for (let n = 1; n <= 33; n++) {
           const imageName = `hotdog_${n}.jpg`;
           const image = (await import(`../images/hotdog/${imageName}`)).default;
           imageObject[`hotdog_${n}`] = image;
