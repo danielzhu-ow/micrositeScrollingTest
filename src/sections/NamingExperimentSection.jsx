@@ -143,8 +143,8 @@ function NamingExperimentSection() {
 
     const desktopOff = (
         <>
-            <TransformingContent child={<ImgBox url={images.duracell} displayDimensions={[26, 26]} rotate={-48} />} positions={[[1, 1, 1, 1], [-100, 5, 5, -100]]} scrollInfo={adjustedTimings[1][4]} alignment={['left', 'bottom']} />
-            <TransformingContent child={<ImgBox url={images.off} displayDimensions={[20, 87]} rotate={10} />} positions={[[1, 1, 1, 1], [-100, 5, 5, -100]]} scrollInfo={adjustedTimings[1][4]} alignment={['right', 'bottom']} />
+            <TransformingContent child={<ImgBox url={getImageByKey("duracell")} displayDimensions={[26, 26]} rotate={-48} />} positions={[[1, 1, 1, 1], [-100, 5, 5, -100]]} scrollInfo={adjustedTimings[1][4]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<ImgBox url={getImageByKey("off")} displayDimensions={[20, 87]} rotate={10} />} positions={[[1, 1, 1, 1], [-100, 5, 5, -100]]} scrollInfo={adjustedTimings[1][4]} alignment={['right', 'bottom']} />
         </>
     )
 
@@ -166,7 +166,7 @@ function NamingExperimentSection() {
         <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[4][0]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[4][0]} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
-                <ColumnImage scrollInfo={adjustedTimings[4][0]} backY={12} child={<ImgBox url={images.cute_robot} displayDimensions={[20, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[4][0]} backY={12} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[20, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["The good:"]
@@ -183,7 +183,7 @@ function NamingExperimentSection() {
         <TransformingTextBox positions={[27, 27, 27, 27]} scrollInfo={adjustedTimings[4][1]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[4][1]} child={<ImgBox url={getImageByKey("orange_robot1")} displayDimensions={[18, 50]} rotate={0} />} />
-                <ColumnImage scrollInfo={adjustedTimings[4][1]} backY={5} child={<ImgBox url={images.orange_robot1} displayDimensions={[25, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[4][1]} backY={5} child={<ImgBox url={getImageByKey("orange_robot1")} displayDimensions={[25, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][1]} dark={false} simpleFade={true} baseOpacity={0} text={
                         ["The bad:"]
@@ -199,7 +199,7 @@ function NamingExperimentSection() {
     const desktopTheOpportunity = (
         <TransformingTextBox positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[4][2]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][2]} backY={25} child={<ImgBox url={images.tin_robot3} displayDimensions={[25, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[4][2]} backY={25} child={<ImgBox url={getImageByKey("tin_robot3")} displayDimensions={[25, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][2]} dark={false} simpleFade={true} baseOpacity={0} text={
                         ["The opportunity:"]
@@ -315,7 +315,7 @@ function NamingExperimentSection() {
     const desktopWhileThese = (
         <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[11][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[11][0]} backY={12} fadeOut={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[11][0]} backY={12} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacityParagraph scrollInfo={adjustedTimings[11][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["While these results may not reflect the most viable names, we’ve quickly demonstrated that through simple priming around a certain type of name, and the intention behind it, GPT is able to apply this guidance to deliver a set of options with a more focused approach."]
@@ -331,7 +331,7 @@ function NamingExperimentSection() {
     const desktopTryThis01 = (
         <TransformingTextBox positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[11][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[11][1]} backY={12} fadeIn={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[11][1]} backY={12} fadeIn={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <TryThis text={tryText} scrollInfo={adjustedTimings[11][1]} />
             </DoubleColumn>
         } />
@@ -454,7 +454,7 @@ function NamingExperimentSection() {
     const desktopWeFound = (
         <TransformingTextBox positions={[127, 10, 10, 10]} scrollInfo={adjustedTimings[18][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][0]} fadeOut={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[18][0]} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[18][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["We found the results exciting for a couple of reasons:"]
@@ -470,7 +470,7 @@ function NamingExperimentSection() {
     const desktopButChallenges = (
         <TransformingTextBox positions={[10, 10, 10, 10]} scrollInfo={adjustedTimings[18][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][1]} fadeIn={false} fadeOut={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[18][1]} fadeIn={false} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacityParagraph scrollInfo={adjustedTimings[18][1]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["BUT, challenges remain: we’ve achieved a route to abstraction, but these are still real words, unlikely to be available in many trademark categories. And the process broke down when we asked GPT to translate these real, dictionary words to more unique approaches like compound or coined names. Also, interestingly, after repeating a couple of times, we saw the results degrade – as though GPT was running out of ideas, or regressing to the notion where “abstract” becomes literally mysterious again…"]
@@ -486,7 +486,7 @@ function NamingExperimentSection() {
     const desktopToKeep = (
         <TransformingTextBox positions={[10, 10, 10, 10]} scrollInfo={adjustedTimings[18][2]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][2]} fadeIn={false} fadeOut={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[18][2]} fadeIn={false} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacityParagraph scrollInfo={adjustedTimings[18][2]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["To keep GPT in a truly originative space, we need to reset our prompts frequently, and keep pushing toward more freedom of association."]
@@ -505,7 +505,7 @@ function NamingExperimentSection() {
     const desktopTryThis02 = (
         <TransformingTextBox positions={[10, 10, 10, -100]} scrollInfo={adjustedTimings[18][3]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][3]} fadeIn={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[18][3]} fadeIn={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <TryThis text={tryText} scrollInfo={adjustedTimings[18][3]} />
             </DoubleColumn>
         } />
@@ -515,7 +515,7 @@ function NamingExperimentSection() {
         <div style={{ position: "relative", height: "100%", width: "100%" }}>
 
             {/* HEADER */}
-            <TransitionBackground background={images.naming_gradient} height={sectionHeights[0]} startHeight={0} hasTransition={true} />
+            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} />
             <FadingHeader text={header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
 
             {/* SECTION 1 */}
@@ -524,7 +524,7 @@ function NamingExperimentSection() {
             {isMobile ? <></> : desktopOff}
 
             {/* SECTION 2 | HEADER */}
-            <TransitionBackground background={images.experiment_01} height={sectionHeights[2]} startHeight={sectionHeights[0] + sectionHeights[1]} endOpacity={0.8} hasTransition={true} preserveRatio />
+            <TransitionBackground background={getImageByKey("experiment_01")} height={sectionHeights[2]} startHeight={sectionHeights[0] + sectionHeights[1]} endOpacity={0.8} hasTransition={true} preserveRatio />
             <FadingSectionHeader text={sectionHeader01} scrollInfo={adjustedTimings[2][0]} />
 
             {/* SECTION 3 | VIDEO 1*/}
@@ -538,7 +538,7 @@ function NamingExperimentSection() {
             {desktopTheOpportunity}
 
             {/* SECTION 5 | HEADER */}
-            <TransitionBackground background={images.experiment_02} height={sectionHeights[5]} startHeight={sectionHeights.slice(0, 5).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} preserveRatio />
+            <TransitionBackground background={getImageByKey("experiment_02")} height={sectionHeights[5]} startHeight={sectionHeights.slice(0, 5).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} preserveRatio />
             <FadingSectionHeader text={sectionHeader02} scrollInfo={adjustedTimings[5][0]} />
 
             {/* VIDEO */}
@@ -547,20 +547,20 @@ function NamingExperimentSection() {
             {isMobile ? mobileVideoBaseline02 : desktopVideoBaseline02}
 
             {/* SECTION 8 | VIDEO */}
-            <Background background={images.naming_gradient} height={sectionHeights[8]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[8]} />
             {isMobile ? mobileVideoNames02 : desktopVideoNames02}
 
             {/* SECTION 10 | VIDEO */}
-            <Background background={images.naming_gradient} height={sectionHeights[10]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[10]} />
             {isMobile ? mobileVideoCoined0203 : desktopVideoCoined0203}
 
             {/* TEXT */}
             {/* SECTION 7 | VIDEO 2 TEXT*/}
-            <Background background={images.naming_gradient} height={sectionHeights[7]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[7]} />
             {isMobile ? mobileVideoText01 : desktopVideoText01}
 
             {/* SECTION 9 | VIDEO 2 TEXT*/}
-            <Background background={images.naming_gradient} height={sectionHeights[9]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[9]} />
             {isMobile ? mobileVideoText0202 : desktopVideoText0202}
 
             {/* SECTION 11*/}
@@ -569,7 +569,7 @@ function NamingExperimentSection() {
             {desktopTryThis01}
 
             {/* SECTION 12 */}
-            <TransitionBackground background={images.experiment_03} height={sectionHeights[12]} startHeight={sectionHeights.slice(0, 12).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} preserveRatio />
+            <TransitionBackground background={getImageByKey("experiment_03")} height={sectionHeights[12]} startHeight={sectionHeights.slice(0, 12).reduce((partialSum, a) => partialSum + a, 0)} endOpacity={0.8} hasTransition={true} preserveRatio />
             <FadingSectionHeader text={sectionHeader03} scrollInfo={adjustedTimings[12][0]} />
 
             {/* VIDEOS */}
@@ -578,20 +578,20 @@ function NamingExperimentSection() {
             {isMobile ? mobileVideoAbstract01 : desktopVideoAbstract01}
 
             {/* SECTION 15 */}
-            <Background background={images.naming_gradient} height={sectionHeights[15]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[15]} />
             {isMobile ? mobileVideoAbstract02 : desktopVideoAbstract02}
 
             {/* SECTION 17 */}
-            <Background background={images.naming_gradient} height={sectionHeights[17]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[17]} />
             {isMobile ? mobileVideoAbstract03 : desktopVideoAbstract03}
 
             {/* TEXT */}
             {/* SECTION 14 */}
-            <Background background={images.naming_gradient} height={sectionHeights[14]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[14]} />
             {isMobile ? mobileVideoText0301 : desktopVideoText0301}
 
             {/* SECTION 16 */}
-            <Background background={images.naming_gradient} height={sectionHeights[16]} />
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[16]} />
             {isMobile ? mobileVideoText0302 : desktopVideoText0302}
 
             {/* SECTION 18 */}

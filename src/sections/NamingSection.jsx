@@ -106,9 +106,9 @@ function NamingSection({ text }) {
     );
     const desktopSection1 = (
         <>
-            <TransformingContent child={<ImgBox url={images.dino_night} displayDimensions={[70, 70]} rotate={0} />}
+            <TransformingContent child={<ImgBox url={getImageByKey("dino_night")} displayDimensions={[70, 70]} rotate={0} />}
                 positions={[[100, 35, 35, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
-            <TransformingContent child={<ImgBox url={images.dino_day} displayDimensions={[70, 70]} rotate={0} />}
+            <TransformingContent child={<ImgBox url={getImageByKey("dino_day")} displayDimensions={[70, 70]} rotate={0} />}
                 positions={[[100, 40, 40, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
         </>
     );
@@ -273,10 +273,10 @@ function NamingSection({ text }) {
     return (
         <div style={{ position: "relative", height: "100%", width: "100%" }}>
             {/* HEADER: Section 0 */}
-            <TransitionBackground background={images.naming_gradient} height={sectionHeights[0]} startHeight={0} hasTransition={true} scrollInfo={adjustedTimings[0][0]}/>
+            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} scrollInfo={adjustedTimings[0][0]}/>
             <FadingHeader text={text.Header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
-            <TransformingContent child={<ImgBox url={images.naming_01} displayDimensions={[60, 60]} rotate={0} />} positions={[[0, -50], [-10, -60]]} scrollInfo={adjustedTimings[0][1]} alignment={['left', 'top']} />
-            <TransformingContent child={<ImgBox url={images.naming_02} displayDimensions={[55, 55]} rotate={0} />} positions={[[0, -50], [-10, -65]]} scrollInfo={adjustedTimings[0][2]} alignment={['right', 'bottom']} />
+            <TransformingContent child={<ImgBox url={getImageByKey("naming_01")} displayDimensions={[60, 60]} rotate={0} />} positions={[[0, -50], [-10, -60]]} scrollInfo={adjustedTimings[0][1]} alignment={['left', 'top']} />
+            <TransformingContent child={<ImgBox url={getImageByKey("naming_02")} displayDimensions={[55, 55]} rotate={0} />} positions={[[0, -50], [-10, -65]]} scrollInfo={adjustedTimings[0][2]} alignment={['right', 'bottom']} />
 
             {/* SECTION 1 */}
             <Background background={"#202020"} height={sectionHeights[1]} />
@@ -285,7 +285,7 @@ function NamingSection({ text }) {
 
             {/* SECTION 2 */}
             {/* <Background background={images.naming_gradient} height={sectionHeights[2]} /> */}
-            <TransitionBackground background={images.naming_gradient} height={sectionHeights[2]} startHeight={900} hasTransition={true} scrollInfo={adjustedTimings[2][3]}/>
+            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[2]} startHeight={900} hasTransition={true} scrollInfo={adjustedTimings[2][3]}/>
             {isMobile ? mobileFinding : desktopFinding}
 
             {/* SECTION 3 */}
