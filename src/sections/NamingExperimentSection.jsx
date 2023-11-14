@@ -165,7 +165,6 @@ function NamingExperimentSection() {
     const desktopTheGood = (
         <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[4][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][0]} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <ColumnImage scrollInfo={adjustedTimings[4][0]} backY={12} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[20, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][0]} baseOpacity={0} dark={false} simpleFade={true} text={
@@ -182,7 +181,6 @@ function NamingExperimentSection() {
     const desktopTheBad = (
         <TransformingTextBox positions={[27, 27, 27, 27]} scrollInfo={adjustedTimings[4][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][1]} child={<ImgBox url={getImageByKey("orange_robot1")} displayDimensions={[18, 50]} rotate={0} />} />
                 <ColumnImage scrollInfo={adjustedTimings[4][1]} backY={5} child={<ImgBox url={getImageByKey("orange_robot1")} displayDimensions={[25, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][1]} dark={false} simpleFade={true} baseOpacity={0} text={

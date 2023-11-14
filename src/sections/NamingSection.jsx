@@ -17,10 +17,6 @@ import { HotDogSection } from './HotDogSection.js';
 export { NamingSection }
 
 function NamingSection({ text }) {
-
-    // load images
-    // const images = useNamingImageLoader();
-
     //Heights                0    1    2    3    4    5    6    7
     const sectionHeights = [300, 600, 300, 300, 200, 200, 400, 500]
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
