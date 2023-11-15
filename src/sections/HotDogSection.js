@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { motion } from "framer-motion"
 
 import { Background } from '../interactions/Background'
-import { TransformingContent, TransformingTextBox, ImgBox } from '../interactions/TransformingContent'
+import { TransformingContent, ImgBox } from '../interactions/TransformingContent'
+import { TransformingTextBox } from '../interactions/TransformingTextBox';
 import { useHotDogImageLoader } from '../constants/hotDogImg';
 import { OpacityContent, OpacitySubheading } from '../interactions/OpacityContent';
 import { sizes, devices } from '../constants/devices';

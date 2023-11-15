@@ -49,7 +49,6 @@ const ArticleBody = styled.p`
 
 const ArticleList = styled.li`
     font-family: 'Noto Sans', sans-serif;
-    list-style-position: 'inside';
     font-weight: 400;
     font-size: 2rem;
     text-align: left;
@@ -86,7 +85,6 @@ const ArticleSubHeading = styled.h2`
 
 const ArticleLink = styled.a`
     text-decoration: underline;
-    color: white;
 `
 
 const ArticleHeaderBlock = ({ contentString }) => {

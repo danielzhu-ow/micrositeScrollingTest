@@ -7,9 +7,14 @@ import namezap1 from '../images/naming/NameZap1.mp4'
 
 // import interactions
 import { Background, TransitionBackground } from '../interactions/Background.js'
-import { TransformingContent, TransformingTextBox, ImgBox, VideoBox, ScalingImgBox, RotatingImgBox } from '../interactions/TransformingContent.js'
-import { VideoTextBox, VideoTextScroller } from '../interactions/VideoTextBox.js';
-import { OpacityContent, OpacityParagraph, OpacitySubheading } from '../interactions/OpacityContent.js';
+import { TransformingContent, ImgBox, VideoBox, ScalingImgBox, RotatingImgBox } from '../interactions/TransformingContent.js'
+import { TransformingTextBox } from '../interactions/TransformingTextBox.jsx';
+import { AnchoredTransformingContent } from '../interactions/AnchoredTransformingContent.jsx';
+import { VideoTextBox } from '../interactions/VideoTextBox.js';
+import { DoubleColumn } from '../interactions/DoubleColumn.js';
+import { ColumnImage } from '../interactions/ColumnImage.js';
+import { ArticleLink } from '../ArticleStyles.jsx';
+import { OpacityContent, OpacityParagraph, OpacitySubheading, OpacityList } from '../interactions/OpacityContent.js';
 import { FadingHeader } from "../interactions/FadingHeader.js"
 import { HotDogSection } from './HotDogSection.js';
 
@@ -18,7 +23,7 @@ export { NamingSection }
 function NamingSection({ images, text }) {
 
     //Heights                0    1    2    3    4    5    6    7
-    const sectionHeights = [300, 600, 300, 300, 200, 200, 400, 500]
+    const sectionHeights = [300, 600, 400, 300, 200, 200, 400, 500]
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
 
     //Timings 
@@ -41,13 +46,14 @@ function NamingSection({ images, text }) {
         // [2] Section 2
         //s,   tIn  - tOut tIn - tOut   e
         [[0, 0.15, 0.55, 0.75, 1.0],               // [0] Paragraph Transform Timings
-        [0, 0.15, 0.75, 0.8],                      // [1] Paragraph 1
+        [0, 0.15, 0.75, 1],                      // [1] Paragraph 1
         [0, 0.15, 0.3, 0.75, 1.0],                // [2] Meet Firmi Transform Timings
-        [0.3, 0.45, 0.5, 1]],                       // [3] "Meet Firmi 1.0"
+        [0.3, 0.45, 0.5, 1],
+        [0.7, 0.9, 1]],                       // [3] "Meet Firmi 1.0"
 
         // [3] Section 3
-        [[0.15, 0.3, 0.5, 0.75, 1.2],                 // [0] Firmi img
-        [0.35, 0.45, 0.5, 0.75, 1.2],                // [1] Paragraph Transform Timings
+        [[0.0, 0.3, 0.5, 0.75, 1.2],                 // [0] Firmi img
+        [0.0, 0.45, 0.5, 0.75, 1.2],                // [1] Paragraph Transform Timings
         [0.5, 0.6, 0.75, 1.0],                        // [2] paragraph opacites
         [0.15, 0.5, 1, 1.2]],
 
@@ -56,27 +62,21 @@ function NamingSection({ images, text }) {
 
         // [5] Section 5
         [[0, 1],                  //VideoT             
-        [0, 0, 1, 1],                  // [0] Paragraph timings
+        [0, 0.45, 0.55, 1],                  // [0] Paragraph timings
         [0, 0.3, 0.7, 1],                      // [1] post video paragraph
-        [-0.1, 0.8, 1.1],
-        [-0.1, 0, 1, 1.1]],
+        [-0.1, 0.8, 1],
+        [-0.1, 0, 1, 1]],
 
         // [6] Section 6 - hotdog
-        [[0.5, 0.55, 0.75, 1],                          //TEXT
+        [[0.5, 0.55, 0.75, 1.2],                          //TEXT
         [0, 0.25, 0.3, 0.5],                            //TOYPILE
-        [0.2, 0.22, 0.25, 0.5, 0.8, 1],
-        [0.2, 0.25, 0.75, 1]],                          //HOTDOG
+        [0.2, 0.22, 0.25, 0.5, 0.8, 1.2],
+        [0.2, 0.25, 0.75, 1.2]],                          //HOTDOG
 
         // [7] Section 7
-        [[0.1, 0.2, 0.55, 0.75, 1.1],                   // [0] Sub header timings
-        [0.15, 0.2, 1.0, 1.1],                           // [1] sub header "time to play"
-        [0.45, 0.55, 0.65, 0.75],                         // [2] paragraph 1
-        [0.75, 0.85, 1.0, 1.1],                          // [3] paragraph 2
-        [0.18, 0.30, 0.4, 0.7],                         // [4] robot peekaboo
-        [0.7, 0.72, 0.79, 0.8],                         // [5] robot gif
-        [0.8, 0.87, 0.9, 1.1],                          // [6] robot static
-        [0.85, 0.9, 0.95, 1.1],                          // [7] Lets go timings
-        [0.85, 0.9, 1.1, 1.1]]                          // [8] sub header "lets go"
+        [[-0.2, 0.2, 0.8, 1],
+        [-0.2, 0.22, 0.27, 0.5],
+        [0.5, 0.73, 0.77, 1]]                          // [8] sub header "lets go"
     ]
     let adjustedTimings = []
 
@@ -159,7 +159,7 @@ function NamingSection({ images, text }) {
         <TransformingTextBox positions={[80, 27, 27, 27, 27]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
             <>
                 <OpacityParagraph scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                    [<p>Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. <b>And the question for us is: which of these steps can we successfully AI-ify</b> to enhance the strategic and creative rigor behind what it takes to develop iconic names?</p>]
+                    [<p>Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. <b>And the question for us is: which of these steps can we successfully AI-ify</b> to enhance the strategic and creative rigor behind what it takes to develop iconic names?<br/><br/><br/></p>]
                 } />
                 <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} simpleFade={true} baseOpacity={0} text={
                     ["...Meet Firmi 1.0"]
@@ -173,26 +173,26 @@ function NamingSection({ images, text }) {
             <TransformingContent child={<OpacityContent scrollInfo={adjustedTimings[3][3]} baseOpacity={0} child={<ScalingImgBox url={images.firmi} displayDimensions={[30, 30, 15, 15, 15]} scrollInfo={adjustedTimings[3][0]} />} />} positions={[[10, 10, 30, 30, 30], [15, 15, 0, 0, -100]]} scrollInfo={adjustedTimings[3][0]} alignment={['left', 'top']} />
             <TransformingTextBox positions={[20, 20, 20, 20, -80]} scrollInfo={adjustedTimings[3][1]} alignment={'top'} child={
                 <OpacityParagraph scrollInfo={adjustedTimings[3][2]} dark={true} simpleFade={true} baseOpacity={0} text={
-                    ["The Lippincott naming team has been exploring the creative potential of AI since 2018. That’s when we first developed a proprietary AI-trained naming tool to augment our human-led name generation.",
-                        "Simple by today’s standards, the tool was originally trained on 50,000 names created over 50+ Lippincott projects that embodied best practices and had passed legal viability filters over the years. The idea is it could pull form this repository of knowledge to amplify our overall name ideation with high fidelity names.",
-                        "And the first name it developed— its own, did not disappoint. The name FIRMI is inspired in the idea of the “firm’s intelligence” plus an ability to “engineer” new names in a nod to physicist Enrico Fermi.",
+                    ["The Lippincott naming team has been exploring the creative potential of AI since 2018. That's when we first developed a proprietary AI-trained naming tool to augment our human-led name generation.",
+                        "Simple by today's standards, the tool was originally trained on 50,000 names created over 50+ Lippincott projects that embodied best practices and had passed legal viability filters over the years. The idea is it could pull form this repository of knowledge to amplify our overall name ideation with high fidelity names.",
+                        "And the first name it developed— its own, did not disappoint. The name FIRMI is inspired in the idea of the “firm's intelligence” plus an ability to “engineer” new names in a nod to physicist Enrico Fermi.",
                         "Cut to today. Firmi now leaps and bounds ahead of where it started."]
                 } />
             } /></>
     );
 
     const desktopFirmiSection = (
-        <>
-            <TransformingContent child={<OpacityContent scrollInfo={adjustedTimings[3][3]} baseOpacity={0} child={<ScalingImgBox url={images.firmi} displayDimensions={[64, 64, 26, 26, 26]} scrollInfo={adjustedTimings[3][0]} />} />} positions={[[32, 32, 18, 18, 18], [15, 15, 3, 3, -100]]} scrollInfo={adjustedTimings[3][0]} alignment={['left', 'top']} />
-            <TransformingTextBox positions={[20, 20, 20, 20, -80]} scrollInfo={adjustedTimings[3][1]} alignment={'top'} child={
+        <TransformingTextBox positions={[20, 20, 20, 20, -80]} scrollInfo={adjustedTimings[3][1]} alignment={'top'} child={
+            <>
+                <AnchoredTransformingContent center={[60, 75]} child={<ScalingImgBox url={images.firmi} displayDimensions={[64, 64, 26, 26, 26]} scrollInfo={adjustedTimings[3][0]} />} positions={[[50, 50, 0, 0, 0], [50, 50, -10, -10, -100]]} scrollInfo={adjustedTimings[3][0]} alignment={['left', 'top']} />
                 <OpacityParagraph scrollInfo={adjustedTimings[3][2]} dark={true} simpleFade={true} baseOpacity={0} text={
-                    ["The Lippincott naming team has been exploring the creative potential of AI since 2018. That’s when we first developed a proprietary AI-trained naming tool to augment our human-led name generation.",
-                        "Simple by today’s standards, the tool was originally trained on 50,000 names created over 50+ Lippincott projects that embodied best practices and had passed legal viability filters over the years. The idea is it could pull form this repository of knowledge to amplify our overall name ideation with high fidelity names.",
-                        "And the first name it developed— its own, did not disappoint. The name FIRMI is inspired in the idea of the “firm’s intelligence” plus an ability to “engineer” new names in a nod to physicist Enrico Fermi.",
+                    ["The Lippincott naming team has been exploring the creative potential of AI since 2018. That's when we first developed a proprietary AI-trained naming tool to augment our human-led name generation.",
+                        "Simple by today's standards, the tool was originally trained on 50,000 names created over 50+ Lippincott projects that embodied best practices and had passed legal viability filters over the years. The idea is it could pull form this repository of knowledge to amplify our overall name ideation with high fidelity names.",
+                        "And the first name it developed— its own, did not disappoint. The name FIRMI is inspired in the idea of the “firm's intelligence” plus an ability to “engineer” new names in a nod to physicist Enrico Fermi.",
                         "Cut to today. Firmi now leaps and bounds ahead of where it started."]
                 } />
-            } />
-        </>
+            </>
+        } />
     );
 
     const mobileVideo = (
@@ -228,11 +228,9 @@ function NamingSection({ images, text }) {
             <Background background={images.naming_gradient} height={sectionHeights[5]} />
             <TransformingContent positions={[[0, 0, 0], [5, 5, 100]]} scrollInfo={adjustedTimings[5][3]} alignment={['center', 'center']}
                 child={<VideoTextBox scrollInfo={adjustedTimings[5][4]} displayWidth={80} heightRatio={0.657} child={
-                    <VideoTextScroller scrollInfo={adjustedTimings[5][0]} scrollToFrom={[500, -500]}>
-                        <OpacityParagraph scrollInfo={adjustedTimings[5][1]} text={
-                            ["The recent explosion of new generative AI represents an opportunity to experiment with ways to supercharge Firmi amping the natural language and machine learning capacity it lacked in early instances to become a more dynamic resource and relevant extension to our teams. We are on a mission to find ways to effectively harness the immense data sources, processing power, and intuitive interface now available, without sacrificing quality, data integrity, security, and ownership rights plaguing many OpenAi tools today."]
-                        } />
-                    </VideoTextScroller>
+                    <OpacityParagraph scrollInfo={adjustedTimings[5][1]} simpleFade={true} text={
+                        ["The recent explosion of new generative AI represents an opportunity to experiment with ways to supercharge Firmi amping the natural language and machine learning capacity it lacked in early instances to become a more dynamic resource and relevant extension to our teams. We are on a mission to find ways to effectively harness the immense data sources, processing power, and intuitive interface now available, without sacrificing quality, data integrity, security, and ownership rights plaguing many OpenAi tools today."]
+                    } />
                 } />}
             />
         </>
@@ -240,36 +238,45 @@ function NamingSection({ images, text }) {
 
     const mobileRobotSection = (
         <>
-            <TransformingContent positions={[[10, 10, 10, 10, 10], [80, 80, 80, 80, 80]]} scrollInfo={adjustedTimings[7][0]} alignment={['top', 'left']} child={<OpacitySubheading scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={["So, it’s time to play."]} />}></TransformingContent>
+            <TransformingContent positions={[[10, 10, 10, 10, 10], [80, 80, 80, 80, 80]]} scrollInfo={adjustedTimings[7][0]} alignment={['top', 'left']} child={<OpacitySubheading scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={["So, it’s time to play."]} />} />
             <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[190, 210]} rotateDimensions={[40, 40, 0, 0]} scrollInfo={adjustedTimings[7][4]} />} positions={[[-150, -45, -45, -45], [-10, -10, -10, 100]]} scrollInfo={adjustedTimings[7][4]} alignment={['left', 'bottom']} />
             {/* <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[6][6]} />} positions={[[-15, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[6][6]} alignment={['left', 'bottom']} /> */}
             <TransformingContent child={<ImgBox url={images.cute_robot_think} displayDimensions={[23.2, 33.2]} />} positions={[[32, 32, 32, 32], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[7][6]} alignment={['left', 'bottom']} />
 
             <TransformingContent positions={[[0, 0, 0, 0], [35, 35, 35, 35]]} scrollInfo={adjustedTimings[7][7]} alignment={['bottom', 'right']} child={
                 <OpacityParagraph scrollInfo={adjustedTimings[7][8]} dark={false} simpleFade={true} baseOpacity={0} text={["Let’s go →"]} />
-            }></TransformingContent>
+            } />
 
         </>
     );
 
     const desktopRobotSection = (
         <>
-            <TransformingContent positions={[[20, 20, 46, 46, 46], [80, 80, 80, 80, 80]]} scrollInfo={adjustedTimings[7][0]} alignment={['top', 'right']} child={<OpacitySubheading scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={["So, it’s time to play."]} />}></TransformingContent>
-            <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[40, 40, 0, 0]} scrollInfo={adjustedTimings[7][4]} />} positions={[[-50, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[7][4]} alignment={['left', 'bottom']} />
-            <TransformingContent child={<ImgBox url={images.cute_robot_think} displayDimensions={[23.2, 33.2]} />} positions={[[3.5, 3.5, 3.5, 3.5], [9.5, 9.5, 9.5, 9.5]]} scrollInfo={adjustedTimings[7][5]} alignment={['left', 'bottom']} />
-            <TransformingContent child={<RotatingImgBox url={images.cute_robot_idle} displayDimensions={[60, 70]} rotateDimensions={[0, 0, 0, 0]} scrollInfo={adjustedTimings[7][6]} />} positions={[[-15, -15, -15, -15], [-10, -10, -10, -10]]} scrollInfo={adjustedTimings[7][6]} alignment={['left', 'bottom']} />
-
-            <TransformingContent positions={[[27, 27, 27, 27], [50, 50, 50, 50]]} scrollInfo={adjustedTimings[7][7]} alignment={['bottom', 'right']} child={
-                <OpacityParagraph scrollInfo={adjustedTimings[7][8]} dark={false} simpleFade={true} baseOpacity={0} text={["Let’s go →"]} />
-            }></TransformingContent>
-
+            <TransformingTextBox positions={[127, 27, 27, -100]} scrollInfo={adjustedTimings[7][0]} alignment={'top'} child={
+                <DoubleColumn>
+                    <ColumnImage scrollInfo={adjustedTimings[7][0]} backY={12} fadeOut={false} child={<ImgBox url={images.cute_robot} displayDimensions={[18, 50]} rotate={0} />} />
+                    <div>
+                        <OpacitySubheading scrollInfo={adjustedTimings[7][0]} dark={false} simpleFade={true} baseOpacity={0} text={[<p>So, it’s time to <ArticleLink href='http://google.com' style={{ color: 'black'}}>play</ArticleLink>.</p>]} />
+                        <OpacityParagraph scrollInfo={adjustedTimings[7][2]} baseOpacity={0} dark={false} simpleFade={true} text={
+                            [<p>We'll document our learning in real time to the advantage of our clients and the work we deliver. <b>Ultimately, we'll test the hypothesis that this ChatGPT era can supercharge our expertise and creative processes to arrive at stronger names than ever before.</b><br/><br/>First up in our list of experiments - name generation.</p>]
+                        } />
+                        <OpacityParagraph scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={
+                            [<p>Our team is investing in a series of open, iterative trials to explore the potential new utility of AI to push the bounds of our naming capability, considering…</p>]
+                        } />
+                        <OpacityList scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={
+                            ["Can we coach AI to deliver more creative ideas than it can at first blush?","Which use cases is it great at? Where does it have limitations?","Beyond mere generation, can it help refine, iterate, or even select optimal names?","How do we balance the risks of AI with the immense upside to our creative capabilities?","How do we build the Firmi 2.0 to take advantage of the opportunity?"]
+                        } />
+                        <OpacityParagraph scrollInfo={adjustedTimings[7][2]} dark={false} simpleFade={true} baseOpacity={0} text={["Let’s go →"]} />
+                    </div>
+                </DoubleColumn>
+            } />
         </>
     );
 
     return (
         <div style={{ position: "relative", height: "100%", width: "100%" }}>
             {/* HEADER: Section 0 */}
-            <TransitionBackground background={images.naming_gradient} height={sectionHeights[0]} startHeight={0} hasTransition={true} scrollInfo={adjustedTimings[0][0]}/>
+            <TransitionBackground background={images.naming_gradient} height={sectionHeights[0]} startHeight={0} hasTransition={true} scrollInfo={adjustedTimings[0][0]} />
             <FadingHeader text={text.Header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
             <TransformingContent child={<ImgBox url={images.naming_01} displayDimensions={[60, 60]} rotate={0} />} positions={[[0, -50], [-10, -60]]} scrollInfo={adjustedTimings[0][1]} alignment={['left', 'top']} />
             <TransformingContent child={<ImgBox url={images.naming_02} displayDimensions={[55, 55]} rotate={0} />} positions={[[0, -50], [-10, -65]]} scrollInfo={adjustedTimings[0][2]} alignment={['right', 'bottom']} />
@@ -281,7 +288,7 @@ function NamingSection({ images, text }) {
 
             {/* SECTION 2 */}
             {/* <Background background={images.naming_gradient} height={sectionHeights[2]} /> */}
-            <TransitionBackground background={images.naming_gradient} height={sectionHeights[2]} startHeight={900} hasTransition={true} scrollInfo={adjustedTimings[2][3]}/>
+            <TransitionBackground background={images.naming_gradient} height={sectionHeights[2]} startHeight={900} hasTransition={true} delayed={[0.6, 0.9]}/>
             {isMobile ? mobileFinding : desktopFinding}
 
             {/* SECTION 3 */}
@@ -300,31 +307,7 @@ function NamingSection({ images, text }) {
 
             {/* Section 7 */}
             <Background background={images.naming_gradient} height={sectionHeights[7]} />
-            <TransformingTextBox positions={[20, 20, 20, 20, 20]} scrollInfo={adjustedTimings[7][0]} alignment={'top'} child={
-                <>
-                    <OpacityParagraph scrollInfo={adjustedTimings[7][2]} dark={false} simpleFade={true} baseOpacity={0} text={
-                        ["Our team is investing in a series of open, iterative trials to explore the potential new utility of AI to push the bounds of our naming capability, considering…",
-
-                            "•  Can we coach AI to deliver more creative ideas than it can at first blush?",
-
-                            "•  Which use cases is it great at? Where does it have limitations?",
-
-                            "•  Beyond mere generation, can it help refine, iterate, or even select optimal names?",
-
-                            "•  How do we balance the risks of AI with the immense upside to our creative capabilities?",
-
-                            "•  How do we build the Firmi 2.0 to take advantage of the opportunity?"]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[7][3]} dark={false} simpleFade={true} baseOpacity={0} text={
-                        ["We’ll document our learning in real time to the advantage of our clients and the work we deliver. Ultimately, we’ll test the hypothesis that this ChatGPT era can supercharge our expertise and creative processes to arrive at stronger names than ever before.",
-                            " ",
-                            "First up in our list of experiments – name generation."]
-                    } />
-                </>
-            } />
-
             {isMobile ? mobileRobotSection : desktopRobotSection}
-
 
         </div>
     )

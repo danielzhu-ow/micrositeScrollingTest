@@ -4,7 +4,8 @@ import { useMediaQuery } from 'react-responsive';
 
 // import interactions
 import { Background, TransitionBackground } from '../interactions/Background.js'
-import { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox } from '../interactions/TransformingContent.js'
+import { TransformingContent, ImgBox, BackgroundImgBox } from '../interactions/TransformingContent.js'
+import { TransformingTextBox } from '../interactions/TransformingTextBox.jsx';
 import { OpacityHeading, OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent.js';
 import { FadingHeader } from "../interactions/FadingHeader.js"
 // import { ContactCard } from './ContactCard';

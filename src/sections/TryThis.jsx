@@ -56,7 +56,7 @@ const ContactButton = styled.button`
 
 const ContactHeader = styled.h2`
     margin: 0 0 3.2rem 0;
-    width: 45rem;
+    max-width: 45rem;
     line-height: 110%;
     font-family: 'Noe Display Medium';
     font-weight: 500;

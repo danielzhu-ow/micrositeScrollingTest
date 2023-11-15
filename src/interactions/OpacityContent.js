@@ -17,7 +17,7 @@ function OpacityContent({ child, scrollInfo, baseOpacity }) {
 
     return (
         <motion.div style={{
-            position: "fixed",
+            // position: "fixed",
             opacity: opacity,
             display: visible
         }}>
@@ -104,7 +104,7 @@ function OpacityList({ text, scrollInfo, baseOpacity, dark, simpleFade }) {
     if (dark) { color = 'white' }
 
     return (
-        <motion.ul style={{ opacity: opacity, display: visible, color: color }}>
+        <motion.ul style={{ opacity: opacity, display: visible, color: color, listStylePosition: 'outside' }}>
             {text.map((string, index) =>
                 <ArticleList key={index}>
                     {string}

@@ -4,7 +4,8 @@ import { useMediaQuery } from 'react-responsive';
 
 // import interactions
 import { Background, TransitionBackground } from '../interactions/Background'
-import { TransformingContent, TransformingTextBox, ImgBox, VideoBox } from '../interactions/TransformingContent'
+import { TransformingContent, ImgBox, VideoBox } from '../interactions/TransformingContent'
+import { TransformingTextBox } from '../interactions/TransformingTextBox.jsx';
 import { OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
 import { ArticleLink } from '../ArticleStyles.jsx';
 import { FadingHeader } from "../interactions/FadingHeader"
@@ -124,7 +125,7 @@ function NamingExperimentSection({ images }) {
                     ["In case you missed it..."]
                 } />
                 <OpacityParagraph scrollInfo={adjustedTimings[1][0]} text={
-                    [<i>Lippincott has been a leader in brand name development for 80 years, and creator of classic household brand names like Duracell, Sprite, and Off! and more recent market-changers like Kenvue, Refinitiv, and Marcus. But as the limitations of language, trademark, name real estate and other stakes get even higher, AI represents a powerful opportunity to <ArticleLink href='http://google.com' >supercharge our naming power</ArticleLink> as long as we can manage for quality.</i>]
+                    [<i>Lippincott has been a leader in brand name development for 80 years, and creator of classic household brand names like Duracell, Sprite, and Off! and more recent market-changers like Kenvue, Refinitiv, and Marcus. But as the limitations of language, trademark, name real estate and other stakes get even higher, AI represents a powerful opportunity to <ArticleLink href='http://google.com' style={{color: 'white'}}>supercharge our naming power</ArticleLink> as long as we can manage for quality.</i>]
                 } />
                 <OpacityParagraph scrollInfo={adjustedTimings[1][1]} text={
                     [<i>For perspective, Lippincott typically generates 2,000 names against a project brief before narrowing to the 20 we present. But when you consider that Ai could access 217 billion other possibilities for names with 8 letters or less, it's clear we may be missing some gems. An equally sobering counterpoint is that efforts to date point to an AI that is good at generating quantity, but bad at producing or selecting quality.</i>]
