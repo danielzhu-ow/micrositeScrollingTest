@@ -1,7 +1,9 @@
 import PropTypes from "prop-types"
 import { sizes } from "../constants/devices"
 import MediaQuery from "react-responsive"
-import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion"
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue, useAnimation } from "framer-motion"
+import React, { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 export { TransformingContent, TransformingTextBox, ImgBox, BackgroundImgBox, VideoBox, ScalingImgBox, RotatingImgBox }
 
@@ -266,19 +268,40 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
 }
 
 function VideoBox({ url, displayWidth }) {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+    });
+
+    const controls = useAnimation();
+    const [hasPlayed, setHasPlayed] = useState(false);
+
+    useEffect(() => {
+    if (inView && !hasPlayed) {
+        controls.start({ opacity: 1, scale: 1 });
+        setHasPlayed(true);
+    }
+    }, [inView, controls, hasPlayed]);
 
     return (
-        <video controls autoPlay={false} muted
+    <motion.div
+        ref={ref}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={controls}
+        transition={{ duration: 0.5 }}
+    >
+        {inView && (
+        <video controls autoPlay={true} muted loop 
             style={{
                 width: `${displayWidth}vw`,
                 height: 'auto',
                 boxShadow: '0px 0px 0px 2px black inset',
                 borderRadius: "4rem"
-            }}
-        >
+            }}>
             <source src={url} type="video/mp4" />
             Your browser does not support the video tag.
         </video>
+        )}
+    </motion.div>
     );
 }
 
