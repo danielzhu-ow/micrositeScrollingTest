@@ -18,6 +18,7 @@ import { ArticleLink } from '../ArticleStyles.jsx';
 import { OpacityContent, OpacityParagraph, OpacitySubheading, OpacityList } from '../interactions/OpacityContent.js';
 import { FadingHeader } from "../interactions/FadingHeader.js"
 import { HotDogSection } from './HotDogSection.js';
+import { Go } from '../ArticleStyles.jsx';
 
 export { NamingSection }
 

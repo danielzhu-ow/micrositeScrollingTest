@@ -1,8 +1,8 @@
 import PropTypes from "prop-types"
-import { sizes } from "../constants/devices"
+// import { sizes } from "../constants/devices"
 import styled from "styled-components"
-import MediaQuery from "react-responsive"
-import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion"
+// import MediaQuery from "react-responsive"
+import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion"
 
 export { TransformingTextBox }
 

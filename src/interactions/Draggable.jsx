@@ -6,11 +6,11 @@ export { Draggable }
 function Draggable({ startHeight, height, windowUrl, maskUrl }) {
     const controls = useDragControls()
 
-    const DraggableOuterContainer = {
-        position: 'absolute',
-        width: '100%',
-        backgroundAttachment: 'fixed',
-    }
+    const DraggableOuterContainer = styled.div`
+        position: absolute;
+        width: 100%;
+        backgroundAttachment: fixed
+    `
 
     const window = {
         WebkitMaskImage: `url(${maskUrl})`,

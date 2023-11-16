@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import naming_gradient from '../images/naming/namingGradient.webp'
 import naming_01 from '../images/naming/naming_01.webp'
 import naming_02 from '../images/naming/naming_02.webp'

@@ -1,6 +1,4 @@
-import React from 'react';
 import { styled } from 'styled-components';
-// import STRINGS from './constants/strings';
 import { sizes } from './constants/devices.js';
 
 const ArticleHeader = styled.p`
@@ -32,10 +30,6 @@ const ArticleBody = styled.p`
     font-weight: 400;
     font-size: 2rem;
     text-align: left;
-    // padding-left: 3.2rem;
-    // padding-right: 3.2rem;
-
-    // max-width: 75rem;
     margin: 2rem auto 2rem auto;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
@@ -48,11 +42,6 @@ const ArticleList = styled.li`
     font-weight: 400;
     font-size: 2rem;
     text-align: left;
-    // padding-left: 3.2rem;
-    // padding-right: 3.2rem;
-
-    // max-width: 75rem;
-    // margin: 0 auto 0 auto;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 1.6rem;
@@ -79,29 +68,15 @@ const ArticleLink = styled.a`
     text-decoration: underline;
 `
 
-const ArticleHeaderBlock = ({ contentString }) => {
-    return (
-        <ArticleHeader>
-            {contentString}
-        </ArticleHeader>
-    )
-}
+const Go = styled.p`
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 400;
+    font-size: 2rem;
+    text-align: right;
 
-const ArticleBodyBlock = ({ contentString }) => {
-    return (
-        <ArticleBody>
-            {contentString}
-        </ArticleBody>
-    )
-}
+    @media only screen and (max-width: ${sizes.mobileL}) {
+        font-size: 1.6rem;
+    }
+`
 
-const ArticleBodyParagraghsBlock = ({ contentStrings, scrollTimings }) => {
-    return (
-        contentStrings.map(strings =>
-            <ArticleBodyBlock contentStrings={strings} scrollInfo={scrollTimings[0]} />
-            // <ArticleBodyBlock contentStrings={strings} />
-        )
-    )
-}
-
-export {  ArticleBody, ArticleSubHeading, ArticleHeader, ArticleList, ArticleLink };
+export {  ArticleBody, ArticleSubHeading, ArticleHeader, ArticleList, ArticleLink, Go };
