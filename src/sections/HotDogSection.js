@@ -208,7 +208,7 @@ function HotDogSection({ sectionHeights, adjustedTimings }) {
 
       {isTablet ? mobileToys : desktopToys}
 
-      <TransformingTextBox positions={[100, 0, 0, -120]} scrollInfo={adjustedTimings[6][0]} alignment={'top'} child={
+      <TransformingTextBox positions={[100, 0, 0, -120]} doubled scrollInfo={adjustedTimings[6][0]} alignment={'top'} child={
         <DoubleColumn>
           <div></div>
           <motion.div className='hotDogMainCont' style={{ maxWidth: '68.2rem', textAlign: 'left', height: '100vh', position: 'relative' }}>

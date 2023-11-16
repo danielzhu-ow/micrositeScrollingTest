@@ -1,9 +1,9 @@
 import { useScroll, useTransform, motion } from "framer-motion"
+import { TextContainer } from './TransformingTextBox'
 
 export { VideoTextBox, VideoTextScroller }
 
 function VideoTextBox({ child, scrollInfo, displayWidth, heightRatio }) {
-    // const opacityInfo = [scrollInfo[0], scrollInfo[0] + 0.01,  -0.01  + scrollInfo[scrollInfo.length - 1], scrollInfo[scrollInfo.length - 1]]
     const { scrollYProgress } = useScroll();
     const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1, 1, 0])
 
@@ -25,7 +25,7 @@ function VideoTextBox({ child, scrollInfo, displayWidth, heightRatio }) {
                 height: `${displayWidth * heightRatio}vw`,
                 opacity: opacity
             }}>
-            {child}
+            <TextContainer style={{width: '75rem'}}>{child}</TextContainer>
         </motion.div>
     )
 }

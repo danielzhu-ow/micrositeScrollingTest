@@ -7,6 +7,7 @@ import { Background, TransitionBackground } from '../interactions/Background'
 import { TransformingContent, ImgBox, VideoBox } from '../interactions/TransformingContent'
 import { TransformingTextBox } from '../interactions/TransformingTextBox.jsx';
 import { OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
+import { Draggable } from '../interactions/Draggable.jsx';
 import { ArticleLink } from '../ArticleStyles.jsx';
 import { FadingHeader } from "../interactions/FadingHeader"
 import { FadingSectionHeader } from '../interactions/FadingSectionHeader';
@@ -102,6 +103,10 @@ function NamingExperimentSection() {
     // const isLaptop = useMediaQuery({ query: devices.laptop });
     const isMobile = useMediaQuery({ query: devices.mobileL });
 
+    const draggable = (
+        <Draggable startHeight={0} height={sectionHeights[0]} windowUrl={getImageByKey('naming_03')} maskUrl={getImageByKey('mask')} />
+    )
+
     //SECTION 2
     const mobileInCase = (
         <TransformingTextBox positions={[127, 27, -100, -160]} scrollInfo={adjustedTimings[1][3]} alignment={'top'} child={
@@ -164,7 +169,7 @@ function NamingExperimentSection() {
 
     //SECTION 4
     const desktopTheGood = (
-        <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[4][0]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[4][0]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[4][0]} backY={12} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[20, 50]} rotate={0} />} />
                 <div>
@@ -180,7 +185,7 @@ function NamingExperimentSection() {
     )
 
     const desktopTheBad = (
-        <TransformingTextBox positions={[27, 27, 27, 27]} scrollInfo={adjustedTimings[4][1]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[27, 27, 27, 27]} scrollInfo={adjustedTimings[4][1]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[4][1]} backY={5} child={<ImgBox url={getImageByKey("orange_robot1")} displayDimensions={[25, 50]} rotate={0} />} />
                 <div>
@@ -196,7 +201,7 @@ function NamingExperimentSection() {
     )
 
     const desktopTheOpportunity = (
-        <TransformingTextBox positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[4][2]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[4][2]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[4][2]} backY={25} child={<ImgBox url={getImageByKey("tin_robot3")} displayDimensions={[25, 50]} rotate={0} />} />
                 <div>
@@ -312,7 +317,7 @@ function NamingExperimentSection() {
 
     //SECTION 11
     const desktopWhileThese = (
-        <TransformingTextBox positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[11][0]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[11][0]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[11][0]} backY={12} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
@@ -328,7 +333,7 @@ function NamingExperimentSection() {
     )
 
     const desktopTryThis01 = (
-        <TransformingTextBox positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[11][1]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[11][1]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[11][1]} backY={12} fadeIn={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <TryThis text={tryText} scrollInfo={adjustedTimings[11][1]} />
@@ -451,7 +456,7 @@ function NamingExperimentSection() {
 
     //SECTION 18
     const desktopWeFound = (
-        <TransformingTextBox positions={[127, 10, 10, 10]} scrollInfo={adjustedTimings[18][0]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[127, 10, 10, 10]} scrollInfo={adjustedTimings[18][0]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[18][0]} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
@@ -467,7 +472,7 @@ function NamingExperimentSection() {
     )
 
     const desktopButChallenges = (
-        <TransformingTextBox positions={[10, 10, 10, 10]} scrollInfo={adjustedTimings[18][1]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[10, 10, 10, 10]} scrollInfo={adjustedTimings[18][1]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[18][1]} fadeIn={false} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
@@ -483,7 +488,7 @@ function NamingExperimentSection() {
     )
 
     const desktopToKeep = (
-        <TransformingTextBox positions={[10, 10, 10, 10]} scrollInfo={adjustedTimings[18][2]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[10, 10, 10, 10]} scrollInfo={adjustedTimings[18][2]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[18][2]} fadeIn={false} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
@@ -502,7 +507,7 @@ function NamingExperimentSection() {
     )
 
     const desktopTryThis02 = (
-        <TransformingTextBox positions={[10, 10, 10, -100]} scrollInfo={adjustedTimings[18][3]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[10, 10, 10, -100]} scrollInfo={adjustedTimings[18][3]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[18][3]} fadeIn={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <TryThis text={tryText} scrollInfo={adjustedTimings[18][3]} />
@@ -516,6 +521,7 @@ function NamingExperimentSection() {
             {/* HEADER */}
             <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} />
             <FadingHeader text={header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
+            {draggable}
 
             {/* SECTION 1 */}
             <Background background={"#202020"} height={sectionHeights[1]} />

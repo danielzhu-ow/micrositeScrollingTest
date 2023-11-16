@@ -24,8 +24,6 @@ const ArticleHeader = styled.p`
 
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 3.2rem;
-        padding-left: 3.2rem;
-        padding-right: 3.2rem;
     }
 `;
 
@@ -34,16 +32,14 @@ const ArticleBody = styled.p`
     font-weight: 400;
     font-size: 2rem;
     text-align: left;
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
+    // padding-left: 3.2rem;
+    // padding-right: 3.2rem;
 
-    max-width: 750px;
+    // max-width: 75rem;
     margin: 2rem auto 2rem auto;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 1.6rem;
-        padding-left: 3.2rem;
-        padding-right: 3.2rem;
     }
 `;
 
@@ -52,16 +48,14 @@ const ArticleList = styled.li`
     font-weight: 400;
     font-size: 2rem;
     text-align: left;
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
+    // padding-left: 3.2rem;
+    // padding-right: 3.2rem;
 
-    max-width: 750px;
-    margin: 0 auto 0 auto;
+    // max-width: 75rem;
+    // margin: 0 auto 0 auto;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 1.6rem;
-        padding-left: 3.2rem;
-        padding-right: 3.2rem;
     }
 `;
 
@@ -70,16 +64,14 @@ const ArticleSubHeading = styled.h2`
     font-weight: 500;
     font-size: 5rem;
     text-align: left;
-    padding-left: 3.2rem;
-    padding-right: 3.2rem;
+    // padding-left: 3.2rem;
+    // padding-right: 3.2rem;
 
-    max-width: 750px;
+    // max-width: 750px;
     margin: 0 auto 2rem auto;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 3.2rem;
-        padding-left: 3.2rem;
-        padding-right: 3.2rem;
     }
 `
 
@@ -112,4 +104,4 @@ const ArticleBodyParagraghsBlock = ({ contentStrings, scrollTimings }) => {
     )
 }
 
-export { ArticleHeaderBlock, ArticleBodyBlock, ArticleBodyParagraghsBlock, ArticleBody, ArticleSubHeading, ArticleHeader, ArticleList, ArticleLink };
+export {  ArticleBody, ArticleSubHeading, ArticleHeader, ArticleList, ArticleLink };

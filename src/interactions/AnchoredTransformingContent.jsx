@@ -11,24 +11,24 @@ function AnchoredTransformingContent({ child, positions, scrollInfo, center}) { 
     const x = useTransform(scrollYProgress, scrollInfo, positions[0])
     const y = useTransform(scrollYProgress, scrollInfo, positions[1])
     const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'block', 'none'])
+    const opacity = useTransform(scrollYProgress, [scrollInfo[0], scrollInfo[1], scrollInfo[scrollInfo.length - 2], scrollInfo[scrollInfo.length - 1]], [0, 1, 1, 0])
 
     const tX = useMotionTemplate`${x}%`
-    const tY = useMotionTemplate`${y}%`
+    const tY = useMotionTemplate`${y}vh`
 
     return (
-        <div style={{ maxWidth: '75rem', height: '80vh', padding: 'auto 3.2rem auto 3.2rem', height: 'fit-content', position: 'relative', margin: '2rem auto 2rem auto' }}>
             <motion.div style={{
                 position: "absolute",
                 top: tY,
                 left: tX,
                 transform: `translate(-${center[0]}%, -${center[1]}%`,
                 display: visible,
+                opacity: opacity,
                 width: 'auto',
                 height: 'auto'
             }}>
                 {child}
             </motion.div>
-        </div>
     )
 }
 
