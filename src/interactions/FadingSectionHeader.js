@@ -6,10 +6,10 @@ function FadingSectionHeader({ text, scrollInfo }) {
     const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length - 1], 1]
     const { scrollYProgress } = useScroll();
     const opacity = useTransform(scrollYProgress, scrollInfo, [0.1, 1, 1, 0.1])
-    const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'])
+    const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'block', 'none'])
 
     let content =
-        <div>
+        <div style={{ maxWidth: '79rem', paddingLeft: '3.2rem', paddingRight: '3.2rem', margin: 'auto'}}>
             <SectionTitle>
                 {text.title_label}:
             </SectionTitle>
@@ -17,23 +17,22 @@ function FadingSectionHeader({ text, scrollInfo }) {
                 {text.title}
             </SectionTitle>
             {
-                text.body.map(para => 
+                text.body.map(para =>
                     <SectionBody key={para}>
                         {para}
                     </SectionBody>
                 )
             }
-        </div>
+        </div >
 
 
     return (
         <motion.div style={{
             position: "fixed",
-            width: "fit-content",
+            width: "100%",
             height: "fit-content",
-            top: " 50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+            top: "50%",
+            transform: "translateY(-50%)",
             opacity: opacity,
             display: visible
         }}>

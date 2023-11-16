@@ -3,24 +3,9 @@ import { styled } from 'styled-components';
 import { sizes } from './constants/devices';
 import { motion, useScroll, cubicBezier, useMotionValueEvent } from 'framer-motion';
 
-// const HeaderContainer = styled.div`
-//     display: flex;
-//     flex-direction: column;
-//     gap: 4rem;
-//     position: fixed;
-// `;
-
-// const Text = styled.p`
-//     font-family: 'Noto Sans';
-//     color: white;
-//     font-size: 2rem;
-// `;
-
 const Block = styled.div`
     min-height: 300vh;
-    // background-color: black;
-    // padding: 10rem;
-`;
+`
 
 const HeaderContainer = styled.section`
     min-height: 100vh;
@@ -28,7 +13,7 @@ const HeaderContainer = styled.section`
     top: 0;
     display: flex;
     justify-content: center;
-`;
+`
 
 const ArticleHeaderBackground = styled.div`
     background-image: url(${props => props.$backgroundImage});
@@ -39,16 +24,15 @@ const ArticleHeaderBackground = styled.div`
     margin: 0;
     padding: 0;
     max-height: 100vh;
-    /* height: 100%; */
     width: 100%;
-`;
+`
 
 const ArticleHeaderOverlay = styled(motion.div)`
     min-height: 100vh;
     width: 100%;
     background-color: black;
     position: absolute;
-`;
+`
 
 const ContentWrapper = styled(motion.div)`
     min-height: 100vh;
@@ -58,7 +42,7 @@ const ContentWrapper = styled(motion.div)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-`;
+`
 
 const ContentHeader = styled.h1`
     font-family: 'Noe Display';
@@ -72,7 +56,7 @@ const ContentHeader = styled.h1`
         font-size: 5rem;
         width: 35rem;
     }
-`;
+`
 
 const ContentSubheader1 = styled.p`
 font-family: 'Noto Sans';
@@ -80,14 +64,14 @@ font-family: 'Noto Sans';
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 1.2rem;
     }
-`;
+`
 
 const ContentSubheader2 = styled.p`
     font-size: 2rem;
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 1.4rem;
     }
-`;
+`
 
 
 const ArticleHeader = ({ headerBackground }) => {

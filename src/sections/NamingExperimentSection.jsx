@@ -7,7 +7,7 @@ import { Background, TransitionBackground } from '../interactions/Background'
 import { TransformingContent, ImgBox, VideoBox } from '../interactions/TransformingContent'
 import { TransformingTextBox } from '../interactions/TransformingTextBox.jsx';
 import { OpacityParagraph, OpacityList, OpacitySubheading } from '../interactions/OpacityContent';
-import { Draggable } from '../interactions/Draggable.jsx';
+// import { Draggable } from '../interactions/Draggable.jsx';
 import { ArticleLink } from '../ArticleStyles.jsx';
 import { FadingHeader } from "../interactions/FadingHeader"
 import { FadingSectionHeader } from '../interactions/FadingSectionHeader';
@@ -103,9 +103,9 @@ function NamingExperimentSection() {
     // const isLaptop = useMediaQuery({ query: devices.laptop });
     const isMobile = useMediaQuery({ query: devices.mobileL });
 
-    const draggable = (
-        <Draggable startHeight={0} height={sectionHeights[0]} windowUrl={getImageByKey('naming_03')} maskUrl={getImageByKey('mask')} />
-    )
+    // const draggable = (
+    //     <Draggable startHeight={0} height={sectionHeights[0]} windowUrl={getImageByKey('naming_03')} maskUrl={getImageByKey('mask')} />
+    // )
 
     //SECTION 2
     const mobileInCase = (
@@ -521,7 +521,7 @@ function NamingExperimentSection() {
             {/* HEADER */}
             <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} />
             <FadingHeader text={header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
-            {draggable}
+            {/* {draggable} */}
 
             {/* SECTION 1 */}
             <Background background={"#202020"} height={sectionHeights[1]} />
