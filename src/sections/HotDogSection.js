@@ -168,13 +168,18 @@ function HotDogSection({ sectionHeights, adjustedTimings }) {
 
   const desktopToys = (
     <>
-      <OpacityContent scrollInfo={adjustedTimings[6][3]} baseOpacity={0} child={
-        <TransformingContent positions={[[-100, 10, 10, 60, 60, 60], [9, 9, 9, 9, 9, 100]]} scrollInfo={adjustedTimings[6][2]} alignment={['right', 'bottom']} child={
+      <OpacityContent scrollInfo={adjustedTimings[6][3]} baseOpacity={1} child={
+        <TransformingContent positions={[[-20, -20, -20, 40, 40, 40], [-100, -14, -14, -14, -14, 80]]} scrollInfo={adjustedTimings[6][2]} alignment={['right', 'bottom']} child={
+          <ImgBox url={getImageByKey("shadow")} displayDimensions={[70, 70]} rotate={0} />
+        } />
+      } />
+       <OpacityContent scrollInfo={adjustedTimings[6][3]} baseOpacity={1} child={
+        <TransformingContent positions={[[7, 7, 7, 60, 60, 60], [-100, 14, 14, 14, 14, 100]]} scrollInfo={adjustedTimings[6][2]} alignment={['right', 'bottom']} child={
           <ImgBox url={getImageByKey("hotdog")} displayDimensions={[33, 33]} rotate={0} />
         } />
       } />
-      <OpacityContent scrollInfo={adjustedTimings[6][1]} baseOpacity={0} child={
-        <TransformingContent positions={[[0, 0, 0, -100], [-1, -1, -1, -1]]} scrollInfo={adjustedTimings[6][1]} alignment={['right', 'bottom']} child={
+      <OpacityContent scrollInfo={adjustedTimings[6][1]} baseOpacity={1} child={
+        <TransformingContent positions={[[0, 0, 0, -100], [-100, -1, -1, -1]]} scrollInfo={adjustedTimings[6][1]} alignment={['right', 'bottom']} child={
           <ImgBox url={getImageByKey("toy_pile")} displayDimensions={[50, 50]} rotate={0} />
         } />
       } />

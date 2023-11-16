@@ -23,6 +23,7 @@ import mobile_sprite_verizon from '../images/naming/mobileSpriteVerizon.webp'
 import toy_pile from '../images/naming/toyPile.webp'
 import hotdog from'../images/naming/hotdog.webp'
 import mask from '../images/naming/mask.png'
+import shadow from '../images/naming/shadow.webp'
 
 export {getImageByKey}
 
@@ -51,6 +52,7 @@ const imagesNaming = {
   toy_pile,
   hotdog,
   mask,
+  shadow
 };
 
 function getImageByKey(key) {

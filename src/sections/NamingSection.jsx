@@ -71,8 +71,8 @@ function NamingSection({ text }) {
         // [6] Section 6 - hotdog
         [[0.5, 0.55, 0.75, 1.2],                          //TEXT
         [0, 0.25, 0.3, 0.5],                            //TOYPILE
-        [0.2, 0.22, 0.25, 0.5, 0.8, 1.2],
-        [0.2, 0.25, 0.75, 1.2]],                          //HOTDOG
+        [0, 0.25, 0.28, 0.53, 0.83, 1.2],                // hotdog scroll
+        [0, 0.25, 0.75, 1.2]],                          //HOTDOG opacity
 
         // [7] Section 7
         [[-0.2, 0.2, 0.8, 1],
