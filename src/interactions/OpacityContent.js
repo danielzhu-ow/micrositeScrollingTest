@@ -13,11 +13,10 @@ function OpacityContent({ child, scrollInfo, baseOpacity }) {
 
     //Calculate Transforms
     const opacity = useTransform(scrollYProgress, scrollInfo, opacityTransform)
-    const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'inline', 'none'])
+    const visible = useTransform(scrollYProgress, visibleInfo, ['none', 'none', 'block', 'none'])
 
     return (
         <motion.div style={{
-            // position: "fixed",
             opacity: opacity,
             display: visible
         }}>
