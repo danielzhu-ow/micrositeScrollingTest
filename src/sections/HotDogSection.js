@@ -78,7 +78,7 @@ const RestaurantContainer = styled.div`
 const RightColumn = styled.div`
   height: fit-contents;
   position: absolute;
-  top: 50%;
+  top: 33%;
   transform: translateY(-50%);
 `
 

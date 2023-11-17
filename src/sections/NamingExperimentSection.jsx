@@ -40,7 +40,7 @@ function NamingExperimentSection() {
     //Timings | Timings are adjusted to start - end of section
     const sectionTimings = [
         //0 Fading Header
-        [[0, 0.2, 0.4, 1]],
+        [[0, 0.2, 0.6, 1]],
         //1 Para 1               Para 2                 Para 3                 Text Motion       Off
         [[-0.1, 0.05, 0.28, 1], [-0.1, 0.38, 0.61, 1], [-0.1, 0.71, 0.95, 1], [0, 0.2, 0.8, 1], [-0.1, 0.1, 0.5, 0.8]],
         //2 Fading Section Header
@@ -171,7 +171,7 @@ function NamingExperimentSection() {
     const desktopTheGood = (
         <TransformingTextBox doubled positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[4][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][0]} backY={12} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[20, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[4][0]} backY={12} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[20, 40]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["The good:"]
@@ -187,7 +187,7 @@ function NamingExperimentSection() {
     const desktopTheBad = (
         <TransformingTextBox doubled positions={[27, 27, 27, 27]} scrollInfo={adjustedTimings[4][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][1]} backY={5} child={<ImgBox url={getImageByKey("orange_robot1")} displayDimensions={[25, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[4][1]} backY={5} child={<ImgBox url={getImageByKey("orange_robot1")} displayDimensions={[25, 40]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][1]} dark={false} simpleFade={true} baseOpacity={0} text={
                         ["The bad:"]
@@ -203,7 +203,7 @@ function NamingExperimentSection() {
     const desktopTheOpportunity = (
         <TransformingTextBox doubled positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[4][2]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][2]} backY={25} child={<ImgBox url={getImageByKey("tin_robot3")} displayDimensions={[25, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[4][2]} backY={25} child={<ImgBox url={getImageByKey("tin_robot3")} displayDimensions={[25, 40]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[4][2]} dark={false} simpleFade={true} baseOpacity={0} text={
                         ["The opportunity:"]
@@ -456,9 +456,9 @@ function NamingExperimentSection() {
 
     //SECTION 18
     const desktopWeFound = (
-        <TransformingTextBox doubled positions={[127, 10, 10, 10]} scrollInfo={adjustedTimings[18][0]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[18][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][0]} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[18][0]} backY={12} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacitySubheading scrollInfo={adjustedTimings[18][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["We found the results exciting for a couple of reasons:"]
@@ -472,9 +472,9 @@ function NamingExperimentSection() {
     )
 
     const desktopButChallenges = (
-        <TransformingTextBox doubled positions={[10, 10, 10, 10]} scrollInfo={adjustedTimings[18][1]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[27, 27, 27, 27]} scrollInfo={adjustedTimings[18][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][1]} fadeIn={false} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[18][1]} backY={12} fadeIn={false} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacityParagraph scrollInfo={adjustedTimings[18][1]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["BUT, challenges remain: we’ve achieved a route to abstraction, but these are still real words, unlikely to be available in many trademark categories. And the process broke down when we asked GPT to translate these real, dictionary words to more unique approaches like compound or coined names. Also, interestingly, after repeating a couple of times, we saw the results degrade – as though GPT was running out of ideas, or regressing to the notion where “abstract” becomes literally mysterious again…"]
@@ -488,9 +488,9 @@ function NamingExperimentSection() {
     )
 
     const desktopToKeep = (
-        <TransformingTextBox doubled positions={[10, 10, 10, 10]} scrollInfo={adjustedTimings[18][2]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[27, 27, 27, 27]} scrollInfo={adjustedTimings[18][2]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][2]} fadeIn={false} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[18][2]} backY={12} fadeIn={false} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <div>
                     <OpacityParagraph scrollInfo={adjustedTimings[18][2]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["To keep GPT in a truly originative space, we need to reset our prompts frequently, and keep pushing toward more freedom of association."]
@@ -507,9 +507,9 @@ function NamingExperimentSection() {
     )
 
     const desktopTryThis02 = (
-        <TransformingTextBox doubled positions={[10, 10, 10, -100]} scrollInfo={adjustedTimings[18][3]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[18][3]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][3]} fadeIn={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[18][3]} backY={12} fadeIn={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[18, 50]} rotate={0} />} />
                 <TryThis text={tryText} scrollInfo={adjustedTimings[18][3]} />
             </DoubleColumn>
         } />

@@ -70,7 +70,7 @@ function NamingSection({ text }) {
         // [6] Section 6 - hotdog
         [[0.5, 0.55, 0.75, 1.2],                          //TEXT
         [0, 0.25, 0.3, 0.5],                            //TOYPILE
-        [0, 0.25, 0.28, 0.53, 0.83, 1.2],                // hotdog scroll
+        [0, 0.25, 0.28, 0.53, 0.75, 1.2],                // hotdog scroll
         [0, 0.25, 0.75, 1.2]],                          //HOTDOG opacity
 
         // [7] Section 7
@@ -95,17 +95,17 @@ function NamingSection({ text }) {
     const mobileSection1 = (
         <>
             <TransformingContent child={<ImgBox url={getImageByKey("dino_night")} displayDimensions={[50, 50]} rotate={0} />}
-                positions={[[100, -30, -40, -150], [-2, -2, -2, -2]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
+                positions={[[100, -35, -30, -150], [-2, -2, -2, -2]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
             <TransformingContent child={<ImgBox url={getImageByKey("dino_day")} displayDimensions={[50, 50]} rotate={0} />}
-                positions={[[100, -30, -40, -200], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
+                positions={[[100, -35, -30, -200], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
         </>
     );
     const desktopSection1 = (
         <>
             <TransformingContent child={<ImgBox url={getImageByKey("dino_night")} displayDimensions={[70, 70]} rotate={0} />}
-                positions={[[100, 35, 35, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
+                positions={[[100, 40, 35, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
             <TransformingContent child={<ImgBox url={getImageByKey("dino_day")} displayDimensions={[70, 70]} rotate={0} />}
-                positions={[[100, 40, 40, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
+                positions={[[100, 45, 40, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
         </>
     );
 
@@ -249,7 +249,7 @@ function NamingSection({ text }) {
 
     const desktopRobotSection = (
         <>
-            <TransformingTextBox positions={[127, 27, 27, -100]} scrollInfo={adjustedTimings[7][0]} alignment={'top'} doubled child={
+            <TransformingTextBox positions={[127, 10, 10, -100]} scrollInfo={adjustedTimings[7][0]} alignment={'top'} doubled child={
                 <DoubleColumn>
                     <ColumnImage scrollInfo={adjustedTimings[7][0]} backY={0} fadeOut={false} child={<ImgBox url={getImageByKey('cute_robot')} displayDimensions={[18, 50]} rotate={0} />} />
                     <TextContainer>

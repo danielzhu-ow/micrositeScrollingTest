@@ -1,11 +1,37 @@
+import { useEffect, useState } from "react"
 import { useScroll, useTransform, motion } from "framer-motion"
 import { TextContainer } from './TransformingTextBox'
 
 export { VideoTextBox, VideoTextScroller }
 
+function debounce(fn, ms) {
+    let timer
+    return _ => {
+        clearTimeout(timer)
+        timer = setTimeout(_ => {
+            timer = null
+            fn.apply(this, arguments)
+        }, ms)
+    };
+}
+
 function VideoTextBox({ child, scrollInfo, displayWidth, heightRatio }) {
     const { scrollYProgress } = useScroll();
     const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1, 1, 0])
+    const [width, setWidth] = useState(Math.min(displayWidth * heightRatio / 100 * window.innerWidth, 85 * window.innerHeight / 100) / heightRatio)
+
+    useEffect(() => {
+        const debouncedHandleResize = debounce(function handleResize() {
+            setWidth(Math.min(displayWidth * heightRatio / 100 * window.innerWidth, 85 * window.innerHeight / 100) / heightRatio)
+        }, 1000)
+
+        window.addEventListener('resize', debouncedHandleResize)
+
+        return _ => {
+            window.removeEventListener('resize', debouncedHandleResize)
+
+        }
+    })
 
     return (
         <motion.div
@@ -21,11 +47,12 @@ function VideoTextBox({ child, scrollInfo, displayWidth, heightRatio }) {
                 alignItems: 'center',
                 justifyContent: 'center',
 
-                width: `${displayWidth}vw`,
+                maxWidth: width,
                 height: `${displayWidth * heightRatio}vw`,
+                maxHeight: '85vh',
                 opacity: opacity
             }}>
-            <TextContainer style={{width: '75rem'}}>{child}</TextContainer>
+            <TextContainer style={{ width: '75rem' }}>{child}</TextContainer>
         </motion.div>
     )
 }

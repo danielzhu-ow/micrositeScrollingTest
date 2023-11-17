@@ -89,7 +89,6 @@ TransformingContent.propTypes = {
 }
 
 function ImgBox({ url, displayDimensions, rotate, fixWidth, fixHeight }) {
-
     if (fixWidth) {
         return (
             <img src={url} alt={url}
@@ -216,40 +215,42 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
 }
 
 function VideoBox({ url, displayWidth }) {
+
     const [ref, inView] = useInView({
         triggerOnce: true,
     });
 
     const controls = useAnimation();
-    const [hasPlayed, setHasPlayed] = useState(false);
+    const [hasPlayed, setHasPlayed] = useState(false)
 
     useEffect(() => {
-    if (inView && !hasPlayed) {
-        controls.start({ opacity: 1, scale: 1 });
-        setHasPlayed(true);
-    }
-    }, [inView, controls, hasPlayed]);
+        if (inView && !hasPlayed) {
+            controls.start({ opacity: 1, scale: 1 })
+            setHasPlayed(true)
+        }
+    }, [inView, controls, hasPlayed])
 
     return (
-    <motion.div
-        ref={ref}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={controls}
-        transition={{ duration: 0.5 }}
-    >
-        {inView && (
-        <video controls autoPlay={true} muted loop 
-            style={{
-                width: `${displayWidth}vw`,
-                height: 'auto',
-                boxShadow: '0px 0px 0px 2px black inset',
-                borderRadius: "4rem"
-            }}>
-            <source src={url} type="video/mp4" />
-            Your browser does not support the video tag.
-        </video>
-        )}
-    </motion.div>
+        <motion.div
+            ref={ref}
+            initial={{ opacity: 1, scale: 0.99 }}
+            animate={controls}
+            transition={{ duration: 0.5 }}
+        >
+            {inView && (
+                <video controls autoPlay={true} muted loop
+                    style={{
+                        maxWidth: `${displayWidth}vw`,
+                        maxHeight: '85vh',
+                        height: 'auto',
+                        boxShadow: '0px 0px 0px 2px black inset',
+                        borderRadius: "4rem"
+                    }}>
+                    <source src={url} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            )}
+        </motion.div>
     );
 }
 
