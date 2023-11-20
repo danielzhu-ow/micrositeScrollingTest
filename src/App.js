@@ -28,7 +28,7 @@ function App() {
         {article === 'hotdog' && <HotDogSection />}
 
         <div style={{ position: 'fixed', top: 0, color: 'white' }}>
-          {/* <button onClick={() => {setArticle('manifesto'); console.log('manifesto')}}>Manifesto</button> */}
+          <button onClick={() => {setArticle('manifesto'); console.log('manifesto')}}>Manifesto</button>
           <button onClick={() => { setArticle('naming'); console.log('naming'); window.scrollTo(0, 0) }}>Naming</button>
           <button onClick={() => { setArticle('naming experiment'); console.log('naming experiment'); window.scrollTo(0, 0) }}>Naming Experiment</button>
           {/* <button onClick={() => {setArticle('hotdog'); console.log('hotdog')}}>Hotdog</button> */}
