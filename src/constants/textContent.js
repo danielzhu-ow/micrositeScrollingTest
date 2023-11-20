@@ -3,7 +3,7 @@
 const NAMING_STRINGS = {
     // header, intro, ___
     Header: {
-        title: "Applying the \npower of AI to naming",
+        title: `Applying the<br/> power of AI to naming`,
         subtitleTop_section: "NAMING + AI",
         subtitleTop_subsection: "SERIES INTRO",
         subtitleBottom: "By Valerie Garral | [Month] 2023"

@@ -18,7 +18,7 @@ function FadingHeader({ text, scrollInfo, startOn }) {
             <ContentSubheader1>
                 {text.subtitleTop_section} &nbsp;&nbsp;&gt;&nbsp;&nbsp; {text.subtitleTop_subsection}
             </ContentSubheader1>
-            <ContentHeader>{text.title}</ContentHeader>
+            <ContentHeader>{text.title.split("<br/>").join("\n")}</ContentHeader>
             <ContentSubheader2>
                 {text.subtitleBottom}
             </ContentSubheader2>

@@ -243,6 +243,7 @@ function VideoBox({ url, displayWidth }) {
                         maxWidth: `${displayWidth}vw`,
                         maxHeight: '85vh',
                         height: 'auto',
+                        border: '2px solid black',
                         boxShadow: '0px 0px 0px 2px black inset',
                         borderRadius: "4rem"
                     }}>
