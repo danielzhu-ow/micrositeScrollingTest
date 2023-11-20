@@ -14,7 +14,7 @@ function FadingHeader({ text, scrollInfo, startOn }) {
     // useMotionValueEvent(visible, 'change', latest => console.log(latest))
 
     let content =
-        <div style={{ maxWidth: '79rem', paddingLeft: '3.2rem', paddingRight: '3.2rem', margin: 'auto'}}>
+        <div style={{ maxWidth: '94rem', paddingLeft: '3.2rem', paddingRight: '3.2rem', margin: 'auto'}}>
             <ContentSubheader1>
                 {text.subtitleTop_section} &nbsp;&nbsp;&gt;&nbsp;&nbsp; {text.subtitleTop_subsection}
             </ContentSubheader1>

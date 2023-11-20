@@ -14,7 +14,7 @@ import { AnchoredTransformingContent } from '../interactions/AnchoredTransformin
 import { VideoTextBox } from '../interactions/VideoTextBox.js';
 import { DoubleColumn } from '../interactions/DoubleColumn.js';
 import { ColumnImage } from '../interactions/ColumnImage.js';
-import { ArticleLink } from '../ArticleStyles.jsx';
+// import { ArticleLink } from '../ArticleStyles.jsx';
 import { OpacityContent, OpacityParagraph, OpacitySubheading, OpacityList } from '../interactions/OpacityContent.js';
 import { FadingHeader } from "../interactions/FadingHeader.js"
 import { HotDogSection } from './HotDogSection.js';
@@ -41,7 +41,7 @@ function NamingSection({ text }) {
         [0.15, 0.35, 0.65, 1.0],                      // [4] Paragraph 2          
         [0.15, 0.65, 0.95, 1.0],                      // [5] Paragraph 3    
         [0.35, 0.5, 0.6, 0.7],                     // [6] Dino Night            
-        [0.6, 0.7, 0.8, 0.9]],                       // [7] Dino Day 
+        [0.6, 0.7, 0.88, 1.0545]],                       // [7] Dino Day 
 
         // [2] Section 2
         //s,   tIn  - tOut tIn - tOut   e
@@ -55,7 +55,7 @@ function NamingSection({ text }) {
         [[0.0, 0.3, 0.5, 0.75, 1.2],                 // [0] Firmi img
         [0.0, 0.45, 0.5, 0.75, 1.2],                // [1] Paragraph Transform Timings
         [0.5, 0.6, 0.75, 1.0],                        // [2] paragraph opacites
-        [0.15, 0.5, 1, 1.2]],
+        [0.15, 0.5, 1, 1.7]],
 
         // [4] Section 4
         [[0, 0.4, 1]],                        // [0] Name Zap Video
@@ -70,7 +70,7 @@ function NamingSection({ text }) {
         // [6] Section 6 - hotdog
         [[0.5, 0.55, 0.75, 1.2],                          //TEXT
         [0, 0.25, 0.3, 0.5],                            //TOYPILE
-        [0, 0.25, 0.28, 0.53, 0.75, 1.2],                // hotdog scroll
+        [0, 0.25, 0.28, 0.53, 0.75, 1.1],                // hotdog scroll
         [0, 0.25, 0.75, 1.2]],                          //HOTDOG opacity
 
         // [7] Section 7
@@ -105,7 +105,7 @@ function NamingSection({ text }) {
             <TransformingContent child={<ImgBox url={getImageByKey("dino_night")} displayDimensions={[70, 70]} rotate={0} />}
                 positions={[[100, 40, 35, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][6]} alignment={['left', 'bottom']} prioritizeHeight={true} />
             <TransformingContent child={<ImgBox url={getImageByKey("dino_day")} displayDimensions={[70, 70]} rotate={0} />}
-                positions={[[100, 45, 40, -100], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
+                positions={[[100, 45, 40, 40], [0, 0, 0, 100]]} scrollInfo={adjustedTimings[1][7]} alignment={['left', 'bottom']} prioritizeHeight={true} />
         </>
     );
 
@@ -249,11 +249,11 @@ function NamingSection({ text }) {
 
     const desktopRobotSection = (
         <>
-            <TransformingTextBox positions={[127, 10, 10, -100]} scrollInfo={adjustedTimings[7][0]} alignment={'top'} doubled child={
+            <TransformingTextBox positions={[127, 0, 0, -100]} scrollInfo={adjustedTimings[7][0]} alignment={'top'} doubled child={
                 <DoubleColumn>
-                    <ColumnImage scrollInfo={adjustedTimings[7][0]} backY={0} fadeOut={false} child={<ImgBox url={getImageByKey('cute_robot')} displayDimensions={[18, 50]} rotate={0} />} />
+                    <ColumnImage scrollInfo={adjustedTimings[7][0]} backY={-12} fadeOut={false} child={<ImgBox url={getImageByKey('cute_robot')} displayDimensions={[70, 50]} rotate={0} />} />
                     <TextContainer>
-                        <OpacitySubheading scrollInfo={adjustedTimings[7][0]} dark={false} simpleFade={true} baseOpacity={0} text={[<p>So, it’s time to <ArticleLink href='http://google.com' style={{ color: 'black'}}>play</ArticleLink>.</p>]} />
+                        <OpacitySubheading scrollInfo={adjustedTimings[7][0]} dark={false} simpleFade={true} baseOpacity={0} text={[<p>So, it’s time to play.</p>]} />
                         <OpacityParagraph scrollInfo={adjustedTimings[7][2]} baseOpacity={0} dark={false} simpleFade={true} text={
                             [<p>We'll document our learning in real time to the advantage of our clients and the work we deliver. <b>Ultimately, we'll test the hypothesis that this ChatGPT era can supercharge our expertise and creative processes to arrive at stronger names than ever before.</b><br/><br/>First up in our list of experiments - name generation.</p>]
                         } />

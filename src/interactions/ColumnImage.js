@@ -20,7 +20,7 @@ function ColumnImage({ scrollInfo, child, baseOpacity, backY, fadeIn, fadeOut })
             margin: 'auto',
             top: 0,
             marginLeft: '50%',
-            transform: 'translate( -50%, -' + backY + '%)',
+            transform: 'translate( -50%, ' + -1 * backY + '%)',
             textAlign: 'center'
         }}>
             {child}
