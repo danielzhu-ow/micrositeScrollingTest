@@ -94,6 +94,8 @@ ExperimentNav.propTypes = {
 function ExperimentIndicator(heightsInfo, sectionHeights, sum, index) {
 
     const { scrollYProgress } = useScroll();
+    const startHeight = sectionHeights.slice(0, heightsInfo[0]).reduce((partialSum, a) => partialSum + a, 0)
+    const vh = window.innerHeight
     const scrollInfo = heightsInfo.map(function (height) {
         const localSum = sectionHeights.slice(0, height).reduce((partialSum, a) => partialSum + a, 0)
         return localSum / sum
@@ -101,7 +103,7 @@ function ExperimentIndicator(heightsInfo, sectionHeights, sum, index) {
 
     const experiment = useTransform(scrollYProgress, [0, scrollInfo[0], scrollInfo[0], scrollInfo[1], scrollInfo[1], 1], [0.5, 0.5, 1, 1, 0.5, 0.5])
     return (
-        <Indicator key={index} >
+        <Indicator key={index} onClick={() => window.scrollTo(0, startHeight * vh / 100 - 2 * vh)}>
             <motion.div style={{ opacity: experiment }}>
                 <Background />
             </motion.div>

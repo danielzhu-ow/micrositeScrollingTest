@@ -14,6 +14,7 @@ font-family: 'Noe Display';
 
 const SectionBody = styled.p`
     font-size: 2rem;
+    font-weight: 400;
     color: white;
 
     @media only screen and (max-width: ${sizes.mobileL}) {

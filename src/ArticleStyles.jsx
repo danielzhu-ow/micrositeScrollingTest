@@ -42,6 +42,7 @@ const ArticleList = styled.li`
     font-weight: 400;
     font-size: 2rem;
     text-align: left;
+    margin-left: 2rem;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 1.6rem;
@@ -53,10 +54,6 @@ const ArticleSubHeading = styled.h2`
     font-weight: 500;
     font-size: 5rem;
     text-align: left;
-    // padding-left: 3.2rem;
-    // padding-right: 3.2rem;
-
-    // max-width: 750px;
     margin: 0 auto 2rem auto;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
@@ -70,9 +67,12 @@ const ArticleLink = styled.a`
 
 const Go = styled.p`
     font-family: 'Noto Sans', sans-serif;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 2rem;
     text-align: right;
+    text-decoration: underline;
+    margin-top: 6.4rem;
+    line-height: 1.2rem;
 
     @media only screen and (max-width: ${sizes.mobileL}) {
         font-size: 1.6rem;
