@@ -9,11 +9,12 @@ import namezap1 from '../images/naming/NameZap1.mp4'
 // import interactions
 import { Background, TransitionBackground } from '../interactions/Background.js'
 import { TransformingContent, ImgBox, VideoBox, ScalingImgBox, RotatingImgBox } from '../interactions/TransformingContent.js'
-import { TransformingTextBox, TextContainer } from '../interactions/TransformingTextBox.jsx';
+import { TransformingTextBox } from '../interactions/TransformingTextBox.jsx';
 import { AnchoredTransformingContent } from '../interactions/AnchoredTransformingContent.jsx';
 import { VideoTextBox } from '../interactions/VideoTextBox.js';
 import { DoubleColumn } from '../interactions/DoubleColumn.js';
 import { ColumnImage } from '../interactions/ColumnImage.js';
+import { ScrollingColumn } from '../interactions/ScrollingColumn.jsx';
 // import { ArticleLink } from '../ArticleStyles.jsx';
 import { Go } from '../ArticleStyles.jsx';
 import { OpacityContent, OpacityParagraph, OpacitySubheading, OpacityList } from '../interactions/OpacityContent.js';
@@ -160,7 +161,7 @@ function NamingSection({ text }) {
         <TransformingTextBox positions={[80, 27, 27, 27, 27]} scrollInfo={adjustedTimings[2][0]} alignment={'top'} child={
             <>
                 <OpacityParagraph scrollInfo={adjustedTimings[2][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                    [<p>Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. <b>And the question for us is: which of these steps can we successfully AI-ify</b> to enhance the strategic and creative rigor behind what it takes to develop iconic names?<br/><br/><br/></p>]
+                    [<p>Finding the right name involves many steps. Exhaustive name generation is just one of them. But there are many legal, linguistic, and strategic hurdles to navigate— from defining the right filters for evaluation, to connecting back to the business and brand strategy, to making a case for a single name that leadership teams can rally around. <b>And the question for us is: which of these steps can we successfully AI-ify</b> to enhance the strategic and creative rigor behind what it takes to develop iconic names?<br /><br /><br /></p>]
                 } />
                 <OpacitySubheading scrollInfo={adjustedTimings[2][3]} dark={false} simpleFade={true} baseOpacity={0} text={
                     ["...Meet Firmi 1.0"]
@@ -250,22 +251,28 @@ function NamingSection({ text }) {
 
     const desktopRobotSection = (
         <>
-            <TransformingTextBox positions={[127, 0, 0, -100]} scrollInfo={adjustedTimings[7][0]} alignment={'top'} doubled child={
+            <TransformingTextBox positions={[127, 10, 10, -100]} scrollInfo={adjustedTimings[7][0]} alignment={'top'} doubled child={
                 <DoubleColumn>
                     <ColumnImage scrollInfo={adjustedTimings[7][0]} backY={-12} fadeOut={false} child={<ImgBox url={getImageByKey('cute_robot')} displayDimensions={[70, 50]} rotate={0} />} />
-                    <TextContainer>
-                        <OpacitySubheading scrollInfo={adjustedTimings[7][0]} dark={false} simpleFade={true} baseOpacity={0} text={[<p>So, it’s time to play.</p>]} />
-                        <OpacityParagraph scrollInfo={adjustedTimings[7][2]} baseOpacity={0} dark={false} simpleFade={true} text={
-                            [<p>We'll document our learning in real time to the advantage of our clients and the work we deliver. <b>Ultimately, we'll test the hypothesis that this ChatGPT era can supercharge our expertise and creative processes to arrive at stronger names than ever before.</b><br/><br/>First up in our list of experiments - name generation.</p>]
-                        } />
-                        <OpacityParagraph scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                            [<p>Our team is investing in a series of open, iterative trials to explore the potential new utility of AI to push the bounds of our naming capability, considering…</p>]
-                        } />
-                        <OpacityList scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={
-                            ["Can we coach AI to deliver more creative ideas than it can at first blush?","Which use cases is it great at? Where does it have limitations?","Beyond mere generation, can it help refine, iterate, or even select optimal names?","How do we balance the risks of AI with the immense upside to our creative capabilities?","How do we build the Firmi 2.0 to take advantage of the opportunity?"]
-                        } />
-                        <OpacityParagraph scrollInfo={adjustedTimings[7][2]} dark={false} simpleFade={true} baseOpacity={0} text={[<Go>Let's go →</Go>]} />
-                    </TextContainer>
+                    <div>
+                        <ScrollingColumn scrollOut={false} scrollInfo={adjustedTimings[7][2]}>
+                            <OpacitySubheading scrollInfo={adjustedTimings[7][2]} dark={false} simpleFade={true} baseOpacity={0} text={[<p>So, it’s time to play.</p>]} />
+                            <OpacityParagraph scrollInfo={adjustedTimings[7][2]} baseOpacity={0} dark={false} simpleFade={true} text={
+                                [<p>We'll document our learning in real time to the advantage of our clients and the work we deliver. <b>Ultimately, we'll test the hypothesis that this ChatGPT era can supercharge our expertise and creative processes to arrive at stronger names than ever before.</b><br /><br />First up in our list of experiments - name generation.</p>]
+                            } />
+                            <OpacityParagraph scrollInfo={adjustedTimings[7][2]} dark={false} simpleFade={true} baseOpacity={0} text={[<Go>Let's go →</Go>]} />
+                        </ScrollingColumn>
+                        <ScrollingColumn scrollIn={false} scrollInfo={adjustedTimings[7][1]}>
+                            <OpacitySubheading scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={[<p>So, it’s time to play.</p>]} />
+                            <OpacityParagraph scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={
+                                [<p>Our team is investing in a series of open, iterative trials to explore the potential new utility of AI to push the bounds of our naming capability, considering…</p>]
+                            } />
+                            <OpacityList scrollInfo={adjustedTimings[7][1]} dark={false} simpleFade={true} baseOpacity={0} text={
+                                ["Can we coach AI to deliver more creative ideas than it can at first blush?", "Which use cases is it great at? Where does it have limitations?", "Beyond mere generation, can it help refine, iterate, or even select optimal names?", "How do we balance the risks of AI with the immense upside to our creative capabilities?", "How do we build the Firmi 2.0 to take advantage of the opportunity?"]
+                            } />
+                            <OpacityParagraph scrollInfo={adjustedTimings[7][2]} dark={false} simpleFade={true} baseOpacity={0} text={[<Go>Let's go →</Go>]} />
+                        </ScrollingColumn>
+                    </div>
                 </DoubleColumn>
             } />
         </>
@@ -274,7 +281,7 @@ function NamingSection({ text }) {
     return (
         <div style={{ position: "relative", height: "100%", width: "100%" }}>
             {/* HEADER: Section 0 */}
-            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} scrollInfo={adjustedTimings[0][0]}/>
+            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} scrollInfo={adjustedTimings[0][0]} />
             <FadingHeader text={text.Header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
             <TransformingContent child={<ImgBox url={getImageByKey("naming_01")} displayDimensions={[50, 50]} rotate={0} />} positions={[[-10, -60], [0, -50]]} scrollInfo={adjustedTimings[0][1]} alignment={['left', 'top']} />
             <TransformingContent child={<ImgBox url={getImageByKey("naming_02")} displayDimensions={[55, 55]} rotate={0} />} positions={[[0, -50], [-10, -65]]} scrollInfo={adjustedTimings[0][2]} alignment={['right', 'bottom']} />
@@ -286,7 +293,7 @@ function NamingSection({ text }) {
 
             {/* SECTION 2 */}
             {/* <Background background={images.naming_gradient} height={sectionHeights[2]} /> */}
-            <TransitionBackground background={getImageByKey('naming_gradient')} height={sectionHeights[2]} startHeight={900} hasTransition={true} delayed={[0.6, 0.9]}/>
+            <TransitionBackground background={getImageByKey('naming_gradient')} height={sectionHeights[2]} startHeight={900} hasTransition={true} delayed={[0.6, 0.9]} />
             {isMobile ? mobileFinding : desktopFinding}
 
             {/* SECTION 3 */}
@@ -301,7 +308,7 @@ function NamingSection({ text }) {
             {isMobile ? mobileVideoText01 : desktopVideoText01}
 
             {/* Section 6 - HotDog */}
-            <HotDogSection  sectionHeights={sectionHeights} adjustedTimings={adjustedTimings}></HotDogSection>
+            <HotDogSection sectionHeights={sectionHeights} adjustedTimings={adjustedTimings}></HotDogSection>
 
             {/* Section 7 */}
             <Background background={getImageByKey('naming_gradient')} height={sectionHeights[7]} />

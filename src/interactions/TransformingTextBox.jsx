@@ -32,7 +32,7 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment, doubled 
                 top: tY,
                 width: '100%'
             }}>
-                <TextContainer style={{width: usedWidth}}>
+                <TextContainer style={{maxWidth: usedWidth}}>
                     {child}
                 </TextContainer>
             </motion.div>
@@ -45,7 +45,7 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment, doubled 
                 bottom: tY,
                 width: '100%'
             }}>
-                <TextContainer style={{width: usedWidth}}>
+                <TextContainer style={{maxWidth: usedWidth}}>
                     {child}
                 </TextContainer>
             </motion.div>
@@ -60,7 +60,7 @@ function TransformingTextBox({ child, positions, scrollInfo, alignment, doubled 
                 height: "100%",
                 width: '100%'
             }}>
-                <TextContainer style={{width: usedWidth}}>
+                <TextContainer style={{maxWidth: usedWidth}}>
                     {child}
                 </TextContainer>
             </motion.div>

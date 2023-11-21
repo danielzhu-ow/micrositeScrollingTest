@@ -25,7 +25,7 @@ const CardBox = styled.div`
 `;
 
 const ContactColumn = styled.div`
-    width: 52.1rem;
+    max-width: 52.1rem;
     text-align: left;
 
     @media only screen and (max-width: ${sizes.tablet}) {
@@ -36,7 +36,7 @@ const ContactColumn = styled.div`
 
 const ContactButton = styled.button`
     margin: 0;
-    width: 20rem;
+    max-width: 20rem;
     height: 5.9rem;
 
     background-color: white;
@@ -48,7 +48,7 @@ const ContactButton = styled.button`
     font-size: 2rem;
 
     @media only screen and (max-width: ${sizes.tablet}) {
-        width: 13rem;
+        max-width: 13rem;
         height: 5rem;
         font-size: 1.4rem;
     }
@@ -91,8 +91,8 @@ function TryThis({ text, scrollInfo }) {
                 <ContactColumn>
                     <ContactHeader>{text.header}</ContactHeader>
                     <ContactBody>{text.body}</ContactBody>
-                    <div style={{ width: '100%', textAlign: 'center' }}>
-                        <ContactButton onClick={() => window.location.href = "mailto:tom.ajello@lippincott.com"} >SELECT PLAYER</ContactButton>
+                    <div style={{ width: '100%', textAlign: 'left' }}>
+                        <ContactButton onClick={() => window.location.href = "mailto:tom.ajello@lippincott.com"} >TRY EXPERIMENT</ContactButton>
                     </div>
                 </ContactColumn>
             </CardBox>

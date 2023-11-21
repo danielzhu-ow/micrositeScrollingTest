@@ -18,11 +18,11 @@ function debounce(fn, ms) {
 function VideoTextBox({ child, scrollInfo, displayWidth, heightRatio }) {
     const { scrollYProgress } = useScroll();
     const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1, 1, 0])
-    const [width, setWidth] = useState(Math.min(displayWidth * heightRatio / 100 * window.innerWidth, 85 * window.innerHeight / 100) / heightRatio)
+    const [width, setWidth] = useState(Math.min(displayWidth * heightRatio / 100.0 * window.innerWidth, 85.0 * window.innerHeight / 100.0) / heightRatio)
 
     useEffect(() => {
         const debouncedHandleResize = debounce(function handleResize() {
-            setWidth(Math.min(displayWidth * heightRatio / 100 * window.innerWidth, 85 * window.innerHeight / 100) / heightRatio)
+            setWidth(Math.min(displayWidth * heightRatio / 100.0 * window.innerWidth, 85.0 * window.innerHeight / 100.0) / heightRatio)
         }, 1000)
 
         window.addEventListener('resize', debouncedHandleResize)

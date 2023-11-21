@@ -9,6 +9,7 @@ const Container = styled.div`
     max-width: 110rem;
     margin: auto;
     text-align: center;
+    position: relative;
 
     @media only screen and (max-width: ${sizes.tablet}) {
         grid-template-columns: 100%;
