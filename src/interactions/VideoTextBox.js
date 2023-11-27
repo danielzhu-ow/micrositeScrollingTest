@@ -1,58 +1,26 @@
-import { useEffect, useState } from "react"
 import { useScroll, useTransform, motion } from "framer-motion"
 import { TextContainer } from './TransformingTextBox'
 
 export { VideoTextBox, VideoTextScroller }
 
-function debounce(fn, ms) {
-    let timer
-    return _ => {
-        clearTimeout(timer)
-        timer = setTimeout(_ => {
-            timer = null
-            fn.apply(this, arguments)
-        }, ms)
-    };
-}
-
-function VideoTextBox({ child, scrollInfo, displayWidth, heightRatio }) {
+function VideoTextBox({ child, scrollInfo }) {
     const { scrollYProgress } = useScroll();
     const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1, 1, 0])
-    const [width, setWidth] = useState(Math.min(displayWidth * heightRatio / 100.0 * window.innerWidth, 85.0 * window.innerHeight / 100.0) / heightRatio)
-
-    useEffect(() => {
-        const debouncedHandleResize = debounce(function handleResize() {
-            setWidth(Math.min(displayWidth * heightRatio / 100.0 * window.innerWidth, 85.0 * window.innerHeight / 100.0) / heightRatio)
-        }, 1000)
-
-        window.addEventListener('resize', debouncedHandleResize)
-
-        return _ => {
-            window.removeEventListener('resize', debouncedHandleResize)
-
-        }
-    })
 
     return (
         <motion.div
             style={{
-                boxShadow: '0px 0px 0px 2px black inset',
-                borderRadius: '4rem',
-                overflow: 'hidden',
-                margin: 'auto',
                 backgroundColor: '#202020',
-                position: 'relative',
-
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-
-                maxWidth: width,
-                height: `${displayWidth * heightRatio}vw`,
-                maxHeight: '85vh',
-                opacity: opacity
+                position: 'absolute',
+                width: '100%', height: '100%',
+                left: 0, top: 0,
+                margin: 'auto',
+                opacity: opacity,
+                pointerEvents: 'none',
             }}>
-            <TextContainer style={{ width: '75rem' }}>{child}</TextContainer>
+            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', pointerEvents: 'all'}}>
+                <TextContainer style={{ width: '75rem' }}>{child}</TextContainer>
+            </div>
         </motion.div>
     )
 }

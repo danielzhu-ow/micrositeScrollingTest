@@ -214,43 +214,34 @@ function BackgroundImgBox({ url, displayDimensions, rotate }) {
     )
 }
 
-function VideoBox({ url, displayWidth }) {
+function VideoBox({ url, displayWidth, child, scrollInfo }) {
 
-    const [ref, inView] = useInView({
-        triggerOnce: true,
-    });
+    const info = [scrollInfo[0], scrollInfo[0], scrollInfo[1], scrollInfo[1]]
+    const [ref, inView] = useInView({ triggerOnce: true });
+    const { scrollYProgress } = useScroll()
 
     const controls = useAnimation();
     const [hasPlayed, setHasPlayed] = useState(false)
+    useEffect(() => { if (inView && !hasPlayed) { controls.start({ opacity: 1, scale: 1 }); setHasPlayed(true) } }, [inView, controls, hasPlayed])
 
-    useEffect(() => {
-        if (inView && !hasPlayed) {
-            controls.start({ opacity: 1, scale: 1 })
-            setHasPlayed(true)
-        }
-    }, [inView, controls, hasPlayed])
+    const opacity = useTransform(scrollYProgress, info, [0, 1, 1, 0])
 
     return (
         <motion.div
             ref={ref}
-            initial={{ opacity: 1, scale: 0.99 }}
+            initial={{ opacity: 0.99, scale: 1 }}
             animate={controls}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.1 }}
+            style={{ width: '100%', textAlign: 'center' }}
         >
-            {inView && (
-                <video controls autoPlay={true} muted loop
-                    style={{
-                        maxWidth: `${displayWidth}vw`,
-                        maxHeight: '85vh',
-                        height: 'auto',
-                        border: '2px solid black',
-                        boxShadow: '0px 0px 0px 2px black inset',
-                        borderRadius: "4rem"
-                    }}>
+            <div style={{ border: '2px solid black', boxShadow: '0px 0px 0px 2px black inset', borderRadius: '4rem', width: 'fit-content', overflow: 'hidden', display: 'inline-block', position: 'relative' }}>
+                {inView && (<motion.video controls autoPlay={true} muted loop
+                    style={{ maxWidth: `${displayWidth}vw`, maxHeight: '85vh', height: 'auto', position: 'relative', top: 0, opacity }}>
                     <source src={url} type="video/mp4" />
                     Your browser does not support the video tag.
-                </video>
-            )}
+                </motion.video>)}
+                {child}
+            </div>
         </motion.div>
     );
 }
@@ -259,6 +250,7 @@ VideoBox.propTypes = {
     url: PropTypes.string,
     displayWidth: (PropTypes.number).isRequired,
     prioritizeHeight: PropTypes.bool,
+    scrollInfo: PropTypes.arrayOf(PropTypes.number)
 };
 
 

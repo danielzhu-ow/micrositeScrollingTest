@@ -35,8 +35,8 @@ function NamingExperimentSection() {
     // load images
     // const images = useNamingImageLoader();
 
-    //Heights               0    1    2    3    4    5    6    7    8    9    10   11   12   13   14   15   16   17   18
-    const sectionHeights = [300, 400, 400, 200, 600, 400, 200, 200, 200, 200, 200, 400, 400, 200, 400, 200, 600, 200, 1200]
+    //Heights               0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18
+    const sectionHeights = [300, 400, 400, 200, 600, 400, 300, 0  , 300, 0,  200, 400, 400, 400, 0  , 600, 0  , 200, 1200]
 
     //Timings | Timings are adjusted to start - end of section
     const sectionTimings = [
@@ -47,35 +47,35 @@ function NamingExperimentSection() {
         //2 Fading Section Header
         [[0.1, 0.5, 0.7, 0.9], [0, 0.6, 1.5]],
         //3 Video
-        [[-0.1, 0.25, 1.4]],
+        [[-0.1, 0.25, 1.4], [-0.1, 1.4]],
         //4 Para 1                 Para 2                    Para 3                Text Motion
         [[0, 0.14, 0.18, 0.33], [0.33, 0.47, 0.51, 0.66], [0.66, 0.80, 0.84, 1], [-0.2, 0, 0.33, 0.66, 1], [0, 0.12, 0.20, 0.47], [0.2, 0.47, 0.52, 0.7], [0.56, 0.78, 0.86, 1]],
         //5 Fading Section Header
         [[0.1, 0.5, 0.7, 0.9], [0, 0.4, 1.5]],
         //6 Video
-        [[0, 0.4, 1]],
+        [[0, 0.4, 1.2], [0.6, 0.8, 1, 1.2], [0, 1]],
         //7 Video Text
-        [[0, 1], [0, 0.45, 0.55, 1], [-0.1, 0, 1, 1.1]],
+        [],
         //8, Video
-        [[0, 0.4, 1]],
+        [[0, 0.4, 1.2], [0.6, 0.8, 1, 1.2], [0, 1]],
         //9 Video Text
-        [[0, 1], [0, 0.45, 0.55, 1], [-0.1, 0, 1, 1.1]],
+        [],
         //10, Video
-        [[0, 0.4, 1.3]],
+        [[0, 0.4, 1.3], [0, 1.3]],
         //11 Para 1
         [[-0.2, 0.16, 0.77, 1]],
         //12 Fading Section Header
         [[0.1, 0.5, 0.7, 0.9], [0, 0.4, 1.5]],
         //13 Video
-        [[0, 0.5, 1]],
+        [[0, 0.4, 1.2], [0.6, 0.8, 1, 1.2], [0, 1]],
         //14 Video Text
-        [[0, 1], [0, 0.45, 0.55, 1], [-0.1, 0, 1, 1.1]],
+        [],
         //15 Video
-        [[0, 0.5, 1]],
+        [[0, 0.4, 1.2], [0.6, 0.8, 1, 0.9], [0.9, 1, 1.1, 1.2], [0.6, 0.8, 1, 1.2], [0, 1]],
         //16 Video Text
-        [[0, 1], [0, 0.22, 0.25, 0.5], [0.5, 0.725, 0.75, 1], [-0.1, 0, 1, 1.1]],
+        [],
         //17 Video
-        [[0, 0.5, 1.3]],
+        [[0, 0.4, 1.3], [0, 1.3]],
         //18 Section 1 TF          Section 2 TF               Section 3 TF
         [[0, 0.14, 0.18, 0.33], [0.33, 0.47, 0.51, 0.66], [0.66, 0.80, 0.84, 1]],
     ]
@@ -103,7 +103,7 @@ function NamingExperimentSection() {
     //RESPONSIVE SECTIONS
     // const isLaptop = useMediaQuery({ query: devices.laptop });
     const isMobile = useMediaQuery({ query: devices.mobileL });
-    const videoRatio = 0.625
+    const videoRatio = 0.626
 
     // const draggable = (
     //     <Draggable startHeight={0} height={sectionHeights[0]} windowUrl={getImageByKey('naming_03')} maskUrl={getImageByKey('mask')} />
@@ -159,13 +159,13 @@ function NamingExperimentSection() {
     //SECTION 3
     const mobileVideoBaseline01 = (
         <TransformingContent positions={[[0, 0, 0], [-100, 5, 100]]} scrollInfo={adjustedTimings[3][0]} alignment={['center', 'center']}
-            child={<VideoBox url={baseline_fullscreen_01} displayWidth={85} />}
+            child={<VideoBox url={baseline_fullscreen_01} displayWidth={85} scrollInfo={adjustedTimings[3][1]} />}
         />
     );
 
     const desktopVideoBaseline01 = (
         <TransformingContent positions={[[0, 0, 0], [-100, 5, 100]]} scrollInfo={adjustedTimings[3][0]} alignment={['center', 'center']}
-            child={<VideoBox url={baseline_fullscreen_01} displayWidth={85} />}
+            child={<VideoBox url={baseline_fullscreen_01} displayWidth={85} scrollInfo={adjustedTimings[3][1]} />}
         />
     );
 
@@ -219,109 +219,87 @@ function NamingExperimentSection() {
     )
 
     //SECTION 6
-    const mobileVideoBaseline02 = (
+    const videoBaseline02 = (
         <TransformingContent positions={[[0, 0, 0], [-100, 5, 5]]} scrollInfo={adjustedTimings[6][0]} alignment={['center', 'center']}
             child={<>
-                <VideoBox url={words_fullscreen_02A} displayWidth={85} />
+                <VideoBox url={words_fullscreen_02A} displayWidth={85} scrollInfo={adjustedTimings[6][2]} child={
+                    <VideoTextBox scrollInfo={adjustedTimings[6][1]} child={
+                        <OpacityParagraph scrollInfo={adjustedTimings[6][1]} simpleFade={true} baseOpacity={0} text={
+                            ["It's clear that GPT at baseline doesn't give us what we need, but we have a number of options through creative prompting and context-setting that can help drive toward more interesting results. Can we teach GPT different types of names? Can we train it to think more abstractly or creatively? Can we diversify the naming approaches or themes it explores? Can feeding it past examples or IC on our best practices help coach it to think more like we do about naming?"]
+                        } />
+                    } />
+                } />
             </>}
         />
     );
 
-    const desktopVideoBaseline02 = (
-        <TransformingContent positions={[[0, 0, 0], [-100, 5, 5]]} scrollInfo={adjustedTimings[6][0]} alignment={['center', 'center']}
-            child={<VideoBox url={words_fullscreen_02A} displayWidth={85} />}
-        />
-    );
-
     //SECTION 7
-    const mobileVideoText01 = (
-        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[7][2]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[7][2]} displayWidth={85} heightRatio={videoRatio} child={
-                <OpacityParagraph scrollInfo={adjustedTimings[7][1]} simpleFade={true} baseOpacity={0} text={
-                    ["It’s clear that GPT at baseline doesn’t give us what we need, but we have a number of options through creative prompting and context-setting that can help drive toward more interesting results. Can we teach GPT different types of names? Can we train it to think more abstractly or creatively? Can we diversify the naming approaches or themes it explores? Can feeding it past examples or IC on our best practices help coach it to think more like we do about naming?"]
-                } />
-            } />}
-        />
-    )
-
-    const desktopVideoText01 = (
-        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[7][2]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[7][2]} displayWidth={85} heightRatio={videoRatio} child={
-                <OpacityParagraph scrollInfo={adjustedTimings[7][1]} simpleFade={true} baseOpacity={0} text={
-                    ["It’s clear that GPT at baseline doesn’t give us what we need, but we have a number of options through creative prompting and context-setting that can help drive toward more interesting results. Can we teach GPT different types of names? Can we train it to think more abstractly or creatively? Can we diversify the naming approaches or themes it explores? Can feeding it past examples or IC on our best practices help coach it to think more like we do about naming?"]
-                } />
-            } />}
-        />
-    )
 
     //SECTION 8
     const mobileVideoNames02 = (
         <TransformingContent positions={[[0, 0, 0], [5, 5, 5]]} scrollInfo={adjustedTimings[8][0]} alignment={['center', 'center']}
-            child={<VideoBox url={names_fullscreen_02B} displayWidth={85} />}
+            child={<>
+                <VideoBox url={names_fullscreen_02B} displayWidth={85} scrollInfo={adjustedTimings[8][2]} child={
+                    <VideoTextBox scrollInfo={adjustedTimings[8][1]} child={
+                        <div>
+                            <OpacityParagraph scrollInfo={adjustedTimings[8][1]} simpleFade={true} baseOpacity={0} text={
+                                ["It is safe to say this convention is exceedingly common among brand names across categories, PayPal, YouTube, Salesforce, Facebook… but many of the most famous, aspirational brand names use coined/invented words (Google, Hulu, Zappos, Xerox) or real, abstract dictionary words (Amazon, Apple, Peloton, Uber) – none of which would be delivered if we left GPT to its own naming devices."]
+                            } />
+                            <OpacityParagraph scrollInfo={adjustedTimings[8][1]} simpleFade={true} baseOpacity={0} text={
+                                ["The lesson learned? We may be better off asking GPT for “words” or “ideas” than “names” when trying to name a brand, helping it garner results more aligned to the range of possibilities. Or better yet, we can teach it to understand the different types of names through more detailed prompts, in order to be more targeted in our exploration."]
+                            } />
+                            <OpacityParagraph scrollInfo={adjustedTimings[8][1]} simpleFade={true} baseOpacity={0} text={
+                                ["Part of our name criteria process includes pinpointing the most relevant name type for a given brand based on conventions and white space in the category, the intended tone and level of clarity, or even the idea that a certain type of name conveys. Here's an oversimplified example…"]
+                            } />
+                        </div>
+                    } />
+                } />
+            </>}
         />
     );
 
     const desktopVideoNames02 = (
         <TransformingContent positions={[[0, 0, 0], [5, 5, 5]]} scrollInfo={adjustedTimings[8][0]} alignment={['center', 'center']}
-            child={<VideoBox url={names_fullscreen_02B} displayWidth={85} />}
+            child={<>
+                <VideoBox url={names_fullscreen_02B} displayWidth={85} scrollInfo={adjustedTimings[8][2]} child={
+                    <VideoTextBox scrollInfo={adjustedTimings[8][1]} child={
+                        <div>
+                            <OpacityParagraph scrollInfo={adjustedTimings[8][1]} simpleFade={true} baseOpacity={0} text={
+                                ["It is safe to say this convention is exceedingly common among brand names across categories, PayPal, YouTube, Salesforce, Facebook… but many of the most famous, aspirational brand names use coined/invented words (Google, Hulu, Zappos, Xerox) or real, abstract dictionary words (Amazon, Apple, Peloton, Uber) – none of which would be delivered if we left GPT to its own naming devices."]
+                            } />
+                            <OpacityParagraph scrollInfo={adjustedTimings[8][1]} simpleFade={true} baseOpacity={0} text={
+                                ["The lesson learned? We may be better off asking GPT for “words” or “ideas” than “names” when trying to name a brand, helping it garner results more aligned to the range of possibilities. Or better yet, we can teach it to understand the different types of names through more detailed prompts, in order to be more targeted in our exploration."]
+                            } />
+                            <OpacityParagraph scrollInfo={adjustedTimings[8][1]} simpleFade={true} baseOpacity={0} text={
+                                ["Part of our name criteria process includes pinpointing the most relevant name type for a given brand based on conventions and white space in the category, the intended tone and level of clarity, or even the idea that a certain type of name conveys. Here's an oversimplified example…"]
+                            } />
+                        </div>
+                    } />
+                } />
+            </>}
         />
     );
 
     //SECTION 9
-    const mobileVideoText0202 = (
-        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[9][2]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[9][2]} displayWidth={85} heightRatio={videoRatio} child={
-                <div>
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} baseOpacity={0} text={
-                        ["It is safe to say this convention is exceedingly common among brand names across categories, PayPal, YouTube, Salesforce, Facebook… but many of the most famous, aspirational brand names use coined/invented words (Google, Hulu, Zappos, Xerox) or real, abstract dictionary words (Amazon, Apple, Peloton, Uber) – none of which would be delivered if we left GPT to its own naming devices."]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} baseOpacity={0} text={
-                        ["The lesson learned? We may be better off asking GPT for “words” or “ideas” than “names” when trying to name a brand, helping it garner results more aligned to the range of possibilities. Or better yet, we can teach it to understand the different types of names through more detailed prompts, in order to be more targeted in our exploration."]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} baseOpacity={0} text={
-                        ["Part of our name criteria process includes pinpointing the most relevant name type for a given brand based on conventions and white space in the category, the intended tone and level of clarity, or even the idea that a certain type of name conveys. Here's an oversimplified example…"]
-                    } />
-                </div>
-            } />}
-        />
-    )
-
-    const desktopVideoText0202 = (
-        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[9][2]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[9][2]} displayWidth={85} heightRatio={videoRatio} child={
-                <div>
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} text={
-                        ["It is safe to say this convention is exceedingly common among brand names across categories, PayPal, YouTube, Salesforce, Facebook… but many of the most famous, aspirational brand names use coined/invented words (Google, Hulu, Zappos, Xerox) or real, abstract dictionary words (Amazon, Apple, Peloton, Uber) – none of which would be delivered if we left GPT to its own naming devices."]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} text={
-                        ["The lesson learned? We may be better off asking GPT for “words” or “ideas” than “names” when trying to name a brand, helping it garner results more aligned to the range of possibilities. Or better yet, we can teach it to understand the different types of names through more detailed prompts, in order to be more targeted in our exploration."]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[9][1]} simpleFade={true} text={
-                        ["Part of our name criteria process includes pinpointing the most relevant name type for a given brand based on conventions and white space in the category, the intended tone and level of clarity, or even the idea that a certain type of name conveys. Here's an oversimplified example…"]
-                    } />
-                </div>
-            } />}
-        />
-    )
 
     //Section 10
     const mobileVideoCoined0203 = (
         <TransformingContent positions={[[0, 0, 0], [5, 5, 127]]} scrollInfo={adjustedTimings[10][0]} alignment={['center', 'center']}
-            child={<VideoBox url={coined_fullscreen_02C} displayWidth={85} />}
+            child={<VideoBox url={coined_fullscreen_02C} displayWidth={85} scrollInfo={adjustedTimings[10][1]} />}
         />
     );
 
     const desktopVideoCoined0203 = (
         <TransformingContent positions={[[0, 0, 0], [5, 5, 127]]} scrollInfo={adjustedTimings[10][0]} alignment={['center', 'center']}
-            child={<VideoBox url={coined_fullscreen_02C} displayWidth={85} />}
+            child={<VideoBox url={coined_fullscreen_02C} displayWidth={85} scrollInfo={adjustedTimings[10][1]} />}
         />
     );
 
     //SECTION 11
     const desktopWhileThese = (
-        <TransformingTextBox doubled positions={[127, 12, 12, -100]} scrollInfo={adjustedTimings[11][0]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[127, 16, 16, -100]} scrollInfo={adjustedTimings[11][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[11][0]} backY={6} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 50]} rotate={0} />} />
+                <ColumnImage scrollInfo={adjustedTimings[11][0]} backY={-2} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 50]} rotate={0} />} />
                 <div>
                     <OpacityParagraph scrollInfo={adjustedTimings[11][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["While these results may not reflect the most viable names, we’ve quickly demonstrated that through simple priming around a certain type of name, and the intention behind it, GPT is able to apply this guidance to deliver a set of options with a more focused approach."]
@@ -339,113 +317,97 @@ function NamingExperimentSection() {
     //SECTION 13
     const mobileVideoAbstract01 = (
         <TransformingContent positions={[[0, 0, 0], [-100, 5, 5]]} scrollInfo={adjustedTimings[13][0]} alignment={['center', 'center']}
-            child={<VideoBox url={abstract_fullscreen_03A} displayWidth={85} />}
+            child={<VideoBox url={abstract_fullscreen_03A} displayWidth={85} scrollInfo={adjustedTimings[13][2]} child={
+                <VideoTextBox scrollInfo={adjustedTimings[13][1]} displayWidth={85} child={
+                    <div>
+                        <OpacityParagraph scrollInfo={adjustedTimings[13][1]} simpleFade={true} text={
+                            ["Unsurprisingly GPT interprets the suggestion of intelligence through words that literally, and unimaginatively communicate the idea. Intelligent, wise, brain, insight, savvy are all closely associated or synonyms, and GPT has not yet outperformed the thesaurus in this creative exercise."]
+                        } />
+                        <OpacityParagraph scrollInfo={adjustedTimings[13][1]} simpleFade={true} text={
+                            ["We came upon the idea to dissect the creative process and literally spell it out for GPT. "]
+                        } />
+                    </div>
+                } />
+            } />}
         />
     );
 
     const desktopVideoAbstract01 = (
         <TransformingContent positions={[[0, 0, 0], [-100, 5, 5]]} scrollInfo={adjustedTimings[13][0]} alignment={['center', 'center']}
-            child={<VideoBox url={abstract_fullscreen_03A} displayWidth={85} />}
+            child={<VideoBox url={abstract_fullscreen_03A} displayWidth={85} scrollInfo={adjustedTimings[13][2]} child={
+                <VideoTextBox scrollInfo={adjustedTimings[13][1]} displayWidth={85} child={
+                    <div>
+                        <OpacityParagraph scrollInfo={adjustedTimings[13][1]} simpleFade={true} text={
+                            ["Unsurprisingly GPT interprets the suggestion of intelligence through words that literally, and unimaginatively communicate the idea. Intelligent, wise, brain, insight, savvy are all closely associated or synonyms, and GPT has not yet outperformed the thesaurus in this creative exercise."]
+                        } />
+                        <OpacityParagraph scrollInfo={adjustedTimings[13][1]} simpleFade={true} text={
+                            ["We came upon the idea to dissect the creative process and literally spell it out for GPT. "]
+                        } />
+                    </div>
+                } />
+            } />}
         />
     );
-
-    //SECTION 14
-    const mobileVideoText0301 = (
-        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[14][2]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[14][2]} displayWidth={85} heightRatio={videoRatio} child={
-                <div>
-                    <OpacityParagraph scrollInfo={adjustedTimings[14][1]} simpleFade={true} text={
-                        ["Unsurprisingly GPT interprets the suggestion of intelligence through words that literally, and unimaginatively communicate the idea. Intelligent, wise, brain, insight, savvy are all closely associated or synonyms, and GPT has not yet outperformed the thesaurus in this creative exercise."]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[14][1]} simpleFade={true} text={
-                        ["We came upon the idea to dissect the creative process and literally spell it out for GPT. "]
-                    } />
-                </div>
-            } />}
-        />
-    )
-
-    const desktopVideoText0301 = (
-        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[14][2]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[14][2]} displayWidth={85} heightRatio={videoRatio} child={
-                <div>
-                    <OpacityParagraph scrollInfo={adjustedTimings[14][1]} simpleFade={true} text={
-                        ["Unsurprisingly GPT interprets the suggestion of intelligence through words that literally, and unimaginatively communicate the idea. Intelligent, wise, brain, insight, savvy are all closely associated or synonyms, and GPT has not yet outperformed the thesaurus in this creative exercise."]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[14][1]} simpleFade={true} text={
-                        ["We came upon the idea to dissect the creative process and literally spell it out for GPT. "]
-                    } />
-                </div>
-            } />}
-        />
-    )
 
     //SECTION 15
     const mobileVideoAbstract02 = (
         <TransformingContent positions={[[0, 0, 0], [5, 5, 5]]} scrollInfo={adjustedTimings[15][0]} alignment={['center', 'center']}
-            child={<VideoBox url={abstract_fullscreen_03B} displayWidth={85} />}
+            child={<VideoBox url={abstract_fullscreen_03B} displayWidth={85} scrollInfo={adjustedTimings[15][4]} child={
+                <VideoTextBox scrollInfo={adjustedTimings[15][3]} displayWidth={85} heightRatio={videoRatio} child={
+                    <div>
+                        <OpacityParagraph scrollInfo={adjustedTimings[15][1]} simpleFade={true} text={
+                            ["Again unsurprisingly, GPT interprets the notion of “abstract” literally. Rather than using abstract ideas, metaphors, or creative leaps of the imagination, the tool finds words that mean “abstract” – like enigma, ethereal, mirage – to force-fit abstraction into its name options."]
+                        } />
+                        <OpacityParagraph scrollInfo={adjustedTimings[15][1]} simpleFade={true} text={
+                            ["We tested a wide range of prompts trying to explain metaphor, abstraction, the use of associated ideas to communicate a theme, and the results were consistently limited in their imagination. Asking GPT to “imagine” words yields words like dream, reverie, and…imagine."]
+                        } />
+                        <OpacitySubheading scrollInfo={adjustedTimings[15][2]} simpleFade={true} text={
+                            ["A breakthrough: “creative chaining”"]
+                        } />
+                        <OpacityParagraph scrollInfo={adjustedTimings[15][2]} simpleFade={true} text={
+                            ["We came upon the idea to dissect the creative process and literally spell it out for GPT. Why does Oracle suggest intelligence? Because oracles are associated with predicting the future. An action that requires omniscience, and therefore conveys to us a notion of impressive intellect. Making that mental leap requires a chaining of associations, and that seemed like something we could teach GPT to do."]
+                        } />
+                    </div>
+                } />}
+            />}
         />
     );
 
     const desktopVideoAbstract02 = (
         <TransformingContent positions={[[0, 0, 0], [5, 5, 5]]} scrollInfo={adjustedTimings[15][0]} alignment={['center', 'center']}
-            child={<VideoBox url={abstract_fullscreen_03B} displayWidth={85} />}
+            child={<VideoBox url={abstract_fullscreen_03B} displayWidth={85} scrollInfo={adjustedTimings[15][4]} child={
+                <VideoTextBox scrollInfo={adjustedTimings[15][3]} displayWidth={85} heightRatio={videoRatio} child={
+                    <div>
+                        <OpacityParagraph scrollInfo={adjustedTimings[15][1]} simpleFade={true} text={
+                            ["Again unsurprisingly, GPT interprets the notion of “abstract” literally. Rather than using abstract ideas, metaphors, or creative leaps of the imagination, the tool finds words that mean “abstract” – like enigma, ethereal, mirage – to force-fit abstraction into its name options."]
+                        } />
+                        <OpacityParagraph scrollInfo={adjustedTimings[15][1]} simpleFade={true} text={
+                            ["We tested a wide range of prompts trying to explain metaphor, abstraction, the use of associated ideas to communicate a theme, and the results were consistently limited in their imagination. Asking GPT to “imagine” words yields words like dream, reverie, and…imagine."]
+                        } />
+                        <OpacitySubheading scrollInfo={adjustedTimings[15][2]} simpleFade={true} text={
+                            ["A breakthrough: “creative chaining”"]
+                        } />
+                        <OpacityParagraph scrollInfo={adjustedTimings[15][2]} simpleFade={true} text={
+                            ["We came upon the idea to dissect the creative process and literally spell it out for GPT. Why does Oracle suggest intelligence? Because oracles are associated with predicting the future. An action that requires omniscience, and therefore conveys to us a notion of impressive intellect. Making that mental leap requires a chaining of associations, and that seemed like something we could teach GPT to do."]
+                        } />
+                    </div>
+                } />}
+            />}
         />
     );
 
     //SECTION 16
-    const mobileVideoText0302 = (
-        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[16][3]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[16][3]} displayWidth={85} heightRatio={videoRatio} child={
-                <div>
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][1]} simpleFade={true} text={
-                        ["Again unsurprisingly, GPT interprets the notion of “abstract” literally. Rather than using abstract ideas, metaphors, or creative leaps of the imagination, the tool finds words that mean “abstract” – like enigma, ethereal, mirage – to force-fit abstraction into its name options."]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][1]} simpleFade={true} text={
-                        ["We tested a wide range of prompts trying to explain metaphor, abstraction, the use of associated ideas to communicate a theme, and the results were consistently limited in their imagination. Asking GPT to “imagine” words yields words like dream, reverie, and…imagine."]
-                    } />
-                    <OpacitySubheading scrollInfo={adjustedTimings[16][2]} simpleFade={true} text={
-                        ["A breakthrough: “creative chaining”"]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][2]} simpleFade={true} text={
-                        ["We came upon the idea to dissect the creative process and literally spell it out for GPT. Why does Oracle suggest intelligence? Because oracles are associated with predicting the future. An action that requires omniscience, and therefore conveys to us a notion of impressive intellect. Making that mental leap requires a chaining of associations, and that seemed like something we could teach GPT to do."]
-                    } />
-                </div>
-            } />}
-        />
-    )
-
-    const desktopVideoText0302 = (
-        <TransformingContent positions={[[0, 0, 0, 0], [5, 5, 5, 5]]} scrollInfo={adjustedTimings[16][3]} alignment={['center', 'center']}
-            child={<VideoTextBox scrollInfo={adjustedTimings[16][3]} displayWidth={85} heightRatio={videoRatio} child={
-                <div>
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][1]} simpleFade={true} text={
-                        ["Again unsurprisingly, GPT interprets the notion of “abstract” literally. Rather than using abstract ideas, metaphors, or creative leaps of the imagination, the tool finds words that mean “abstract” – like enigma, ethereal, mirage – to force-fit abstraction into its name options."]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][1]} simpleFade={true} text={
-                        ["We tested a wide range of prompts trying to explain metaphor, abstraction, the use of associated ideas to communicate a theme, and the results were consistently limited in their imagination. Asking GPT to “imagine” words yields words like dream, reverie, and…imagine."]
-                    } />
-                    <OpacitySubheading scrollInfo={adjustedTimings[16][2]} simpleFade={true} text={
-                        ["A breakthrough: “creative chaining”"]
-                    } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[16][2]} simpleFade={true} text={
-                        ["We came upon the idea to dissect the creative process and literally spell it out for GPT. Why does Oracle suggest intelligence? Because oracles are associated with predicting the future. An action that requires omniscience, and therefore conveys to us a notion of impressive intellect. Making that mental leap requires a chaining of associations, and that seemed like something we could teach GPT to do."]
-                    } />
-                </div>
-            } />}
-        />
-    )
 
     //SECTION 17
     const mobileVideoAbstract03 = (
         <TransformingContent positions={[[0, 0, 0], [5, 5, 100]]} scrollInfo={adjustedTimings[17][0]} alignment={['center', 'center']}
-            child={<VideoBox url={abstract_fullscreen_03C} displayWidth={85} />}
+            child={<VideoBox url={abstract_fullscreen_03C} displayWidth={85} scrollInfo={adjustedTimings[17][1]} />}
         />
     );
 
     const desktopVideoAbstract03 = (
         <TransformingContent positions={[[0, 0, 0], [5, 5, 100]]} scrollInfo={adjustedTimings[17][0]} alignment={['center', 'center']}
-            child={<VideoBox url={abstract_fullscreen_03C} displayWidth={85} />}
+            child={<VideoBox url={abstract_fullscreen_03C} displayWidth={85} scrollInfo={adjustedTimings[17][1]} />}
         />
     );
 
@@ -534,26 +496,17 @@ function NamingExperimentSection() {
             <FadingSectionHeader text={sectionHeader02} scrollInfo={adjustedTimings[5][0]} />
 
             {/* VIDEO */}
-            {/* SECTION 6 | VIDEO 2*/}
-            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[6]} />
-            {isMobile ? mobileVideoBaseline02 : desktopVideoBaseline02}
+            {/* SECTION 10 | VIDEO */}
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[10]} />
+            {isMobile ? mobileVideoCoined0203 : desktopVideoCoined0203}
 
             {/* SECTION 8 | VIDEO */}
             <Background background={getImageByKey("naming_gradient")} height={sectionHeights[8]} />
             {isMobile ? mobileVideoNames02 : desktopVideoNames02}
 
-            {/* SECTION 10 | VIDEO */}
-            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[10]} />
-            {isMobile ? mobileVideoCoined0203 : desktopVideoCoined0203}
-
-            {/* TEXT */}
-            {/* SECTION 7 | VIDEO 2 TEXT*/}
-            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[7]} />
-            {isMobile ? mobileVideoText01 : desktopVideoText01}
-
-            {/* SECTION 9 | VIDEO 2 TEXT*/}
-            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[9]} />
-            {isMobile ? mobileVideoText0202 : desktopVideoText0202}
+            {/* SECTION 6 | VIDEO 2*/}
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[6]} />
+            {videoBaseline02}
 
             {/* SECTION 11*/}
             <Background background={getImageByKey("naming_gradient")} height={sectionHeights[11]} />
@@ -564,26 +517,18 @@ function NamingExperimentSection() {
             <FadingSectionHeader text={sectionHeader03} scrollInfo={adjustedTimings[12][0]} />
 
             {/* VIDEOS */}
-            {/* SECTION 13 */}
-            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[13]} />
-            {isMobile ? mobileVideoAbstract01 : desktopVideoAbstract01}
-
-            {/* SECTION 15 */}
-            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[15]} />
-            {isMobile ? mobileVideoAbstract02 : desktopVideoAbstract02}
 
             {/* SECTION 17 */}
             <Background background={getImageByKey("naming_gradient")} height={sectionHeights[17]} />
             {isMobile ? mobileVideoAbstract03 : desktopVideoAbstract03}
 
-            {/* TEXT */}
-            {/* SECTION 14 */}
-            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[14]} />
-            {isMobile ? mobileVideoText0301 : desktopVideoText0301}
+            {/* SECTION 15 */}
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[15]} />
+            {isMobile ? mobileVideoAbstract02 : desktopVideoAbstract02}
 
-            {/* SECTION 16 */}
-            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[16]} />
-            {isMobile ? mobileVideoText0302 : desktopVideoText0302}
+            {/* SECTION 13 */}
+            <Background background={getImageByKey("naming_gradient")} height={sectionHeights[13]} />
+            {isMobile ? mobileVideoAbstract01 : desktopVideoAbstract01}
 
             {/* SECTION 18 */}
             <Background background={getImageByKey("naming_gradient")} height={sectionHeights[18]} />

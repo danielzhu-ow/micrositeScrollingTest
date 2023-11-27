@@ -25,7 +25,7 @@ export { NamingSection }
 
 function NamingSection({ text }) {
     //Heights                0    1    2    3    4    5    6    7
-    const sectionHeights = [300, 600, 400, 300, 200, 200, 400, 500]
+    const sectionHeights = [300, 600, 400, 300, 200, 0, 400, 500]
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
 
     //Timings 
@@ -60,7 +60,7 @@ function NamingSection({ text }) {
         [0.15, 0.5, 1, 1.7]],
 
         // [4] Section 4
-        [[0, 0.4, 1]],                        // [0] Name Zap Video
+        [[0, 0.4, 0.8, 1], [0.6, 0.8, 1, 1.2], [0, 1]],                        // [0] Name Zap Video
 
         // [5] Section 5
         [[0, 1],                  //VideoT             
@@ -199,15 +199,25 @@ function NamingSection({ text }) {
 
     const mobileVideo = (
         <>
-            <TransformingContent child={<VideoBox url={namezap1} displayWidth={95} />}
-                positions={[[0, 0, 0], [-70, 30, 130]]} scrollInfo={adjustedTimings[4][0]} alignment={['center', 'center']} />
+            <TransformingContent child={<VideoBox url={namezap1} displayWidth={80} scrollInfo={adjustedTimings[4][2]}
+                child={<VideoTextBox scrollInfo={adjustedTimings[4][1]} displayWidth={80} heightRatio={0.657} child={
+                    <OpacityParagraph scrollInfo={adjustedTimings[4][1]} simpleFade={true} text={
+                        ["The recent explosion of new generative AI represents an opportunity to experiment with ways to supercharge Firmi amping the natural language and machine learning capacity it lacked in early instances to become a more dynamic resource and relevant extension to our teams. We are on a mission to find ways to effectively harness the immense data sources, processing power, and intuitive interface now available, without sacrificing quality, data integrity, security, and ownership rights plaguing many OpenAi tools today."]
+                    } />}
+                />} />}
+                positions={[[0, 0, 0, 0], [-100, 5, 5, 100]]} scrollInfo={adjustedTimings[4][0]} alignment={['center', 'center']} />
         </>
     );
 
     const desktopVideo = (
         <>
-            <TransformingContent child={<VideoBox url={namezap1} displayWidth={80} />}
-                positions={[[0, 0, 0], [-100, 5, 5]]} scrollInfo={adjustedTimings[4][0]} alignment={['center', 'center']} />
+            <TransformingContent child={<VideoBox url={namezap1} displayWidth={80} scrollInfo={adjustedTimings[4][2]}
+                child={<VideoTextBox scrollInfo={adjustedTimings[4][1]} displayWidth={80} heightRatio={0.657} child={
+                    <OpacityParagraph scrollInfo={adjustedTimings[4][1]} simpleFade={true} text={
+                        ["The recent explosion of new generative AI represents an opportunity to experiment with ways to supercharge Firmi amping the natural language and machine learning capacity it lacked in early instances to become a more dynamic resource and relevant extension to our teams. We are on a mission to find ways to effectively harness the immense data sources, processing power, and intuitive interface now available, without sacrificing quality, data integrity, security, and ownership rights plaguing many OpenAi tools today."]
+                    } />}
+                />} />}
+                positions={[[0, 0, 0, 0], [-100, 5, 5, 100]]} scrollInfo={adjustedTimings[4][0]} alignment={['center', 'center']} />
         </>
     );
 
@@ -215,26 +225,26 @@ function NamingSection({ text }) {
     const mobileVideoText01 = (
         <>
             <Background background={'#202020'} height={sectionHeights[5]} />
-            <TransformingContent positions={[[0, 0, 0, 0], [-70, 30, 30, 130]]} scrollInfo={adjustedTimings[5][2]} alignment={['center', 'center']}
+            {/* <TransformingContent positions={[[0, 0, 0, 0], [-70, 30, 30, 130]]} scrollInfo={adjustedTimings[5][2]} alignment={['center', 'center']}
                 child={
                     <OpacityParagraph scrollInfo={adjustedTimings[5][1]} text={
                         ["The recent explosion of new generative AI represents an opportunity to experiment with ways to supercharge Firmi amping the natural language and machine learning capacity it lacked in early instances to become a more dynamic resource and relevant extension to our teams. We are on a mission to find ways to effectively harness the immense data sources, processing power, and intuitive interface now available, without sacrificing quality, data integrity, security, and ownership rights plaguing many OpenAi tools today."]
                     } />
                 }
-            />
+            /> */}
         </>
     )
 
     const desktopVideoText01 = (
         <>
             <Background background={getImageByKey("naming_gradient")} height={sectionHeights[5]} />
-            <TransformingContent positions={[[0, 0, 0], [5, 5, 100]]} scrollInfo={adjustedTimings[5][3]} alignment={['center', 'center']}
+            {/* <TransformingContent positions={[[0, 0, 0], [5, 5, 100]]} scrollInfo={adjustedTimings[5][3]} alignment={['center', 'center']}
                 child={<VideoTextBox scrollInfo={adjustedTimings[5][4]} displayWidth={80} heightRatio={0.657} child={
                     <OpacityParagraph scrollInfo={adjustedTimings[5][1]} simpleFade={true} text={
                         ["The recent explosion of new generative AI represents an opportunity to experiment with ways to supercharge Firmi amping the natural language and machine learning capacity it lacked in early instances to become a more dynamic resource and relevant extension to our teams. We are on a mission to find ways to effectively harness the immense data sources, processing power, and intuitive interface now available, without sacrificing quality, data integrity, security, and ownership rights plaguing many OpenAi tools today."]
                     } />
                 } />}
-            />
+            /> */}
         </>
     )
 
@@ -313,7 +323,6 @@ function NamingSection({ text }) {
             {/* Section 7 */}
             <Background background={getImageByKey('naming_gradient')} height={sectionHeights[7]} />
             {isMobile ? mobileRobotSection : desktopRobotSection}
-
         </div>
     )
 }
