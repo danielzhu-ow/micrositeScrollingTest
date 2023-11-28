@@ -7,7 +7,7 @@ function ColumnImage({ scrollInfo, child, baseOpacity, backY, fadeIn, fadeOut })
     let fOut = baseOpacity
     if (!fadeIn) { fIn = 1}
     if (!fadeOut) { fOut = 1 }
-    let opacityTransform = [fIn, 1, 1, fOut]
+    let opacityTransform = [fIn, fIn, 1, 1, fOut, fOut]
     const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length - 1], 1]
     const { scrollYProgress } = useScroll();
     const opacity = useTransform(scrollYProgress, scrollInfo, opacityTransform)

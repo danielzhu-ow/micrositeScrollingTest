@@ -1,8 +1,8 @@
-import { useScroll, useTransform, motion, easeInOut } from "framer-motion"
+import { useScroll, useTransform, motion } from "framer-motion"
 import PropTypes from 'prop-types'
 export { ScrollingColumn }
 
-function ScrollingColumn({ children, scrollInfo, scrollIn, scrollOut}) {
+function ScrollingColumn({ children, scrollInfo, scrollIn, scrollOut }) {
     const { scrollYProgress } = useScroll();
 
     let sIn = window.innerHeight
@@ -10,8 +10,7 @@ function ScrollingColumn({ children, scrollInfo, scrollIn, scrollOut}) {
     if (!scrollIn) { sIn = 0 }
     if (!scrollOut) { sOut = 0 }
 
-    const scrollInfoMiddle = (scrollInfo[scrollInfo.length - 1] - scrollInfo[0]) / 2 + scrollInfo[0]
-    const scroll = useTransform(scrollYProgress, [scrollInfo[0], scrollInfoMiddle, scrollInfo[scrollInfo.length - 1]], [ sIn, 0, sOut], { ease: easeInOut })
+    const scroll = useTransform(scrollYProgress, scrollInfo, [sIn, 0, sOut])
 
     return (
         <motion.div style={{

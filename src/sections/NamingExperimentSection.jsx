@@ -36,7 +36,7 @@ function NamingExperimentSection() {
     // const images = useNamingImageLoader();
 
     //Heights               0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18
-    const sectionHeights = [300, 400, 400, 200, 600, 400, 300, 0  , 300, 0,  200, 400, 400, 400, 0  , 600, 0  , 200, 1200]
+    const sectionHeights = [300, 400, 400, 200, 600, 400, 300, 0, 300, 0, 200, 400, 400, 400, 0, 600, 0, 200, 1200]
 
     //Timings | Timings are adjusted to start - end of section
     const sectionTimings = [
@@ -48,8 +48,8 @@ function NamingExperimentSection() {
         [[0.1, 0.5, 0.7, 0.9], [0, 0.6, 1.5]],
         //3 Video
         [[-0.1, 0.25, 1.4], [-0.1, 1.4]],
-        //4 Para 1                 Para 2                    Para 3                Text Motion
-        [[0, 0.14, 0.18, 0.33], [0.33, 0.47, 0.51, 0.66], [0.66, 0.80, 0.84, 1], [-0.2, 0, 0.33, 0.66, 1], [0, 0.12, 0.20, 0.47], [0.2, 0.47, 0.52, 0.7], [0.56, 0.78, 0.86, 1]],
+        //4 Para O 1             Para O 2               Para O 3               Scroll 1           Scroll 2               Scroll 3           Robot O 1                       Robot O 2                       Robot O 3      
+        [[0, 0.14, 0.18, 0.66], [0, 0.47, 0.51, 1.00], [0.33, 0.80, 0.84, 1], [0, 1 / 6, 4 / 6], [0 / 6, 1 / 2, 6 / 6], [2 / 6, 5 / 6, 1], [0, 0, 0.14, 0.18, 0.33, 0.66], [0, 0.33, 0.47, 0.51, 0.66, 1], [0.33, 0.66, 0.80, 0.84, 1, 1]],
         //5 Fading Section Header
         [[0.1, 0.5, 0.7, 0.9], [0, 0.4, 1.5]],
         //6 Video
@@ -62,8 +62,8 @@ function NamingExperimentSection() {
         [],
         //10, Video
         [[0, 0.4, 1.3], [0, 1.3]],
-        //11 Para 1
-        [[-0.2, 0.16, 0.77, 1]],
+        //11 Para 1 Motion                Transform + Opacity
+        [[-0.2, -0.2, 0.16, 0.77, 1, 1], [-0.2, 0.16, 0.77, 1]],
         //12 Fading Section Header
         [[0.1, 0.5, 0.7, 0.9], [0, 0.4, 1.5]],
         //13 Video
@@ -71,13 +71,13 @@ function NamingExperimentSection() {
         //14 Video Text
         [],
         //15 Video
-        [[0, 0.4, 1.2], [0.6, 0.8, 1, 0.9], [0.9, 1, 1.1, 1.2], [0.6, 0.8, 1, 1.2], [0, 1]],
+        [[0, 0.4, 1.1], [0.6, 0.8, 1, 0.9], [0.9, 1, 1.1, 1.1], [0.6, 0.8, 1, 1.1], [0, 1]],
         //16 Video Text
         [],
         //17 Video
         [[0, 0.4, 1.3], [0, 1.3]],
-        //18 Section 1 TF          Section 2 TF               Section 3 TF
-        [[0, 0.14, 0.18, 0.33], [0.33, 0.47, 0.51, 0.66], [0.66, 0.80, 0.84, 1]],
+        //18 Para O 1             Para O 2                  Para O 3           Scroll 1           Scroll 2               Scroll 3           Robot O 1                       Robot O 2                       Robot O 3      
+        [[0, 0.14, 0.18, 0.66], [0, 0.47, 0.51, 1.00], [0.33, 0.80, 0.84, 1], [0, 1 / 6, 3 / 6], [1 / 6, 1 / 2, 5 / 6], [3 / 6, 5 / 6, 1], [0, 0, 0.14, 0.18, 0.33, 0.66], [0, 0.33, 0.47, 0.51, 0.66, 1], [0.33, 0.66, 0.80, 0.84, 1, 1]],
     ]
     let adjustedTimings = []
 
@@ -173,12 +173,12 @@ function NamingExperimentSection() {
     const desktopTheGood = (
         <TransformingTextBox doubled positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[4][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][0]} backY={12} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 40]} rotate={0} />} />
-                <ScrollingColumn scrollInfo={adjustedTimings[4][4]} scrollIn={false}>
-                    <OpacitySubheading scrollInfo={adjustedTimings[4][4]} baseOpacity={0} dark={false} simpleFade={true} text={
+                <ColumnImage scrollInfo={adjustedTimings[4][6]} backY={12} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 40]} rotate={0} />} />
+                <ScrollingColumn scrollInfo={adjustedTimings[4][3]} scrollIn={false}>
+                    <OpacitySubheading scrollInfo={adjustedTimings[4][0]} baseOpacity={0.2} dark={false} simpleFade={true} text={
                         ["The good:"]
                     } />
-                    <OpacityList scrollInfo={adjustedTimings[4][4]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    <OpacityList scrollInfo={adjustedTimings[4][0]} dark={false} simpleFade={true} baseOpacity={0.2} text={
                         [<p><b>It's fast:</b> while experienced namers take several hours to generate a list of 100 names, GPT can produce that amount instantaneously</p>, <p><b>It's accurate:</b> the names feel appropriate to the request, and tend to leverage familiar, and well-understood terms to ground names in the offering we're defining. Even more, it demonstrates an understanding of a technical category, and the relevant words commonly used in the space.</p>]
                     } />
                 </ScrollingColumn>
@@ -189,12 +189,12 @@ function NamingExperimentSection() {
     const desktopTheBad = (
         <TransformingTextBox doubled positions={[27, 27, 27, 27]} scrollInfo={adjustedTimings[4][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][1]} backY={5} child={<ImgBox url={getImageByKey("orange_robot1")} displayDimensions={[65, 40]} rotate={0} />} />
-                <ScrollingColumn scrollInfo={adjustedTimings[4][5]}>
-                    <OpacitySubheading scrollInfo={adjustedTimings[4][5]} dark={false} simpleFade={true} baseOpacity={0} text={
+                <ColumnImage scrollInfo={adjustedTimings[4][7]} backY={5} child={<ImgBox url={getImageByKey("orange_robot1")} displayDimensions={[65, 40]} rotate={0} />} />
+                <ScrollingColumn scrollInfo={adjustedTimings[4][4]}>
+                    <OpacitySubheading scrollInfo={adjustedTimings[4][1]} dark={false} simpleFade={true} baseOpacity={0.2} text={
                         ["The bad:"]
                     } />
-                    <OpacityList scrollInfo={adjustedTimings[4][5]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    <OpacityList scrollInfo={adjustedTimings[4][1]} dark={false} simpleFade={true} baseOpacity={0.2} text={
                         [<p><b>Literal and limited:</b> The concepts are highly literal and directly guided by words in the prompt, suggesting a lack of ability for abstraction or thinking more conceptually.</p>, <p><b>Lack of craft:</b> A bias toward compound “CamelCap” names that can feel dated, clunky, or less distinctive, the names don't have the intangible feel of a good name that's easy to say and remember.</p>, <p><b>Non-viable:</b> Generic terminology would be challenging to clear legal. We need to be able to stretch into less expected spaces to navigate the crowded trademark territories our clients occupy</p>]
                     } />
                 </ScrollingColumn>
@@ -205,12 +205,12 @@ function NamingExperimentSection() {
     const desktopTheOpportunity = (
         <TransformingTextBox doubled positions={[27, 27, 27, -100]} scrollInfo={adjustedTimings[4][2]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[4][2]} backY={25} child={<ImgBox url={getImageByKey("tin_robot3")} displayDimensions={[65, 40]} rotate={0} />} />
-                <ScrollingColumn scrollInfo={adjustedTimings[4][6]} scrollOut={false}>
-                    <OpacitySubheading scrollInfo={adjustedTimings[4][6]} dark={false} simpleFade={true} baseOpacity={0} text={
+                <ColumnImage scrollInfo={adjustedTimings[4][8]} backY={25} child={<ImgBox url={getImageByKey("tin_robot3")} displayDimensions={[65, 40]} rotate={0} />} />
+                <ScrollingColumn scrollInfo={adjustedTimings[4][5]} scrollOut={false}>
+                    <OpacitySubheading scrollInfo={adjustedTimings[4][2]} dark={false} simpleFade={true} baseOpacity={0.2} text={
                         ["The opportunity:"]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[4][6]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[4][2]} dark={false} simpleFade={true} baseOpacity={0.2} text={
                         ["It's clear that GPT at baseline doesn't give us what we need, but we have a number of options through creative prompting and context-setting that can help drive toward more interesting results. Can we teach GPT different types of names? Can we train it to think more abstractly or creatively? Can we diversify the naming approaches or themes it explores? Can feeding it past examples or IC on our best practices help coach it to think more like we do about naming?"]
                     } />
                 </ScrollingColumn>
@@ -297,18 +297,18 @@ function NamingExperimentSection() {
 
     //SECTION 11
     const desktopWhileThese = (
-        <TransformingTextBox doubled positions={[127, 16, 16, -100]} scrollInfo={adjustedTimings[11][0]} alignment={'top'} child={
+        <TransformingTextBox doubled positions={[127, 16, 16, -100]} scrollInfo={adjustedTimings[11][1]} alignment={'top'} child={
             <DoubleColumn>
                 <ColumnImage scrollInfo={adjustedTimings[11][0]} backY={-2} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 50]} rotate={0} />} />
                 <div>
-                    <OpacityParagraph scrollInfo={adjustedTimings[11][0]} baseOpacity={0} dark={false} simpleFade={true} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[11][1]} baseOpacity={0.2} dark={false} simpleFade={true} text={
                         ["While these results may not reflect the most viable names, we’ve quickly demonstrated that through simple priming around a certain type of name, and the intention behind it, GPT is able to apply this guidance to deliver a set of options with a more focused approach."]
                     } />
-                    <OpacityParagraph scrollInfo={adjustedTimings[11][0]} dark={false} simpleFade={true} baseOpacity={0} text={
+                    <OpacityParagraph scrollInfo={adjustedTimings[11][1]} dark={false} simpleFade={true} baseOpacity={0.2} text={
                         ["Let’s play on to see how this priming technique can be further expanded and refined to deliver even more interesting results."]
                     } />
                     <br /><br /><br />
-                    <TryThis text={tryText} scrollInfo={adjustedTimings[11][0]} />
+                    <TryThis text={tryText} scrollInfo={adjustedTimings[11][1]} />
                 </div>
             </DoubleColumn>
         } />
@@ -415,8 +415,8 @@ function NamingExperimentSection() {
     const desktopWeFound = (
         <TransformingTextBox doubled positions={[127, 27, 27, 27]} scrollInfo={adjustedTimings[18][0]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][0]} backY={12} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 50]} rotate={0} />} />
-                <ScrollingColumn scrollInfo={adjustedTimings[18][0]} scrollIn={false}>
+                <ColumnImage scrollInfo={adjustedTimings[18][6]} backY={12} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 50]} rotate={0} />} />
+                <ScrollingColumn scrollInfo={adjustedTimings[18][3]} scrollIn={false}>
                     <OpacitySubheading scrollInfo={adjustedTimings[18][0]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["We found the results exciting for a couple of reasons:"]
                     } />
@@ -431,8 +431,8 @@ function NamingExperimentSection() {
     const desktopButChallenges = (
         <TransformingTextBox doubled positions={[27, 27, 27, 27]} scrollInfo={adjustedTimings[18][1]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][1]} backY={12} fadeIn={false} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 50]} rotate={0} />} />
-                <ScrollingColumn scrollInfo={adjustedTimings[18][1]}>
+                <ColumnImage scrollInfo={adjustedTimings[18][7]} backY={12} fadeIn={false} fadeOut={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 50]} rotate={0} />} />
+                <ScrollingColumn scrollInfo={adjustedTimings[18][4]}>
                     <OpacityParagraph scrollInfo={adjustedTimings[18][1]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["BUT, challenges remain: we’ve achieved a route to abstraction, but these are still real words, unlikely to be available in many trademark categories. And the process broke down when we asked GPT to translate these real, dictionary words to more unique approaches like compound or coined names. Also, interestingly, after repeating a couple of times, we saw the results degrade – as though GPT was running out of ideas, or regressing to the notion where “abstract” becomes literally mysterious again…"]
                     } />
@@ -447,8 +447,8 @@ function NamingExperimentSection() {
     const desktopToKeep = (
         <TransformingTextBox doubled positions={[10, 10, 10, -100]} scrollInfo={adjustedTimings[18][2]} alignment={'top'} child={
             <DoubleColumn>
-                <ColumnImage scrollInfo={adjustedTimings[18][2]} backY={-8} fadeIn={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 50]} rotate={0} />} />
-                <ScrollingColumn scrollInfo={adjustedTimings[18][2]} scrollOut={false} >
+                <ColumnImage scrollInfo={adjustedTimings[18][8]} backY={-8} fadeIn={false} child={<ImgBox url={getImageByKey("cute_robot")} displayDimensions={[70, 50]} rotate={0} />} />
+                <ScrollingColumn scrollInfo={adjustedTimings[18][5]} scrollOut={false} >
                     <OpacityParagraph scrollInfo={adjustedTimings[18][2]} baseOpacity={0} dark={false} simpleFade={true} text={
                         ["To keep GPT in a truly originative space, we need to reset our prompts frequently, and keep pushing toward more freedom of association."]
                     } />
