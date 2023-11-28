@@ -24,6 +24,8 @@ import toy_pile from '../images/naming/toyPile.webp'
 import hotdog from'../images/naming/hotdog.webp'
 import mask from '../images/naming/mask.png'
 import shadow from '../images/naming/shadow.webp'
+import headerShadeExperiment from '../images/naming/headerShadeExperiment.webp'
+import headerShadeNaming from '../images/naming/headerShadeNaming.webp'
 
 export {getImageByKey}
 
@@ -52,7 +54,9 @@ const imagesNaming = {
   toy_pile,
   hotdog,
   mask,
-  shadow
+  shadow,
+  headerShadeExperiment,
+  headerShadeNaming,
 };
 
 function getImageByKey(key) {

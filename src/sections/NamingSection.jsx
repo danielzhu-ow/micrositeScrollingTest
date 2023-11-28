@@ -25,23 +25,24 @@ export { NamingSection }
 
 function NamingSection({ text }) {
     //Heights                0    1    2    3    4    5    6    7
-    const sectionHeights = [300, 600, 400, 300, 200, 0, 400, 500]
+    const sectionHeights = [250, 600, 400, 300, 200, 0, 400, 500]
     const sum = sectionHeights.reduce((partialSum, a) => partialSum + a, 0)
 
     //Timings 
     const sectionTimings = [
         // [0] Header
-        [[0, 0.4, 0.7, 1],                               // [0] Fading Header [s, h, e]
+        [[0, 0.2, 0.5, 0.8],                               // [0] Fading Header [s, h, e]
         [0, 0.6],                                     // [1] Img 1
-        [0, 0.6]],                                    // [2] Img 2
+        [0, 0.6],
+        [0, 0, 0.2, 0.5]],                                    // [2] Img 2
 
         // [1] Section 1
         [[0, 0.25, 0.3, 0.4],                     // [0] Verizon    
         [0, 0.25, 0.3, 0.4],                      // [1] Sprite             
         [-0.1, 0.05, 0.8, 1],             // [2] Paragraph 1-2 Transform Timings    
-        [0.15, 0.15, 0.35, 1.0],                      // [3] Paragraph 1           
-        [0.15, 0.35, 0.65, 1.0],                      // [4] Paragraph 2          
-        [0.15, 0.65, 0.95, 1.0],                      // [5] Paragraph 3    
+        [-0.1, -0.1, 0.35, 1.0],                      // [3] Paragraph 1           
+        [-0.1, 0.35, 0.65, 1.0],                      // [4] Paragraph 2          
+        [-0.1, 0.65, 0.95, 1.0],                      // [5] Paragraph 3    
         [0.35, 0.5, 0.6, 0.7],                     // [6] Dino Night            
         [0.6, 0.7, 0.88, 1.0545]],                       // [7] Dino Day 
 
@@ -80,8 +81,8 @@ function NamingSection({ text }) {
         [-0.2, 0.22, 0.27, 1], //Opacity 1
         [-0.2, 0.73, 0.77, 1], //Opacity 2
         [-0.2, -0.2, 0.2, 0.8, 1, 1], // Image Opacity
-        [0, 1/4, 2/3],
-        [1/3, 3/4, 1]
+        [0, 1 / 4, 2 / 3],
+        [1 / 3, 3 / 4, 1]
         ]
     ]
     let adjustedTimings = []
@@ -294,7 +295,8 @@ function NamingSection({ text }) {
     return (
         <div style={{ position: "relative", height: "100%", width: "100%" }}>
             {/* HEADER: Section 0 */}
-            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} scrollInfo={adjustedTimings[0][0]} />
+            <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} delayed={[0.5, 1]} />
+            <TransformingContent child={<OpacityContent baseOpacity={0} scrollInfo={adjustedTimings[0][3]} child={<ImgBox url={getImageByKey("headerShadeExperiment")} displayDimensions={[85, 25]} rotate={0} />} />} positions={[[7.5, 7.5, 7.5, 7.5], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[0][0]} alignment={['left', 'bottom']} />
             <FadingHeader text={text.Header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
             <TransformingContent child={<ImgBox url={getImageByKey("naming_01")} displayDimensions={[50, 50]} rotate={0} />} positions={[[-10, -60], [0, -50]]} scrollInfo={adjustedTimings[0][1]} alignment={['left', 'top']} />
             <TransformingContent child={<ImgBox url={getImageByKey("naming_02")} displayDimensions={[55, 55]} rotate={0} />} positions={[[0, -50], [-10, -65]]} scrollInfo={adjustedTimings[0][2]} alignment={['right', 'bottom']} />

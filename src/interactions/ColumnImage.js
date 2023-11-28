@@ -2,12 +2,15 @@ import PropTypes from "prop-types"
 import { useTransform, useScroll, motion } from "framer-motion";
 export { ColumnImage }
 
-function ColumnImage({ scrollInfo, child, baseOpacity, backY, fadeIn, fadeOut }) {
+function ColumnImage({ scrollInfo, child, baseOpacity, backY, fadeIn, fadeOut, invisible }) {
     let fIn = baseOpacity
     let fOut = baseOpacity
-    if (!fadeIn) { fIn = 1}
+    if (!fadeIn) { fIn = 1 }
     if (!fadeOut) { fOut = 1 }
+
     let opacityTransform = [fIn, fIn, 1, 1, fOut, fOut]
+    if (invisible) { opacityTransform = [0, 0, 0, 0, 0, 0,] }
+
     const visibleInfo = [0, scrollInfo[0], scrollInfo[scrollInfo.length - 1], 1]
     const { scrollYProgress } = useScroll();
     const opacity = useTransform(scrollYProgress, scrollInfo, opacityTransform)
@@ -33,6 +36,7 @@ ColumnImage.defaultProps = {
     backY: 0,
     fadeIn: true,
     fadeOut: true,
+    invisible: false
 }
 
 ColumnImage.propTypes = {
@@ -42,4 +46,5 @@ ColumnImage.propTypes = {
     backY: PropTypes.number,
     fadeIn: PropTypes.bool,
     fadeOut: PropTypes.bool,
+    invisible: PropTypes.bool,
 }

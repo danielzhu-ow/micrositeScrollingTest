@@ -125,7 +125,22 @@ function ImgBox({ url, displayDimensions, rotate, fixWidth, fixHeight }) {
     } else {
         return (
             <>
-                <MediaQuery minWidth={sizes.tablet}>
+                <MediaQuery minWidth={sizes.laptopL}>
+                    <img src={url} alt={url}
+                        style={{
+                            userDrag: "none",
+                            WebkitUserDrag: "none",
+                            userSelect: "none",
+                            MozUserSelect: "none",
+                            WebkitUserSelect: "none",
+                            msUserSelect: "none",
+
+                            transform: "rotate(" + rotate + "deg)",
+                            height: displayDimensions[1] + "vh",
+                            width: "auto",
+                        }} />
+                </MediaQuery>
+                <MediaQuery minWidth={sizes.tablet} maxWidth={sizes.laptopL}>
                     <img src={url} alt={url}
                         style={{
                             userDrag: "none",

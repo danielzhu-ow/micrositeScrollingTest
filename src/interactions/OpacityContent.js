@@ -37,7 +37,7 @@ OpacityContent.propTypes = {
 
 //Opacity Paragraph
 function OpacityParagraph({ text, scrollInfo, baseOpacity, dark, simpleFade }) {
-    let scrollReference = [scrollInfo[0], scrollInfo[1], scrollInfo[1], scrollInfo[2], scrollInfo[2], scrollInfo[3]]
+    let scrollReference = [scrollInfo[0], halfWay(scrollInfo[0], scrollInfo[1]), scrollInfo[1], scrollInfo[2], halfWay(scrollInfo[2], scrollInfo[3]), scrollInfo[3]]
     let opacityTransform = [baseOpacity, baseOpacity, 1, 1, baseOpacity, baseOpacity]
 
     if (simpleFade) {
@@ -84,7 +84,7 @@ OpacityParagraph.propTypes = {
 
 //Opacity Paragraph
 function OpacityList({ text, scrollInfo, baseOpacity, dark, simpleFade }) {
-    let scrollReference = [scrollInfo[0], scrollInfo[1], scrollInfo[1], scrollInfo[2], scrollInfo[2], scrollInfo[3]]
+    let scrollReference = [scrollInfo[0], halfWay(scrollInfo[0], scrollInfo[1]), scrollInfo[1], scrollInfo[2], halfWay(scrollInfo[2], scrollInfo[3]), scrollInfo[3]]
     let opacityTransform = [baseOpacity, baseOpacity, 1, 1, baseOpacity, baseOpacity]
 
     if (simpleFade) {
@@ -129,7 +129,7 @@ OpacityList.propTypes = {
 
 //Opacity Subheading
 function OpacitySubheading({ text, scrollInfo, baseOpacity, simpleFade, dark }) {
-    let scrollReference = [scrollInfo[0], scrollInfo[1], scrollInfo[1], scrollInfo[2], scrollInfo[2], scrollInfo[3]]
+    let scrollReference = [scrollInfo[0], halfWay(scrollInfo[0], scrollInfo[1]), scrollInfo[1], scrollInfo[2], halfWay(scrollInfo[2], scrollInfo[3]), scrollInfo[3]]
     let opacityTransform = [baseOpacity, baseOpacity, 1, 1, baseOpacity, baseOpacity]
 
     if (simpleFade) {
@@ -176,7 +176,7 @@ OpacitySubheading.propTypes = {
 
 // Opacity Header
 function OpacityHeading({ text, scrollInfo, baseOpacity, dark, simpleFade }) {
-    let scrollReference = [scrollInfo[0], scrollInfo[1], scrollInfo[1], scrollInfo[2], scrollInfo[2], scrollInfo[3]]
+    let scrollReference = [scrollInfo[0], halfWay(scrollInfo[0], scrollInfo[1]), scrollInfo[1], scrollInfo[2], halfWay(scrollInfo[2], scrollInfo[3]), scrollInfo[3]]
     let opacityTransform = [baseOpacity, baseOpacity, 1, 1, baseOpacity, baseOpacity]
 
     if (simpleFade) {
@@ -219,4 +219,8 @@ OpacityHeading.propTypes = {
     baseOpacity: PropTypes.number,
     dark: PropTypes.bool,
     simpleFade: PropTypes.bool,
+}
+
+function halfWay(a, b) {
+    return (b - a) / 2 + a
 }
