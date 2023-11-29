@@ -36,8 +36,9 @@ OpacityContent.propTypes = {
 }
 
 //Opacity Paragraph
-function OpacityParagraph({ text, scrollInfo, baseOpacity, dark, simpleFade }) {
+function OpacityParagraph({ text, scrollInfo, baseOpacity, dark, simpleFade, complexFade }) {
     let scrollReference = [scrollInfo[0], halfWay(scrollInfo[0], scrollInfo[1]), scrollInfo[1], scrollInfo[2], halfWay(scrollInfo[2], scrollInfo[3]), scrollInfo[3]]
+    if (complexFade) { scrollReference = [scrollInfo[0], scrollInfo[1], scrollInfo[1], scrollInfo[2], scrollInfo[2], scrollInfo[3]]}
     let opacityTransform = [baseOpacity, baseOpacity, 1, 1, baseOpacity, baseOpacity]
 
     if (simpleFade) {
@@ -72,6 +73,7 @@ OpacityParagraph.defaultProps = {
     baseOpacity: 0.15,
     dark: true,
     simpleFade: false,
+    complexFade: false,
 }
 
 OpacityParagraph.propTypes = {
@@ -80,6 +82,7 @@ OpacityParagraph.propTypes = {
     baseOpacity: PropTypes.number,
     dark: PropTypes.bool,
     simpleFade: PropTypes.bool,
+    complexFade: PropTypes.bool,
 }
 
 //Opacity Paragraph

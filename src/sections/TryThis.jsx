@@ -36,8 +36,7 @@ const ContactColumn = styled.div`
 
 const ContactButton = styled.button`
     margin: 0;
-    max-width: 20rem;
-    height: 5.9rem;
+    padding: 1.6rem 3.2rem 1.6rem 3.2rem;
 
     background-color: white;
     border: 1px black solid;
@@ -86,13 +85,13 @@ function TryThis({ text, scrollInfo }) {
     const opacity = useTransform(scrollYProgress, scrollInfo, [0, 1, 1, 0])
 
     return (
-        <motion.div style={{ display: visible, opacity: opacity }}>
+        <motion.div style={{ display: visible, opacity: opacity, float: 'left' }}>
             <CardBox>
                 <ContactColumn>
                     <ContactHeader>{text.header}</ContactHeader>
                     <ContactBody>{text.body}</ContactBody>
                     <div style={{ width: '100%', textAlign: 'left' }}>
-                        <ContactButton onClick={() => window.location.href = "mailto:tom.ajello@lippincott.com"} >TRY EXPERIMENT</ContactButton>
+                        <ContactButton onClick={() => window.location.href = "mailto:tom.ajello@lippincott.com"} >LET'S GO PLAY</ContactButton>
                     </div>
                 </ContactColumn>
             </CardBox>

@@ -47,9 +47,9 @@ function NamingExperimentSection() {
         //2 Fading Section Header
         [[0, 0.2, 0.5, 1], [0, 0.2, 1.5]],
         //3 Video
-        [[-0.1, 0.25, 1.4], [-0.1, 1.4]],
+        [[-0.1, 0.25, 1.2], [-0.1, 1.2]],
         //4 Para O 1             Para O 2               Para O 3               Scroll 1           Scroll 2               Scroll 3           Robot O 1                       Robot O 2                       Robot O 3      
-        [[0, 1/12, 3/12, 2/3], [0, 5/12, 7/12, 1], [0, 9/12, 11/12, 1], [0, 1 / 6, 4 / 6], [0 / 6, 1 / 2, 6 / 6], [2 / 6, 5 / 6, 1], [0, 0, 1/12, 3/12, 1/3, 2/3], [0, 1/3, 5/12, 7/12, 2/3, 1], [1/3, 2/3, 9/12, 11/12, 1, 1]],
+        [[0, 1/12, 3/12, 2/3], [0, 5/12, 7/12, 1], [0, 9/12, 11/12, 1], [0, 1 / 6, 4 / 6], [0 / 6, 1 / 2, 6 / 6], [2 / 6, 5/6, 1], [0, 0, 1/12, 3/12, 1/3, 2/3], [0, 1/3, 5/12, 7/12, 2/3, 1], [1/3, 2/3, 9/12, 11/12, 1, 1]],
         //5 Fading Section Header
         [[0, 0.2, 0.5, 1], [0, 0.2, 1.5]],
         //6 Video
@@ -61,7 +61,7 @@ function NamingExperimentSection() {
         //9 Video Text
         [],
         //10, Video
-        [[0, 0.4, 1.3], [0, 1.3]],
+        [[0, 0.6, 1.3], [0, 1.3]],
         //11 Para 1 Motion                Transform + Opacity
         [[-0.2, -0.2, 0.16, 0.77, 1, 1], [-0.2, 0.16, 0.77, 1]],
         //12 Fading Section Header
@@ -75,9 +75,9 @@ function NamingExperimentSection() {
         //16 Video Text
         [],
         //17 Video
-        [[0, 0.4, 1.3], [0, 1.3]],
+        [[0, 0.6, 1.3], [0, 1.3]],
         //18 Para O 1         Para O 2                  Para O 3           Scroll 1           Scroll 2               Scroll 3           Robot O 1                       Robot O 2                       Robot O 3      
-        [[0, 0.14, 0.18, 0.66], [0, 0.47, 0.51, 1.00], [0.33, 0.80, 0.84, 1], [0, 1 / 6, 3 / 6], [1 / 6, 1 / 2, 5 / 6], [3 / 6, 5 / 6, 1], [0, 0, 0.14, 0.18, 0.66, 1], [0, 0, 0, 0, 0, 1], [0, 0.66, 0.80, 0.84, 1, 1]],
+        [[0, 0.14, 0.18, 0.66], [0, 0.47, 0.51, 1.00], [0.33, 0.80, 0.84, 1], [0, 1 / 6, 4 / 6], [0 / 6, 1 / 2, 6 / 6], [2 / 6, 5 / 6, 1], [0, 0, 0.14, 0.18, 0.66, 1], [0, 0, 0, 0, 0, 1], [0, 0.66, 0.80, 0.84, 1, 1]],
     ]
     let adjustedTimings = []
 
@@ -117,13 +117,13 @@ function NamingExperimentSection() {
                 <OpacitySubheading scrollInfo={adjustedTimings[1][0]} text={
                     ["In case you missed it..."]
                 } />
-                <OpacityParagraph scrollInfo={adjustedTimings[1][0]} text={
+                <OpacityParagraph scrollInfo={adjustedTimings[1][0]} complexFade text={
                     [<i>Lippincott has been a leader in brand name development for 80 years, and creator of classic household brand names like Duracell, Sprite, and Off! and more recent market-changers like Kenvue, Refinitiv, and Marcus. But as the limitations of language, trademark, name real estate and other stakes get even higher, AI represents a powerful opportunity to supercharge our naming power as long as we can manage for quality.</i>]
                 } />
-                <OpacityParagraph scrollInfo={adjustedTimings[1][1]} text={
+                <OpacityParagraph scrollInfo={adjustedTimings[1][1]} complexFade text={
                     [<i>For perspective, Lippincott typically generates 2,000 names against a project brief before narrowing to the 20 we present. But when you consider that Ai could access 217 billion other possibilities for names with 8 letters or less, it's clear we may be missing some gems. An equally sobering counterpoint is that efforts to date point to an AI that is good at generating quantity, but bad at producing or selecting quality.</i>]
                 } />
-                <OpacityParagraph scrollInfo={adjustedTimings[1][2]} text={
+                <OpacityParagraph scrollInfo={adjustedTimings[1][2]} complexFade text={
                     [<i>So we've decided to play - to challenge this notion, by using more sophisticated prompts, deeper training, and test-and-learn methodology to see if we can get more viable results from AI.</i>]
                 } />
             </>
@@ -136,13 +136,13 @@ function NamingExperimentSection() {
                 <OpacitySubheading scrollInfo={adjustedTimings[1][0]} text={
                     ["In case you missed it..."]
                 } />
-                <OpacityParagraph scrollInfo={adjustedTimings[1][0]} text={
+                <OpacityParagraph scrollInfo={adjustedTimings[1][0]} complexFade text={
                     [<i>Lippincott has been a leader in brand name development for 80 years, and creator of classic household brand names like Duracell, Sprite, and Off! and more recent market-changers like Kenvue, Refinitiv, and Marcus. But as the limitations of language, trademark, name real estate and other stakes get even higher, AI represents a powerful opportunity to <ArticleLink href='http://google.com' style={{ color: 'white' }}>supercharge our naming power</ArticleLink> as long as we can manage for quality.</i>]
                 } />
-                <OpacityParagraph scrollInfo={adjustedTimings[1][1]} text={
+                <OpacityParagraph scrollInfo={adjustedTimings[1][1]} complexFade text={
                     [<i>For perspective, Lippincott typically generates 2,000 names against a project brief before narrowing to the 20 we present. But when you consider that Ai could access 217 billion other possibilities for names with 8 letters or less, it's clear we may be missing some gems. An equally sobering counterpoint is that efforts to date point to an AI that is good at generating quantity, but bad at producing or selecting quality.</i>]
                 } />
-                <OpacityParagraph scrollInfo={adjustedTimings[1][2]} text={
+                <OpacityParagraph scrollInfo={adjustedTimings[1][2]} complexFade text={
                     [<i>So we've decided to play - to challenge this notion, by using more sophisticated prompts, deeper training, and test-and-learn methodology to see if we can get more viable results from AI.</i>]
                 } />
             </>
