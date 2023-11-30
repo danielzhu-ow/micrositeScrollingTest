@@ -173,14 +173,14 @@ function HotDogSection({ sectionHeights, adjustedTimings }) {
           <ImgBox url={getImageByKey("shadow")} displayDimensions={[70, 70]} rotate={0} />
         } />
       } />
-       <OpacityContent scrollInfo={adjustedTimings[6][3]} baseOpacity={1} child={
+      <OpacityContent scrollInfo={adjustedTimings[6][3]} baseOpacity={1} child={
         <TransformingContent positions={[[7, 7, 7, 60, 60, 60], [-100, 14, 14, 14, 14, 100]]} scrollInfo={adjustedTimings[6][2]} alignment={['right', 'bottom']} child={
-          <ImgBox url={getImageByKey("hotdog")} displayDimensions={[33, 33]} rotate={0} />
+          <ImgBox url={getImageByKey("hotdog")} displayDimensions={[33, 70]} rotate={0} />
         } />
       } />
       <OpacityContent scrollInfo={adjustedTimings[6][1]} baseOpacity={1} child={
         <TransformingContent positions={[[0, 0, 0, -100], [-100, -1, -1, -1]]} scrollInfo={adjustedTimings[6][1]} alignment={['right', 'bottom']} child={
-          <ImgBox url={getImageByKey("toy_pile")} displayDimensions={[50, 50]} rotate={0} />
+          <ImgBox url={getImageByKey("toy_pile")} displayDimensions={[50, 70]} rotate={0} />
         } />
       } />
     </>
@@ -207,7 +207,7 @@ function HotDogSection({ sectionHeights, adjustedTimings }) {
     <>
       <Background background={getImageByKey("naming_gradient")} height={sectionHeights[6]} />
       {/* ANIMATION IN */}
-      <TransformingContent positions={[[15, 15, 15, 15], [15, 15, 15, 15]]} scrollInfo={adjustedTimings[6][1]} alignment={['left', 'top']} child={
+      <TransformingContent positions={[[15, 15, 15, 15], [120, 15, 15, 15]]} scrollInfo={adjustedTimings[6][1]} alignment={['left', 'top']} child={
         <OpacitySubheading scrollInfo={adjustedTimings[6][1]} dark={false} simpleFade={true} text={[["So, it's time to play."]]} />
       } />
 
@@ -219,7 +219,7 @@ function HotDogSection({ sectionHeights, adjustedTimings }) {
           <motion.div className='hotDogMainCont' style={{ maxWidth: '68.2rem', textAlign: 'left', height: '100vh', position: 'relative' }}>
             <RightColumn>
               <ArticleSubHeading>{namingStarted ? selectedOption ? "Let me show you what my dreams are made of" : "How did I do? Pick your favorite" : "Let's name that gourmet hot dog restaurant you've always wanted to make"}</ArticleSubHeading>
-              {namingStarted ? (selectedOption ? ( clickableModule ) : (<NamingButtons onOptionClick={handleOptionClick} />)) : (
+              {namingStarted ? (selectedOption ? (clickableModule) : (<NamingButtons onOptionClick={handleOptionClick} />)) : (
                 <motion.div whileTap={{ scale: 0.95 }} onClick={() => setNamingStarted(true)} disabled={namingStarted}>
                   <ContactButton> {namingStarted ? "NAMING STARTED" : "START NAMING"} </ContactButton>
                 </motion.div>
@@ -245,13 +245,13 @@ const NamingButtons = ({ onOptionClick }) => {
     <InsideColumn>
       <div>
         {option1.map((option, index) => (
-          <motion.div key={index} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => onOptionClick(option)} style={{ marginBottom: '3.2rem' }}>
+          <motion.div key={index} whileHover={{ backgoundColor: '#202020' }} whileTap={{ scale: 0.9 }} onClick={() => onOptionClick(option)} style={{ marginBottom: '3.2rem' }}>
             <ExpandingContactButton style={{ maxWidth: '32.6rem' }}> {option} </ExpandingContactButton>
           </motion.div>))}
       </div>
       <div>
         {option2.map((option, index) => (
-          <motion.div key={index} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} onClick={() => onOptionClick(option)} style={{ marginBottom: '3.2rem' }}>
+          <motion.div key={index} whileHover={{ backgoundColor: '#202020' }} whileTap={{ scale: 0.9 }} onClick={() => onOptionClick(option)} style={{ marginBottom: '3.2rem' }}>
             <ExpandingContactButton style={{ maxWidth: '32.6rem' }}> {option} </ExpandingContactButton>
           </motion.div>))}
       </div>

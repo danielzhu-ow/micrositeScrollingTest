@@ -468,7 +468,7 @@ function NamingExperimentSection() {
         <div style={{ position: "relative", height: "100%", width: "100%" }}>
 
             {/* HEADER */}
-            <TransformingContent child={<OpacityContent baseOpacity={0} scrollInfo={adjustedTimings[0][1]} child={<ImgBox url={getImageByKey("headerShadeExperiment")} displayDimensions={[85, 25]} rotate={0} />} />} positions={[[7.5, 7.5, 7.5, 7.5], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[0][0]} alignment={['left', 'bottom']} />
+            <TransformingContent child={<OpacityContent baseOpacity={0} scrollInfo={adjustedTimings[0][1]} child={<ImgBox url={getImageByKey("headerShadeExperiment")} displayDimensions={[85, 25]} rotate={0} />} />} positions={[[7.5,7.5,7.5,7.5], [0, 0, 0, 0]]} scrollInfo={adjustedTimings[0][0]} alignment={['left', 'bottom']} />
             <TransitionBackground background={getImageByKey("naming_gradient")} height={sectionHeights[0]} startHeight={0} hasTransition={true} delayed={[0.5, 1]} />
             <FadingHeader text={header} scrollInfo={adjustedTimings[0][0]} startOn={true} />
             {/* {draggable} */}
